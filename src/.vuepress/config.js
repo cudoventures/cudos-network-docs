@@ -41,16 +41,41 @@ module.exports = {
     docsRepo: 'CudoVentures/cudos-network-docs',
     editLinks: true,
     nav: [
-      { text: 'Guide', link: '/guide/' },
+      { text: 'Introduction', link: '/introduction/' },
+      { text: 'Contribute and earn', link: '/contribute-and-earn/' },
+      { text: 'Governance', link: '/governance/' },
+      { text: 'Build', link: '/build/' },
+      { text: 'Treasury', link: '/treasury/' },
+      { text: 'Foundation and grants', link: '/foundation-and-grants/' },
+      { text: 'Marketplace', link: '/marketplace/' },
     ],
     repo: 'CudoVentures/cudos-network',
     search: false,
     sidebar: {
-      '/guide/': [
-        '/guide/getting-started/'
+      '/introduction/': [
+        '/introduction/getting-started/',
+        '/introduction/faqs/'
       ],
+      '/contribute-and-earn/': [
+        '/contribute-and-earn/staking/',
+        '/contribute-and-earn/validators/',
+        '/contribute-and-earn/delegated-staking/',
+        '/contribute-and-earn/earn-cudos/',
+        '/contribute-and-earn/sell-data/'
+      ],
+      '/governance/': [],
+      '/build/': [],
+      '/treasury/': [],
+      '/foundation-and-grants/': [],
+      '/marketplace/': [],
       '/': [
-        '/guide/',
+        '/introduction/',
+        '/contribute-and-earn/',
+        '/governance/',
+        '/build/',
+        '/treasury/',
+        '/foundation-and-grants/',
+        '/marketplace/',
       ]
     }
   },
