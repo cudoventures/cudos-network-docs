@@ -16,7 +16,7 @@ CUDOS nodes are responsible for listening to the CUDOS smart contracts and runni
 
 The following sketch shows a request triggering a CUDOS workload. A layer 1 smart contract requests some work through the CUDOS smart contract, triggering an event. The CUDOS nodes listen to the contract’s events, and execute the requested work when they are chosen. After fetching the data and running the workload, the result is returned to the CUDOS smart contract.
 
-![CUDOS node diagram](node-for-wiki.png)
+![CUDOS node diagram](./node-for-wiki.png)
 
 ### 24x7 utilisation of infrastructure
 
