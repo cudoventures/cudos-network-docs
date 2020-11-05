@@ -49,8 +49,8 @@ module.exports = {
       { text: 'Foundation and grants', link: '/foundation-and-grants/' },
       { text: 'Marketplace', link: '/marketplace/' },
     ],
+    logo: '/CudosIconTransparent.png',
     repo: 'CudoVentures/cudos-network',
-    search: false,
     sidebar: {
       '/introduction/': [
         '/introduction/getting-started/',
