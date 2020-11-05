@@ -31,7 +31,7 @@ Learn about the marketplace, where you can build and publish applications, integ
 
 ## Help and support
 
-Chat with users and developers on [Discord](https://discord.com/invite/SdStBEu) and [Telegram](https://t.me/cudostelegram).
+Chat with users and developers on [Telegram](https://t.me/cudostelegram).
 
 ## Get CUDOS updates
 
