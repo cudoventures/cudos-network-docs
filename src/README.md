@@ -7,11 +7,12 @@ footer: Copyright © 2020-present Cudo Ventures
 
 In this page you will find information about the CUDOS network and links to all other relevant documents.
 
-CUDOS is a multi chain compute oracle platform which bridges the gap between real-world applications and data to smart contracts.
-
+CUDOS is a multi chain compute oracle platform which bridges the gap between real-world applications and data to smart contracts. To find a high level description of the platform navigate through the following links:
 - [Introduction](/introduction)
   - [Getting started](/introduction/getting-started)
   - [Frequently Asked Questions (FAQ's)](/introduction/faqs)
+
+Learn how to contribute to the CUDOS network and earn rewards. Below you can learn how to be a validator, contribute and stake on the CUDOS network, and setup your own node to earn rewards, as well as how to delegate your stake.
 - [Contribute and earn](/contribute-and-earn)
   - [Staking](/contribute-and-earn/staking)
   - [Validators](/contribute-and-earn/validators)
@@ -20,8 +21,12 @@ CUDOS is a multi chain compute oracle platform which bridges the gap between rea
   - [Sell data](/contribute-and-earn/sell-data)
 - [Governance](/governance)
 - [Build on CUDOS](/build)
+
+Find out what the CUDOS treasury is, how it supports the CUDOS foundation and how to apply for grants.
 - [Treasury](/treasury)
 - [Foundation and grants](/foundation-and-grants)
+
+Learn about the marketplace, where you can build and publish applications, integrate with existing applications and earn rewards.
 - [Marketplace](/marketplace)
 
 ## Help and support
