@@ -1,8 +1,8 @@
 ---
-title: Contribute and Earn
+title: Contribute & Earn
 ---
 
-# Contribute and Earn
+# Contribute & Earn
 
 Learn how staking works in the CUDOS network, how you can build and publish applications, integrate with existing applications and earn rewards and also how to be a data provider on the CUDOS network to provide data feeds to multiple blockchains.
 
