@@ -1,8 +1,8 @@
 ---
-title: Foundation and grants
+title: Foundation & Grants
 ---
 
-# Foundation and grants
+# Foundation & Grants
 
 ## What is the CUDOS foundation
 

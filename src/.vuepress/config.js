@@ -42,11 +42,11 @@ module.exports = {
     editLinks: true,
     nav: [
       { text: 'Introduction', link: '/introduction/' },
-      { text: 'Contribute and earn', link: '/contribute-and-earn/' },
+      { text: 'Contribute & Earn', link: '/contribute-and-earn/' },
       { text: 'Governance', link: '/governance/' },
       { text: 'Build', link: '/build/' },
       { text: 'Treasury', link: '/treasury/' },
-      { text: 'Foundation and grants', link: '/foundation-and-grants/' },
+      { text: 'Foundation & Grants', link: '/foundation-and-grants/' },
       { text: 'Marketplace', link: '/marketplace/' },
     ],
     logo: '/CudosIconTransparent.png',
