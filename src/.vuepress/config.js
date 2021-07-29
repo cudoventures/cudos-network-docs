@@ -50,7 +50,7 @@ module.exports = {
       { text: 'Marketplace', link: '/marketplace/' },
     ],
     logo: '/CudosIconTransparent.png',
-    repo: 'CudoVentures/cudos-network',
+    repo: 'CudoVentures/cudos-eth-token-contract',
     sidebar: {
       '/introduction/': [
         '/introduction/getting-started/',
