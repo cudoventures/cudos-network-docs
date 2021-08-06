@@ -3,3 +3,6 @@
 /src/.vuepress/dist/
 
 yarn-error.log
+
+# Local Netlify folder
+.netlify
