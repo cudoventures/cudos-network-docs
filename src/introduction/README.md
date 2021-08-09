@@ -8,3 +8,7 @@ This section gives an overview of the CUDOS network and introduces some basic co
 
 - [Getting started](/introduction/getting-started/)
 - [Frequently Asked Questions (FAQ's)](/introduction/faqs/)
+
+::: tip
+Find the complete detail of the CUDOS network in the [resources](/introduction/getting-started/#resources)
+:::

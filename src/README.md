@@ -12,6 +12,10 @@ CUDOS is a multi chain compute oracle platform which bridges the gap between rea
   - [Getting started](/introduction/getting-started)
   - [Frequently Asked Questions (FAQ's)](/introduction/faqs)
 
+::: tip
+The detail of how the CUDOS network works is found in the [resources](/introduction/getting-started/#resources)
+:::
+
 Learn how to contribute to the CUDOS network and earn rewards. Below you can learn how to be a validator, contribute and stake on the CUDOS network, and setup your own node to earn rewards, as well as how to delegate your stake.
 - [Contribute & Earn](/contribute-and-earn)
   - [Staking](/contribute-and-earn/staking)
