@@ -16,5 +16,5 @@ npm run dev
 
 Open a browser to view the site [http://localhost:8080](http://localhost:8080)
 
-This is a [vuepress](https://vuepress.vuejs.org/) site, so all guidance on editing the site can be found there.
+This is a [vuepress](https://vuepress.vuejs.org/) site, so all guidance on editing the site can be found there
 
