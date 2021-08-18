@@ -10,30 +10,54 @@ Pre-requisites:
 
 ### Local development:
 
-This site uses Git LFS with Netlify Large Media. First check your git lfs version:
+This site uses Git LFS with Netlify Large Media. So you need to perform some steps BEFORE YOU CLONE THE REPO.
+First check your git lfs version:
 
 ```
 git lfs version
 ```
 Check that the version is 2.5.1 or later. If it is not, install it from [Git LFS](https://git-lfs.github.com/)
 
-Next install the netlify-cli and the git netlify credential helper:
+Install the netlify-cli and login using the credentials in 1password:
 ```
 npm install -g netlify-cli
+netlify login
+```
+
+Install the git netlify credential helper
+```
 netlify lm:install
 ```
 
-`netlify lm:info` should now respond with something like:
+You should see output like:
 ```
-  ✔ Checking Git version [Git-130)]
-  ✔ Checking Git LFS version [2.13.3]
+$ netlify lm:install
+  ✔ Checking Git version [2.30.2]
+  ✔ Checking Git LFS version [2.13.2]
   ✔ Checking Git LFS filters
-  ✔ Checking Netlify's Git Credentials version [0.1.10]
+  ✔ Installing Netlify's Git Credential Helper for Linux
+  ✔ Configuring Git to use Netlify's Git Credential Helper
 ```
 
-If there are any crosses, seek help.
+Verify that it has actually altered your git config:
 
-### Running the site
+```
+cat ~/.gitconfig
+```
+
+You should see something like this at the end:
+
+```
+# This next lines include Netlify's Git Credential Helper configuration in your Git configuration.
+[include]
+  path = /home/<username>/.config/netlify/helper/git-config
+```
+
+If not, add it.
+
+Now clone the repo!
+
+### Run the site
 ```
 npm install
 npm run dev
