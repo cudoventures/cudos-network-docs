@@ -42,6 +42,7 @@ module.exports = {
     editLinks: true,
     nav: [
       { text: 'Introduction', link: '/introduction/' },
+      {text: 'Build and Earn', link:'/docs/build-and-earn/' },
       { text: 'Contribute & Earn', link: '/contribute-and-earn/' },
       { text: 'Governance', link: '/governance/' },
       { text: 'Build', link: '/build/' },
@@ -55,6 +56,9 @@ module.exports = {
       '/introduction/': [
         '/introduction/getting-started/',
         '/introduction/faqs/'
+      ],
+      '/docs/build-and-earn/': [
+      '/docs/build-and-earn/getting-started/creating-a-keplr-wallet'
       ],
       '/contribute-and-earn/': [
         '/contribute-and-earn/staking/',
@@ -70,6 +74,7 @@ module.exports = {
       '/marketplace/': [],
       '/': [
         '/introduction/',
+        '/docs/build-and-earn/',
         '/contribute-and-earn/',
         '/governance/',
         '/build/',
