@@ -4,9 +4,11 @@ title: Creating a Keplr wallet
 
 # ﻿Creating a Keplr wallet
 
-## What is Keplr
-
 [Keplr](https://wallet.keplr.app/#/dashboard) is an open-sourced browser extension wallet Keplr that supports the Cosmos interchain ecosystem. It provides functionalities for account and wallet management for all Cosmos-SDK based blockchains.
+
+This article explains the Keplr extension and how to install it.
+
+## What is Keplr
 
 [Keplr extension](https://chrome.google.com/webstore/detail/keplr/dmkamcknogkgcdfhhbddcghachkejeap?hl=en) is supported only on Chrome. It can also be used on Brave, but some features may be unavailable. You can not use the Keplr extension from your mobile. Please note that anyone with your mnemonic seed can take your assets and any lost mnemonic seed can not be recovered.
 
