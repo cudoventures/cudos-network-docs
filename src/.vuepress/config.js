@@ -57,6 +57,9 @@ module.exports = {
         '/introduction/getting-started/',
         '/introduction/faqs/'
       ],
+      '/docs/learn-cudos/overview/': [
+        '/docs/learn-cudos/overview/types-of-nodes'
+      ],
       '/docs/build-and-earn/': [
       '/docs/build-and-earn/getting-started/creating-a-keplr-wallet',
       '/docs/build-and-earn/getting-started/funding-your-wallet',
@@ -76,6 +79,7 @@ module.exports = {
       '/marketplace/': [],
       '/': [
         '/introduction/',
+        '/docs/learn-cudos/overview/',
         '/docs/build-and-earn/',
         '/contribute-and-earn/',
         '/governance/',

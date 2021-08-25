@@ -1,3 +1,7 @@
+---
+title: Cudos Explorer
+---
+
 # ﻿Cudos Explorer
 
 The [Cudos explorer](https://explorer.cudos.org) is a blockchain search engine that allows you to search for data within the blockchain network.

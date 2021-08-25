@@ -1,8 +1,8 @@
 ---
-title: Creating a Keplr wallet
+title: Creating a Keplr Wallet
 ---
 
-# ﻿Creating a Keplr wallet
+# ﻿Creating a Keplr Wallet
 
 [Keplr](https://wallet.keplr.app/#/dashboard) is an open-sourced browser extension wallet Keplr that supports the Cosmos interchain ecosystem. It provides functionalities for account and wallet management for all Cosmos-SDK based blockchains.
 
