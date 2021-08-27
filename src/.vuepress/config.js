@@ -63,7 +63,8 @@ module.exports = {
       '/docs/build-and-earn/': [
       '/docs/build-and-earn/getting-started/creating-a-keplr-wallet',
       '/docs/build-and-earn/getting-started/funding-your-wallet',
-      '/docs/build-and-earn/getting-started/cudos-explorer'
+      '/docs/build-and-earn/getting-started/cudos-explorer',
+      '/docs/build-and-earn/testnet-guides/prerequisites'
       ],
       '/contribute-and-earn/': [
         '/contribute-and-earn/staking/',

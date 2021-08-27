@@ -4,10 +4,10 @@ title: Types of Nodes
 
 # Types of Nodes
 
-Cudos has three types of nodes that are explained in this article:
+This article explains the three types of nodes within the Cudos system:
 * Full node
 * Seed node
-* Sentry
+* Sentry node
 
 ## Full node
 
