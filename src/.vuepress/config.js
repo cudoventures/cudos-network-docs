@@ -57,7 +57,8 @@ module.exports = {
         '/introduction/getting-started/',
         '/introduction/faqs/'
       ],
-      '/docs/learn-cudos/overview/': [
+      '/docs/learn-cudos/': [
+        '/docs/learn-cudos/layers-and-networks/cudos-network-overview',
         '/docs/learn-cudos/overview/types-of-nodes'
       ],
       '/docs/build-and-earn/': [
@@ -70,6 +71,12 @@ module.exports = {
       '/docs/build-and-earn/testnet-guides/run-seed-node',
       '/docs/build-and-earn/testnet-guides/create-validator',
       '/docs/build-and-earn/testnet-guides/start-binaries'
+      ],
+      '/docs/become-a-validator': [
+        '/docs/become-a-validator/delegated-staking-and-rewards',
+        '/docs/become-a-validator/hardware-requirements',
+        '/docs/become-a-validator/security-recommendation',
+        '/docs/become-a-validator/run-validator-node'
       ],
       '/contribute-and-earn/': [
         '/contribute-and-earn/staking/',
@@ -85,8 +92,9 @@ module.exports = {
       '/marketplace/': [],
       '/': [
         '/introduction/',
-        '/docs/learn-cudos/overview/',
+        '/docs/learn-cudos/',
         '/docs/build-and-earn/',
+        '/docs/become-a-validator/',
         '/contribute-and-earn/',
         '/governance/',
         '/build/',
