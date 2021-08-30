@@ -26,6 +26,8 @@ This section provides you with:
 2. [Learn how to run a full node](/docs/build-and-earn/testnet-guides/run-full-node.md)
 3. [Learn how to run a sentry node](/docs/build-and-earn/testnet-guides/run-sentry-node.md)
 4. [Learn how to run a seed node](/docs/build-and-earn/testnet-guides/run-seed-node.md)
+5. [Learn how to create a validator with running ethereum full node, a Cosmos validator, a Cosmos orchestrator, and a gravity bridge](/docs/build-and-earn/testnet-guides/create-validator.md)
+6. [Learn how to build and start the docker image that has already been built and contains the Cudos binaries](/docs/build-and-earn/testnet-guides/start-binaries.md)
 
 ## Mainnet Guides
 
