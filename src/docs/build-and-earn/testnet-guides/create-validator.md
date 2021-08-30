@@ -88,7 +88,7 @@ cudos-noded q staking validators
 ```
 
 the resulting output looks similar to:
-
+![](./Cosmos-orchestrator1.png)
 
 Note that you must find your validator and copy its _operator_address_. You can refer to the moniker for finding your validator.
 
@@ -99,6 +99,7 @@ Now you need to add another wallet that should have some CUDOS tokens to use for
 cudos-noded keys add orchestrator --recover --keyring-backend="os"
 ```
 The resulting output looks similar to the image below. You will need the address of this wallet and mnemonic for the next steps.
+![](./Cosmos-orchestrator2.png)
 
 Note that after running the command above, you will need to enter both your mnemonic address for the account and the password which you have created on a previous step while adding the validator's wallet.
 
@@ -156,12 +157,8 @@ Open [Gravity Bridge](http://35.192.177.142:4000/). Then you can use [Kelpr](htt
 1. Start docker shell once again, like you did when you have created your validator.
 2. Connect to the orchestrator instance instead of the validator one.
 3. Choose how you want to send funds eithrer from Ethereum to Cosmos or the opposite
-
-The below commands takes up to few minutes to be executed.
-
-##### Send funds from Ethereum to Cosmos
-
-Use the following command:
+4. Before sending funds to Ethereum please check the available balance in the smart contract on the address.
+4. Send funds from Ethereum to Cosmos by running the command:
 ```
 ./gbt client eth-to-cosmos \
   --ethereum-key "<private key of the sender in hex without leading 0x>" \
@@ -171,10 +168,7 @@ Use the following command:
   --token-contract-address "0x28ea52f3ee46cac5a72f72e8b3a387c0291d586d" \
   --ethereum-rpc "http://<ip of your ethereum node>:8545"
 ```
-
-##### Send funds from Cosmos to Ethereum
-
-Use the following command:
+5. Send funds from Cosmos to Ethereum by running the command:
 ```
 ./gbt --address-prefix="cudos" client cosmos-to-eth \
     --amount="<amount in acudos>" \ # example "1acudos"
@@ -184,4 +178,4 @@ Use the following command:
     --fees="<fee that will be kept in the bridged>"
 ```
 
-Note: before sending funds to Ethereum please check the available balance in the smart contract on the address.
+Note that The commands of sending funds takes up to few minutes to be executed.
