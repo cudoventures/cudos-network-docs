@@ -67,7 +67,8 @@ module.exports = {
       '/docs/build-and-earn/testnet-guides/prerequisites',
       '/docs/build-and-earn/testnet-guides/run-full-node',
       '/docs/build-and-earn/testnet-guides/run-sentry-node',
-      '/docs/build-and-earn/testnet-guides/run-seed-node'
+      '/docs/build-and-earn/testnet-guides/run-seed-node',
+      '/docs/build-and-earn/testnet-guides/create-validator'
       ],
       '/contribute-and-earn/': [
         '/contribute-and-earn/staking/',
