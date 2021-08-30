@@ -1,5 +1,5 @@
 ---
-title: Funding your wallet
+title: Funding your Wallet
 ---
 
 # ﻿Funding your Wallet
@@ -28,6 +28,15 @@ If you do not know how to trade, you can follow some of the external guides:
 
 - [How to Buy CUDOS (CUDOS) On Poloniex — A Step by Step Guide](https://cryptobuyingtips.medium.com/60-92-growth-how-to-buy-cudos-cudos-a-step-by-step-guide-crypto-buying-tips-16e9a022bb6a)
 - [How To Buy Cudos (CUDOS) On Uniswap A Step-by-Step Guide](https://www.pickacrypto.com/how-to-buy-cudos-token/)
+
+## Get funds via faucet
+
+To fund the newly created account:
+1. Go to [Cudos explorer](https://explorer.cudos.org/)
+2. Navigate to the [Faucet page](https://explorer.cudos.org/faucet)
+3. Enter the address of your account, your address should look something like cudos8zp3892ahh36ce5qjdc37clzdgvyl99uwswp2re
+4. Enter the maximum amount of 10 Cudos to be wired to it
+5. Click on the button **“SEND ME CUDOS”**
 
 ## Apply for grants
 

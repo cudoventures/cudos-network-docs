@@ -19,6 +19,65 @@ docker -v
 docker-compose -v
 ```
 
+## Setup the environment before running a node
+
+After installing all prerequisites, you can start to set up the environment:
+1. Create a directory to use as your workspace:
+```
+mkdir ~/cudos
+cd ~/cudos
+```
+2. Make sure that you are in the correct directory (cudos directory in this example)
+3. Clone the correct branches from the [CudosNode](https://github.com/CudoVentures/cudos-node), [CudosBuilders](https://github.com/CudoVentures/cudos-builders), and [CudosGravityBridge](https://github.com/CudoVentures/cosmos-gravity-bridge) repositories:
+```
+git clone --depth 1 -b testnet https://github.com/CudoVentures/cudos-node.git CudosNode
+git clone --depth 1 -b master  https://github.com/CudoVentures/cudos-builders.git CudosBuilders
+git clone --depth 1 -b master https://github.com/CudoVentures/cosmos-gravity-bridge.git CudosGravityBridge
+```
+4. Change to the root of each local repository and check out the following branches:
+```
+cd CudosNode
+git checkout gravity/sdk-0.43
+
+cd..
+cd CudosBuilders
+git checkout sdk-0.43
+
+cd..
+cd CudosGravityBridge
+git checkout cosmos-sdk-0.43
+```
+5. Put all cloned repositories in the same directory
+6. Rename the folders accordingly to exactly _CudosNode_, _CudosBuilders_, and _CudosGravityBridge_
+7. Navigate to the _CudosBuilders_ directory
+8. Build the docker image of the binary by running the command:
+```
+cd ./docker/binary-builder&& sudo docker-compose --env-file ./binary-builder.arg -f ./binary-builder.yml -p cudos-binary-builder build
+```
+
+Note that you need to repeat the same steps for each node that you want to create.
+
+## Create an account and set up a Keplr wallet
+
+1. You can use the docker terminal to locate the containers' ID:
+```
+docker container ls
+```
+2. Copy the CONTAINER_ID and run the command:
+```
+docker exec -it <container_id> bash
+```
+3. Create an account by running the command (write the mnemonic phrase in a safe place):
+```
+cudos-noded keys add <myKeyName>
+```
+4. Follow the guide [Set up a Keplr wallet and link it to your account on the Cudos testnet network](/docs/build-and-earn/getting-started/creating-a-keplr-wallet.md)
+
+Note that the **cudos-noded** is a command-line interface. It is the same command-line interface used for deploying smart contracts. You can get the list of all commands by running:
+```
+--help
+```
+
 ## Notes for installing docker for the first time
 
 Before installing the Docker Engine for the first time on a new host machine, you need to set up the Docker repository. Afterwards, you can install and update Docker from the repository.
@@ -41,8 +100,9 @@ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o 
 ```
 echo \
  "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
- $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
- ```
+ $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list
+> /dev/null
+```
 4. Install the Docker Engine
 ```
 apt-get update
@@ -68,4 +128,5 @@ curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compo
 ```
 chmod +x /usr/local/bin/docker-compose
 ```
+
 Note that if you can not connect to the Docker daemon, you can automatically start the docker daemon at boot by running this command:systemctl enable --now docker and then check the status:  systemctl status docker

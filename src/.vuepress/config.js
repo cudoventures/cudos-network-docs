@@ -64,7 +64,10 @@ module.exports = {
       '/docs/build-and-earn/getting-started/creating-a-keplr-wallet',
       '/docs/build-and-earn/getting-started/funding-your-wallet',
       '/docs/build-and-earn/getting-started/cudos-explorer',
-      '/docs/build-and-earn/testnet-guides/prerequisites'
+      '/docs/build-and-earn/testnet-guides/prerequisites',
+      '/docs/build-and-earn/testnet-guides/run-full-node',
+      '/docs/build-and-earn/testnet-guides/run-sentry-node',
+      '/docs/build-and-earn/testnet-guides/run-seed-node'
       ],
       '/contribute-and-earn/': [
         '/contribute-and-earn/staking/',
