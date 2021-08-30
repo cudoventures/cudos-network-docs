@@ -14,20 +14,19 @@ The current top exchanges for CUDOS trading are BitMax, KuCoin, Gate.io, Uniswap
 
 |**Exchange**|**Available Trading Pair**|
 | - | - |
-|[Gate.io](https://coinmarketcap.com/exchanges/gate-io/)|[CUDOS/USDT](https://gate.io/trade/cudos_usdt)|
+|[Gate.io](https://www.gate.io/)|[CUDOS/USDT](https://gate.io/trade/cudos_usdt)|
 |[KuCoin](https://www.kucoin.com/)|[CUDOS/USDT](https://trade.kucoin.com/CUDOS-USDT)|
-|[AscendEX (Bitmax)](https://coinmarketcap.com/exchanges/ascendex/)|[CUDOS/USDT](https://www.ascendex.com/en/basic/cashtrade-spottrading/usdt/cudos)|
-|[1inch Exchange](https://coinmarketcap.com/exchanges/1inch-exchange/)|[ETH/CUDOS](https://app.1inch.io/#/ETH/CUDOS)|
+|[AscendEX (Bitmax)](https://www.ascendex.com/)|[CUDOS/USDT](https://www.ascendex.com/en/basic/cashtrade-spottrading/usdt/cudos)|
+|[1inch Exchange](https://1inch.io/)|[ETH/CUDOS](https://app.1inch.io/#/ETH/CUDOS), [CUDOS/ETH](https://app.1inch.io/#/CUDOS/ETH)|
 |[Bilaxy](https://bilaxy.com/)|[CUDOS/USDT](https://bilaxy.com/trade/CUDOS_USDT)|
-|[Poloniex](https://coinmarketcap.com/exchanges/poloniex/)|[CUDOS/USDT](https://poloniex.com/exchange/USDT_CUDOS)|
-|[0x Protocol](https://coinmarketcap.com/exchanges/0x-protocol/)|[WETH/CUDOS](https://matcha.xyz/markets/WETH/CUDOS?from=WETH)|
-|[1inch Exchange](https://coinmarketcap.com/exchanges/1inch-exchange/)|[CUDOS/ETH](https://app.1inch.io/#/CUDOS/ETH)|
-|[Uniswap (V2)](https://coinmarketcap.com/exchanges/uniswap-v2/)|[CUDOS/WETH](https://app.uniswap.org/#/swap?inputCurrency=0x817bbDbC3e8A1204f3691d14bB44992841e3dB35&outputCurrency=0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2)|
+|[Poloniex](https://bilaxy.com/)|[CUDOS/USDT](https://poloniex.com/exchange/USDT_CUDOS)|
+|[0x Protocol](https://matcha.xyz/)|
+|[Uniswap (V2)](https://uniswap.org/)|[CUDOS/WETH](https://app.uniswap.org/#/swap?inputCurrency=0x817bbDbC3e8A1204f3691d14bB44992841e3dB35&outputCurrency=0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2)|
 
 If you do not know how to trade, you can follow some of the external guides:
 
-- [How to Buy CUDOS (CUDOS) On Poloniex — A Step by Step Guide](https://cryptobuyingtips.medium.com/60-92-growth-how-to-buy-cudos-cudos-a-step-by-step-guide-crypto-buying-tips-16e9a022bb6a)
-- [How To Buy Cudos (CUDOS) On Uniswap A Step-by-Step Guide](https://www.pickacrypto.com/how-to-buy-cudos-token/)
+- [How to Buy CUDOS On Poloniex — A Step by Step Guide](https://cryptobuyingtips.medium.com/60-92-growth-how-to-buy-cudos-cudos-a-step-by-step-guide-crypto-buying-tips-16e9a022bb6a)
+- [How To Buy CUDOS On Uniswap A Step-by-Step Guide](https://www.pickacrypto.com/how-to-buy-cudos-token/)
 
 ## Get funds via faucet
 
