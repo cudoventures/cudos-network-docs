@@ -1,10 +1,10 @@
 ---
-title: Foundation & Grants
+title: Foundation & grants
 ---
 
-# Foundation & Grants
+# Foundation & grants
 
-## What is the CUDOS foundation
+## What is the Cudos Foundation
 
 The CUDOS foundation supports all developers willing to contribute to the development of blockchain technologies by developing improvements and applications for the CUDOS network. CUDOS will review all research proposals, and pick the top candidates to receive funding to develop and research their topic. CUDOS will allow a wide range of research topics, including DeFi and network improvements among others.
 

@@ -4,13 +4,13 @@ title: Funding your Wallet
 
 # ﻿Funding your Wallet
 
-A wallet allows you to store and retrieve CUDOS tokens. When you buy or receive CUDOS tokens then you can store them in a wallet and start different transactions. Owning CUDOS will provide you with more options such as using your tokens to become a validator/delegator and participate in staking more tokens.
+A wallet allows you to store and retrieve CUDOS tokens. When you buy or receive CUDOS tokens, you can keep them in a wallet and start different transactions. Owning CUDOS will provide you with more options, such as using your tokens to become a validator/delegator and participate in staking.
 
 This article explains where to buy/trade CUDOS and how to apply for grants.
 
 ## Where to buy CUDOS?
 
-The current top exchanges for CUDOS trading are BitMax, KuCoin, Gate.io, Uniswap, Poloniex, and others. You can trade CUDOS on the following list of exchanges:
+The current top exchanges for CUDOS trading are BitMax, KuCoin, Gate.io, Uniswap, and Poloniex. You can also trade CUDOS on the following exchanges:
 
 |**Exchange**|**Available Trading Pair**|
 | - | - |
@@ -23,7 +23,7 @@ The current top exchanges for CUDOS trading are BitMax, KuCoin, Gate.io, Uniswap
 |[0x Protocol](https://matcha.xyz/)|
 |[Uniswap (V2)](https://uniswap.org/)|[CUDOS/WETH](https://app.uniswap.org/#/swap?inputCurrency=0x817bbDbC3e8A1204f3691d14bB44992841e3dB35&outputCurrency=0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2)|
 
-If you do not know how to trade, you can follow some of the external guides:
+For more information:
 
 - [How to Buy CUDOS On Poloniex — A Step by Step Guide](https://cryptobuyingtips.medium.com/60-92-growth-how-to-buy-cudos-cudos-a-step-by-step-guide-crypto-buying-tips-16e9a022bb6a)
 - [How To Buy CUDOS On Uniswap A Step-by-Step Guide](https://www.pickacrypto.com/how-to-buy-cudos-token/)
@@ -39,14 +39,14 @@ To fund the newly created account:
 
 ## Apply for grants
 
-The Cudos grants program allows several funding opportunities to support:
+The Cudos grants program offers funding for various opportunities:
 
 - Application development
 - Infrastructure, tools and APIs
 - Research and community
 
-The grant program aims to support the growth of the Cudos ecosystem. This will empower innovation and development along with providing new opportunities for researchers, developers, and the community.
+The grant program aims to support the growth of the Cudos ecosystem. This will empower innovation and development and provide new opportunities for researchers, developers, and the community.
 
-To start the process of receiving a grant, please submit your application or proposal through The [Contact Us form](https://www.cudos.org/#contact-us).
+Please submit your application or proposal through this [form](https://www.cudos.org/#contact-us).
 
-Please read the section [Foundation & Grants](https://docs.cudos.org/foundation-and-grants/) for more information.
+You can read the [Foundation & Grants](/foundation-and-grants/README.md) section for more information.

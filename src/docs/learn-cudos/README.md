@@ -6,13 +6,13 @@ title: Learn Cudos
 
 This section provides you with:
 
-## Cudos Network
+## Cudos network
 
 This section provides you with:
 
 [Learn Cudos network overview](/docs/learn-cudos/layers-and-networks/cudos-network-overview.md)
 
-## Types of Nodes
+## Types of nodes
 
 This section provides you with:
 

@@ -2,7 +2,7 @@
 title: Run a Validator Node
 ---
 
-# How to Run a Validator Node
+# How to run a Validator node
 
 As explained in the article [Types of Nodes](src/docs/learn-cudos/overview/types-of-nodes.md) there are three types of nodes: Full, Sentry, and Seed node.
 

@@ -1,12 +1,12 @@
 ---
-title: Become a Validator
+title: Become a validator
 ---
 
-# Become a Validator
+# Become a validator
 
 This section provides you with:
 
-## Running a Validator node
+## Running a validator node
 
 This section provides you with:
 
@@ -18,13 +18,13 @@ This section provides you with:
 
 [Learn the main setup and security recommendations for your validator node](/docs/become-a-validator/security-recommendation.md)
 
-## Hardware Requirements
+## Hardware requirements
 
 This section provides you with:
 
 [Make sure that you have all hardware requirements](/docs/become-a-validator/hardware-requirements.md)
 
-## Rewards and Staking
+## Rewards and staking
 
 This section provides you with:
 

@@ -2,7 +2,7 @@
 title: Build and Earn
 ---
 
-# Build and Earn
+# Build and earn
 
 This section is divided as the following:
 
@@ -10,7 +10,7 @@ This section is divided as the following:
 * Testnet Guides
 * Mainnet Guides
 
-## Getting Started
+## Getting started
 
 This section provides you with:
 
@@ -18,7 +18,7 @@ This section provides you with:
 2. [Learn where to buy CUDOS tokens, get funs via faucet on testnet, and how to apply for grants](/docs/build-and-earn/getting-started/funding-your-wallet.md)
 3. [Understand what is a Cudos explorer](/docs/build-and-earn/getting-started/cudos-explorer.md)
 
-## Testnet Guides
+## Testnet guides
 
 This section provides you with:
 
@@ -29,6 +29,6 @@ This section provides you with:
 5. [Learn how to create a validator with running ethereum full node, a Cosmos validator, a Cosmos orchestrator, and a gravity bridge](/docs/build-and-earn/testnet-guides/create-validator.md)
 6. [Learn how to build and start the docker image that has already been built and contains the Cudos binaries](/docs/build-and-earn/testnet-guides/start-binaries.md)
 
-## Mainnet Guides
+## Mainnet guides
 
 Stay tuned...

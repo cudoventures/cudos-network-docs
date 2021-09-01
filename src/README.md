@@ -3,7 +3,7 @@ title: Welcome page
 footer: Copyright © 2020-present Cudo Ventures
 ---
 
-# Welcome to the CUDOS network docs!
+# Welcome to the Cudos network docs!
 
 This page contains the current links structure of the Cudos documentation and where to go to find hekp and support.
 

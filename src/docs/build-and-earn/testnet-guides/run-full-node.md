@@ -2,7 +2,7 @@
 title: Run a Full Node
 ---
 
-# ﻿Run a Full Node
+# ﻿Run a Full node
 
 Before running a node, make sure that you have followed the guide for [setting up your prerequisites and environment](/docs/build-and-earn/testnet-guides/prerequisites.md).
 

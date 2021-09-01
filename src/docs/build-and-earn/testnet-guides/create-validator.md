@@ -2,7 +2,7 @@
 title: Create a Validator
 ---
 
-# Create a Validator
+# Create a validator
 
 To create a validator account, you need:
 1. A running ethereum full node

@@ -2,7 +2,7 @@
 title: Prerequisites and Operating Systems
 ---
 
-# ﻿Prerequisites and Operating Systems
+# ﻿Prerequisites and operating systems
 
 This article explains:
 * How to install all necessary prerequisites
