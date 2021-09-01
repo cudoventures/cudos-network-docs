@@ -4,6 +4,11 @@ title: Prerequisites and Operating Systems
 
 # ﻿Prerequisites and Operating Systems
 
+This article explains:
+* How to install all necessary prerequisites
+* Important notes of installing docker for first time
+* How to setup your environment before running a node
+
 You can run your node in different operating systems such as Debian 10, Ubuntu, WSL, and macOS Catalina version 10.15.4 or above. If you are installing docker for the first time, please check the next section, “Notes for Installing Docker for the First Time”.
 
 The first step is to ensure that you have set up all requirements and prerequisites as the following:

@@ -2,7 +2,7 @@
 title: Run a Sentry Node
 ---
 
-## ﻿Run a Sentry Node
+# ﻿Run a Sentry Node
 
 Before running a node, make sure that you have followed the guide for [setting up your prerequisites and environment](/docs/build-and-earn/testnet-guides/prerequisites.md).
 
@@ -19,7 +19,7 @@ To run a sentry node, you need to complete the following steps:
 4. Open the file, which you renamed, **sentry-node.client.testnet.public01.env** in any editor
 5. Find  the **"MONIKER"** attribute and set a name to it as the following:
 ```
-MONIKER = MySentryNodeName
+MONIKER=MySentryNodeName
 ```
 6. Initiliaze the node by running this command:
 ```
@@ -40,11 +40,11 @@ This step is valid only if you are running the sentry node as a validator. Note 
 4. Open the file, which you renamed, **sentry-node.client.testnet.public01.env** in any editor
 5. Find  the **"MONIKER"** attribute and set a name to it as the following:
 ```
-MONIKER = MySentryNodeName
+MONIKER=MySentryNodeName
 ```
-6. Paste the copied nodeId in the "PRIVATE_PEERS" line. If there are multiple full nodes ids, separate them by a comma such as:
+6. Paste the full node's nodeId in the **PRIVATE_PEERS** line. If there are multiple full nodes ids, separate them by a comma such as:
 ```
-PRIVATE_PEERS=de6c482c9c21f24b04326f8f5dbf5c1b007becb6,sg1c4129c21f24bj5df5dbf5c1b007becb6
+PRIVATE_PEERS=<full-node1-id>,<full-node2-id>
 ```
 7. Make sure that you are still in the correct directory **CudosBuilders/docker/sentry-node**
 8. Initialize the node by running this command:
@@ -53,5 +53,10 @@ sudo docker-compose --env-file ./sentry-node.client.testnet.public01.arg -f ./in
 ```
 9. Start the node by running this command:
 ```
-sudo docker-compose --env-file ./sentry-node.client.testnet.public01.arg -f ./start-sentry-node.yml -p cudos-start-sentry-node-client-testnet-public-01 up --build
+sudo docker-compose --env-file ./sentry-node.client.testnet.public01.arg -f ./start-sentry-node.yml -p cudos-start-sentry-node-client-testnet-public-01 up --build --detach
+```
+
+Note that you can see the logs by running the command:
+```
+sudo docker logs -f cudos-start-sentry-node-client-testnet-public-01
 ```

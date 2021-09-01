@@ -1,5 +1,5 @@
 ---
-title: Rewards and Delegated Stakeing
+title: Rewards and Delegated Staking
 ---
 
 ## Rewards

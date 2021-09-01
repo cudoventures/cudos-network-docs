@@ -41,14 +41,7 @@ module.exports = {
     docsRepo: 'CudoVentures/cudos-network-docs',
     editLinks: true,
     nav: [
-      { text: 'Introduction', link: '/introduction/' },
-      {text: 'Build and Earn', link:'/docs/build-and-earn/' },
-      { text: 'Contribute & Earn', link: '/contribute-and-earn/' },
-      { text: 'Governance', link: '/governance/' },
-      { text: 'Build', link: '/build/' },
-      { text: 'Treasury', link: '/treasury/' },
-      { text: 'Foundation & Grants', link: '/foundation-and-grants/' },
-      { text: 'Marketplace', link: '/marketplace/' },
+
     ],
     logo: '/CudosIconTransparent.png',
     repo: 'CudoVentures/cudos-eth-token-contract',
@@ -91,16 +84,10 @@ module.exports = {
       '/foundation-and-grants/': [],
       '/marketplace/': [],
       '/': [
-        '/introduction/',
         '/docs/learn-cudos/',
         '/docs/build-and-earn/',
         '/docs/become-a-validator/',
-        '/contribute-and-earn/',
-        '/governance/',
-        '/build/',
-        '/treasury/',
         '/foundation-and-grants/',
-        '/marketplace/',
       ]
     }
   },
