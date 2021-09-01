@@ -15,67 +15,8 @@ The first step is to ensure that you have set up all requirements and prerequisi
 
 Missing any of the prerequisites above can lead to errors and being unable to run your node. It is recommended to have the latest version of Docker and Docker compose installed. If you already installed them, you can check the version by running the following commands in your terminal:
 ```
-docker -v
-docker-compose -v
-```
-
-## Setup the environment before running a node
-
-After installing all prerequisites, you can start to set up the environment:
-1. Create a directory to use as your workspace:
-```
-mkdir ~/cudos
-cd ~/cudos
-```
-2. Make sure that you are in the correct directory (cudos directory in this example)
-3. Clone the correct branches from the [CudosNode](https://github.com/CudoVentures/cudos-node), [CudosBuilders](https://github.com/CudoVentures/cudos-builders), and [CudosGravityBridge](https://github.com/CudoVentures/cosmos-gravity-bridge) repositories:
-```
-git clone --depth 1 -b testnet https://github.com/CudoVentures/cudos-node.git CudosNode
-git clone --depth 1 -b master  https://github.com/CudoVentures/cudos-builders.git CudosBuilders
-git clone --depth 1 -b master https://github.com/CudoVentures/cosmos-gravity-bridge.git CudosGravityBridge
-```
-4. Change to the root of each local repository and check out the following branches:
-```
-cd CudosNode
-git checkout gravity/sdk-0.43
-
-cd..
-cd CudosBuilders
-git checkout sdk-0.43
-
-cd..
-cd CudosGravityBridge
-git checkout cosmos-sdk-0.43
-```
-5. Put all cloned repositories in the same directory
-6. Rename the folders accordingly to exactly _CudosNode_, _CudosBuilders_, and _CudosGravityBridge_
-7. Navigate to the _CudosBuilders_ directory
-8. Build the docker image of the binary by running the command:
-```
-cd ./docker/binary-builder&& sudo docker-compose --env-file ./binary-builder.arg -f ./binary-builder.yml -p cudos-binary-builder build
-```
-
-Note that you need to repeat the same steps for each node that you want to create.
-
-## Create an account and set up a Keplr wallet
-
-1. You can use the docker terminal to locate the containers' ID:
-```
-docker container ls
-```
-2. Copy the CONTAINER_ID and run the command:
-```
-docker exec -it <container_id> bash
-```
-3. Create an account by running the command (write the mnemonic phrase in a safe place):
-```
-cudos-noded keys add <myKeyName>
-```
-4. Follow the guide [Set up a Keplr wallet and link it to your account on the Cudos testnet network](/docs/build-and-earn/getting-started/creating-a-keplr-wallet.md)
-
-Note that the **cudos-noded** is a command-line interface. It is the same command-line interface used for deploying smart contracts. You can get the list of all commands by running:
-```
---help
+sudo docker -v
+sudo docker-compose -v
 ```
 
 ## Notes for installing docker for the first time
@@ -129,4 +70,55 @@ curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compo
 chmod +x /usr/local/bin/docker-compose
 ```
 
-Note that if you can not connect to the Docker daemon, you can automatically start the docker daemon at boot by running this command:systemctl enable --now docker and then check the status:  systemctl status docker
+Note that if you can not connect to the Docker daemon, you can automatically start the docker daemon at boot by running the command:
+```
+systemctl enable --now docker and then check the status:  systemctl status docker
+```
+
+Note that depending on the operating system which you are using, there can be some additional steps to take. For example, removing any *"distro-specific"* docker components first in case of a Linux OS because of a wide variety of options and combinations. Please check official vendor documentation:
+* [Get docker](https://docs.docker.com/get-docker/)
+* [Install compose](https://docs.docker.com/compose/install/)
+
+## Setup the environment before running a node
+
+After installing all prerequisites, you can start to set up the environment:
+1. Create a directory to use as your workspace:
+```
+mkdir ~/cudos
+cd ~/cudos
+```
+2. Make sure that you are in the correct directory (cudos directory in this example)
+3. Clone the correct branches from the [CudosNode](https://github.com/CudoVentures/cudos-node), [CudosBuilders](https://github.com/CudoVentures/cudos-builders), and [CudosGravityBridge](https://github.com/CudoVentures/cosmos-gravity-bridge) repositories with renaming the folders accordingly to exactly _CudosNode_, _CudosBuilders_, and _CudosGravityBridge_:
+```
+git clone --depth 1 --branch gravity/sdk-0.43 https://github.com/CudoVentures/cudos-node.git CudosNode
+git clone --depth 1 --branch sdk-0.43  https://github.com/CudoVentures/cudos-builders.git CudosBuilders
+git clone --depth 1 --branch cosmos-sdk-0.43 https://github.com/CudoVentures/cosmos-gravity-bridge.git CudosGravityBridge
+```
+4. Navigate to the _CudosBuilders_ directory
+5. Build the docker image of the binary by running the command:
+```
+cd docker/binary-builder && sudo docker-compose --env-file binary-builder.arg -f binary-builder.yml -p cudos-binary-builder up --build --detach
+```
+
+Note that you need to repeat the same steps for each node that you want to create.
+
+## Create an account and set up a Keplr wallet
+
+1. You can use the docker terminal to locate the containers' ID:
+```
+sudo docker ps --filter "name=binary-builder"
+```
+2. Copy the CONTAINER_ID and create the _CUDOS_NODED_ instance by running the command:
+```
+alias CUDOS_NODED='sudo docker exec -it binary-builder cudos-noded'
+```
+3. Create an account by running the command (write the mnemonic phrase in a safe place):
+```
+cudos-noded keys add <myKeyName>
+```
+4. Follow the guide [Set up a Keplr wallet and link it to your account on the Cudos testnet network](/docs/build-and-earn/getting-started/creating-a-keplr-wallet.md)
+
+Note that the **cudos-noded** is a command-line interface. It is the same command-line interface used for deploying smart contracts. You can get the list of all commands by running:
+```
+--help
+```
