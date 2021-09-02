@@ -41,13 +41,7 @@ module.exports = {
     docsRepo: 'CudoVentures/cudos-network-docs',
     editLinks: true,
     nav: [
-      { text: 'Introduction', link: '/introduction/' },
-      { text: 'Contribute & Earn', link: '/contribute-and-earn/' },
-      { text: 'Governance', link: '/governance/' },
-      { text: 'Build', link: '/build/' },
-      { text: 'Treasury', link: '/treasury/' },
-      { text: 'Foundation & Grants', link: '/foundation-and-grants/' },
-      { text: 'Marketplace', link: '/marketplace/' },
+
     ],
     logo: '/CudosIconTransparent.png',
     repo: 'CudoVentures/cudos-eth-token-contract',
@@ -55,6 +49,27 @@ module.exports = {
       '/introduction/': [
         '/introduction/getting-started/',
         '/introduction/faqs/'
+      ],
+      '/docs/learn-cudos/': [
+        '/docs/learn-cudos/layers-and-networks/cudos-network-overview',
+        '/docs/learn-cudos/overview/types-of-nodes'
+      ],
+      '/docs/build-and-earn/': [
+      '/docs/build-and-earn/getting-started/creating-a-keplr-wallet',
+      '/docs/build-and-earn/getting-started/funding-your-wallet',
+      '/docs/build-and-earn/getting-started/cudos-explorer',
+      '/docs/build-and-earn/testnet-guides/prerequisites',
+      '/docs/build-and-earn/testnet-guides/run-full-node',
+      '/docs/build-and-earn/testnet-guides/run-sentry-node',
+      '/docs/build-and-earn/testnet-guides/run-seed-node',
+      '/docs/build-and-earn/testnet-guides/create-validator',
+      '/docs/build-and-earn/testnet-guides/start-binaries'
+      ],
+      '/docs/become-a-validator': [
+        '/docs/become-a-validator/delegated-staking-and-rewards',
+        '/docs/become-a-validator/hardware-requirements',
+        '/docs/become-a-validator/security-recommendation',
+        '/docs/become-a-validator/run-validator-node'
       ],
       '/contribute-and-earn/': [
         '/contribute-and-earn/staking/',
@@ -69,13 +84,10 @@ module.exports = {
       '/foundation-and-grants/': [],
       '/marketplace/': [],
       '/': [
-        '/introduction/',
-        '/contribute-and-earn/',
-        '/governance/',
-        '/build/',
-        '/treasury/',
+        '/docs/learn-cudos/',
+        '/docs/build-and-earn/',
+        '/docs/become-a-validator/',
         '/foundation-and-grants/',
-        '/marketplace/',
       ]
     }
   },

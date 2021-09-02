@@ -3,40 +3,38 @@ title: Welcome page
 footer: Copyright © 2020-present Cudo Ventures
 ---
 
-# Welcome to the CUDOS network docs!
+# Welcome to the Cudos network docs!
 
-In this page you will find information about the CUDOS network and links to all other relevant documents.
+This page contains the current links structure of the Cudos documentation and where to go to find hekp and support.
 
-CUDOS is a multi chain compute oracle platform which bridges the gap between real-world applications and data to smart contracts. To find a high level description of the platform navigate through the following links:
-- [Introduction](/introduction)
-  - [Getting started](/introduction/getting-started)
-  - [Frequently Asked Questions (FAQ's)](/introduction/faqs)
+## Learn Cudos
 
-::: tip
-The detail of how the CUDOS network works is found in the [resources](/introduction/getting-started/#resources)
-:::
+* [Learn Cudos network overview](/docs/learn-cudos/layers-and-networks/cudos-network-overview.md)
+* [Learn the all current types of node that you can build and run on Cudos](/docs/learn-cudos/overview/types-of-nodes.md)
 
-Learn how to contribute to the CUDOS network and earn rewards. Below you can learn how to be a validator, contribute and stake on the CUDOS network, and setup your own node to earn rewards, as well as how to delegate your stake.
-- [Contribute & Earn](/contribute-and-earn)
-  - [Staking](/contribute-and-earn/staking)
-  - [Validators](/contribute-and-earn/validators)
-  - [Delegated staking](/contribute-and-earn/delegated-staking)
-  - [Earn by building on Cudos](/contribute-and-earn/earn-cudos)
-  - [Sell data](/contribute-and-earn/sell-data)
-- [Governance](/governance)
-- [Build on CUDOS](/build)
+## Build and Earn
 
-Find out what the CUDOS treasury is, how it supports the CUDOS foundation and how to apply for grants.
-- [Treasury](/treasury)
-- [Foundation & Grants](/foundation-and-grants)
+* [Learn how to create an account and link it to your Keplr wallet](/docs/build-and-earn/getting-started/creating-a-keplr-wallet.md)
+* [Learn where to buy CUDOS tokens, get funs via faucet on testnet, and how to apply for grants](/docs/build-and-earn/getting-started/funding-your-wallet.md)
+* [Understand what is a Cudos explorer](/docs/build-and-earn/getting-started/cudos-explorer.md)
+* [First step before installing a node](/docs/build-and-earn/testnet-guides/prerequisites.md)
+* [Learn how to run a full node](/docs/build-and-earn/testnet-guides/run-full-node.md)
+* [Learn how to run a sentry node](/docs/build-and-earn/testnet-guides/run-sentry-node.md)
+* [Learn how to run a seed node](/docs/build-and-earn/testnet-guides/run-seed-node.md)
+* [Learn how to create a validator with running ethereum full node, a Cosmos validator, a Cosmos orchestrator, and a gravity bridge](/docs/build-and-earn/testnet-guides/create-validator.md)
+* [Learn how to build and start the docker image that has already been built and contains the Cudos binaries](/docs/build-and-earn/testnet-guides/start-binaries.md)
 
-Learn about the marketplace, where you can build and publish applications, integrate with existing applications and earn rewards.
-- [Marketplace](/marketplace)
+## Become a Validator
+
+* [How to run a validator node](/docs/become-a-validator/run-validator-node.md)
+* [Learn the main setup and security recommendations for your validator node](/docs/become-a-validator/security-recommendation.md)
+* [Make sure that you have all hardware requirements](/docs/become-a-validator/hardware-requirements.md)
+* [Understand your rewards and delegated staking](/docs/become-a-validator/delegated-staking-and-rewards.md)
 
 ## Help and support
 
 Chat with users and developers on [Telegram](https://t.me/cudostelegram).
 
-## Get CUDOS updates
+## Get Cudos updates
 
 Signup [here](https://www.cudos.org/#contact-us) to get updates on CUDOS updates, news, announcements and rewards.
