@@ -5,16 +5,18 @@ title: Create a Validator
 # Create a validator
 
 To create a validator account, you need:
-1. A running ethereum full node
+1. A running ethereum full-node
 2. A validator
 3. An orchestrator
 4. A gravity bridge
 
 Only after finalizing previous steps, you can start the process of creating a validator and running it on your node. this section explains how to achieve each step in detail.
 
-## Ethereum full node
+## Ethereum full-node
 
-You can use an existing full-node if you have or you can follow the procedure below in order to start one but do use Infura:
+You need to use [ethereum full-node](https://ethereum.org/en/developers/docs/nodes-and-clients/#full-node).
+
+You can use an existing full-node if you have or you can follow the procedure below in order to start one but make sure not to use Infura:
 1. Run your ethereum binary on a different machine that your validator is running
 2. Clone the [CudosBuilders](https://github.com/CudoVentures/cudos-builders) repository
 3. Rename it to exactly _CudosBuilders_
@@ -35,11 +37,11 @@ You have to wait ~12 hours to finish syncing the Rinkeby test network. Its size 
 
 To locate the containers' ID, that is needed to connect to its bash, run the following command in the terminal:
 ```
-docker container ls
+sudo docker container ls
 ```
 Copy the CONTAINER_ID and run the following command:
 ```
-docker exec -it <container_id> bash
+sudo docker exec -it <container_id> bash
 ```
 
 1. As a first step, you need to get the private key on your node. So, if you created the account by Keplr then just connect to the full nodes' container and run the following commands to add it to the node:
