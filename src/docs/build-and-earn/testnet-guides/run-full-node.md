@@ -58,7 +58,8 @@ The full node must communicate only through the created layer of peers. To achie
 2. [Run a Seed node](/docs/build-and-earn/testnet-guides/run-seed-node.md), configure, and start it as a validator. This is an optional recommended step.
 3. Get the Sentry and Seed **node ids** and add them inside the file **full-node.client.testnet.public01.env**. Leave the variable _SEEDS_ empty if you do not have seed nodes. If you have more than one Sentry or Seed node, you can separate them by a comma within the variable _PERSISTENT_PEERS_:
 ```
-PRIVATE_PEERS=<sentry-node1-id>,<seed-node2-id>
+PERSISTENT_PEERS=<sentry-node1-id>@<sentry-node1-ip>:26656,<sentry-node2-id>@<sentry-node2-ip>:26656
+SEEDS=<seed-node1-id>@<seed-node1-ip>:26656,<seed-node2-id>@<seed-node2-ip>:26656
 ```
 4. Open the terminal and navigate to **CudosBuilders/docker/full-node**
 5. Configure your node:
