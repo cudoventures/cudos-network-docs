@@ -44,7 +44,7 @@ MONIKER=MySentryNodeName
 ```
 6. Paste the full node's nodeId in the **PRIVATE_PEERS** line. If there are multiple full nodes ids, separate them by a comma such as:
 ```
-PRIVATE_PEERS=<full-node1-id>,<full-node2-id>
+PERSISTENT_PEERS=<full-node1-id>@<full-node1-ip>:26656,<full-node2-id>@<full-node2-ip>:26656
 ```
 7. Make sure that you are still in the correct directory **CudosBuilders/docker/sentry-node**
 8. Initialize the node by running this command:
