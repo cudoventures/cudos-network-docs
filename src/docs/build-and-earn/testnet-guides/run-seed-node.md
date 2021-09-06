@@ -23,11 +23,11 @@ MONIKER=MySeedNodeName
 ```
 6. Initiliaze the node by running this command:
 ```
-sudo docker-compose --env-file ./seed-node.client.testnet.public01.arg -f ./init-seed-node.yml -p cudos-init-seed-node-client-testnet-public-01 up --build
+sudo docker-compose --env-file seed-node.client.testnet.public01.arg -f init-seed-node.yml -p cudos-init-seed-node-client-testnet-public-01 up --build
 ```
 7. Start the node by running this command:
 ```
-sudo docker-compose --env-file ./seed-node.client.testnet.public01.arg -f ./start-seed-node.yml -p cudos-start-seed-node-client-testnet-public-01 up --build
+sudo docker-compose --env-file seed-node.client.testnet.public01.arg -f start-seed-node.yml -p cudos-start-seed-node-client-testnet-public-01 up --build
 ```
 
 ## Configure and start the node as a validator
@@ -49,11 +49,11 @@ PRIVATE_PEERS=<full-node1-id>,<full-node2-id>
 7. Make sure that you are still in the correct directory **CudosBuilders/docker/seed-node**
 8. Initialize the node by running this command:
 ```
-sudo docker-compose --env-file ./seed-node.client.testnet.public01.arg -f ./init-seed-node.yml -p cudos-init-seed-node-client-testnet-public-01 up --build
+sudo docker-compose --env-file seed-node.client.testnet.public01.arg -f init-seed-node.yml -p cudos-init-seed-node-client-testnet-public-01 up --build
 ```
 9. Start the node by running this command:
 ```
-sudo docker-compose --env-file ./seed-node.client.testnet.public01.arg -f ./start-seed-node.yml -p cudos-start-seed-node-client-testnet-public-01 up --build --detach
+sudo docker-compose --env-file seed-node.client.testnet.public01.arg -f start-seed-node.yml -p cudos-start-seed-node-client-testnet-public-01 up --build --detach
 ```
 
 Note that you can see the logs by running the command:
