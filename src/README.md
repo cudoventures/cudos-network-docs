@@ -9,14 +9,17 @@ This page contains technical resources for Cudos Network and associated tooling.
 
 ## Learn about Cudos
 
-* [Learn Cudos network overview](/docs/learn-cudos/layers-and-networks/cudos-network-overview.md)
-* [Learn the all current types of node that you can build and run on Cudos](/docs/learn-cudos/overview/types-of-nodes.md)
+* [Cudos Network overview](/docs/learn-cudos/layers-and-networks/cudos-network-overview.md)
+* [Cudos Whitepaper](https://docs.cudos.org/pdf/en/cudos-white-paper.pdf)
+* [Cudos Litepaper](https://docs.cudos.org/pdf/en/cudos-lite-paper.pdf)
+* [Cudos Technical Paper](https://docs.cudos.org/pdf/en/cudos-technical-paper.pdf)
 
 ## Build and Earn
 
 * [Learn how to create an account and link it to your Keplr wallet](/docs/build-and-earn/getting-started/creating-a-keplr-wallet.md)
 * [Learn where to buy CUDOS tokens, get funs via faucet on testnet, and how to apply for grants](/docs/build-and-earn/getting-started/funding-your-wallet.md)
 * [Understand what is a Cudos explorer](/docs/build-and-earn/getting-started/cudos-explorer.md)
+* [Cudos Node Types](/docs/learn-cudos/overview/types-of-nodes.md)
 * [First step before installing a node](/docs/build-and-earn/testnet-guides/prerequisites.md)
 * [Learn how to run a full node](/docs/build-and-earn/testnet-guides/run-full-node.md)
 * [Learn how to run a sentry node](/docs/build-and-earn/testnet-guides/run-sentry-node.md)
@@ -46,4 +49,4 @@ This page contains technical resources for Cudos Network and associated tooling.
 
 ## Feedback
 
-If you have any feedback for us please take a moment to submit some information to us via [this link](https://forms.gle/2p2gQyGq9NJcaqzHA).
+If you have any feedback for us please take a moment to submit some information to us via [this link](https://forms.gle/2p2gQyGq9NJcaqzHA)
