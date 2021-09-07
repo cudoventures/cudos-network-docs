@@ -46,43 +46,43 @@ module.exports = {
     logo: '/CudosIconTransparent.png',
     repo: 'CudoVentures/cudos-eth-token-contract',
     sidebar: {
-      '/introduction/': [
-        '/introduction/getting-started/',
-        '/introduction/faqs/'
-      ],
-      '/docs/learn-cudos/': [
-        '/docs/learn-cudos/layers-and-networks/cudos-network-overview',
-        '/docs/learn-cudos/overview/types-of-nodes'
-      ],
-      '/docs/build-and-earn/': [
-      '/docs/build-and-earn/getting-started/creating-a-keplr-wallet',
-      '/docs/build-and-earn/getting-started/funding-your-wallet',
-      '/docs/build-and-earn/getting-started/cudos-explorer',
-      '/docs/build-and-earn/testnet-guides/prerequisites',
-      '/docs/build-and-earn/testnet-guides/run-full-node',
-      '/docs/build-and-earn/testnet-guides/run-sentry-node',
-      '/docs/build-and-earn/testnet-guides/run-seed-node',
-      '/docs/build-and-earn/testnet-guides/create-validator',
-      '/docs/build-and-earn/testnet-guides/start-binaries'
-      ],
-      '/docs/become-a-validator': [
-        '/docs/become-a-validator/delegated-staking-and-rewards',
-        '/docs/become-a-validator/hardware-requirements',
-        '/docs/become-a-validator/security-recommendation',
-        '/docs/become-a-validator/run-validator-node'
-      ],
-      '/contribute-and-earn/': [
-        '/contribute-and-earn/staking/',
-        '/contribute-and-earn/validators/',
-        '/contribute-and-earn/delegated-staking/',
-        '/contribute-and-earn/earn-cudos/',
-        '/contribute-and-earn/sell-data/'
-      ],
-      '/governance/': [],
-      '/build/': [],
-      '/treasury/': [],
-      '/foundation-and-grants/': [],
-      '/marketplace/': [],
+      // '/introduction/': [
+      //   '/introduction/getting-started/',
+      //   '/introduction/faqs/'
+      // ],
+      // '/docs/learn-cudos/': [
+      //   '/docs/learn-cudos/layers-and-networks/cudos-network-overview',
+      //   '/docs/learn-cudos/overview/types-of-nodes'
+      // ],
+      // '/docs/build-and-earn/': [
+      // '/docs/build-and-earn/getting-started/creating-a-keplr-wallet',
+      // '/docs/build-and-earn/getting-started/funding-your-wallet',
+      // '/docs/build-and-earn/getting-started/cudos-explorer',
+      // '/docs/build-and-earn/testnet-guides/prerequisites',
+      // '/docs/build-and-earn/testnet-guides/run-full-node',
+      // '/docs/build-and-earn/testnet-guides/run-sentry-node',
+      // '/docs/build-and-earn/testnet-guides/run-seed-node',
+      // '/docs/build-and-earn/testnet-guides/create-validator',
+      // '/docs/build-and-earn/testnet-guides/start-binaries'
+      // ],
+      // '/docs/become-a-validator': [
+      //   '/docs/become-a-validator/delegated-staking-and-rewards',
+      //   '/docs/become-a-validator/hardware-requirements',
+      //   '/docs/become-a-validator/security-recommendation',
+      //   '/docs/become-a-validator/run-validator-node'
+      // ],
+      // '/contribute-and-earn/': [
+      //   '/contribute-and-earn/staking/',
+      //   '/contribute-and-earn/validators/',
+      //   '/contribute-and-earn/delegated-staking/',
+      //   '/contribute-and-earn/earn-cudos/',
+      //   '/contribute-and-earn/sell-data/'
+      // ],
+      // '/governance/': [],
+      // '/build/': [],
+      // '/treasury/': [],
+      // '/foundation-and-grants/': [],
+      // '/marketplace/': [],
       '/': [
         '/docs/learn-cudos/',
         '/docs/build-and-earn/',

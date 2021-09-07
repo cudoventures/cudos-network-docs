@@ -3,7 +3,7 @@ title: Welcome
 footer: Copyright © 2020-present Cudo Ventures
 ---
 
-# Welcome to the Cudos Network docs!
+# Welcome to the Cudos Network Documentation
 
 This page contains technical resources for Cudos Network and associated tooling. The contents below link out to documentation for various guides, help and support for interacting with the network.
 
@@ -14,25 +14,30 @@ This page contains technical resources for Cudos Network and associated tooling.
 * [Cudos Litepaper](https://docs.cudos.org/pdf/en/cudos-lite-paper.pdf)
 * [Cudos Technical Paper](https://docs.cudos.org/pdf/en/cudos-technical-paper.pdf)
 
-## Build and Earn
+<!-- ## Build and Earn
 
-* [Learn how to create an account and link it to your Keplr wallet](/docs/build-and-earn/getting-started/creating-a-keplr-wallet.md)
-* [Learn where to buy CUDOS tokens, get funs via faucet on testnet, and how to apply for grants](/docs/build-and-earn/getting-started/funding-your-wallet.md)
-* [Understand what is a Cudos explorer](/docs/build-and-earn/getting-started/cudos-explorer.md)
+### Develop on Cudos
+
+* [Account Generation & Wallets](/docs/build-and-earn/getting-started/creating-a-keplr-wallet.md)
+* [Funding Your Wallet](/docs/build-and-earn/getting-started/funding-your-wallet.md)
+* [Cudos Block Explorer](/docs/build-and-earn/getting-started/cudos-explorer.md)
 * [Cudos Node Types](/docs/learn-cudos/overview/types-of-nodes.md)
 * [First step before installing a node](/docs/build-and-earn/testnet-guides/prerequisites.md)
-* [Learn how to run a full node](/docs/build-and-earn/testnet-guides/run-full-node.md)
-* [Learn how to run a sentry node](/docs/build-and-earn/testnet-guides/run-sentry-node.md)
-* [Learn how to run a seed node](/docs/build-and-earn/testnet-guides/run-seed-node.md)
+* [Run a Full Node](/docs/build-and-earn/testnet-guides/run-full-node.md)
+* [Run a Sentry Node](/docs/build-and-earn/testnet-guides/run-sentry-node.md)
+* [Run a Seed Node](/docs/build-and-earn/testnet-guides/run-seed-node.md)
 * [Learn how to create a validator with running ethereum full node, a Cosmos validator, a Cosmos orchestrator, and a gravity bridge](/docs/build-and-earn/testnet-guides/create-validator.md)
 * [Learn how to build and start the docker image that has already been built and contains the Cudos binaries](/docs/build-and-earn/testnet-guides/start-binaries.md)
 
-## Become a Validator
+### Earn as a Validator
 
 * [How to run a validator node](/docs/become-a-validator/run-validator-node.md)
 * [Learn the main setup and security recommendations for your validator node](/docs/become-a-validator/security-recommendation.md)
-* [Make sure that you have all hardware requirements](/docs/become-a-validator/hardware-requirements.md)
-* [Understand your rewards and delegated staking](/docs/become-a-validator/delegated-staking-and-rewards.md)
+* [Hardware Requirements](/docs/become-a-validator/hardware-requirements.md)
+
+### Staking
+
+* [Understand your rewards and delegated staking](/docs/become-a-validator/delegated-staking-and-rewards.md) -->
 
 # Community
 
