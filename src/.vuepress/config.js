@@ -47,9 +47,9 @@ module.exports = {
     repo: 'CudoVentures/cudos-network-docs',
     sidebar: {
       '/': [
-        '/learn-cudos/',
-        '/build-and-earn/',
-        '/become-a-validator/',
+        '/docs/learn-cudos/',
+        '/docs/build-and-earn/',
+        '/docs/become-a-validator/',
         '/foundation-and-grants/',
       ]
     }
