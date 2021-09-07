@@ -5,48 +5,46 @@ title: Create a Validator
 # Create a validator
 
 To create a validator account, you need:
-1. A running ethereum full node
-2. A validator
+1. A running ethereum full-node
+2. A Cudos full-node which is a validator node
 3. An orchestrator
 4. A gravity bridge
 
 Only after finalizing previous steps, you can start the process of creating a validator and running it on your node. this section explains how to achieve each step in detail.
 
-## Ethereum full node
+## Ethereum full-node
 
-You can use an existing full-node if you have or you can follow the procedure below in order to start one but do use Infura:
+You can use either an existing [Ethereum full-node](https://ethereum.org/en/developers/docs/nodes-and-clients/#full-node) (if you have one) or you can follow the procedure below to start one but make sure not to use Infura:
+
 1. Run your ethereum binary on a different machine that your validator is running
-2. Clone the [CudosBuilders](https://github.com/CudoVentures/cudos-builders) repository
-3. Rename it to exactly _CudosBuilders_
-4. Checkout the branch sdk-0.43 of the CudosBuilders repo:
+2. Clone the correct branche from the [CudosBuilders](https://github.com/CudoVentures/cudos-builders) repository with renaming the folders accordingly to exactly _CudosBuilders_:
 ```
-cd CudosBuilders
-git checkout sdk-0.43
+git clone --depth 1 --branch sdk-0.43  https://github.com/CudoVentures/cudos-builders.git CudosBuilders
 ```
-5. open shell and navigate to _CudosBuilders/docker/ethereum_ directory
-6. Execute the following command in order to start ethereum node
+3. Open shell, navigate to the directory _CudosBuilders/docker/ethereum_ and start the Ethereum full-node by running the command:
 ```
-sudo docker-compose -f ./ethereum.yml -p ethereum up --build
+cd CudosBuilders/docker/ethereum && sudo docker-compose -f ethereum-full.yml -p ethereum up --build --detach
 ```
 
-You have to wait ~12 hours to finish syncing the Rinkeby test network. Its size is almost 70GB.
-
-## Cosmos validator
-
-To locate the containers' ID, that is needed to connect to its bash, run the following command in the terminal:
+Note that you have to wait ~12 hours to finish syncing the Rinkeby test network. Its size is almost 70GB. You can see the logs by running the command:
 ```
-docker container ls
-```
-Copy the CONTAINER_ID and run the following command:
-```
-docker exec -it <container_id> bash
+sudo docker logs -f ethereum
 ```
 
-1. As a first step, you need to get the private key on your node. So, if you created the account by Keplr then just connect to the full nodes' container and run the following commands to add it to the node:
+## Cudos validator node
+
+Make sure that you are [running Cudos full-node as a validator](/docs/build-and-earn/testnet-guides/run-full-node#initialize-the-node-as-a-validator)
+
+Access the container, that is needed to connect to its bash, directly with its name by running the command:
+```
+sudo docker exec -it cudos-start-full-node-client-testnet-public-01 bash
+```
+
+1. As a first step, you need to get the private key of your node. So, if you created the account by Keplr then just connect to the full nodes' container and run the following commands to add it to the node:
 ```
 # The amount you want to stake, denominate them in acudos, without spaces (min 1 000 000 000 000 000 000 acudos) export
-export STAKE="1acudos"
-CHAIN_ID="cudos-testnet-public"
+export STAKE="1000000000000000000acudos"
+export CHAIN_ID="cudos-testnet-public"
 
 # Add the wallet in your nodes' keyring:
 cudos-noded keys add validator --recover --keyring-backend="os"
@@ -55,7 +53,7 @@ cudos-noded keys add validator --recover --keyring-backend="os"
 3. Create a password, which will be used to lock the internal Keystore
 4. Re-enter the password
 5. You can change the rates as you desire for your validator
-6. Create a validator by entering the password and running the following command:
+6. Create a validator by entering the password and running the following command (change the rates with the ones you want for your validator):
 ```
 cudos-noded tx staking create-validator --amount=$STAKE \
     --from=validator \
@@ -74,7 +72,11 @@ cudos-noded tx staking create-validator --amount=$STAKE \
 ```
 7. If you see the transaction hash without getting any error, then congrats you have successfully created a validator account.
 
-Note that if you get a message that the transaction is not included in any block, please wait a few seconds and do not start another transaction. Be aware not to exit the docker shell. You will need it for the next step that is registering the Cosmos orchestrator.
+Note that if you get a message that the transaction is not included in any block, please wait a few seconds and do not start another transaction.
+
+:::tip
+Be aware not to exit the docker shell. You will need it for the next step that is registering the Cosmos orchestrator.
+:::
 
 ## Cosmos orchestrator
 
@@ -87,21 +89,23 @@ After you have created a validator account, you must find your validator address
 cudos-noded q staking validators
 ```
 
-the resulting output looks similar to:
+the resulting output looks similar to the picture below, you need to find your validator, you can refer to the moniker to find it, and copy its **operator_address**:
 ![](./Cosmos-orchestrator1.png)
-
-Note that you must find your validator and copy its _operator_address_. You can refer to the moniker for finding your validator.
 
 ### Add the orchestrator wallet
 
-Now you need to add another wallet that should have some CUDOS tokens to use for the orchestrator. You can achieve that by running the command:
+Now you need to add another wallet to use for the orchestrator but first make sure that **it has some CUDOS tokens**. You can achieve that by running the command:
 ```
 cudos-noded keys add orchestrator --recover --keyring-backend="os"
 ```
-The resulting output looks similar to the image below. You will need the address of this wallet and mnemonic for the next steps.
-![](./Cosmos-orchestrator2.png)
 
+:::tip
 Note that after running the command above, you will need to enter both your mnemonic address for the account and the password which you have created on a previous step while adding the validator's wallet.
+:::
+
+The resulting output looks similar to the picture below. You will need the address of this wallet and mnemonic for the next steps.
+
+![](./Cosmos-orchestrator2.png)
 
 ### Register orchestrator
 
@@ -118,28 +122,29 @@ cudos-noded tx gravity set-orchestrator-address $VALIDATOR_ADDRESS $ORCH_ADDRESS
 
 ## Gravity bridge
 
-1. Run your gravity bridge binary on the same machine that your validator is running
-2. Clone the [CudosBuilders](https://github.com/CudoVentures/cudos-builders) and [CudosGravityBridge](https://github.com/CudoVentures/cosmos-gravity-bridge) repositories
-3. Place them in the same directory
-4. Rename them to exactly _CudosBuilders_ and _CudosGravityBridge_
-5. Checkout sdk-0.43 branch of _CudosBuilders_ repo and cosmos-sdk-0.43 branch of _CudosGravityBridge_.
-6. Open shell and navigate to _CudosBuilders/docker/orchestrator_ directory
-7. Create a copy of orchestrator.env.example
-8. Rename it to orchestrator.client.testnet.public01.env
-9. Open orchestrator.client.testnet.public01.env in any editor and set all of the parameters.
-10. Delete any comments from this file (delete # and everything after it):
+Make sure to run your gravity bridge binary on the same machine that your validator node is running on.
+1. Open shell and navigate to the directory _CudosBuilders/docker/orchestrator_
+2. Create a copy of **orchestrator.env.example**
+3. Rename it to **orchestrator.client.testnet.public01.env**
+4. Open the file _orchestrator.client.testnet.public01.env_ in any editor and set all of the parameters.
+5. Delete any comments from this file (delete # and everything after it), the parameter **GRPC** is the port value of the Sentry node.
 ```
 ADDRESS_PREFIX="cudos" # ADDRESS_PREFIX must be exactly as here
 FEES="<fee that you will have to pay for each bridge operation>" # format "100acudos"
 GRPC="http://<ip of your cosmos node>:9090" # port should be 9090
 ETHRPC="http://<ip of ethereum node>:8545" # port should be 8545
-CONTRACT_ADDR="0x9fdE6D55dDa637806DbF016a03B6970613630333" # CONTRACT_ADDR must be exactly as here
+CONTRACT_ADDR="0xb22F2A4c231e69703FC524Eb2E3eb7B83C316F42" # CONTRACT_ADDR must be exactly as here
 COSMOS_ORCH_MNEMONIC="<mnemonic of your orchestrator account>"
 ETH_PRIV_KEY_HEX="<private key of your eth wallet that was used to register the validator>" # in hex format without leading 0x
 ```
-11. Finally run the orchestrator
+6. Finally run the orchestrator
 ```
-sudo docker-compose --env-file ./orchestrator.client.testnet.private01.arg -f ./orchestrator.release.yml -p cudos-orchestrator-client-testnet-private-01-release up --build
+sudo docker-compose --env-file orchestrator.client.testnet.public01.arg -f orchestrator.release.yml -p cudos-orchestrator-client-testnet-public-01-release up --build --detach
+```
+
+you can see the logs by running the command:
+```
+sudo docker logs -f cudos-orchestrator-client-testnet-public-01-release
 ```
 
 ### Send funds using the bridge
@@ -158,17 +163,17 @@ Open [Gravity Bridge](http://35.192.177.142:4000/). Then you can use [Kelpr](htt
 2. Connect to the orchestrator instance instead of the validator one.
 3. Choose how you want to send funds eithrer from Ethereum to Cosmos or the opposite
 4. Before sending funds to Ethereum please check the available balance in the smart contract on the address.
-4. Send funds from Ethereum to Cosmos by running the command:
+5. Send funds from Ethereum to Cosmos by running the command:
 ```
 ./gbt client eth-to-cosmos \
   --ethereum-key "<private key of the sender in hex without leading 0x>" \
   --gravity-contract-address "0x9fdE6D55dDa637806DbF016a03B6970613630333" \
-  --amount <amount in CUDOS without ""> \ #example 0.0000000000000000001
+  --amount <amount in CUDOS without ""> \ #example 0.000000000000000001
   --destination "<destination cosmos address>" \
   --token-contract-address "0x28ea52f3ee46cac5a72f72e8b3a387c0291d586d" \
   --ethereum-rpc "http://<ip of your ethereum node>:8545"
 ```
-5. Send funds from Cosmos to Ethereum by running the command:
+6. Send funds from Cosmos to Ethereum by running the command:
 ```
 ./gbt --address-prefix="cudos" client cosmos-to-eth \
     --amount="<amount in acudos>" \ # example "1acudos"

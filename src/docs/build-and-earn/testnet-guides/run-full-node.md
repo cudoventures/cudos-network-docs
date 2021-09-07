@@ -34,19 +34,12 @@ SHOULD_USE_GLOBAL_PEERS=false
 7. Make sure that you are still in the correct directory **CudosBuilders/docker/full-node**
 8. Initialize the node by running this command:
 ```
-sudo docker-compose --env-file ./full-node.client.testnet.public01.arg -f ./init-full-node.yml -p cudos-init-full-node-client-testnet-public-01 up --build
+sudo docker-compose --env-file full-node.client.testnet.public01.arg -f init-full-node.yml -p cudos-init-full-node-client-testnet-public-01 up --build
 ```
 
 If all steps are completed successfully, you should see a newly generated folder called **CudosData** at the same directory where you placed *CudosBuilders* and *CudosNode*. The subdirectory *cudos-data-full-node-client-testnet-public-01* of **CudosData"** folder has a file called **tendermint.nodeid**. This file contains your node **Id,** to see your node id you can open this file in any code editor and you will get one line that represents your node id such as 13f359c90582b12e291311980a855854668d80pc.
 
-## Initialize the node without being a validator
-
-If you are not a validator and you want to initialize a full node, all you need to do is to follow all previous steps but make sure that you set the flag **"SHOULD_USE_GLOBAL_PEERS"** to true. To do that, open the file **full-node.client.testnet.public01.env.** in any editor then set the flag to true:
-```
-SHOULD_USE_GLOBAL_PEERS=true
-```
-
-## Configure and start the node
+### Configure and start the node
 
 This step is valid only if you are running the full node as a validator. Note that if you are not a validator, you do not need to follow this step.
 
@@ -64,14 +57,25 @@ SEEDS=<seed-node1-id>@<seed-node1-ip>:26656,<seed-node2-id>@<seed-node2-ip>:2665
 4. Open the terminal and navigate to **CudosBuilders/docker/full-node**
 5. Configure your node:
 ```
-sudo docker-compose --env-file ./full-node.client.testnet.public01.arg -f ./config-full-node.yml -p cudos-config-full-node-client-testnet-public-01 up --build
+sudo docker-compose --env-file full-node.client.testnet.public01.arg -f config-full-node.yml -p cudos-config-full-node-client-testnet-public-01 up --build
 ```
 6. Start your node
 ```
-sudo docker-compose --env-file ./full-node.client.testnet.public01.arg -f ./start-full-node.yml -p cudos-start-full-node-client-testnet-public-01 up --build --detach
+sudo docker-compose --env-file full-node.client.testnet.public01.arg -f start-full-node.yml -p cudos-start-full-node-client-testnet-public-01 up --build --detach
 ```
 
 Note that you can see the logs by running the command:
 ```
 sudo docker logs -f cudos-start-full-node-client-testnet-public-01
+```
+## Initialize and start the node without being a validator
+
+If you are not a validator and you want to initialize a full node, all you need to do is to follow the same steps for [Initialize the node as a validator](/docs/build-and-earn/testnet-guides/run-full-node#initialize-the-node-as-a-validator) but make sure that you set the flag **"SHOULD_USE_GLOBAL_PEERS"** to true. To do that, open the file **full-node.client.testnet.public01.env.** in any editor then set the flag to true:
+```
+SHOULD_USE_GLOBAL_PEERS=true
+```
+
+You can start your Full node by running the command:
+```
+sudo docker-compose --env-file full-node.client.testnet.public01.arg -f start-full-node.yml -p cudos-start-full-node-client-testnet-public-01 up --build --detach
 ```
