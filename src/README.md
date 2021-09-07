@@ -1,13 +1,13 @@
 ---
-title: Welcome page
+title: Welcome
 footer: Copyright © 2020-present Cudo Ventures
 ---
 
-# Welcome to the Cudos network docs!
+# Welcome to the Cudos Network docs!
 
-This page contains the current links structure of the Cudos documentation and where to go to find hekp and support.
+This page contains technical resources for Cudos Network and associated tooling. The contents below link out to documentation for various guides, help and support for interacting with the network.
 
-## Learn Cudos
+## Learn about Cudos
 
 * [Learn Cudos network overview](/docs/learn-cudos/layers-and-networks/cudos-network-overview.md)
 * [Learn the all current types of node that you can build and run on Cudos](/docs/learn-cudos/overview/types-of-nodes.md)
@@ -31,10 +31,19 @@ This page contains the current links structure of the Cudos documentation and wh
 * [Make sure that you have all hardware requirements](/docs/become-a-validator/hardware-requirements.md)
 * [Understand your rewards and delegated staking](/docs/become-a-validator/delegated-staking-and-rewards.md)
 
-## Help and support
+# Community
 
-Chat with users and developers on [Telegram](https://t.me/cudostelegram).
+## Help and Support
 
-## Get Cudos updates
+* Join the [Cudos Discord](https://discord.gg/t397SKqf4u) for developer discussion and support
+* Chat with our community on [Telegram](https://t.me/cudostelegram)
+* Join our Cudos Rangers Ambassador Program [here](https://www.cudos.org/ambassador)
 
-Signup [here](https://www.cudos.org/#contact-us) to get updates on CUDOS updates, news, announcements and rewards.
+## Updates
+
+* Follow us on [Twitter](https://twitter.com/CUDOS_), [YouTube](https://www.youtube.com/channel/UCbS48Q09D5xMDCVX0T_OeCw), [LinkedIn](https://www.linkedin.com/company/cudos1/) for project updates
+* Read our blog content on [Medium](https://medium.com/cudos)
+
+## Feedback
+
+If you have any feedback for us please take a moment to submit some information to us via [this link](https://forms.gle/2p2gQyGq9NJcaqzHA).
