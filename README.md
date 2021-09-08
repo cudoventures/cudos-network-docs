@@ -1,6 +1,6 @@
 # Cudos network docs
 
-Repo for the [Cudos network wiki docs](https://cudos-network-docs.netlify.app/).
+Repo for the [Cudos Network developer docs](https://cudos-network-docs.netlify.app/) which deploy automatically to https://docs.cudos.org/
 
 ## How to use
 
@@ -67,4 +67,3 @@ Open a browser to view the site [http://localhost:8080](http://localhost:8080)
 
 ## Documentation
 This is a [vuepress](https://vuepress.vuejs.org/) site, so all guidance on editing the site can be found there.
-
