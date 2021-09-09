@@ -10,6 +10,7 @@ The Cudos Network is a special-purpose blockchain designed to provide high-perfo
 
 # Getting Started
 
+<!-- placeholder images currently, awaiting design input -->
 <a href="/learn/" rel="some text">![](./learn.png)</a>
 <a href="/build/" rel="some text">![](./build.png)</a>
 <a href="/earn/" rel="some text">![](./earn.png)</a>
