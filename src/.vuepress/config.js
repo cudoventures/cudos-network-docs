@@ -46,7 +46,7 @@ module.exports = {
 
     ],
     logo: '/CudosIconTransparent.png',
-    repo: 'CudoVentures/cudos-network-docs',
+    repo: 'CudoVentures/',
     sidebar: {
       '/': [
         '/docs/learn-cudos/',
