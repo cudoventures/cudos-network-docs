@@ -1,5 +1,5 @@
 ---
-title: Setup a Cudos Node
+title: Build
 ---
 
 ## How to run a Cudos Validator Node

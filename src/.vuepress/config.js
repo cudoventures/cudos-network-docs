@@ -1,6 +1,7 @@
 const path = require('path')
 
 module.exports = {
+  title: 'CUDOS Docs',
   configureWebpack: {
     module: {
       rules: [
@@ -43,18 +44,20 @@ module.exports = {
     editLinks: true,
     sidebarDepth: 2,
     nav: [
-
+      // { text: 'Learn', link: '/learn/' },
+      // { text: 'Build', link: '/build/' },
+      // { text: 'Earn', link: '/earn/' }
     ],
     logo: '/CudosIconTransparent.png',
     repo: 'CudoVentures/',
     sidebar: {
-      '/': [
-        '/docs/learn-cudos/',
-        '/docs/build-and-earn/',
-        '/docs/become-a-validator/',
-        '/foundation-and-grants/',
+      '/':
+      [
+        '/learn/',
+        '/build/',
+        '/earn/',
       ]
     }
-  },
-  title: 'CUDOS Docs'
+
+  }
 }
