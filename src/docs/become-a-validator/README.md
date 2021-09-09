@@ -55,7 +55,7 @@ Beyond the set up of a server, a node, an authenticated way of joining the Cudos
 
 The following are the minimum hardware requirements Validators will need to run to successfully join and operate on the Cudos Network for the Testnet and Mainnet (Version 1) stage:
 
-### Cudos mainnet ("Ingenii") Validator node
+#### Cudos mainnet ("Ingenii") Validator node
 
 * Intel Xeon ('Skylake-SP' or newer) processor ‑or‑ AMD Epyc ('Naples' or newer) processor – Requires SGX ‑or‑ SEV feature, as well as AVX and AES-NI feature – Minimum model ≥8 cores at ≥2.0 GHz required (≥16 cores preferred)
 * 32GiB ECC system memory (≥64GiB preferred)
@@ -65,7 +65,7 @@ The following are the minimum hardware requirements Validators will need to run 
 'Four‑nines' availability target or better
 * Linux Debian 10
 
-### Cudos mainnet ("Ingenii") Sentry node
+#### Cudos mainnet ("Ingenii") Sentry node
 
 * Intel Xeon ('Haswell' or newer) processor ‑or‑ AMD Opteron/Epyc ('Toronto' or newer) processor – Minimum model ≥4 cores at ≥2.0 GHz required (≥8 cores preferred)
 * ≥16GiB ECC system memory
@@ -78,7 +78,7 @@ The following are the minimum hardware requirements Validators will need to run 
 'Four‑nines' availability target or better
 * Linux Debian 10
 
-### Cudos public testnet ("Somniorum") Validator node
+#### Cudos public testnet ("Somniorum") Validator node
 
 * Intel Xeon ('Skylake-SP' or newer) processor ‑or‑ AMD Epyc ('Naples' or newer) processor – Requires SGX ‑or‑ SEV feature, as well as AVX and AES-NI feature – Minimum model ≥8 cores at ≥2.0 GHz required (≥16 cores preferred)
 * 32GiB ECC system memory (≥64GiB preferred)
@@ -86,7 +86,7 @@ The following are the minimum hardware requirements Validators will need to run 
 * Private 1Gb/s or 10Gb/s internal network for peer node connections
 * Linux Debian 10
 
-### Cudos public testnet ("Somniorum") Sentry node
+#### Cudos public testnet ("Somniorum") Sentry node
 
 * Intel Xeon ('Haswell' or newer) processor ‑or‑ AMD Opteron/Epyc ('Toronto' or newer) processor – Minimum model ≥4 cores at ≥2.0 GHz required (≥8 cores preferred)
 * ≥16GiB ECC system memory
