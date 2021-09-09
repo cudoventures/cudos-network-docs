@@ -10,10 +10,10 @@ This section provides you with:
 
 This section provides you with:
 
-[Learn Cudos network overview](/docs/learn-cudos/layers-and-networks/cudos-network-overview.md)
+[Cudos network overview](/docs/learn-cudos/layers-and-networks/cudos-network-overview.md)
 
 ## Types of nodes
 
 This section provides you with:
 
-[Learn the all current types of node that you can build and run on Cudos](/docs/learn-cudos/overview/types-of-nodes.md)
+[The different types of nodes that you can build and run on Cudos](/docs/learn-cudos/overview/types-of-nodes.md)
