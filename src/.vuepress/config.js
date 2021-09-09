@@ -40,7 +40,7 @@ module.exports = {
     displayAllHeaders: true,
     docsRepo: 'CudoVentures/cudos-network-docs',
     editLinks: true,
-    sidebarDepth: 2,
+    sidebarDepth: 1,
     nav: [
 
     ],
