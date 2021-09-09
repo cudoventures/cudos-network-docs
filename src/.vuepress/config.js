@@ -39,6 +39,7 @@ module.exports = {
   themeConfig: {
     displayAllHeaders: true,
     docsRepo: 'CudoVentures/cudos-network-docs',
+    docsDir: 'src',
     editLinks: true,
     nav: [
 
