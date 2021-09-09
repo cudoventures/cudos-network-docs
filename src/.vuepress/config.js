@@ -50,7 +50,7 @@ module.exports = {
       '/': [
         '/docs/learn-cudos/',
         '/docs/build-and-earn/',
-        '/docs/become-a-validator/',
+        '/docs/node-setup/',
         '/foundation-and-grants/',
       ]
     }

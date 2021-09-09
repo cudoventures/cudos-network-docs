@@ -1,8 +1,8 @@
 ---
-title: Become a Validator
+title: Setup a Cudos Node
 ---
 
-# How to run a Validator node
+## How to run a Validator node
 
 As explained in the article [Types of Nodes](src/docs/learn-cudos/overview/types-of-nodes.md) there are three types of nodes: Full, Sentry, and Seed node.
 
@@ -10,7 +10,7 @@ For one or more validator nodes it is recommended to launch a layer of sentry no
 
 You need an IP-address per node which is directly connected to the network. For example, If you have **N** validator nodes and only one Sentry node then only the Sentry node is directly connected to the network. In this case you will need a single IP-address.
 
-## How to Install a Node
+### How to Install a Node
 
 To learn how to install each node, please read the following articles:
 1. [Learn how to run a full node](/docs/build-and-earn/testnet-guides/run-full-node.md)
@@ -19,7 +19,7 @@ To learn how to install each node, please read the following articles:
 
 Check all [testnet guides](/docs/build-and-earn/README.md)
 
-# Secure your node
+## Secure your node
 
 Setting up a Cudos Node is the starting point for any user wanting to interact with, and play a greater part in, the network. In order to set up a Cudos node, users will require the use of Go/Golang version 1.15 or higher. On-premise or bare metal server providers such as OVH, Leaseweb, IBM, Alibaba, Amazon Web Services, Google Cloud Computing platform, or Microsoft Azure, can be used to generate Cudos nodes and join the Cudos Network.
 
@@ -27,7 +27,7 @@ Once the appropriate hardware and software requirements are met, users will then
 
 This application consists of a Cudos Network daemon and command-line interface that, once deployed, runs a full-node version of the Cudos Network blockchain for users to interact with. This bespoke implementation supports innovations such as Inter-Blockchain Communication (IBC) protocol and Cosmos’s recently released Stargate update, to guarantee high levels of reliability and cross-chain interactions inspired by the network’s computing capabilities. This Cudos Network blockchain additionally leverages the most vetted modules within the Cosmos community such as staking, authentication, and governance logic. It also includes special blockchain components and developer toolchains linked to its unique set of high-performance compute use cases and development workflows.
 
-## Recommendations for securing a Validator node
+### Recommendations for securing a Validator node
 
 Cudos Validating nodes are Cosmos SDK-specified full nodes. This allows for a heavier-duty set of transaction processing workflows and network-level security exchanges with other members of the network. When setting up a Cudos Network Validator node, Validators will have to decide whether they want to be fully responsible for Key Management or if they want to leverage third-party infrastructure to do so. The Cudos Network blockchain leverages the Tendermint Key Management System in order to ensure high availability access to signing keys as part of the Cudos Network’s block processing workflows. This additionally allows this blockchain to prevent double-signing events. In practice, this feature allows for the tamper-proof storage of Hardware Security Module (HSM) Validator keys, even if the host has been compromised. If choosing to implement an HSM, the Validator should review that HSM's documentation in conjunction with the Tendermint KMS requirements, to ensure suitable compatibility before finalising a choice about this part of the security architecture.
 
@@ -47,7 +47,7 @@ An extension of the sentry node architecture optionally sees a Validator operato
 
 Beyond the set up of a server, a node, an authenticated way of joining the Cudos blockchain using our in-built public key infrastructure, in coordination with Ledger HSM or YubiHSM for those Validators choosing to implement them, the use of full nodes when interacting the network is highly recommended. Thanks to ongoing advances in the Cosmos ecosystem, we plan to implement the ability for Cudos Validator Nodes to store a history of previously signed blocks in order to more seamlessly prevent double-signing by adverse or deficient nodes in the Cudos Network. This feature is currently absent in earlier-generation Tendermint blockchains. The final element keeping Cudos Network Validating nodes safe is the Tendermint Core Byzantine Fault Tolerant Proof of Stake consensus algorithm.
 
-# Hardware Requirements
+## Hardware Requirements
 
 The following are the minimum hardware requirements Validators will need to run to successfully join and operate on the Cudos Network for the Testnet and Mainnet (Version 1) stage:
 
@@ -94,7 +94,7 @@ The following are the minimum hardware requirements Validators will need to run 
 
 As the network evolves and the Cudos community receives more feedback on the above, we expect these figures to be updated and communicated to network stakeholders on an ongoing basis.
 
-# Rewards
+## Rewards
 
 Validators play a unique role in the Cudos Network’s day-to-day workings. They accept transactions, validate blocks, and interact with other stakeholders in various Governance votes that ensure the network’s security, integrity and viability.
 
@@ -111,7 +111,7 @@ After the mainnet launch and the network gains traction, staking rewards will be
 
 After the mainnet is launched and the network gains traction, staking rewards will become a secondary source of revenue, and network fees will become the main one.
 
-## Mainnet validators
+### Mainnet validators
 
 Once we deploy the Cudos Network mainnet, Validators (and stakers) staked in Ethereum will be migrated from Ethereum Staking to full PoS staking in the network. The balances will be converted to the native CUDOS token, and Validators will begin processing blocks for the network. At this point, Validators will need to be running Cudos nodes with appropriate hardware to maintain the network and validate transactions.
 
@@ -119,7 +119,7 @@ Cudos is also finalising the architecture of the compute capabilities of the net
 
 The Cudos Network penalises adverse behaviours, and the node operators or Validators linked to these automatically to incentivise the highest level of security, availability, and economic integrity. The types of penalties a Validator can incur on the network have several levels of severity. Some may lead to immediate, irreversible exclusion. Others may lead to time-outs from additional Staking rewards. Cudos as a team is working to ensure that these metrics are real-time and accurately predictive to guarantee that we only offer the highest quality of computing power on our network.
 
-# Delegated staking and rewards
+## Delegated staking and rewards
 
 The Cudos network will support delegated staking through the Validators. The Validators earn a proportion of the rewards of the users who delegated the staked through them. Each Validator can freely choose the fee. However, it will always need to be above a predefined minimum value set for security reasons. This minimum will be 2% at the start.
 

@@ -19,7 +19,7 @@ The Cudos Network is a special-purpose blockchain designed to provide high-perfo
 ## Build and Earn
 
 * [Develop on Cudos](/docs/build-and-earn/#testnet-guides)
-* [Earn as a Validator](/docs/become-a-validator/)
+* [Earn as a Validator](/docs/node-setup/)
 * [Stake your CUDOS](/docs/become-a-validator/delegated-staking-and-rewards.md)
 
 # Community
