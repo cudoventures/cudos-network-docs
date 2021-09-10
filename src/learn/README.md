@@ -32,7 +32,7 @@ CUDOS is a bridge between blockchains and the outside world, to enable the use o
 
 ## Why CUDOS?
 
-The CUDOS network is helping blockchain achieve its next adoption level. The underlying Cudo network has been under development since 2017, is live with over 150,000 users signed up in over 145 countries, and around 20,000 nodes running various blockchain and compute workloads on the Cudo network. The OS, front end software, management software, billing engine and all the other available features are all available at [cudominer.com](www.cudominer.com).
+The CUDOS network is helping blockchain achieve its next adoption level. The underlying Cudo network has been under development since 2017, is live with over 150,000 users signed up in over 145 countries, and around 20,000 nodes running various blockchain and compute workloads on the Cudo network. The OS, front end software, management software, billing engine and all the other available features are all available at [cudominer.com](https://www.cudominer.com/).
 
 Therefore, CUDOS not only has a very experienced team behind with a proven track record in the cryptocurrency world, but also has global partnerships in place with data and compute providers. The Cudo team has been working very hard over the last years to be able to reach this point, and is now ready to provide compute to both blockchains through the CUDOS network and traditional cloud with Cudo, with the vision of merging both together when all technologies are ready globally.
 
@@ -142,6 +142,6 @@ These tokens will be used mainly for:
 - Development grants
 - Shared with developers of marketplace templates
 
-This will help incentivise developers and the whole ecosystem. For instance, developers will be rewarded for creating apps for the [CUDOS marketplace](/marketplace), for the CUDOS smart contracts to use.
+This will help incentivise developers and the whole ecosystem. For instance, developers will be rewarded for creating apps for the CUDOS marketplace, for the CUDOS smart contracts to use.
 
-Similarly, treasury funds will also be used to [give developers and participants grants](/foundation-and-grants), in order to enable new functionality in the network, to improve it, to propose changes, etc.
+Similarly, treasury funds will also be used to [give developers and participants grants](/earn/grants.html), in order to enable new functionality in the network, to improve it, to propose changes, etc.
