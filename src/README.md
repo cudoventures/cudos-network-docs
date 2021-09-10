@@ -6,9 +6,9 @@ sidebar: false
 
 # Welcome to the Cudos Network Documentation
 
-The Cudos Network is a special-purpose blockchain designed to provide high-performance, trustless, and permissionless cloud computing for all. This site contains technical resources for the Cudos Network and associated tooling. The links in the sidebar point to user documentation for various guides, help and support for interacting with the network.
+The Cudos Network is a special-purpose blockchain designed to provide high-performance, trustless, and permissionless cloud computing for all.
 
-# Getting Started
+This site contains technical resources for the Cudos Network and associated tooling. Please follow the links to explore user documentation for various guides, help and support for interacting with the network.
 
 <a href="/learn/" rel="some text">![](./learn.png)</a>
 <a href="/build/" rel="some text">![](./build.png)</a>
