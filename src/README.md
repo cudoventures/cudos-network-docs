@@ -1,26 +1,18 @@
 ---
 title: Welcome
 footer: Copyright © 2020-present Cudo Ventures
+sidebar: false
 ---
 
 # Welcome to the Cudos Network Documentation
 
-The Cudos Network is a special-purpose blockchain designed to provide high-performance, trustless, and permissionless cloud computing for all. This site contains technical resources for the Cudos Network and associated tooling. The links in the sidebar point to user documentation for various guides, help and support for interacting with the network.
+The Cudos Network is a special-purpose blockchain designed to provide high-performance, trustless, and permissionless cloud computing for all.
 
-# Getting Started
+This site contains technical resources for the Cudos Network and associated tooling. Please follow the links to explore user documentation for various guides, help and support for interacting with the network.
 
-## Learn about Cudos
-
-* [Cudos Network overview](/docs/learn-cudos/layers-and-networks/cudos-network-overview.md)
-* [Cudos Whitepaper](https://docs.cudos.org/pdf/en/cudos-white-paper.pdf)
-* [Cudos Litepaper](https://docs.cudos.org/pdf/en/cudos-lite-paper.pdf)
-* [Cudos Technical Paper](https://docs.cudos.org/pdf/en/cudos-technical-paper.pdf)
-
-## Build and Earn
-
-* [Develop on Cudos](/docs/build-and-earn/#testnet-guides)
-* [Earn as a Validator](/docs/become-a-validator/run-validator-node.md)
-* [Stake your CUDOS](/docs/become-a-validator/delegated-staking-and-rewards.md)
+<a href="/learn/" rel="some text">![](./learn.png)</a>
+<a href="/build/" rel="some text">![](./build.png)</a>
+<a href="/earn/" rel="some text">![](./earn.png)</a>
 
 # Community
 

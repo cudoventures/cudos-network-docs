@@ -1,5 +1,5 @@
 ---
-title: Creating a Keplr Wallet
+title: Account Setup
 ---
 
 # ﻿Creating a Keplr Wallet
