@@ -4,7 +4,7 @@ title: Start the pre-built Binaries
 
 ## Start and build binaries
 
-You can build and start the docker image that has already been built and contains the Cudos binary by following these steps (skip the steps 1,2, and 3 if you have [setup your environment](/docs/build-and-earn/testnet-guides/prerequisites.md) before):
+You can build and start the docker image that has already been built and contains the Cudos binary by following these steps (skip the steps 1,2, and 3 if you have [setup your environment](/build/prerequisites.html) before):
 1. Create a directory to use as your workspace
 ```
 mkdir ~/cudos

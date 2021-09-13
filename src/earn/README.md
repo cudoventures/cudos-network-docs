@@ -63,4 +63,4 @@ Grants are in place to help and incentivise developers of the CUDOS community. T
 
 While the initial priorities are new dapps that fully use all of the CUDOS’ network potential, CUDOS wants to incentivise anyone to build valuable content for the platform and get rewarded for its usage. If you believe you have an idea to build on the ecosystem and you are eager to start designing and coding, submit [here](https://www.cudos.org/#contact-us) a proposal.
 
-Funds for the grants granted by CUDOS will come from the [CUDOS treasury](/treasury). In the CUDOS release schedule there is also some allocation for these grants.
+Funds for the grants granted by CUDOS will come from the [CUDOS treasury](/learn/#treasury). In the CUDOS release schedule there is also some allocation for these grants.

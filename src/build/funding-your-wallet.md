@@ -49,4 +49,4 @@ The grant program aims to support the growth of the Cudos ecosystem. This will e
 
 Please submit your application or proposal through this [form](https://www.cudos.org/#contact-us).
 
-You can read the [Foundation & Grants](/foundation-and-grants/README.md) section for more information.
+You can read the [Foundation & Grants](/earn/grants.html) section for more information.

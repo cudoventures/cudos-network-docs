@@ -4,7 +4,7 @@ title: Build
 
 ## How to run a Cudos Validator Node
 
-As explained in the article [Types of Nodes](src/docs/learn-cudos/overview/types-of-nodes.md) there are three types of nodes: Full, Sentry, and Seed node.
+As explained in the article [Types of Nodes](/learn/validators.html#types-of-nodes) there are three types of nodes: Full, Sentry, and Seed node.
 
 For one or more validator nodes it is recommended to launch a layer of sentry nodes (at least 1 Sentry node) and optionally Seed nodes with isolating the validator node behind that layer.
 
@@ -14,7 +14,7 @@ You need an IP-address per node which is directly connected to the network. For 
 
 ### ﻿Run a Full node
 
-Before running a node, make sure that you have followed the guide for [setting up your prerequisites and environment](/docs/build-and-earn/testnet-guides/prerequisites.md).
+Before running a node, make sure that you have followed the guide for [setting up your prerequisites and environment](/build/prerequisites.html).
 
 To run a full node, you need to complete the following steps:
 
@@ -23,9 +23,9 @@ To run a full node, you need to complete the following steps:
 
 #### Initialize the node as a validator
 
-When you run a validator node, you play an important role in the security of a network. A validator must be secure and fault-tolerant. So it is recommended to run your validator with a layer of 2 or more sentry nodes and to isolate the validator node behind that layer. Also, you will need an IP-address per node that is connected to the network. For example, if you have 10 validator nodes and only one Sentry node then only the Sentry node will be connected to the network where you will need a single IP-address.
+When you run a validator node, you play an important role in the security of a network. A validator must be secure and fault-tolerant. So it is recommended to run your validator with a layer of 1 or more sentry nodes and to isolate the validator node behind that layer. Also, you will need an IP-address per node that is connected to the network. For example, if you have 10 validator nodes and only one Sentry node then only the Sentry node will be connected to the network where you will need a single IP-address.
 
-In total, Cudos has [three types of nodes](/docs/learn-cudos/overview/types-of-nodes.md) and as a validator, you need to have at least:
+In total, Cudos has [three types of nodes](/learn/validators.html#types-of-nodes) and as a validator, you need to have at least:
 * one Sentry node
 * one Full node
 
@@ -57,8 +57,8 @@ Now you need to configure and start the full node. So far the full node is set t
 
 The full node must communicate only through the created layer of peers. To achieve that, you will need to apply the following steps:
 
-1. [Run a Sentry node](/docs/build-and-earn/testnet-guides/run-sentry-node.md), configure, and start it as a validator
-2. [Run a Seed node](/docs/build-and-earn/testnet-guides/run-seed-node.md), configure, and start it as a validator. This is an optional recommended step.
+1. [Run a Sentry node](#run-a-sentry-node), configure, and start it as a validator
+2. [Run a Seed node](#run-a-seed-node), configure, and start it as a validator. This is an optional recommended step.
 3. Get the Sentry and Seed **node ids** and add them inside the file **full-node.client.testnet.public01.env**. Leave the variable _SEEDS_ empty if you do not have seed nodes. If you have more than one Sentry or Seed node, you can separate them by a comma within the variable _PERSISTENT_PEERS_:
 ```
 PERSISTENT_PEERS=<sentry-node1-id>@<sentry-node1-ip>:26656,<sentry-node2-id>@<sentry-node2-ip>:26656
@@ -78,9 +78,10 @@ Note that you can see the logs by running the command:
 ```
 sudo docker logs -f cudos-start-full-node-client-testnet-public-01
 ```
-## Initialize and start the node without being a validator
 
-If you are not a validator and you want to initialize a full node, all you need to do is to follow the same steps for [Initialize the node as a validator](/docs/build-and-earn/testnet-guides/run-full-node#initialize-the-node-as-a-validator) but make sure that you set the flag **"SHOULD_USE_GLOBAL_PEERS"** to true. To do that, open the file **full-node.client.testnet.public01.env.** in any editor then set the flag to true:
+#### Initialize and start the node without being a validator
+
+If you are not a validator and you want to initialize a full node, all you need to do is to follow the same steps for [Initialize the node as a validator](#configure-and-start-the-node-as-a-validator) but make sure that you set the flag **"SHOULD_USE_GLOBAL_PEERS"** to true. To do that, open the file **full-node.client.testnet.public01.env.** in any editor then set the flag to true:
 ```
 SHOULD_USE_GLOBAL_PEERS=true
 ```
@@ -92,7 +93,7 @@ sudo docker-compose --env-file full-node.client.testnet.public01.arg -f start-fu
 
 ### ﻿Run a Sentry node
 
-Before running a node, make sure that you have followed the guide for [setting up your prerequisites and environment](/docs/build-and-earn/testnet-guides/prerequisites.md).
+Before running a node, make sure that you have followed the guide for [setting up your prerequisites and environment](/build/prerequisites.html).
 
 To run a sentry node, you need to complete the following steps:
 
@@ -118,7 +119,7 @@ sudo docker-compose --env-file sentry-node.client.testnet.public01.arg -f init-s
 sudo docker-compose --env-file sentry-node.client.testnet.public01.arg -f start-sentry-node.yml -p cudos-start-sentry-node-client-testnet-public-01 up --build
 ```
 
-## Configure and start the node as a validator
+#### Configure and start the node as a validator
 
 This step is valid only if you are running the sentry node as a validator. Note that if you are not a validator, you do not need to follow this step.
 
@@ -151,14 +152,14 @@ sudo docker logs -f cudos-start-sentry-node-client-testnet-public-01
 
 ### ﻿Run a Seed node
 
-Before running a node, make sure that you have followed the guide for [setting up your prerequisites and environment](/docs/build-and-earn/testnet-guides/prerequisites.md).
+Before running a node, make sure that you have followed the guide for [setting up your prerequisites and environment](/build/prerequisites.html).
 
 To run a seed node, you need to complete the following steps:
 
 - Initialize the node
 - Configure and start the node
 
-## Initialize and start the node without being a validator
+#### Initialize and start the node without being a validator
 
 1. Navigate to the directory *CudosBuilders/docker/seed-node*
 2. Find the file **seed-node.env.example** and create a copy of it
@@ -223,7 +224,7 @@ Only after finalizing previous steps, you can start the process of creating a va
 You can use either an existing [Ethereum full-node](https://ethereum.org/en/developers/docs/nodes-and-clients/#full-node) (if you have one) or you can follow the procedure below to start one but make sure not to use Infura:
 
 1. Run your ethereum binary on a different machine that your validator is running
-2. Clone the correct branche from the [CudosBuilders](https://github.com/CudoVentures/cudos-builders) repository with renaming the folders accordingly to exactly _CudosBuilders_:
+2. Clone the correct branch from the [CudosBuilders](https://github.com/CudoVentures/cudos-builders) repository with renaming the folders accordingly to exactly _CudosBuilders_:
 ```
 git clone --depth 1 --branch sdk-0.43  https://github.com/CudoVentures/cudos-builders.git CudosBuilders
 ```
@@ -237,9 +238,9 @@ Note that you have to wait ~12 hours to finish syncing the Rinkeby test network.
 sudo docker logs -f ethereum
 ```
 
-### Cudos validator node
+### Cudos Validator node
 
-Make sure that you are [running Cudos full-node as a validator](/docs/build-and-earn/testnet-guides/run-full-node#initialize-the-node-as-a-validator)
+Make sure that you are [running Cudos full-node as a validator](#validator-setup)
 
 Access the container, that is needed to connect to its bash, directly with its name by running the command:
 ```
@@ -284,11 +285,11 @@ Note that if you get a message that the transaction is not included in any block
 Be aware not to exit the docker shell. You will need it for the next step that is registering the Cosmos orchestrator.
 :::
 
-#### Cosmos orchestrator
+### Cosmos Orchestrator
 
 The cosmos orchestrator is a program that runs on every validator beside the Cosmos code. Validators, running a chain with the Gravity module installed, use the cosmos orchestrator to sign messages or transactions with a validator's unique key.
 
-### Get the validator address
+#### Get the validator address
 
 After you have created a validator account, you must find your validator address by running the command:
 ```
