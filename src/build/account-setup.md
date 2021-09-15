@@ -4,7 +4,7 @@ title: Account Setup
 
 # ﻿Creating a Keplr Wallet
 
-[Keplr](https://wallet.keplr.app/#/dashboard) is an open-sourced browser extension wallet Keplr that supports the Cosmos interchain ecosystem. It provides functionalities for account and wallet management for all Cosmos-SDK based blockchains.
+[Keplr](https://wallet.keplr.app/#/dashboard) is an open-sourced browser extension wallet Keplr that supports the Cudos interchain ecosystem. It provides functionalities for account and wallet management.
 
 This article explains the Keplr extension and how to install it.
 
@@ -12,9 +12,8 @@ This article explains the Keplr extension and how to install it.
 
 [Keplr extension](https://chrome.google.com/webstore/detail/keplr/dmkamcknogkgcdfhhbddcghachkejeap?hl=en) is supported only on Chrome. It can also be used on Brave, but some features may be unavailable. You can not use the Keplr extension from your mobile. Please note that anyone with your mnemonic seed can take your assets and any lost mnemonic seed can not be recovered.
 
-Keplr can easily connect to libraries such as [CosmJS](https://github.com/cosmos/cosmjs), simplifying the process of connecting webpages to blockchains. The keplr extension supports transfers/staking for:
+Keplr can easily connect to libraries and simplify the process of connecting webpages to blockchains. The keplr extension supports transfers/staking for:
 
-- Cosmos Hub
 - Kava
 - Secret Network
 - Akash
@@ -51,5 +50,5 @@ Use Keplr extension to create a wallet:
 
 - [Full Guide on How to use Keplr Wallet](https://medium.com/chainapsis/how-to-use-keplr-wallet-40afc80907f6)
 - [Keplr Documentation](https://docs.keplr.app/)
-- [Introducing Keplr: an Interchain Wallet for Cosmos Applications](https://medium.com/everett-protocol/introducing-keplr-an-interchain-wallet-for-cosmos-applications-a260aac64eaa)
+- [Introducing Keplr](https://medium.com/everett-protocol/introducing-keplr-an-interchain-wallet-for-cosmos-applications-a260aac64eaa)
 - [Keplr FAQ](https://faq.keplr.app/)

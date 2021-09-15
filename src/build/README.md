@@ -282,12 +282,12 @@ cudos-noded tx staking create-validator --amount=$STAKE \
 Note that if you get a message that the transaction is not included in any block, please wait a few seconds and do not start another transaction.
 
 :::tip
-Be aware not to exit the docker shell. You will need it for the next step that is registering the Cosmos orchestrator.
+Be aware not to exit the docker shell. You will need it for the next step that is registering the orchestrator.
 :::
 
-### Cosmos Orchestrator
+### Orchestrator
 
-The cosmos orchestrator is a program that runs on every validator beside the Cosmos code. Validators, running a chain with the Gravity module installed, use the cosmos orchestrator to sign messages or transactions with a validator's unique key.
+The orchestrator is a program that runs on every validator beside the Cudos code. Validators, running a chain with the Gravity module installed, use the orchestrator to sign messages or transactions with a validator's unique key.
 
 #### Get the validator address
 
@@ -338,7 +338,7 @@ Make sure to run your gravity bridge binary on the same machine that your valida
 ```
 ADDRESS_PREFIX="cudos" # ADDRESS_PREFIX must be exactly as here
 FEES="<fee that you will have to pay for each bridge operation>" # format "100acudos"
-GRPC="http://<ip of your cosmos node>:9090" # port should be 9090
+GRPC="http://<ip of your cudos node>:9090" # port should be 9090
 ETHRPC="http://<ip of ethereum node>:8545" # port should be 8545
 CONTRACT_ADDR="0xb22F2A4c231e69703FC524Eb2E3eb7B83C316F42" # CONTRACT_ADDR must be exactly as here
 COSMOS_ORCH_MNEMONIC="<mnemonic of your orchestrator account>"
@@ -366,25 +366,25 @@ Open [Gravity Bridge](http://35.192.177.142:4000/). Then you can use [Kelpr](htt
 
 #### Using the console (not recommended option)
 
-1. Start docker shell once again, like you did when you have created your validator.
-2. Connect to the orchestrator instance instead of the validator one.
-3. Choose how you want to send funds eithrer from Ethereum to Cosmos or the opposite
+1. Start docker shell once again, like you did when you have created your validator
+2. Connect to the orchestrator instance instead of the validator one
+3. Choose how you want to send funds
 4. Before sending funds to Ethereum please check the available balance in the smart contract on the address.
-5. Send funds from Ethereum to Cosmos by running the command:
+5. Send funds from Ethereum to Cudos by running the command:
 ```
 ./gbt client eth-to-cosmos \
   --ethereum-key "<private key of the sender in hex without leading 0x>" \
   --gravity-contract-address "0x9fdE6D55dDa637806DbF016a03B6970613630333" \
   --amount <amount in CUDOS without ""> \ #example 0.000000000000000001
-  --destination "<destination cosmos address>" \
+  --destination "<destination cudos address>" \
   --token-contract-address "0x28ea52f3ee46cac5a72f72e8b3a387c0291d586d" \
   --ethereum-rpc "http://<ip of your ethereum node>:8545"
 ```
-6. Send funds from Cosmos to Ethereum by running the command:
+6. Send funds from Cudos to Ethereum by running the command:
 ```
 ./gbt --address-prefix="cudos" client cosmos-to-eth \
     --amount="<amount in acudos>" \ # example "1acudos"
-    --cosmos-grpc="http://<ip of your cosmos node>:9090" \
+    --cosmos-grpc="http://<ip of your cudos node>:9090" \
     --cosmos-phrase="<mnemonic of sender>" \
     --eth-destination="<destination eth address>" \
     --fees="<fee that will be kept in the bridged>"
@@ -396,9 +396,9 @@ Note that The commands of sending funds takes up to few minutes to be executed.
 
 Setting up a Cudos Node is the starting point for any user wanting to interact with, and play a greater part in, the network. In order to set up a Cudos node, users will require the use of Go/Golang version 1.15 or higher. On-premise or bare metal server providers such as OVH, Leaseweb, IBM, Alibaba, Amazon Web Services, Google Cloud Computing platform, or Microsoft Azure, can be used to generate Cudos nodes and join the Cudos Network.
 
-Once the appropriate hardware and software requirements are met, users will then need to install the Cudos Network’s high-performance compute blockchain, built on the Cosmos SDK, through version control systems such as Github or use the network’s release tags and build from source. The Cudos Network application is the Cosmos SDK-based application that defines the Cudos Network and its special purpose compute workflows.
+Once the appropriate hardware and software requirements are met, users will then need to install the Cudos Network’s high-performance compute blockchain through version control systems such as Github or use the network’s release tags and build from source. The Cudos Network application is the application that defines the Cudos Network and its special purpose compute workflows.
 
-This application consists of a Cudos Network daemon and command-line interface that, once deployed, runs a full-node version of the Cudos Network blockchain for users to interact with. This bespoke implementation supports innovations such as Inter-Blockchain Communication (IBC) protocol and Cosmos’s recently released Stargate update, to guarantee high levels of reliability and cross-chain interactions inspired by the network’s computing capabilities. This Cudos Network blockchain additionally leverages the most vetted modules within the Cosmos community such as staking, authentication, and governance logic. It also includes special blockchain components and developer toolchains linked to its unique set of high-performance compute use cases and development workflows.
+This application consists of a Cudos Network daemon and command-line interface that, once deployed, runs a full-node version of the Cudos Network blockchain for users to interact with. This bespoke implementation supports innovations such as Inter-Blockchain Communication (IBC) protocol to guarantee high levels of reliability and cross-chain interactions inspired by the network’s computing capabilities. This Cudos Network blockchain additionally leverages the most vetted modules within the Cudos community such as staking, authentication, and governance logic. It also includes special blockchain components and developer toolchains linked to its unique set of high-performance compute use cases and development workflows.
 
 ### Recommendations for securing a Validator node
 
@@ -418,7 +418,7 @@ It is technically possible to use a hypervisor on a single physical server, with
 
 An extension of the sentry node architecture optionally sees a Validator operator adding additional sentries. For those concerned about risks such as DDoS attacks consuming all bandwidth into the single recommended sentry, it is possible to add further sentries, optionally across multiple discrete geographies with independent internet connections. The private internal network for connection between sentries and the Validator would then need to be stretched out to these.
 
-Beyond the set up of a server, a node, an authenticated way of joining the Cudos blockchain using our in-built public key infrastructure, in coordination with Ledger HSM or YubiHSM for those Validators choosing to implement them, the use of full nodes when interacting the network is highly recommended. Thanks to ongoing advances in the Cosmos ecosystem, we plan to implement the ability for Cudos Validator Nodes to store a history of previously signed blocks in order to more seamlessly prevent double-signing by adverse or deficient nodes in the Cudos Network. This feature is currently absent in earlier-generation Tendermint blockchains. The final element keeping Cudos Network Validating nodes safe is the Tendermint Core Byzantine Fault Tolerant Proof of Stake consensus algorithm.
+Beyond the set up of a server, a node, an authenticated way of joining the Cudos blockchain using our in-built public key infrastructure, in coordination with Ledger HSM or YubiHSM for those Validators choosing to implement them, the use of full nodes when interacting the network is highly recommended. We plan to implement the ability for Cudos Validator Nodes to store a history of previously signed blocks in order to more seamlessly prevent double-signing by adverse or deficient nodes in the Cudos Network. This feature is currently absent in earlier-generation Tendermint blockchains. The final element keeping Cudos Network Validating nodes safe is the Tendermint Core Byzantine Fault Tolerant Proof of Stake consensus algorithm.
 
 ## Hardware Requirements
 
