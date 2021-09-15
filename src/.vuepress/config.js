@@ -49,7 +49,7 @@ module.exports = {
       { text: 'Earn', link: '/earn/' }
     ],
     logo: '/CudosIconTransparent.png',
-    repo: 'CudoVentures/',
+    repo: 'CudoVentures/cudos-network-docs',
     sidebar: {
       '/learn/': [
         '',
