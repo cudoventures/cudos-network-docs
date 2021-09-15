@@ -2,19 +2,21 @@
 title: Cudos Validators
 ---
 
+## Overview
+
 Cudos Validators run node software to operate the Cudos Network blockchain by checking incoming transactions and forming new blocks in a decentralised manner.
 
 Cudos Network is a Proof of Stake chain so each Validator must put up a token deposit as collateral to participate. The Validator pool is currently permissioned to allow the network to launch with stability, but this will fully open in time.
 
 ### Types of Nodes
 
-We currently have three types of Cudos Nodes:
+We currently have three distinct Cudos Nodes types:
 
-* Full Node
-* Seed Node
-* Sentry Node
+* Full Nodes
+* Seed Nodes
+* Sentry Nodes
 
-We will be layering on Cudos Compute Nodes to the network in the future.
+We will be layering on [Cudos Compute Nodes](#compute-nodes) to the network in the future. Find a description of each Cudos Node below:
 
 #### Full Node
 
@@ -30,7 +32,7 @@ A sentry node is like a full node, but it has one or more private peers. The pri
 
 ### Compute Nodes
 
-Cudos Nodes will be responsible for listening to the Cudos smart contracts and running any workloads when relevant. When selecting a workload from the CUDOS smart contracts the requestor may choose to use nodes supporting AMD’s SEV technology for added security. AMD’s SEV technology allows the memory contents of a VM to be transparently encrypted with a key unique to the guest VM. This adds an extra layer of security and protection to the network, for both the node and the job requester.
+Compute Nodes will be responsible for listening to the Cudos smart contracts and running any workloads when relevant. When selecting a workload from the CUDOS smart contracts the requestor may choose to use nodes supporting AMD’s SEV technology for added security. AMD’s SEV technology allows the memory contents of a VM to be transparently encrypted with a key unique to the guest VM. This adds an extra layer of security and protection to the network, for both the node and the job requester.
 
 The following sketch shows a request triggering a Cudos workload. A layer 1 smart contract requests some work through the Cudos smart contract, triggering an event. The Cudos nodes listen to the contract’s events, and execute the requested work when they are chosen. After fetching the data and running the workload, the result is returned to the CUDOS smart contract.
 
@@ -38,19 +40,19 @@ The following sketch shows a request triggering a Cudos workload. A layer 1 smar
 
 #### 24x7 Utilisation of Infrastructure
 
-Cudos Network can fully utilis the hardware of all nodes at all times. When there are not enough blockchain workloads coming from the Cudos smart contracts to fully utilise the node’s hardware, the nodes can use the Cudo platform to receive workloads, including cryptocurrency mining. Thus, the nodes are able to receive workloads to stay at full utilisation at all times.
+Cudos Network can fully utilise the hardware of all nodes at all times. When there are not enough blockchain workloads coming from the Cudos smart contracts to fully utilise the node’s hardware, the nodes can use the Cudo platform to receive workloads, including cryptocurrency mining. Thus, the nodes are able to receive workloads to stay at full utilisation at all times.
 
 Cudos nodes can receive compute workloads from many different sources. These include work requested from the Cudos smart contracts, cryptocurrency mining, other blockchain workloads and more traditional “cloud-like” workloads, such as video rendering, scientific simulations or weather prediction.
 
 ## Staking
 
-Validators need to stake 2,000,000 CUDOS in order to become eligible. In addition, other users can delegate their stake to a validator.
+Validators need to stake 2,000,000 CUDOS when they connect to the Cudos Network in order to become eligible for rewards. Users can also delegate additional CUDOS stake to a Validator to earn a portion of rewards.
 
 ### Staking Rewards
 
 Validators will get rewarded for their support to the network in the form of staking rewards. These rewards will depend on the number of validators and users delegating their stake in the network: the more staking there is, the lower the staking rewards for all participants will be. These rewards will be calculated by a smart contract, with upper and lower limits which will not be passed regardless of the staking amounts in the network. The lower limit will be around 5% when all circulating tokens are staked.
 
-### Transaction Fees
+### Transaction Fees / Gas
 
 Validators earn CUDOS used in the network as gas, each transaction costs gas which is paid to the Validators for helping secure the operation of the Cudos Network.
 
