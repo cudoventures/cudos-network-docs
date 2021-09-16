@@ -130,18 +130,28 @@ CUDOS validator nodes (CVNs) will have control over the governance of the CUDOS 
 
 Each CVN will be free to choose how to involve users delegating their stake to them. For example, they could choose to regularly propose polls about the most discussed topics within its delegators, to then propose changes on the network based on the outcomes. In order to ensure a smooth start of the platform and to prevent abuse, Cudo will control the governance of the network in the initial alpha stages. When validators have earned a high enough score and the platform has reached enough maturity and usage, governance will be fully handled by the nodes.
 
-## Treasury
+## CUDOS Treasury
 
-The CUDOS treasury is a pot of tokens that are used to incentivise the network and help it grow. The treasury has two main sources of income: 20% of the CUDOS paid for transactions requested through the CUDOS smart contracts, and tokens that get slashed from participants due to malicious behaviour.
+The CUDOS Treasury holds funds to be used to grow the Cudos Network and reward valuable contributions. This fund will be transparent and governance proposal mechanisms will be employed for distribution.
 
-![Treasury overview diagram](./treasury-slide.png)
+![CUDOS treasury](./treasury-slide.png)
 
 These tokens will be used mainly for:
+
 - Staking rewards
 - Development foundation
 - Development grants
-- Shared with developers of marketplace templates
-
-This will help incentivise developers and the whole ecosystem. For instance, developers will be rewarded for creating apps for the CUDOS marketplace, for the CUDOS smart contracts to use.
+- Developers of marketplace templates
 
 Similarly, treasury funds will also be used to [give developers and participants grants](/earn/grants.html), in order to enable new functionality in the network, to improve it, to propose changes, etc.
+
+### Funding the Treasury
+
+The Treasury is funded via:
+
+1. 20% of the CUDOS paid for transactions requested through the Cudos smart contracts
+2. Validator slashing
+
+### Governance
+
+Cudos Network will progressively decentralise to token holders and proposal voting will be in place for spending any CUDOS in the CUDOS Treasury

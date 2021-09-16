@@ -68,7 +68,8 @@ module.exports = {
       '/earn/': [
         '',
         'staking',
-        'grants',
+        'incentives',
+        'grants'
       ],
 
       // fallback
