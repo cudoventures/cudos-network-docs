@@ -59,6 +59,7 @@ module.exports = {
 
       '/build/': [
         '',
+        'validator',
         'account-setup',
         'funding-your-wallet',
         'prerequisites',
