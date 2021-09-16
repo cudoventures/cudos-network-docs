@@ -26,7 +26,7 @@ Test all aspects of Validation, including staking, delegated staking, rewards. A
 
 A coordinated strike to bring as much diversity in transaction activity as possible to the Cudos Network. Validators will run network load and performing maintenance tasks.
 
-**Phase 4 - ?: Migration Testing**
+**Phase 4 - Collins: Migration Testing**
 
 Dry-run of our genesis and migration plan for the new native Cudos Network
 
@@ -41,4 +41,26 @@ Join the Private Testnet [Discord Channel](https://discord.com/invite/NUmUXEmvBn
 
 ## Tasks
 
-The tasks for each phase will be published shortly
+### Phase 1 - Apollo
+
+#### Validator Tasks
+
+|**Task ID**|**Description**|**Resources**|**Reward**|
+| - | - | - | - |
+|`APOLLO#1`|Setup a full node (+ sentry node) that acts as a Cudos Validator|[Docs](/build/#how-to-run-a-cudos-validator-node)|15|
+|`APOLLO#?`|TODO|[Docs]()||
+
+Tasks will be monitored on-chain for completion
+
+#### Developer Tasks
+
+|**Task ID**|**Description**|**Resources**|**Reward**|
+| - | - | - | - |
+|`APOLLO#2`|Run a full node OR build the client and connect to the network|[Docs](/build/#run-a-full-node)|10|
+|`APOLLO#?`|TODO|[Docs]()||
+
+Tasks will be monitored on-chain for completion
+
+## CUDOS Airdrop
+
+CUDOS tokens will be distributed to Project Artemis participants when the Cudos Network mainnet is deployed, the same addresses used for testnet must be retained to ensure access to your airdrop account
