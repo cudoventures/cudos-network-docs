@@ -14,7 +14,7 @@ Project Artemis is broken down into 4 key phases which will run sequentially, fi
 
 ### Phase 1 - Apollo
 
-Starter setup tasks for Cudos Network onboarding for Validators and users, focussing on account creation, hardware provisioning, node syncing and the CUDOS faucet
+Starter setup tasks for Cudos Network onboarding for Validators and users, focussing on account creation, hardware provisioning, node syncing and the CUDOS faucet.
 
 #### Validator Tasks
 
@@ -59,9 +59,9 @@ Migration testing to performa a dry-run of our genesis and token migration plan 
 
 ## How to Participate
 
-Take a look at the [active tasks](#tasks) for the current phase and dive into the Somniorum Testnet
+Take a look at the [active tasks](#tasks) for the current phase and dive into the Somniorum Testnet.
 
-Upon completion of these tasks please submit your evidence to [this form](https://docs.google.com/forms/d/e/1FAIpQLSdsGDUvtF70O1LLMWsKhNTVmiW_HzodGDFRgW-6YLYloA3hdg/viewform?usp=sf_link). Tasks will be monitored and validated on-chain for completion
+Upon completion of each task please submit your evidence to [this form](https://docs.google.com/forms/d/e/1FAIpQLSdsGDUvtF70O1LLMWsKhNTVmiW_HzodGDFRgW-6YLYloA3hdg/viewform?usp=sf_link). Tasks will be monitored and validated on-chain for completion.
 
 ## CUDOS Airdrop
 
