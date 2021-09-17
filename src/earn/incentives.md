@@ -65,6 +65,8 @@ Upon completion of each task please submit your evidence to [this form](https://
 
 ## CUDOS Airdrop
 
-CUDOS tokens will be distributed to the top Project Artemis participants when the Cudos Network mainnet is deployed, the same wallet addresses used for testnet *must* be retained to ensure access to your airdrop account.
+CUDOS tokens will be distributed to the top Project Artemis participants when the Cudos Network mainnet is deployed, the same wallet addresses used for testnet **must** be retained to ensure access to your airdrop account.
 
 Participation in Project Artemis is open to everyone, but only the top 300 Developer addresses, and 100 Validator addresses will be eligible for airdrops. Details of which users have contributed the most and qualified for CUDOS rewards will be revealed shortly after each phase concludes.
+
+We will be using blockchain snapshots to validate the state of tasks on-chain, and manual verification for any 'off-chain' tasks. We reserve the right to decide all reward eligibility.
