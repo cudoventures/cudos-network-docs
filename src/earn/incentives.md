@@ -21,7 +21,7 @@ Starter setup tasks for Cudos Network onboarding for Validators and users, focus
 |**Task ID**|**Description**|**Resources**|**Reward**|
 | - | - | - | - |
 |`ARTEMIS-APOLLO#1`|Setup a Cudos Validator|[Docs](/build/#how-to-run-a-cudos-validator-node)|10|
-|`ARTEMIS-APOLLO#2`|Add a Sentry Node to your Validator|[Docs](/build/#run-a-sentry-node)|5|
+|`ARTEMIS-APOLLO#2`|Add a Sentry Node to your Cudos Validator for additional security|[Docs](/build/#run-a-sentry-node)|5|
 |`ARTEMIS-APOLLO#3`|Add Prometheus monitoring to the Validator Node|[Docs](https://prometheus.io/docs/prometheus/latest/getting_started/)|-|
 |`ARTEMIS-APOLLO#4`|Create a Grafana dashboard to show `ARTEMIS-APOLLO#3` Prometheus data/sending Validator data monthly to Cudo Network|[Docs](https://prometheus.io/docs/visualization/grafana/)|100|
 |`ARTEMIS-APOLLO#6`|Write a unique blog post setting up a Validator Node (in any language of your choice)|n/a|-|
@@ -30,7 +30,7 @@ Starter setup tasks for Cudos Network onboarding for Validators and users, focus
 
 |**Task ID**|**Description**|**Resources**|**Reward**|
 | - | - | - | - |
-|`ARTEMIS-APOLLO#5`|Install Keplr and get some tokens from the faucet using the explorer|[Docs](/build/account-setup.html)|10|
+|`ARTEMIS-APOLLO#5`|Setup a Cudos Wallet and redeem Somniorum CUDOS from the Faucet|[Docs](/build/account-setup.html)|10|
 |`ARTEMIS-APOLLO#7`|Join our community [Telegram](https://t.me/cudostelegram), [Discord](https://discord.com/invite/NUmUXEmvBn), and follow CUDOS on [Twitter](https://twitter.com/CUDOS_)|n/a|1|
 
 ### Phase 2 - Buzz (Launching Soon)
@@ -51,7 +51,7 @@ Adversarial stress tests bringing a coordinated strike to bring as much diversit
 
 ### Phase 4 - Collins (Launching Soon)
 
-Migration testing to performa a dry-run of our genesis and token migration plan for the new native Cudos Network
+Migration testing to performa a dry-run of our genesis and token migration plan for the new native Cudos Network.
 
 |**Task ID**|**Description**|**Resources**|**Reward**|
 | - | - | - | - |
