@@ -59,12 +59,12 @@ Migration testing to performa a dry-run of our genesis and token migration plan 
 
 ## How to Participate
 
-Take a look at the [active tasks](#tasks) for the current phase and dive into the Somniorum Testnet.
+Take a look at the [active tasks](#phase-1-apollo) for the current phase and dive into the Somniorum Testnet.
 
 Upon completion of each task please submit your evidence to [this form](https://docs.google.com/forms/d/e/1FAIpQLSdsGDUvtF70O1LLMWsKhNTVmiW_HzodGDFRgW-6YLYloA3hdg/viewform?usp=sf_link). Tasks will be monitored and validated on-chain for completion.
 
 ## CUDOS Airdrop
 
-CUDOS tokens will be distributed to Project Artemis participants when the Cudos Network mainnet is deployed, the same wallet addresses used for testnet *must* be retained to ensure access to your airdrop account.
+CUDOS tokens will be distributed to the top Project Artemis participants when the Cudos Network mainnet is deployed, the same wallet addresses used for testnet *must* be retained to ensure access to your airdrop account.
 
-Details of which users have qualified for CUDOS rewards will be revealed when each phase concludes.
+Participation in Project Artemis is open to everyone, but only the top 300 Developer addresses, and 100 Validator addresses will be eligible for airdrops. Details of which users have contributed the most and qualified for CUDOS rewards will be revealed when each phase concludes.
