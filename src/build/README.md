@@ -221,6 +221,8 @@ Only after finalizing previous steps, you can start the process of creating a va
 
 ### Ethereum full-node
 
+First make sure that you have the [standard recommendation and specification](https://ethereum.org/en/developers/docs/nodes-and-clients/#recommended-specifications) for the Ethereum node.
+
 You can use either an existing [Ethereum full-node](https://ethereum.org/en/developers/docs/nodes-and-clients/#full-node) (if you have one) or you can follow the procedure below to start one but make sure not to use Infura:
 
 1. Run your ethereum binary on a different machine that your validator is running
