@@ -131,7 +131,7 @@ This step is valid only if you are running the sentry node as a validator. Note 
 ```
 MONIKER=MySentryNodeName
 ```
-6. Paste the full node's nodeId in the **PRIVATE_PEERS** line. If there are multiple full nodes ids, separate them by a comma such as:
+6. Paste the full node's nodeId in the **PERSISTENT_PEERS** line. If there are multiple full nodes ids, separate them by a comma such as:
 ```
 PERSISTENT_PEERS=<full-node1-id>@<full-node1-ip>:26656,<full-node2-id>@<full-node2-ip>:26656
 ```
@@ -190,7 +190,7 @@ This step is valid only if you are running the seed node as a validator. Note th
 ```
 MONIKER=MyseedNodeName
 ```
-6. Paste the full node's nodeId in the **PRIVATE_PEERS** line. If there are multiple full nodes ids, separate them by a comma such as:
+6. Paste the full node's nodeId in the **PERSISTENT_PEERS** line. If there are multiple full nodes ids, separate them by a comma such as:
 ```
 PERSISTENT_PEERS=<full-node1-id>@<full-node1-ip>:26656,<full-node2-id>@<full-node2-ip>:26656
 ```
