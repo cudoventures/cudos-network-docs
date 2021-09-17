@@ -33,13 +33,14 @@ Starter setup tasks for Cudos Network onboarding for Validators and users, focus
 |`ARTEMIS-APOLLO#5`|Install Keplr and get some tokens from the faucet using the explorer|[Docs](/build/account-setup.html)|10|
 |`ARTEMIS-APOLLO#7`|Join our community [Telegram](https://t.me/cudostelegram), [Discord](https://discord.com/invite/NUmUXEmvBn), and follow CUDOS on [Twitter](https://twitter.com/CUDOS_)|n/a|1|
 
-### Phase 2 - Buzz (Launching Soon)
+### Phase 2 - Buzz
 
 Test all aspects of Validation, including staking, delegated staking, rewards. Additionally exploring CosmWasm smart contracts including: contract interaction, contract deployment, contract interfaces. Testing of our Gravity bridge implementation with Rinkeby Ethereum.
 
 |**Task ID**|**Description**|**Resources**|**Reward**|
 | - | - | - | - |
-|`ARTEMIS-BUZZ#1`| 🌎 | 🚀 | 🌝 |
+|`ARTEMIS-BUZZ#1`|Vote on governance proposal|[Docs]()| 5 |
+|`ARTEMIS-BUZZ#2`|Change the Validator delegation fee|[Docs]()| 5 |
 
 ### Phase 3 - Armstrong (Launching Soon)
 
