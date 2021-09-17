@@ -47,8 +47,8 @@ Join the Private Testnet [Discord Channel](https://discord.com/invite/NUmUXEmvBn
 
 |**Task ID**|**Description**|**Resources**|**Reward**|
 | - | - | - | - |
-|`APOLLO#1`|Setup a full node (+ sentry node) that acts as a Cudos Validator|[Docs](/build/#how-to-run-a-cudos-validator-node)|15|
-|`APOLLO#?`|TODO|[Docs]()||
+|`ARTEMIS-APOLLO#1`|Setup a full node (+ sentry node) that acts as a Cudos Validator|[Docs](/build/#how-to-run-a-cudos-validator-node)|15|
+|`ARTEMIS-APOLLO#?`|TODO|[Docs]()||
 
 Tasks will be monitored on-chain for completion
 
@@ -56,11 +56,11 @@ Tasks will be monitored on-chain for completion
 
 |**Task ID**|**Description**|**Resources**|**Reward**|
 | - | - | - | - |
-|`APOLLO#2`|Run a full node OR build the client and connect to the network|[Docs](/build/#run-a-full-node)|10|
-|`APOLLO#?`|TODO|[Docs]()||
+|`ARTEMIS-APOLLO#2`|Run a full node OR build the client and connect to the network|[Docs](/build/#run-a-full-node)|10|
+|`ARTEMIS-APOLLO#?`|TODO|[Docs]()||
 
 Tasks will be monitored on-chain for completion
 
 ## CUDOS Airdrop
 
-CUDOS tokens will be distributed to Project Artemis participants when the Cudos Network mainnet is deployed, the same addresses used for testnet must be retained to ensure access to your airdrop account
+CUDOS tokens will be distributed to Project Artemis participants when the Cudos Network mainnet is deployed, the same wallet addresses used for testnet *must* be retained to ensure access to your airdrop account
