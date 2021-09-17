@@ -18,17 +18,17 @@ Starter setup tasks for Cudos Network onboarding for Validators and users, focus
 
 #### Validator Tasks
 
-|**Task ID**|**Description**|**Resources**|**Reward**|
+|**Task ID**|**Description**|**Resources**|**$ Reward**|
 | - | - | - | - |
 |`ARTEMIS-APOLLO#1`|Setup a Cudos Validator|[Docs](/build/#how-to-run-a-cudos-validator-node)|10|
 |`ARTEMIS-APOLLO#2`|Add a Sentry Node to your Cudos Validator for additional security|[Docs](/build/#run-a-sentry-node)|5|
 |`ARTEMIS-APOLLO#3`|Add Prometheus monitoring to the Validator Node|[Docs](https://prometheus.io/docs/prometheus/latest/getting_started/)|-|
 |`ARTEMIS-APOLLO#4`|Create a Grafana dashboard to show `ARTEMIS-APOLLO#3` Prometheus data/sending Validator data monthly to Cudo Network|[Docs](https://prometheus.io/docs/visualization/grafana/)|100|
-|`ARTEMIS-APOLLO#6`|Write a unique blog post setting up a Validator Node (in any language of your choice)|n/a|-|
+|`ARTEMIS-APOLLO#6`|Write a unique blog post setting up a Validator Node (in any language of your choice)|n/a|30|
 
 #### Developer Tasks
 
-|**Task ID**|**Description**|**Resources**|**Reward**|
+|**Task ID**|**Description**|**Resources**|**$ Reward**|
 | - | - | - | - |
 |`ARTEMIS-APOLLO#5`|Setup a Cudos Wallet and redeem Somniorum CUDOS from the Faucet|[Docs](/build/account-setup.html)|10|
 |`ARTEMIS-APOLLO#7`|Join our community [Telegram](https://t.me/cudostelegram), [Discord](https://discord.com/invite/NUmUXEmvBn), and follow CUDOS on [Twitter](https://twitter.com/CUDOS_)|n/a|1|
@@ -37,7 +37,7 @@ Starter setup tasks for Cudos Network onboarding for Validators and users, focus
 
 Test all aspects of Validation, including staking, delegated staking, rewards. Additionally exploring CosmWasm smart contracts including: contract interaction, contract deployment, contract interfaces. Testing of our Gravity bridge implementation with Rinkeby Ethereum.
 
-|**Task ID**|**Description**|**Resources**|**Reward**|
+|**Task ID**|**Description**|**Resources**|**$ Reward**|
 | - | - | - | - |
 |`ARTEMIS-BUZZ#1`| 🌎 | 🚀 | 🌝 |
 
@@ -45,7 +45,7 @@ Test all aspects of Validation, including staking, delegated staking, rewards. A
 
 Adversarial stress tests bringing a coordinated strike to bring as much diversity in transaction activity as possible to the Cudos Network. Validators will run network load and performing maintenance tasks.
 
-|**Task ID**|**Description**|**Resources**|**Reward**|
+|**Task ID**|**Description**|**Resources**|**$ Reward**|
 | - | - | - | - |
 |`ARTEMIS-ARMSTRONG#1`| 🌎 | 🚀 | 🌝 |
 
