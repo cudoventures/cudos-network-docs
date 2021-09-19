@@ -131,7 +131,7 @@ This step is valid only if you are running the sentry node as a validator. Note 
 ```
 MONIKER=MySentryNodeName
 ```
-6. Paste the full node's nodeId in the **PRIVATE_PEERS** line. If there are multiple full nodes ids, separate them by a comma such as:
+6. Paste the full node's nodeId in the **PERSISTENT_PEERS** line. If there are multiple full nodes ids, separate them by a comma such as:
 ```
 PERSISTENT_PEERS=<full-node1-id>@<full-node1-ip>:26656,<full-node2-id>@<full-node2-ip>:26656
 ```
@@ -190,7 +190,7 @@ This step is valid only if you are running the seed node as a validator. Note th
 ```
 MONIKER=MyseedNodeName
 ```
-6. Paste the full node's nodeId in the **PRIVATE_PEERS** line. If there are multiple full nodes ids, separate them by a comma such as:
+6. Paste the full node's nodeId in the **PERSISTENT_PEERS** line. If there are multiple full nodes ids, separate them by a comma such as:
 ```
 PERSISTENT_PEERS=<full-node1-id>@<full-node1-ip>:26656,<full-node2-id>@<full-node2-ip>:26656
 ```
@@ -220,6 +220,8 @@ To create a validator account, you need:
 Only after finalizing previous steps, you can start the process of creating a validator and running it on your node. this section explains how to achieve each step in detail.
 
 ### Ethereum full-node
+
+First make sure that you have the [standard recommendation and specification](https://ethereum.org/en/developers/docs/nodes-and-clients/#recommended-specifications) for the Ethereum node.
 
 You can use either an existing [Ethereum full-node](https://ethereum.org/en/developers/docs/nodes-and-clients/#full-node) (if you have one) or you can follow the procedure below to start one but make sure not to use Infura:
 
