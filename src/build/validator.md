@@ -1,6 +1,13 @@
 ---
-title: Validator Setup
+title: Validator Setup version 2
 ---
+
+## Version 2 updates
+
+1. Add new section [How to separate your running nodes](/build/validator.html#how-to-separate-your-running-nodes)
+2. Update the parameter **PRIVATE_PEERS** in the section [Configure and start the Sentry node as a validator](/build/validator.html#configure-and-start-the-sentry-node-as-a-validator)
+3. Update the parameter **PRIVATE_PEERS** in the section [Configure and start the Seed node as a validator](/build/validator.html#configure-and-start-the-seed-node-as-a-validator)
+4. Update the [Ethereum full-node](/build/validator.html#ethereum-full-node) section with the [standard recommendation and specification](https://ethereum.org/en/developers/docs/nodes-and-clients/#recommended-specifications)
 
 ## How to run a Cudos Validator Node
 
@@ -12,6 +19,17 @@ You need an IP-address per node which is directly connected to the network. For 
 
 ## Validator Setup
 
+### How to separate your running nodes
+
+As a validator, in order to have a secure and running network, you will need to run each of the following nodes on a different machine:
+
+1. Validator Full node along with the Orchestrator configuration on a separate local machine
+2. Sentry node on a separate local machine
+3. Seed node on a separate local machine
+4. Ethereum node, you can run it virtually on a cloud.
+
+This article guides you through the instruction for running each one of those nodes.
+
 ### ﻿Run a Full node
 
 Before running a node, make sure that you have followed the guide for [setting up your prerequisites and environment](/build/prerequisites.html).
@@ -21,7 +39,7 @@ To run a full node, you need to complete the following steps:
 - Initialize the node
 - Configure and start the node
 
-#### Initialize the node as a validator
+#### Initialize the Full node as a validator
 
 When you run a validator node, you play an important role in the security of a network. A validator must be secure and fault-tolerant. So it is recommended to run your validator with a layer of 1 or more sentry nodes and to isolate the validator node behind that layer. Also, you will need an IP-address per node that is connected to the network. For example, if you have 10 validator nodes and only one Sentry node then only the Sentry node will be connected to the network where you will need a single IP-address.
 
@@ -49,7 +67,7 @@ sudo docker-compose --env-file full-node.client.testnet.public01.arg -f init-ful
 
 If all steps are completed successfully, you should see a newly generated folder called **CudosData** at the same directory where you placed *CudosBuilders* and *CudosNode*. The subdirectory *cudos-data-full-node-client-testnet-public-01* of **CudosData"** folder has a file called **tendermint.nodeid**. This file contains your node **Id,** to see your node id you can open this file in any code editor and you will get one line that represents your node id such as 13f359c90582b12e291311980a855854668d80pc.
 
-#### Configure and start the node
+#### Configure and start the Full node
 
 This step is valid only if you are running the full node as a validator. Note that if you are not a validator, you do not need to follow this step.
 
@@ -79,7 +97,7 @@ Note that you can see the logs by running the command:
 sudo docker logs -f cudos-start-full-node-client-testnet-public-01
 ```
 
-#### Initialize and start the node without being a validator
+#### Initialize and start the Full node without being a validator
 
 If you are not a validator and you want to initialize a full node, all you need to do is to follow the same steps for [Initialize the node as a validator](#configure-and-start-the-node-as-a-validator) but make sure that you set the flag **"SHOULD_USE_GLOBAL_PEERS"** to true. To do that, open the file **full-node.client.testnet.public01.env.** in any editor then set the flag to true:
 ```
@@ -100,7 +118,7 @@ To run a sentry node, you need to complete the following steps:
 - Initialize the node
 - Configure and start the node
 
-#### Initialize and start the node without being a validator
+#### Initialize and start the Sentry node without being a validator
 
 1. Navigate to the directory *CudosBuilders/docker/sentry-node*
 2. Find the file **sentry-node.env.example** and create a copy of it
@@ -119,7 +137,7 @@ sudo docker-compose --env-file sentry-node.client.testnet.public01.arg -f init-s
 sudo docker-compose --env-file sentry-node.client.testnet.public01.arg -f start-sentry-node.yml -p cudos-start-sentry-node-client-testnet-public-01 up --build
 ```
 
-#### Configure and start the node as a validator
+#### Configure and start the Sentry node as a validator
 
 This step is valid only if you are running the sentry node as a validator. Note that if you are not a validator, you do not need to follow this step.
 
@@ -131,9 +149,9 @@ This step is valid only if you are running the sentry node as a validator. Note 
 ```
 MONIKER=MySentryNodeName
 ```
-6. Paste the full node's nodeId in the **PERSISTENT_PEERS** line. If there are multiple full nodes ids, separate them by a comma such as:
+6. Paste the full node's nodeId in the **PRIVATE_PEERS** line. If there are multiple full nodes ids, separate them by a comma such as:
 ```
-PERSISTENT_PEERS=<full-node1-id>@<full-node1-ip>:26656,<full-node2-id>@<full-node2-ip>:26656
+PRIVATE_PEERS=<full-node1-id>@<full-node1-ip>:26656,<full-node2-id>@<full-node2-ip>:26656
 ```
 7. Make sure that you are still in the correct directory **CudosBuilders/docker/sentry-node**
 8. Initialize the node by running this command:
@@ -159,7 +177,7 @@ To run a seed node, you need to complete the following steps:
 - Initialize the node
 - Configure and start the node
 
-#### Initialize and start the node without being a validator
+#### Initialize and start the Seed node without being a validator
 
 1. Navigate to the directory *CudosBuilders/docker/seed-node*
 2. Find the file **seed-node.env.example** and create a copy of it
@@ -178,7 +196,7 @@ sudo docker-compose --env-file seed-node.client.testnet.public01.arg -f init-see
 sudo docker-compose --env-file seed-node.client.testnet.public01.arg -f start-seed-node.yml -p cudos-start-seed-node-client-testnet-public-01 up --build
 ```
 
-#### Configure and start the node as a validator
+#### Configure and start the Seed node as a validator
 
 This step is valid only if you are running the seed node as a validator. Note that if you are not a validator, you do not need to follow this step.
 
@@ -190,9 +208,9 @@ This step is valid only if you are running the seed node as a validator. Note th
 ```
 MONIKER=MyseedNodeName
 ```
-6. Paste the full node's nodeId in the **PERSISTENT_PEERS** line. If there are multiple full nodes ids, separate them by a comma such as:
+6. Paste the full node's nodeId in the **PRIVATE_PEERS** line. If there are multiple full nodes ids, separate them by a comma such as:
 ```
-PERSISTENT_PEERS=<full-node1-id>@<full-node1-ip>:26656,<full-node2-id>@<full-node2-ip>:26656
+PRIVATE_PEERS=<full-node1-id>@<full-node1-ip>:26656,<full-node2-id>@<full-node2-ip>:26656
 ```
 7. Make sure that you are still in the correct directory **CudosBuilders/docker/seed-node**
 8. Initialize the node by running this command:
@@ -212,20 +230,18 @@ sudo docker logs -f cudos-start-seed-node-client-testnet-public-01
 ## Create a validator
 
 To create a validator account, you need:
-1. A running ethereum full-node
-2. A Cudos full-node which is a validator node
-3. An orchestrator
-4. A gravity bridge
+1. A running Ethereum full-node
+2. A running Cudos Full node ,which has the validator configuration, and a setup of the orchestrator.
 
-Only after finalizing previous steps, you can start the process of creating a validator and running it on your node. this section explains how to achieve each step in detail.
+Only after finalizing previous steps, you can start the process of creating a validator. this section explains how to achieve each step in detail.
 
-### Ethereum full-node
+### Ethereum full node
 
 First make sure that you have the [standard recommendation and specification](https://ethereum.org/en/developers/docs/nodes-and-clients/#recommended-specifications) for the Ethereum node.
 
 You can use either an existing [Ethereum full-node](https://ethereum.org/en/developers/docs/nodes-and-clients/#full-node) (if you have one) or you can follow the procedure below to start one but make sure not to use Infura:
 
-1. Run your ethereum binary on a different machine that your validator is running
+1. Run your Ethereum binary on a different machine that your validator is running
 2. Clone the correct branch from the [CudosBuilders](https://github.com/CudoVentures/cudos-builders) repository with renaming the folders accordingly to exactly _CudosBuilders_:
 ```
 git clone --depth 1 --branch sdk-0.43  https://github.com/CudoVentures/cudos-builders.git CudosBuilders
@@ -240,7 +256,7 @@ Note that you have to wait ~12 hours to finish syncing the Rinkeby test network.
 sudo docker logs -f ethereum
 ```
 
-### Cudos Validator node
+### Cudos Validator node and Orchestrator
 
 Make sure that you are [running Cudos full-node as a validator](#validator-setup)
 
@@ -316,7 +332,7 @@ The resulting output looks similar to the picture below. You will need the addre
 
 ![](./Cosmos-orchestrator2.png)
 
-#### Register orchestrator
+#### Register and run the orchestrator
 
 1. Add the following variables:
 ```
@@ -329,9 +345,7 @@ export ETH_ADDRESS="<eth address, starting with 0x, that have some ETH on rinkeb
 cudos-noded tx gravity set-orchestrator-address $VALIDATOR_ADDRESS $ORCH_ADDRESS $ETH_ADDRESS --from validator --keyring-backend "os" --chain-id $CHAIN_ID
 ```
 
-#### Gravity bridge
-
-Make sure to run your gravity bridge binary on the same machine that your validator node is running on.
+Now let's run the orchestrator, please make sure to run your gravity bridge binary on the same machine that your validator node is running on.
 1. Open shell and navigate to the directory _CudosBuilders/docker/orchestrator_
 2. Create a copy of **orchestrator.env.example**
 3. Rename it to **orchestrator.client.testnet.public01.env**
@@ -356,7 +370,7 @@ you can see the logs by running the command:
 sudo docker logs -f cudos-orchestrator-client-testnet-public-01-release
 ```
 
-### Send funds using the bridge
+### Send funds using the gravity bridge
 
 You have two different options to send funds (it is recommended to use the first option UI):
 1. Using gravity bridge UI
