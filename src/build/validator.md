@@ -91,8 +91,8 @@ This step is valid only if you are running the full node as a validator. Note th
 Now you need to configure and start the full node. So far the full node is set to be isolated and to connect the full node to the network, it needs Sentry peers. The full node should run behind the layer of running a Seed node and a Sentry node with all necessary configuration and starting the node as a validator.
 
 There are two different parameters for selecting the way to connect peers:
-* **PERSISTENT_PEERS** are list of peers that your current node is ALWAYS connected to.
-* **PRIVATE_PEERS** are list of peers that your current node does not share and it is totally private. For example - the Sentry/Seed node MUST set its validator (if available) as a private peer in order not to avoid sharing your validator's id/ip to the rest of the network.
+* **PERSISTENT_PEERS** are list of peers that your current node is ALWAYS connected to. It contains a list of comma separated peers that you will always want to be connected to.
+* **PRIVATE_PEERS** are list of peers that your current node does not share and it is totally private. For example - the Sentry/Seed node MUST set its validator (if available) as a private peer in order not to avoid sharing your validator's id/ip to the rest of the network. So it is a comma-separated list of node ids that will not be exposed to other peers which can be filled with a validator’s node id.
 
 The full node must communicate only through the created layer of peers. To achieve that, you will need to apply the following steps:
 
