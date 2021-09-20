@@ -9,6 +9,22 @@ Find the full list of exact updates **20/09/2021**
 2. Update the parameter **PRIVATE_PEERS** in the step 6 within the section [Configure and start the Sentry node as a validator](/build/validator.html#configure-and-start-the-sentry-node-as-a-validator)
 3. Update the parameter **PRIVATE_PEERS** in the step 6 within the section [Configure and start the Seed node as a validator](/build/validator.html#configure-and-start-the-seed-node-as-a-validator)
 4. Update the [Ethereum full-node](/build/validator.html#ethereum-full-node) section with the [standard recommendation and specification](https://ethereum.org/en/developers/docs/nodes-and-clients/#recommended-specifications)
+5. Add new section [How to delete/stop a current running node](/build/validator.html#how-to-delete-a current-running-node)
+
+## How to delete/stop a current running node
+
+If you stop the docker container that is running a Full node then you are not able to use it. But if you want to remove the full node docker data then you need to clear the volume of full node docker, if you remove the folder it will remove all the data but make sure first that you stop the docker container.
+
+Clear the volume of full node docker:
+* Navigate and open the file **CudosBuilders/docker/full-node/full-node.client.testnet.public01.arg**
+* Find the var **VOLUME_NAME=cudos-data-full-node-client-testnet-public-01** and clear it
+* Navigate to the file **CudosBuilders/docker/full-node/start-full-node.yml**
+* Find the one volume field
+volumes: **- '../../../CudosData/$VOLUME_NAME:$CUDOS_HOME'**
+* Above **VOLUME_NAME**  is mapped with this **../../../CudosData/$VOLUME_NAME**, clear it
+
+Remove the folder:
+* Navigate to the folder **CudosData**, you may find a folder known as **cudos-data-full-node-client-testnet-public-01**, this is the folder which store all data of full node and needs to be removed.
 
 ## How to run a Cudos Validator Node
 
