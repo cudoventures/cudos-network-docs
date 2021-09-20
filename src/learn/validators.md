@@ -70,4 +70,4 @@ Slashing in the Cudos network will be calculated based on a mixture of factors, 
 
 If you are interested in becoming an early Cudos Validator please get in touch with us using [this application form](https://www.cudos.org/#contact-us).
 
-If you're already on the whitelist and looking to get setup on your hardware with a Validator Node please visit our [build docs](/build/#how-to-run-a-cudos-validator-node)
+If you're already on the whitelist and looking to get setup on your hardware with a Validator Node please visit our [build docs](/build/validator.html)
