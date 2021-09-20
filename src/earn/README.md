@@ -8,7 +8,7 @@ There are several ways to use the Cudos Network to earn CUDOS
 
 ### Validate
 
-[Become a Cudos Validator](/earn/incentives.html#how-to-participate) and earn CUDOS from transactions. This is the best way to earn yields on your CUDOS, but requires active participation in securing the network.
+[Become a Cudos Validator](/build/validator.html) and earn CUDOS from transactions. This is the best way to earn yields on your CUDOS, but requires active participation in securing the network.
 
 ### Delegate
 
