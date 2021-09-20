@@ -4,7 +4,7 @@ title: Validator Setup version 2
 
 ## Version 2 updates
 
-Find the full list of exact updates **20/09/2021** 
+Find the full list of exact updates **20/09/2021**
 1. Add new section [How to separate your running nodes](/build/validator.html#how-to-separate-your-running-nodes)
 2. Update the parameter **PRIVATE_PEERS** in the section [Configure and start the Sentry node as a validator](/build/validator.html#configure-and-start-the-sentry-node-as-a-validator)
 3. Update the parameter **PRIVATE_PEERS** in the section [Configure and start the Seed node as a validator](/build/validator.html#configure-and-start-the-seed-node-as-a-validator)
@@ -27,7 +27,7 @@ As a validator, in order to have a secure and running network, you will need to 
 1. Validator Full node along with the Orchestrator configuration on a separate local machine
 2. Sentry node on a separate local machine
 3. Seed node on a separate local machine
-4. Ethereum node, you can run it virtually on a cloud.
+4. Ethereum full node, you can run it virtually on a cloud, if you do not have an Ethereum full node then you need to run the Orchestrator configuration on a separate local machine (not along with validator node).
 
 This article guides you through the instruction for running each one of those nodes.
 
