@@ -121,7 +121,7 @@ alias CUDOS_NODED='sudo docker exec -it binary-builder cudos-noded'
 ```
 cudos-noded keys add <myKeyName>
 ```
-4. Follow the guide [Set up a Keplr wallet and link it to your account on the Cudos testnet network](/docs/build-and-earn/getting-started/creating-a-keplr-wallet.md)
+4. Follow the guide [Set up a Keplr wallet and link it to your account on the Cudos testnet network](/docs/build/account-setup.html)
 
 Note that the **cudos-noded** is a command-line interface. It is the same command-line interface used for deploying smart contracts. You can get the list of all commands by running:
 ```

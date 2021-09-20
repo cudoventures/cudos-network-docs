@@ -20,8 +20,8 @@ Starter setup tasks for Cudos Network onboarding for Validators and users, focus
 
 |**Task ID**|**Description**|**Resources**|**$ Reward**|
 | - | - | - | - |
-|`ARTEMIS-APOLLO#1`|Setup a Cudos Validator|[Docs](/build/#how-to-run-a-cudos-validator-node)|10|
-|`ARTEMIS-APOLLO#2`|Add a Sentry Node to your Cudos Validator for additional security|[Docs](/build/#run-a-sentry-node)|5|
+|`ARTEMIS-APOLLO#1`|Setup a Cudos Validator|[Docs](/build/validator.html)|10|
+|`ARTEMIS-APOLLO#2`|Add a Sentry Node to your Cudos Validator for additional security|[Docs](/build/validator.html#run-a-sentry-node)|5|
 |`ARTEMIS-APOLLO#3`|Add Prometheus monitoring to the Validator Node|[Docs](https://prometheus.io/docs/prometheus/latest/getting_started/)|-|
 |`ARTEMIS-APOLLO#4`|Create a Grafana dashboard to show `ARTEMIS-APOLLO#3` Prometheus data/sending Validator data monthly to Cudo Network|[Docs](https://prometheus.io/docs/visualization/grafana/)|100|
 |`ARTEMIS-APOLLO#6`|Write a unique blog post setting up a Validator Node (in any language of your choice)|n/a|30|
