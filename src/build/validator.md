@@ -10,6 +10,7 @@ Find the full list of exact updates **20/09/2021**
 3. Update the parameter **PRIVATE_PEERS** in the step 6 within the section [Configure and start the Seed node as a validator](/build/validator.html#configure-and-start-the-seed-node-as-a-validator)
 4. Update the [Ethereum full-node](/build/validator.html#ethereum-full-node) section with the [standard recommendation and specification](https://ethereum.org/en/developers/docs/nodes-and-clients/#recommended-specifications)
 5. Add new section [How to delete a current running node](/build/validator.html#how-to-delete-a-current-running-node)
+6. Update the section [hardware requirements](/build/validator.html#hardware-requirements)
 
 ## How to delete a current running node
 
@@ -461,7 +462,7 @@ An extension of the sentry node architecture optionally sees a Validator operato
 
 Beyond the set up of a server, a node, an authenticated way of joining the Cudos blockchain using our in-built public key infrastructure, in coordination with Ledger HSM or YubiHSM for those Validators choosing to implement them, the use of full nodes when interacting the network is highly recommended. We plan to implement the ability for Cudos Validator Nodes to store a history of previously signed blocks in order to more seamlessly prevent double-signing by adverse or deficient nodes in the Cudos Network. This feature is currently absent in earlier-generation Tendermint blockchains. The final element keeping Cudos Network Validating nodes safe is the Tendermint Core Byzantine Fault Tolerant Proof of Stake consensus algorithm.
 
-## Hardware Requirements
+## Hardware requirements
 
 Root node in network of 3 validators:
 
