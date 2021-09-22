@@ -283,6 +283,12 @@ Note that you have to wait ~12 hours to finish syncing the Rinkeby test network.
 sudo docker logs -f ethereum
 ```
 
+You should periodically monitor the free space on the disk you are operating on and if you fall under a certain limit you should shutdown the node. Otherwise, you will get the following ERROR message:
+
+```
+Low disk space. Gracefully shutting down Geth to prevent database corruption.
+```
+
 ### Cudos Validator node and Orchestrator
 
 Make sure that you are [running Cudos full-node as a validator](#validator-setup)
