@@ -332,7 +332,7 @@ Be aware not to exit the docker shell. You will need it for the next step that i
 
 ### Orchestrator
 
-The orchestrator is a program that runs on every validator node beside the Cudos code. Validators, running a chain with the [Gravity module](https://github.com/cosmos/gravity-bridge/blob/main/notes.md) installed, use the orchestrator to sign messages or transactions with a validator's unique key. The Gravity bridge enables token transfers from Ethereum to Cudos and back again.
+The orchestrator is a program that runs on every validator node beside the Cudos code. Validators, running a chain with the Gravity module installed, use the orchestrator to sign messages or transactions with a validator's unique key. The Gravity bridge enables token transfers from Ethereum to Cudos and back again.
 
 The Orchestrator monitors the Ethereum chain, submitting events that occur on Ethereum to Cudos as messages. To send transactions from Cudos to Ethereum, the Gravity Bridge module first packages the transaction data and makes it available on an endpoint. The Orchestrator then signs this data with the validator’s Ethereum key, and submits it as a message. These signatures will then be assembled and submitted to the Ethereum chain.
 
