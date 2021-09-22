@@ -473,7 +473,7 @@ Beyond the set up of a server, a node, an authenticated way of joining the Cudos
 
 ## Hardware requirements
 
-Root node in network of 3 validators:
+When having a network of 3 validators:
 
 - AMD Rome 2 vCPUs, 4 GB memory
 - Cudos-root-node-disk - 320 SSD
@@ -482,7 +482,7 @@ Root node in network of 3 validators:
 - Network Utilization: ~5KiB/s
 - Disk: ~ 3 GB for 31 days in current environment
 
-The following are the minimum hardware requirements. Validators will need to run to successfully join and operate on the Cudos Network for the Testnet and Mainnet (Version 1) stage:
+You must have the minimum hardware requirements for each node that you are running on the Testnet network as explained below (extrapolating network to 125 Validators).
 
 ### Validator node
 
