@@ -18,17 +18,25 @@ We currently have three distinct Cudos Nodes types:
 
 We will be layering on [Cudos Compute Nodes](#compute-nodes) to the network in the future. Find a description of each Cudos Node below:
 
+![img](./node-diagram.png)
+
 #### Full Node
 
 A full node is a node that participates in the network but without support in securing it. You can use this type to store the entire state of a blockchain, including blocks and the modified state of transactions. When running a full node, you support the network to reach the consensus until the current block. So it is important to secure your node from adversarial actors by using a firewall and a proxy.
 
+You can configure your full node to become a **Validator Node** that interfaces with a validator signing key. Validator nodes must have high security setup, and should not accept incoming connections. They should maintain outgoing connections to a controlled set of Sentry Nodes that serve as their proxy shield to the rest of the network.
+
+Validators that know and trust each other can accept incoming connections from one another and maintain direct private connectivity via VPN. The validator nodes only needs to be able to connect to its sentry nodes, preferably via a private network and never to be exposed directly on the public network.
+
 #### Seed Node
 
-A seed node generates a list of peers to which another node can connect. When you want to start a node, you need to give at least one type of node to join the desired network. This will allow you to populate your address quickly. Note that after a seed node provides a list of peers, it will no longer be a peer and will disconnect from your node.
+A seed node generates a list of peers to which another node can connect. So you can think of a seed node as the first point of contact for a new node joining the network. After a seed node provides a list of peers to the network, it will no longer be a peer and will disconnect.
 
 #### Sentry Node
 
-A sentry node is like a full node, but it has one or more private peers. The private peers can represent validators or other full nodes in the network. It provides a security layer for your validator.
+A sentry node is like a full node, but it has one or more private peers. The private peers can represent validators or other full nodes in the network. It provides a security layer for your validator.  They should always expect to have direct incoming connections from the validator node.
+
+The Validator node talks to the Sentry nodes that are provided, the Sentry nodes communicate to the Validator node via a private connection and the rest of the network via a public connection. The Sentry nodes have the option to communicate with other Sentry nodes as well.
 
 ### Compute Nodes
 

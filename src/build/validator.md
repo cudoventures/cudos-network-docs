@@ -96,7 +96,8 @@ This step is valid only if you are running the full node as a validator. Note th
 Now you need to configure and start the full node. So far the full node is set to be isolated and to connect the full node to the network, it needs Sentry peers. The full node should run behind the layer of running a Seed node and a Sentry node with all necessary configuration and starting the node as a validator.
 
 There are two different parameters for selecting the way to connect peers:
-* **PERSISTENT_PEERS** are list of peers that your current node is ALWAYS connected to. It contains a list of comma separated peers that you will always want to be connected to.
+
+* **PERSISTENT_PEERS** are list of peers that your current node is ALWAYS connected to (usually it is the list of all sentry nodes). It contains a list of comma separated peers that you will always want to be connected to.
 * **PRIVATE_PEERS** are list of peers that your current node does not share and it is totally private. For example - the Sentry/Seed node MUST set its validator (if available) as a private peer in order not to avoid sharing your validator's id/ip to the rest of the network. So it is a comma-separated list of node ids that will not be exposed to other peers which can be filled with a validator’s node id.
 
 The full node must communicate only through the created layer of peers. To achieve that, you will need to apply the following steps:
@@ -331,7 +332,9 @@ Be aware not to exit the docker shell. You will need it for the next step that i
 
 ### Orchestrator
 
-The orchestrator is a program that runs on every validator beside the Cudos code. Validators, running a chain with the Gravity module installed, use the orchestrator to sign messages or transactions with a validator's unique key.
+The orchestrator is a program that runs on every validator node beside the Cudos code. Validators, running a chain with the Gravity module installed, use the orchestrator to sign messages or transactions with a validator's unique key. The Gravity bridge enables token transfers from Ethereum to Cudos and back again.
+
+The Orchestrator monitors the Ethereum chain, submitting events that occur on Ethereum to Cudos as messages. To send transactions from Cudos to Ethereum, the Gravity Bridge module first packages the transaction data and makes it available on an endpoint. The Orchestrator then signs this data with the validator’s Ethereum key, and submits it as a message. These signatures will then be assembled and submitted to the Ethereum chain.
 
 #### Get the validator address
 
@@ -345,7 +348,7 @@ the resulting output looks similar to the picture below, you need to find your v
 
 #### Add the orchestrator wallet
 
-Now you need to add another wallet to use for the orchestrator but first make sure that **it has some CUDOS tokens**. You can achieve that by running the command:
+Now you MUST add another wallet to use for the orchestrator (do not use the same validator wallet) and make sure that **it has some CUDOS tokens**. You can achieve that by running the command:
 ```
 cudos-noded keys add orchestrator --recover --keyring-backend="os"
 ```
