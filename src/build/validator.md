@@ -76,8 +76,6 @@ If all steps are completed successfully, you should see a newly generated folder
 
 #### Configure and start the Full node
 
-This step is valid only if you are running the full node as a validator. Note that if you are not a validator, you do not need to follow this step.
-
 Now you need to configure and start the full node. So far the full node is set to be isolated and to connect the full node to the network, it needs Sentry peers. The full node should run behind the layer of running a Seed node and a Sentry node with all necessary configuration and starting the node as a validator.
 
 There are two different parameters for selecting the way to connect peers:
@@ -109,49 +107,13 @@ Note that you can see the logs by running the command:
 sudo docker logs -f cudos-start-full-node-client-testnet-public-01
 ```
 
-#### Initialize and start the Full node without being a validator
-
-If you are not a validator and you want to initialize a full node, all you need to do is to follow the same steps for [Initialize the node as a validator](#configure-and-start-the-node-as-a-validator) but make sure that you set the flag **"SHOULD_USE_GLOBAL_PEERS"** to true. To do that, open the file **full-node.client.testnet.public01.env.** in any editor then set the flag to true:
-```
-SHOULD_USE_GLOBAL_PEERS=true
-```
-
-You can start your Full node by running the command:
-```
-sudo docker-compose --env-file full-node.client.testnet.public01.arg -f start-full-node.yml -p cudos-start-full-node-client-testnet-public-01 up --build --detach
-```
-
 ### ﻿Run a Sentry node
 
 Before running a node, make sure that you have followed the guide for [setting up your prerequisites and environment](/build/prerequisites.html).
 
-To run a sentry node, you need to complete the following steps:
-
-- Initialize the node
-- Configure and start the node
-
-#### Initialize and start the Sentry node without being a validator
-
-1. Navigate to the directory *CudosBuilders/docker/sentry-node*
-2. Find the file **sentry-node.env.example** and create a copy of it
-3. Rename the copied file to **sentry-node.client.testnet.public01.env**
-4. Open the file, which you renamed, **sentry-node.client.testnet.public01.env** in any editor
-5. Find  the **"MONIKER"** attribute and set a name to it as the following:
-```
-MONIKER=MySentryNodeName
-```
-6. Initiliaze the node by running this command:
-```
-sudo docker-compose --env-file sentry-node.client.testnet.public01.arg -f init-sentry-node.yml -p cudos-init-sentry-node-client-testnet-public-01 up --build
-```
-7. Start the node by running this command:
-```
-sudo docker-compose --env-file sentry-node.client.testnet.public01.arg -f start-sentry-node.yml -p cudos-start-sentry-node-client-testnet-public-01 up --build
-```
+To run a sentry node, you need to configure and start the node.
 
 #### Configure and start the Sentry node as a validator
-
-This step is valid only if you are running the sentry node as a validator. Note that if you are not a validator, you do not need to follow this step.
 
 1. Navigate to the directory *CudosBuilders/docker/sentry-node*
 2. Find the file **sentry-node.env.example** and create a copy of it
@@ -184,33 +146,9 @@ sudo docker logs -f cudos-start-sentry-node-client-testnet-public-01
 
 Before running a node, make sure that you have followed the guide for [setting up your prerequisites and environment](/build/prerequisites.html).
 
-To run a seed node, you need to complete the following steps:
-
-- Initialize the node
-- Configure and start the node
-
-#### Initialize and start the Seed node without being a validator
-
-1. Navigate to the directory *CudosBuilders/docker/seed-node*
-2. Find the file **seed-node.env.example** and create a copy of it
-3. Rename the copied file to **seed-node.client.testnet.public01.env**
-4. Open the file, which you renamed, **seed-node.client.testnet.public01.env** in any editor
-5. Find  the **"MONIKER"** attribute and set a name to it as the following:
-```
-MONIKER=MySeedNodeName
-```
-6. Initiliaze the node by running this command:
-```
-sudo docker-compose --env-file seed-node.client.testnet.public01.arg -f init-seed-node.yml -p cudos-init-seed-node-client-testnet-public-01 up --build
-```
-7. Start the node by running this command:
-```
-sudo docker-compose --env-file seed-node.client.testnet.public01.arg -f start-seed-node.yml -p cudos-start-seed-node-client-testnet-public-01 up --build
-```
+To run a seed node, you need to configure and start the node.
 
 #### Configure and start the Seed node as a validator
-
-This step is valid only if you are running the seed node as a validator. Note that if you are not a validator, you do not need to follow this step.
 
 1. Navigate to the directory *CudosBuilders/docker/seed-node*
 2. Find the file **seed-node.env.example** and create a copy of it
