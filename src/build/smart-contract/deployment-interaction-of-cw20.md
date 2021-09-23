@@ -66,8 +66,7 @@ Display a minter address for a given contract
 
 - Go to cosmwasm-plus folder and run the following command
 ```console
-foo@bar:~$ cd cosmwasm-plus
-foo@bar cosmwasm-plus:~$ docker run --rm -v "$(pwd)":/code \
+foo@bar:~$ docker run --rm -v "$(pwd)":/code \
 --mount type=volume,source="$(basename "$(pwd)")_cache",target=/code/target \
 --mount type=volume,source=registry_cache,target=/usr/local/cargo/registry \
 cosmwasm/workspace-optimizer:0.11.3
@@ -84,11 +83,11 @@ cosmwasm/workspace-optimizer:0.11.3
 1. Set environment variables
 
 ```console
-foo@bar cosmwasm-plus:~$ RPC="http://localhost:26657"
-foo@bar cosmwasm-plus:~$ CHAIN_ID="localnet"
-foo@bar cosmwasm-plus:~$ export NODE="--node $RPC"
-foo@bar cosmwasm-plus:~$ export TXFLAG="${NODE} --chain-id ${CHAIN_ID} --gas auto --gas-adjustment 1.3"
-foo@bar cosmwasm-plus:~$ export KEYRING="--keyring-backend test --keyring-dir $HOME/.wasmd_keys"
+foo@bar:~$ RPC="http://localhost:26657"
+foo@bar:~$ CHAIN_ID="localnet"
+foo@bar:~$ export NODE="--node $RPC"
+foo@bar:~$ export TXFLAG="${NODE} --chain-id ${CHAIN_ID} --gas auto --gas-adjustment 1.3"
+foo@bar:~$ export KEYRING="--keyring-backend test --keyring-dir $HOME/.wasmd_keys"
 ```
 
 1. Compilation will take some time and will provide you with artifacts folder in the root
@@ -99,43 +98,43 @@ foo@bar cosmwasm-plus:~$ export KEYRING="--keyring-backend test --keyring-dir $H
 **using command**
 **wasmd keys add** _ **\&lt;name\&gt;** _
 
-_ **Add some balance in wasm-power, bob and alice using** _ [_ **explorer.cudos.org/faucet** _](https://explorer.cudos.org/faucet)_ **.** _
+**Add some balance in wasm-power, bob and alice using**  [**explorer.cudos.org/faucet** ](https://explorer.cudos.org/faucet) **.** 
 
 ```console 
-foo@bar cosmwasm-plus:~$ cd cosmwasm-plus/artifacts
+foo@bar:~$ cd cosmwasm-plus/artifacts
 # container id docker ps -aqf "name=binary-builder"
-foo@bar cosmwasm-plus/artifacts:~$ docker cp cw20_base.wasm <container>:/usr/cudos
-foo@bar cosmwasm-plus/artifacts:~$ alias CUDOS_NODED='docker exec <container> cudos-noded'
+foo@bar:~$ docker cp cw20_base.wasm <container>:/usr/cudos
+foo@bar:~$ alias CUDOS_NODED='docker exec <container> cudos-noded'
 
-foo@bar cosmwasm-plus/artifacts:~$ CUDOS_NODED keys add wasm-power $KEYRING
-foo@bar cosmwasm-plus/artifacts:~$ CUDOS_NODED keys add bob $KEYRING
-foo@bar cosmwasm-plus/artifacts:~$ CUDOS_NODED keys add alice $KEYRING
+foo@bar:~$ CUDOS_NODED keys add wasm-power $KEYRING
+foo@bar:~$ CUDOS_NODED keys add bob $KEYRING
+foo@bar:~$ CUDOS_NODED keys add alice $KEYRING
 # to view address of wasm-power, bob and alice account.
-foo@bar cosmwasm-plus/artifacts:~$ CUDOS_NODED keys show -a <name> $KEYRING
+foo@bar:~$ CUDOS_NODED keys show -a <name> $KEYRING
 
 # For eg
-foo@bar cosmwasm-plus/artifacts:~$ CUDOS_NODED keys show -a wasm-power $KEYRING
+foo@bar:~$ CUDOS_NODED keys show -a wasm-power $KEYRING
 cudos1r8y6rddc8psqcll22kyaf7gphe8kswk99fxv75
 
-foo@bar cosmwasm-plus/artifacts:~$ RES=$(CUDOS_NODED  tx wasm store artifacts/cw20_base.wasm --from main $TXFLAG -y $KEYRING)
+foo@bar:~$ RES=$(CUDOS_NODED  tx wasm store artifacts/cw20_base.wasm --from main $TXFLAG -y $KEYRING)
 
 # you can also get the code this way
-foo@bar cosmwasm-plus/artifacts:~$ CODE_ID=$(echo $RES | jq -r '.logs[0].events[-1].attributes[-1].value')
+foo@bar:~$ CODE_ID=$(echo $RES | jq -r '.logs[0].events[-1].attributes[-1].value')
 ```
 
 1. Instantiate the contract
 ```console
 # instantiate contract and verify
-foo@bar cosmwasm-plus/artifacts:~$ INIT=$(jq -n --arg "wasmpower" $(CUDOS_NODED keys show -a wasm-power $KEYRING --address) '{ "name": "DIZZ COIN", "symbol": "DIZZ", "decimals": 6, "initial_balances": [{ "address": $wasmpower, "amount": "1000000" }], "mint": {"minter": $wasmpower,"cap": "99900000000"}}')
+foo@bar:~$ INIT=$(jq -n --arg "wasmpower" $(CUDOS_NODED keys show -a wasm-power $KEYRING --address) '{ "name": "DIZZ COIN", "symbol": "DIZZ", "decimals": 6, "initial_balances": [{ "address": $wasmpower, "amount": "1000000" }], "mint": {"minter": $wasmpower,"cap": "99900000000"}}')
 
-foo@bar cosmwasm-plus/artifacts:~$ CUDOS_NODED tx wasm instantiate $CODE_ID "$INIT" \
+foo@bar:~$ CUDOS_NODED tx wasm instantiate $CODE_ID "$INIT" \
 --from wasm-power --label "CW20" $TXFLAG -y $KEYRING
 
 # check the contract state (and account balance)
-foo@bar cosmwasm-plus/artifacts:~$ CUDOS_NODED query wasm list-contract-by-code $CODE_ID $NODE --output json
+foo@bar:~$ CUDOS_NODED query wasm list-contract-by-code $CODE_ID $NODE --output json
 
 # fetch contract address
-foo@bar cosmwasm-plus/artifacts:~$ CONTRACT=$(wasmd query wasm list-contract-by-code $CODE_ID $NODE --output json | jq -r '.contracts[-1]')
+foo@bar:~$ CONTRACT=$(wasmd query wasm list-contract-by-code $CODE_ID $NODE --output json | jq -r '.contracts[-1]')
 
 echo $CONTRACT
 
@@ -149,18 +148,18 @@ Upto this point we have successfully deployed and instantiated contract.
 ## Mint CW20 Tokens
 
 ```console 
- foo@bar cosmwasm-plus/artifacts:~$ MINT=$(jq -n --arg bob $(CUDOS_NODED keys show -a bob $KEYRING --address) '{ "mint": { "recipient": $bob, "amount": "1000000" } }')
+ foo@bar:~$ MINT=$(jq -n --arg bob $(CUDOS_NODED keys show -a bob $KEYRING --address) '{ "mint": { "recipient": $bob, "amount": "1000000" } }')
 
 { "mint": { "recipient": "cudos1er4ekhej7xrs8yn45qn5q6485q6dxq0tu33zft", "amount": "1000000" } }
 
-foo@bar cosmwasm-plus/artifacts:~$ CUDOS_NODED tx wasm execute $CONTRACT "$MINT" \
+foo@bar:~$ CUDOS_NODED tx wasm execute $CONTRACT "$MINT" \
     --from wasm-power $TXFLAG -y $KEYRING
 
-foo@bar cosmwasm-plus/artifacts:~$ BALANCE_OF=$(jq -n --arg bob $(CUDOS_NODED keys show -a bob $KEYRING --address) '{ "balance": { "address": $bob } }')
-foo@bar cosmwasm-plus/artifacts:~$ echo $BALANCE_OF
+foo@bar:~$ BALANCE_OF=$(jq -n --arg bob $(CUDOS_NODED keys show -a bob $KEYRING --address) '{ "balance": { "address": $bob } }')
+foo@bar:~$ echo $BALANCE_OF
 { "balance": { "address": "cudos1er4ekhej7xrs8yn45qn5q6485q6dxq0tu33zft" } }
 
-foo@bar cosmwasm-plus/artifacts:~$ CUDOS_NODED query wasm contract-state smart $CONTRACT "$BALANCE_OF" $NODE
+foo@bar:~$ CUDOS_NODED query wasm contract-state smart $CONTRACT "$BALANCE_OF" $NODE
 data:
   balance: "1000000"
 
@@ -179,25 +178,25 @@ MINT=$(jq -n --arg bob $(CUDOS_NODED keys show -a bob $KEYRING --address) '{ "mi
 
 { "mint": { "recipient": "cudos1er4ekhej7xrs8yn45qn5q6485q6dxq0tu33zft", "amount": "1000000" } }
 
-foo@bar cosmwasm-plus/artifacts:~$ CUDOS_NODED tx wasm execute $CONTRACT "$MINT" \
+foo@bar:~$ CUDOS_NODED tx wasm execute $CONTRACT "$MINT" \
     --from wasm-power $TXFLAG -y $KEYRING
 
-foo@bar cosmwasm-plus/artifacts:~$ BALANCE_OF=$(jq -n --arg bob $(CUDOS_NODED keys show -a bob $KEYRING --address) '{ "balance": { "address": $bob } }')
-foo@bar cosmwasm-plus/artifacts:~$ echo $BALANCE_OF
+foo@bar:~$ BALANCE_OF=$(jq -n --arg bob $(CUDOS_NODED keys show -a bob $KEYRING --address) '{ "balance": { "address": $bob } }')
+foo@bar:~$ echo $BALANCE_OF
 { "balance": { "address": "cudos1er4ekhej7xrs8yn45qn5q6485q6dxq0tu33zft" } }
 
-foo@bar cosmwasm-plus/artifacts:~$ CUDOS_NODED query wasm contract-state smart $CONTRACT "$BALANCE_OF" $NODE
+foo@bar:~$ CUDOS_NODED query wasm contract-state smart $CONTRACT "$BALANCE_OF" $NODE
 data:
   balance: "1000000"
-foo@bar cosmwasm-plus/artifacts:~$ TRANSFER=$(jq -n --arg alice $(CUDOS_NODED keys show -a alice $KEYRING --address) '{ "transfer": { "recipient": $alice, "amount": "10000" } }')
-foo@bar cosmwasm-plus/artifacts:~$ echo $TRANSFER
+foo@bar:~$ TRANSFER=$(jq -n --arg alice $(CUDOS_NODED keys show -a alice $KEYRING --address) '{ "transfer": { "recipient": $alice, "amount": "10000" } }')
+foo@bar:~$ echo $TRANSFER
 { "transfer": { "recipient": "cudos1jz2nxvlgqscjxtw0q26rqyrpdfvyh5j3nlnmn9", "amount": "10000" } }
-foo@bar cosmwasm-plus/artifacts:~$ CUDOS_NODED tx wasm execute $CONTRACT "$TRANSFER" --from wasm-power $TXFLAG -y $KEYRING
+foo@bar:~$ CUDOS_NODED tx wasm execute $CONTRACT "$TRANSFER" --from wasm-power $TXFLAG -y $KEYRING
 
-foo@bar cosmwasm-plus/artifacts:~$ CUDOS_NODED query wasm contract-state smart $CONTRACT "$BALANCE_OF" $NODE
+foo@bar:~$ CUDOS_NODED query wasm contract-state smart $CONTRACT "$BALANCE_OF" $NODE
 data:
   balance: "10000"
-foo@bar cosmwasm-plus/artifacts:~$ CUDOS_NODED query wasm contract-state smart $CONTRACT "$BALANCE_OF_SENDER" $NODE
+foo@bar:~$ CUDOS_NODED query wasm contract-state smart $CONTRACT "$BALANCE_OF_SENDER" $NODE
 data:
   balance: "990000"
 
@@ -212,15 +211,15 @@ data:
 ```console
 
 
-foo@bar cosmwasm-plus/artifacts:~$ INCREASE_ALLOWANCE=$(jq -n --arg alice $(CUDOS_NODED keys show -a alice $KEYRING --address) '{ "increase_allowance": { "spender": $alice, "amount": "15000" } }')
-foo@bar cosmwasm-plus/artifacts:~$ echo $INCREASE_ALLOWANCE
+foo@bar:~$ INCREASE_ALLOWANCE=$(jq -n --arg alice $(CUDOS_NODED keys show -a alice $KEYRING --address) '{ "increase_allowance": { "spender": $alice, "amount": "15000" } }')
+foo@bar:~$ echo $INCREASE_ALLOWANCE
 { "increase_allowance": { "spender": "cudos1jz2nxvlgqscjxtw0q26rqyrpdfvyh5j3nlnmn9", "amount": "15000" } }
-foo@bar cosmwasm-plus/artifacts:~$ CUDOS_NODED tx wasm execute $CONTRACT "$INCREASE_ALLOWANCE" \
+foo@bar:~$ CUDOS_NODED tx wasm execute $CONTRACT "$INCREASE_ALLOWANCE" \
     --from wasm-power $TXFLAG -y $KEYRING 
-foo@bar cosmwasm-plus/artifacts:~$ ALLOWANCE=$(jq -n --arg alice $(CUDOS_NODED keys show alice $KEYRING --address) --arg wasmPower $(CUDOS_NODED keys show wasm-power $KEYRING --address) '{ "allowance": { "owner": $wasmPower, "spender": $alice } }')
-foo@bar cosmwasm-plus/artifacts:~$ echo $ALLOWANCE
+foo@bar:~$ ALLOWANCE=$(jq -n --arg alice $(CUDOS_NODED keys show alice $KEYRING --address) --arg wasmPower $(CUDOS_NODED keys show wasm-power $KEYRING --address) '{ "allowance": { "owner": $wasmPower, "spender": $alice } }')
+foo@bar:~$ echo $ALLOWANCE
 { "allowance": { "owner": "cudos1r8y6rddc8psqcll22kyaf7gphe8kswk99fxv75", "spender": "cudos1jz2nxvlgqscjxtw0q26rqyrpdfvyh5j3nlnmn9" } }
-foo@bar cosmwasm-plus/artifacts:~$ CUDOS_NODED query wasm contract-state smart $CONTRACT "$ALLOWANCE" $NODE
+foo@bar:~$ CUDOS_NODED query wasm contract-state smart $CONTRACT "$ALLOWANCE" $NODE
 data:
   allowance: "15000"
   expires:
@@ -240,36 +239,36 @@ data:
 
 ```console
 
-foo@bar cosmwasm-plus/artifacts:~$ BALANCE_OF_SENDER=$(jq -n --arg wasmPower $(CUDOS_NODED keys show -a wasm-power $KEYRING --address) '{ "balance": { "address": $wasmPower} }')
-foo@bar cosmwasm-plus/artifacts:~$ echo $BALANCE_OF_SENDER
+foo@bar:~$ BALANCE_OF_SENDER=$(jq -n --arg wasmPower $(CUDOS_NODED keys show -a wasm-power $KEYRING --address) '{ "balance": { "address": $wasmPower} }')
+foo@bar:~$ echo $BALANCE_OF_SENDER
 { "balance": { "address": "cudos1r8y6rddc8psqcll22kyaf7gphe8kswk99fxv75" } }
-foo@bar cosmwasm-plus/artifacts:~$ BALANCE_OF=$(jq -n --arg bob $(CUDOS_NODED keys show -a bob $KEYRING --address) '{ "balance": { "address": $bob} }')
-foo@bar cosmwasm-plus/artifacts:~$ echo $BALANCE_OF
+foo@bar:~$ BALANCE_OF=$(jq -n --arg bob $(CUDOS_NODED keys show -a bob $KEYRING --address) '{ "balance": { "address": $bob} }')
+foo@bar:~$ echo $BALANCE_OF
 { "balance": { "address": "cudos1er4ekhej7xrs8yn45qn5q6485q6dxq0tu33zft" } }
-foo@bar cosmwasm-plus/artifacts:~$ CUDOS_NODED query wasm contract-state smart $CONTRACT "$BALANCE_OF" $NODE
+foo@bar:~$ CUDOS_NODED query wasm contract-state smart $CONTRACT "$BALANCE_OF" $NODE
 data:
   balance: "1000000"
 
-foo@bar cosmwasm-plus/artifacts:~$ CUDOS_NODED query wasm contract-state smart $CONTRACT "$BALANCE_OF_SENDER" $NODE
+foo@bar:~$ CUDOS_NODED query wasm contract-state smart $CONTRACT "$BALANCE_OF_SENDER" $NODE
 data:
   balance: "990000"
 
-foo@bar cosmwasm-plus/artifacts:~$ TRANSFER_FROM=$(jq -n --arg bob $(CUDOS_NODED keys show -a bob $KEYRING ) --arg wasmPower $(CUDOS_NODED keys show -a wasm-power $KEYRING ) '{"transfer_from": {"owner": $wasmPower,"recipient": $bob,"amount": "5000"}}')
-foo@bar cosmwasm-plus/artifacts:~$ echo $TRANSFER_FROM
+foo@bar:~$ TRANSFER_FROM=$(jq -n --arg bob $(CUDOS_NODED keys show -a bob $KEYRING ) --arg wasmPower $(CUDOS_NODED keys show -a wasm-power $KEYRING ) '{"transfer_from": {"owner": $wasmPower,"recipient": $bob,"amount": "5000"}}')
+foo@bar:~$ echo $TRANSFER_FROM
 { "transfer_from": { "owner": "cudos1r8y6rddc8psqcll22kyaf7gphe8kswk99fxv75", "recipient": "cudos1er4ekhej7xrs8yn45qn5q6485q6dxq0tu33zft", "amount": "5000" } }
-foo@bar cosmwasm-plus/artifacts:~$ CUDOS_NODED tx wasm execute $CONTRACT "$TRANSFER_FROM" --from alice $TXFLAG -y $KEYRING 
+foo@bar:~$ CUDOS_NODED tx wasm execute $CONTRACT "$TRANSFER_FROM" --from alice $TXFLAG -y $KEYRING 
 
-foo@bar cosmwasm-plus/artifacts:~$ CUDOS_NODED query wasm contract-state smart $CONTRACT "$BALANCE_OF" $NODE
+foo@bar:~$ CUDOS_NODED query wasm contract-state smart $CONTRACT "$BALANCE_OF" $NODE
 data:
   balance: "1005000"
 
-foo@bar cosmwasm-plus/artifacts:~$ CUDOS_NODED query wasm contract-state smart $CONTRACT "$BALANCE_OF_SENDER" $NODE
+foo@bar:~$ CUDOS_NODED query wasm contract-state smart $CONTRACT "$BALANCE_OF_SENDER" $NODE
 data:
   balance: "985000"
-foo@bar cosmwasm-plus/artifacts:~$ ALLOWANCE=$(jq -n --arg alice $(CUDOS_NODED keys show alice $KEYRING --address) --arg wasmPower $(CUDOS_NODED keys show wasm-power $KEYRING --address) '{ "allowance": { "owner": $wasmPower, "spender": $alice } }')
-foo@bar cosmwasm-plus/artifacts:~$ echo $ALLOWANCE
+foo@bar:~$ ALLOWANCE=$(jq -n --arg alice $(CUDOS_NODED keys show alice $KEYRING --address) --arg wasmPower $(CUDOS_NODED keys show wasm-power $KEYRING --address) '{ "allowance": { "owner": $wasmPower, "spender": $alice } }')
+foo@bar:~$ echo $ALLOWANCE
 { "allowance": { "owner": "cudos1r8y6rddc8psqcll22kyaf7gphe8kswk99fxv75", "spender": "cudos1jz2nxvlgqscjxtw0q26rqyrpdfvyh5j3nlnmn9" } }
-foo@bar cosmwasm-plus/artifacts:~$ CUDOS_NODED query wasm contract-state smart $CONTRACT "$ALLOWANCE" $NODE
+foo@bar:~$ CUDOS_NODED query wasm contract-state smart $CONTRACT "$ALLOWANCE" $NODE
 data:
   allowance: "10000"
   expires:
@@ -288,33 +287,33 @@ data:
 - **Approve the token using steps mentioned in &quot;Increase Allowance&quot; section**
 
 ```console
-foo@bar cosmwasm-plus/artifacts:~$ BALANCE_OF_SENDER=$(jq -n --arg wasmPower $(CUDOS_NODED keys show -a wasm-power $KEYRING --address) '{ "balance": { "address": $wasmPower} }')
-foo@bar cosmwasm-plus/artifacts:~$ echo $BALANCE_OF_SENDER
+foo@bar:~$ BALANCE_OF_SENDER=$(jq -n --arg wasmPower $(CUDOS_NODED keys show -a wasm-power $KEYRING --address) '{ "balance": { "address": $wasmPower} }')
+foo@bar:~$ echo $BALANCE_OF_SENDER
 { "balance": { "address": "cudos1r8y6rddc8psqcll22kyaf7gphe8kswk99fxv75" } }
-foo@bar cosmwasm-plus/artifacts:~$ BALANCE_OF=$(jq -n --arg bob $(CUDOS_NODED keys show -a bob $KEYRING --address) '{ "balance": { "address": $bob} }')
-foo@bar cosmwasm-plus/artifacts:~$ echo $BALANCE_OF
+foo@bar:~$ BALANCE_OF=$(jq -n --arg bob $(CUDOS_NODED keys show -a bob $KEYRING --address) '{ "balance": { "address": $bob} }')
+foo@bar:~$ echo $BALANCE_OF
 { "balance": { "address": "cudos1er4ekhej7xrs8yn45qn5q6485q6dxq0tu33zft" } }
-foo@bar cosmwasm-plus/artifacts:~$ CUDOS_NODED query wasm contract-state smart $CONTRACT "$BALANCE_OF" $NODE
+foo@bar:~$ CUDOS_NODED query wasm contract-state smart $CONTRACT "$BALANCE_OF" $NODE
 data:
   balance: "1005000"
 
-foo@bar cosmwasm-plus/artifacts:~$ CUDOS_NODED query wasm contract-state smart $CONTRACT "$BALANCE_OF_SENDER" $NODE
+foo@bar:~$ CUDOS_NODED query wasm contract-state smart $CONTRACT "$BALANCE_OF_SENDER" $NODE
 data:
   balance: "985000"
 
-foo@bar cosmwasm-plus/artifacts:~$ ALLOWANCE=$(jq -n --arg alice $(CUDOS_NODED keys show alice $KEYRING --address) --arg wasmPower $(CUDOS_NODED keys show wasm-power $KEYRING --address) '{ "allowance": { "owner": $wasmPower, "spender": $alice } }')
-foo@bar cosmwasm-plus/artifacts:~$ echo $ALLOWANCE
+foo@bar:~$ ALLOWANCE=$(jq -n --arg alice $(CUDOS_NODED keys show alice $KEYRING --address) --arg wasmPower $(CUDOS_NODED keys show wasm-power $KEYRING --address) '{ "allowance": { "owner": $wasmPower, "spender": $alice } }')
+foo@bar:~$ echo $ALLOWANCE
 { "allowance": { "owner": "cudos1r8y6rddc8psqcll22kyaf7gphe8kswk99fxv75", "spender": "cudos1jz2nxvlgqscjxtw0q26rqyrpdfvyh5j3nlnmn9" } }
-foo@bar cosmwasm-plus/artifacts:~$ CUDOS_NODED query wasm contract-state smart $CONTRACT "$ALLOWANCE" $NODE
+foo@bar:~$ CUDOS_NODED query wasm contract-state smart $CONTRACT "$ALLOWANCE" $NODE
 data:
   allowance: "10000"
   expires:
     never: {}
-foo@bar cosmwasm-plus/artifacts:~$ DECREASE_ALLOWANCE=$(jq -n --arg alice $(CUDOS_NODED keys show -a alice $KEYRING) '{ "decrease_allowance": { "spender": $alice, "amount": "2000" } }')
-foo@bar cosmwasm-plus/artifacts:~$ echo $DECREASE_ALLOWANCE
+foo@bar:~$ DECREASE_ALLOWANCE=$(jq -n --arg alice $(CUDOS_NODED keys show -a alice $KEYRING) '{ "decrease_allowance": { "spender": $alice, "amount": "2000" } }')
+foo@bar:~$ echo $DECREASE_ALLOWANCE
 { "decrease_allowance": { "spender": "cudos1jz2nxvlgqscjxtw0q26rqyrpdfvyh5j3nlnmn9", "amount": "2000" } }
-foo@bar cosmwasm-plus/artifacts:~$ CUDOS_NODED tx wasm execute $CONTRACT "$DECREASE_ALLOWANCE" --from wasm-power $TXFLAG -y $KEYRING
-foo@bar cosmwasm-plus/artifacts:~$ CUDOS_NODED query wasm contract-state smart $CONTRACT "$ALLOWANCE" $NODE
+foo@bar:~$ CUDOS_NODED tx wasm execute $CONTRACT "$DECREASE_ALLOWANCE" --from wasm-power $TXFLAG -y $KEYRING
+foo@bar:~$ CUDOS_NODED query wasm contract-state smart $CONTRACT "$ALLOWANCE" $NODE
 data:
   allowance: "8000"
   expires:
@@ -328,16 +327,16 @@ data:
 
 - **Mint few new tokens using steps mentioned in &quot;Mint CW20 Tokens&quot; section**
 ```console
-foo@bar cosmwasm-plus/artifacts:~$ BALANCE_OF_SENDER=$(jq -n --arg wasmPower $(CUDOS_NODED keys show -a wasm-power $KEYRING --address) '{ "balance": { "address": $wasmPower} }')
-foo@bar cosmwasm-plus/artifacts:~$ echo $BALANCE_OF_SENDER
+foo@bar:~$ BALANCE_OF_SENDER=$(jq -n --arg wasmPower $(CUDOS_NODED keys show -a wasm-power $KEYRING --address) '{ "balance": { "address": $wasmPower} }')
+foo@bar:~$ echo $BALANCE_OF_SENDER
 { "balance": { "address": "cudos1r8y6rddc8psqcll22kyaf7gphe8kswk99fxv75" } }
-foo@bar cosmwasm-plus/artifacts:~$ CUDOS_NODED query wasm contract-state smart $CONTRACT "$BALANCE_OF_SENDER" $NODE
+foo@bar:~$ CUDOS_NODED query wasm contract-state smart $CONTRACT "$BALANCE_OF_SENDER" $NODE
 data:
   balance: "980000"
-foo@bar cosmwasm-plus/artifacts:~$ BURN='{ "burn": { "amount": "1000" } }'
-foo@bar cosmwasm-plus/artifacts:~$ CUDOS_NODED tx wasm execute $CONTRACT "$BURN" \
+foo@bar:~$ BURN='{ "burn": { "amount": "1000" } }'
+foo@bar:~$ CUDOS_NODED tx wasm execute $CONTRACT "$BURN" \
     --from wasm-power $TXFLAG -y $KEYRING
-foo@bar cosmwasm-plus/artifacts:~$ CUDOS_NODED query wasm contract-state smart $CONTRACT "$BALANCE_OF_SENDER" $NODE
+foo@bar:~$ CUDOS_NODED query wasm contract-state smart $CONTRACT "$BALANCE_OF_SENDER" $NODE
 data:
   balance: "979000"
 
@@ -352,10 +351,10 @@ data:
 - **Mint few new tokens using steps mentioned in &quot;Mint CW20 Tokens&quot; section**
 ```console
 
-foo@bar cosmwasm-plus/artifacts:~$ ALL_ALLOWANCES=$(jq -n --arg wasmPower $(CUDOS_NODED keys show -a wasm-power $KEYRING) '{ "all_allowances": { "owner": $wasmPower } }')
-foo@bar cosmwasm-plus/artifacts:~$ echo $ALL_ALLOWANCES
+foo@bar:~$ ALL_ALLOWANCES=$(jq -n --arg wasmPower $(CUDOS_NODED keys show -a wasm-power $KEYRING) '{ "all_allowances": { "owner": $wasmPower } }')
+foo@bar:~$ echo $ALL_ALLOWANCES
 { "all_allowances": { "owner": "cudos1r8y6rddc8psqcll22kyaf7gphe8kswk99fxv75" } }
-foo@bar cosmwasm-plus/artifacts:~$ CUDOS_NODED query wasm contract-state smart $CONTRACT "$ALL_ALLOWANCES" $NODE
+foo@bar:~$ CUDOS_NODED query wasm contract-state smart $CONTRACT "$ALL_ALLOWANCES" $NODE
 data:
   allowances:
   - allowance: "8000"
@@ -373,8 +372,8 @@ data:
 
 - **Mint few new tokens using steps mentioned in &quot;Mint CW20 Tokens&quot; section**
 ```console
-foo@bar cosmwasm-plus/artifacts:~$ ALL_ACCOUNTS='{ "all_accounts": {} }'
-foo@bar cosmwasm-plus/artifacts:~$ CUDOS_NODED query wasm contract-state smart $CONTRACT "$ALL_ACCOUNTS" $NODE
+foo@bar:~$ ALL_ACCOUNTS='{ "all_accounts": {} }'
+foo@bar:~$ CUDOS_NODED query wasm contract-state smart $CONTRACT "$ALL_ACCOUNTS" $NODE
 data:
   accounts:
   - cudos1er4ekhej7xrs8yn45qn5q6485q6dxq0tu33zft
