@@ -33,6 +33,8 @@ The picture below shows the diagram of validator topology:
 
 ![img](./validator-topoligy.jpg)
 
+Note that if you are running the setup not for the first time, then you will need to read the section [How to delete a current running node](/build/validator.html#how-to-delete-a-current-running-node).
+
 This article guides you through the instruction for running each one of those nodes.
 
 ### ﻿Run a Full node
@@ -337,7 +339,7 @@ the resulting output looks similar to the picture below, you need to find your v
 
 #### Add the orchestrator wallet
 
-Now you MUST add another wallet to use for the orchestrator (do not use the same validator wallet) and make sure that **it has some CUDOS tokens**. You can achieve that by running the command:
+Now you MUST [add another wallet](/build/account-setup.html#creating-a-keplr-wallet) to use for the orchestrator (do not use the same validator wallet) and make sure that **it has some CUDOS tokens**. You can achieve that by running the command:
 ```
 cudos-noded keys add orchestrator --recover --keyring-backend="os"
 ```
@@ -480,7 +482,7 @@ When having a network of 3 validators:
 - Network Utilization: ~5KiB/s
 - Disk: ~ 3 GB for 31 days in current environment
 
-You must have the minimum hardware requirements for each node that you are running on the Testnet network as explained below (extrapolating network to 125 Validators).
+You must have the minimum hardware requirements for each node that you are running on the Testnet network as explained below.
 
 ### Validator node
 
