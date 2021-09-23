@@ -411,41 +411,91 @@ Beyond the set up of a server, a node, an authenticated way of joining the Cudos
 
 ## Hardware requirements
 
-When having a network of 3 validators:
+The below hardware requirements are based upon extrapolating Cosmos minimums into our observations of an under-continuing-development testnet environment. Our ongoing performance and capacity monitoring may highlight needed changes as development continues, and so the requirements should be considered subject to revision.
 
-- AMD Rome 2 vCPUs, 4 GB memory
-- Cudos-root-node-disk - 320 SSD
-- CPU Utilization: ~5%
-- Memory Utilization: ~15%
-- Network Utilization: ~5KiB/s
-- Disk: ~ 3 GB for 31 days in current environment
+Our requirements design does factor in additional room to grow, and considers the additional value-add features that the Cudos network will incorporate over and above a simple Tendermint-based network.
 
-You must have the minimum hardware requirements for each node that you are running on the Testnet network as explained below.
+### Cudos mainnet ("Ingenii") Validator node
 
-### Validator node
+* Intel Xeon ('Skylake-SP' or newer) processor ‑or‑ AMD Epyc ('Naples' or newer) processor – Requires SGX ‑or‑ SEV feature, as well as AVX and AES-NI feature – Minimum model ≥8 cores at ≥2.0 GHz required (≥16 cores preferred)
+* 32GiB ECC system memory (≥64GiB preferred)
+* ≥2TB NVMe SSD - RAID1 or better resilience required (RAID 1+0 performance preferred) – High DWPD/TBW endurance drives strongly recommended
+* Redundancy of server power and cooling components strongly recommended
+* Private 1Gb/s or 10Gb/s internal network for peer node connections
+* 'Four‑nines' availability target or better
+* Linux Debian 10 recommended
 
-- CPU: 6vCPUs and above at ≥2.0 GHz
-- Memory: above 16GiB ECC system memory
-- Network:  1Gb/s or 10Gb/s internal network for peer node connections
-- Storage: ≥1TB NVMe SSD - RAID1 or better resilience required for the first year
+### Cudos mainnet ("Ingenii") Sentry node
 
-### Sentry node
+* Intel Xeon ('Haswell' or newer) processor ‑or‑ AMD Opteron/Epyc ('Toronto' or newer) processor – Minimum model ≥4 cores at ≥2.0 GHz required (≥8 cores preferred)
+* ≥16GiB ECC system memory
+* ≥1TB NVMe SSD - RAID1 or better resilience required
+* Redundancy of server power and cooling components strongly recommended
+* Private 1Gb/s or 10Gb/s internal network for peer node connections
+* 1Gb/s internet connection (≥2.5Gb/s preferred)
+* Publicly accessible IPv4 address (additionally IPv6 recommended)
+* Anti-DDoS protection strongly recommended
+* 'Four‑nines' availability target or better
+* Linux Debian 10 recommended
 
-- CPU: 4vCPUs and above at ≥2.0 GHz
-- Memory: above 8GiB ECC system memory
-- Network:  1Gb/s internet connection, but 100 MB/s will do
-- Storage: ≥1TB NVMe SSD for the first year (Same data as root)
+### Cudos mainnet ("Ingenii") Seed node
 
-### Seed node
+* Intel Xeon ('Haswell' or newer) processor ‑or‑ AMD Opteron/Epyc ('Toronto' or newer) processor – Minimum model ≥4 cores at ≥2.0 GHz required (≥8 cores preferred)
+* ≥16GiB ECC system memory
+* ≥1TB NVMe SSD - RAID1 or better resilience required
+* Redundancy of server power and cooling components strongly recommended
+* Private 1Gb/s or 10Gb/s internal network for peer node connections
+* 'Four‑nines' availability target or better
+* Linux Debian 10 recommended
 
-- CPU: 4vCPUs and above at ≥2.0 GHz
-- Memory: above 8GiB ECC system memory
-- Network:  1Gb/s internet connection, but 100 MB/s will do
-- Storage: ≥1TB NVMe SSD for the first year (Same data as root)
+### Cudos mainnet ("Ingenii") Ethereum node
 
-### Ethereum node
+* Intel Xeon ('Haswell' or newer) processor ‑or‑ AMD Opteron/Epyc ('Toronto' or newer) processor – Minimum model ≥4 cores at ≥2.0 GHz required
+* ≥16GiB ECC system memory
+* ≥2TB NVMe SSD - RAID1 or better resilience required
+* Redundancy of server power and cooling components strongly recommended
+* Private 1Gb/s or 10Gb/s internal network for peer node connections
+* 100Mb/s internet connection or better
+* 'Four‑nines' availability target or better
+* Linux Debian 10 recommended
 
-- CPU: 4vCPUs and above at ≥2.0 GHz
-- Memory: above 16GiB ECC system memory
-- Network:  1Gb/s internet connection, but 100 MB/s will do
-- Storage: ≥500GB NVMe SSD for the first year
+
+
+### Cudos public testnet ("Somniorum") Validator node
+
+* Intel Xeon ('Skylake-SP' or newer) processor ‑or‑ AMD Epyc ('Naples' or newer) processor – Requires SGX ‑or‑ SEV feature, as well as AVX and AES-NI feature – Minimum model ≥8 cores at ≥2.0 GHz required
+* ≥32GiB ECC system memory
+* ≥1TB NVMe SSD
+* Private 1Gb/s internal network for peer node connections
+* Linux Debian 10 recommended
+
+### Cudos public testnet ("Somniorum") Sentry node
+
+* Intel Xeon ('Haswell' or newer) processor ‑or‑ AMD Opteron/Epyc ('Toronto' or newer) processor – Minimum model ≥4 cores at ≥2.0 GHz required
+* ≥16GiB ECC system memory
+* ≥500GB NVMe SSD
+* Private 1Gb/s internal network for peer node connections
+* 100Mb/s internet connection (≥1Gb/s preferred)
+* Publicly accessible IPv4 address (additionally IPv6 recommended)
+* Linux Debian 10 recommended
+
+### Cudos public testnet ("Somniorum") Seed node
+
+* Intel Xeon ('Haswell' or newer) processor ‑or‑ AMD Opteron/Epyc ('Toronto' or newer) processor – Minimum model ≥4 cores at ≥2.0 GHz required
+* ≥16GiB ECC system memory
+* ≥500GB NVMe SSD
+* Private 1Gb/s internal network for peer node connections
+* Linux Debian 10 recommended
+
+### Cudos public testnet ("Somniorum") Ethereum node
+
+- Intel Xeon ('Haswell' or newer) processor ‑or‑ AMD Opteron/Epyc ('Toronto' or newer) processor -* Minimum model ≥4 cores at ≥2.0 GHz required
+* ≥16GiB ECC system memory
+* ≥1TB NVMe SSD
+* Private 1Gb/s internal network for peer node connections
+* 100Mb/s internet connection or better
+* Linux Debian 10 recommended
+
+Note that while we only provide specifications for dedicated physical hardware nodes for each of mainnet and testnet, we do not discourage validator operators who choose to identify virtual equivalents.
+
+At this time, we do not provide detailed storage IOPS/throughput or network PPS/bandwidth minimums. As the testnet evolves, we will share our observations of real-world statistics, to hopefully assist virtualised environment operators with right-sizing their deployments.
