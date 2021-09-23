@@ -12,32 +12,11 @@ Find the full list of exact updates **22/09/2021**
 5. Add new section [How to delete a current running node](/build/validator.html#how-to-delete-a-current-running-node)
 6. Update the section [hardware requirements](/build/validator.html#hardware-requirements)
 
-## How to delete a current running node
-
-If you stop the docker container that is running a Full node then you are not able to use it. But if you want to remove the full node docker data then you need to clear the volume of full node docker, if you remove the folder it will remove all the data but make sure first that you stop the docker container.
-
-Clear the volume of full node docker:
-* Navigate and open the file **CudosBuilders/docker/full-node/full-node.client.testnet.public01.arg**
-* Find the var **VOLUME_NAME=cudos-data-full-node-client-testnet-public-01** and clear it
-* Navigate to the file **CudosBuilders/docker/full-node/start-full-node.yml**
-* Find the one volume field
-volumes: **- '../../../CudosData/$VOLUME_NAME:$CUDOS_HOME'**
-* Above **VOLUME_NAME**  is mapped with this **../../../CudosData/$VOLUME_NAME**, clear it
-
-Remove the folder:
-Navigate to the folder **CudosData**, you may find a folder known as **cudos-data-full-node-client-testnet-public-01**, this is the folder which store all data of full node and needs to be removed.
-
-## How to run a Cudos Validator Node
-
-As explained in the article [Types of Nodes](/learn/validators.html#types-of-nodes) there are three types of nodes: Full, Sentry, and Seed node.
-
-For one or more validator nodes it is recommended to launch a layer of sentry nodes (at least 1 Sentry node) and optionally Seed nodes with isolating the validator node behind that layer.
-
-You need an IP-address per node which is directly connected to the network. For example, If you have **N** validator nodes and only one Sentry node then only the Sentry node is directly connected to the network. In this case you will need a single IP-address.
-
 ## Validator Setup
 
 ### How to separate your running nodes
+
+As explained in the article [Types of Nodes](/learn/validators.html#types-of-nodes) there are three types of nodes: Full, Sentry, and Seed node.
 
 As a validator, in order to have a secure and running network, you will need to run each of the following nodes on a different machine:
 
@@ -45,6 +24,10 @@ As a validator, in order to have a secure and running network, you will need to 
 2. Sentry node on a separate local machine
 3. Seed node on a separate local machine
 4. Ethereum full node, you can run it virtually on a cloud, if you do not have an Ethereum full node then you need to run the Orchestrator configuration on a separate local machine (not along with validator node).
+
+For one or more validator nodes it is recommended to launch a layer of sentry nodes (at least 1 Sentry node) and optionally Seed nodes with isolating the validator node behind that layer.
+
+You need an IP-address per node which is directly connected to the network. For example, If you have **N** validator nodes and only one Sentry node then only the Sentry node is directly connected to the network. In this case you will need a single IP-address.
 
 The picture below shows the diagram of validator topology:
 
@@ -442,6 +425,21 @@ Open [Gravity Bridge](http://35.192.177.142:4000/). Then you can use [Kelpr](htt
 ```
 
 Note that The commands of sending funds takes up to few minutes to be executed.
+
+## How to delete a current running node
+
+If you stop the docker container that is running a Full node then you are not able to use it. But if you want to remove the full node docker data then you need to clear the volume of full node docker, if you remove the folder it will remove all the data but make sure first that you stop the docker container.
+
+Clear the volume of full node docker:
+* Navigate and open the file **CudosBuilders/docker/full-node/full-node.client.testnet.public01.arg**
+* Find the var **VOLUME_NAME=cudos-data-full-node-client-testnet-public-01** and clear it
+* Navigate to the file **CudosBuilders/docker/full-node/start-full-node.yml**
+* Find the one volume field
+volumes: **- '../../../CudosData/$VOLUME_NAME:$CUDOS_HOME'**
+* Above **VOLUME_NAME**  is mapped with this **../../../CudosData/$VOLUME_NAME**, clear it
+
+Remove the folder:
+Navigate to the folder **CudosData**, you may find a folder known as **cudos-data-full-node-client-testnet-public-01**, this is the folder which store all data of full node and needs to be removed.
 
 ## Secure your node
 
