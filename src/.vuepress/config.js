@@ -60,6 +60,7 @@ module.exports = {
       '/build/': [
         '',
         'validator',
+        'smart-contract/developers-setup',
         'account-setup',
         'funding-your-wallet',
         'prerequisites',
