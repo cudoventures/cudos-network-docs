@@ -18,12 +18,14 @@ Find the full list of exact updates **22/09/2021**
 
 As explained in the article [Types of Nodes](/learn/validators.html#types-of-nodes) there are three types of nodes: Full, Sentry, and Seed node.
 
-As a validator, in order to have a secure and running network, you will need to run each of the following nodes on a different machine:
+In order to have a secure and running network, you will need to run each of the following nodes on a separate and different machine:
 
-1. Validator Full node along with the Orchestrator configuration on a separate local machine
+1. Validator Full node along with the Orchestrator configuration
 2. Sentry node on a separate local machine
 3. Seed node on a separate local machine
-4. Ethereum full node, you can run it virtually on a cloud, if you do not have an Ethereum full node then you need to run the Orchestrator configuration on a separate local machine (not along with validator node).
+4. Ethereum full node, you can run it virtually on a cloud
+
+As a validator, you must run an orchestrator. The orchestrator requires an Ethereum full node to connect to. If your Ethereum full node and the orchestrator are within a private network, you need to run the orchestrator on the same physical machine as the validator. Otherwise, If the network is public, you will need a separate machine for the orchestrator that must reside in the validator's private network. This will ensure that the validator machine is not making a public connection with any physical machine.
 
 For one or more validator nodes it is recommended to launch a layer of sentry nodes (at least 1 Sentry node) and optionally Seed nodes with isolating the validator node behind that layer.
 
@@ -81,7 +83,7 @@ Now you need to configure and start the full node. So far the full node is set t
 There are two different parameters for selecting the way to connect peers:
 
 * **PERSISTENT_PEERS** are list of peers that your current node is ALWAYS connected to (usually it is the list of all sentry nodes). It contains a list of comma separated peers that you will always want to be connected to.
-* **PRIVATE_PEERS** are list of peers that your current node does not share and it is totally private. For example - the Sentry/Seed node MUST set its validator (if available) as a private peer in order not to avoid sharing your validator's id/ip to the rest of the network. So it is a comma-separated list of node ids that will not be exposed to other peers which can be filled with a validator’s node id.
+* **PRIVATE_PEERS** are list of peers that your current node does not share and it is totally private. For example - the Sentry/Seed node MUST set its validator (if available) as a private peer in order to avoid sharing your validator's id/ip to the rest of the network. So it is a comma-separated list of node ids that will not be exposed to other peers which can be filled with a validator’s node id.
 
 The full node must communicate only through the created layer of peers. To achieve that, you will need to apply the following steps:
 
@@ -261,9 +263,9 @@ Be aware not to exit the docker shell. You will need it for the next step that i
 
 ### Orchestrator
 
-The orchestrator is a program that runs on every validator node beside the Cudos code. Validators, running a chain with the Gravity module installed, use the orchestrator to sign messages or transactions with a validator's unique key. The Gravity bridge enables token transfers from Ethereum to Cudos and back again.
+The orchestrator is a program that runs on every validator node beside the Cudos code. The Gravity bridge enables token transfers from Ethereum to Cudos and back again. Validators running a chain with an installed Gravity module use the orchestrator's wallet to sign messages or transactions. During the process of creating an orchestrator, the validator signs a transaction that contains data about the orchestrator address of this validator. Therefore, the orchestrator uses the wallet to sign this data and all gravity-related transactions.
 
-The Orchestrator monitors the Ethereum chain, submitting events that occur on Ethereum to Cudos as messages. To send transactions from Cudos to Ethereum, the Gravity Bridge module first packages the transaction data and makes it available on an endpoint. The Orchestrator then signs this data with the validator’s Ethereum key, and submits it as a message. These signatures will then be assembled and submitted to the Ethereum chain.
+The Orchestrator monitors the Ethereum chain, submitting events that occur on Ethereum to Cudos as messages. To send transactions from Cudos to Ethereum, the Gravity Bridge module first packages the transaction data and makes it available on an endpoint. The Orchestrator then signs this data with the validator’s Ethereum key, and submits it as a message. These signatures will then be assembled and submitted to the Ethereum chain. For more information, please read the [Gravity bridge design overview](https://github.com/althea-net/cosmos-gravity-bridge/blob/main/docs/design/overview.md).
 
 #### Get the validator address
 
@@ -417,7 +419,7 @@ Our requirements design does factor in additional room to grow, and considers th
 
 ### Cudos mainnet ("Ingenii") Validator node
 
-* Intel Xeon ('Skylake-SP' or newer) processor ‑or‑ AMD Epyc ('Naples' or newer) processor – Requires SGX ‑or‑ SEV feature, as well as AVX and AES-NI feature – Minimum model ≥8 cores at ≥2.0 GHz required (≥16 cores preferred)
+* Intel Xeon ('Skylake-SP' or newer) processor ‑or‑ AMD Epyc ('Naples' or newer) processor – Requires SGX ‑or‑ SEV feature – Minimum model ≥8 cores at ≥2.0 GHz required (≥16 cores preferred)
 * 32GiB ECC system memory (≥64GiB preferred)
 * ≥2TB NVMe SSD - RAID1 or better resilience required (RAID 1+0 performance preferred) – High DWPD/TBW endurance drives strongly recommended
 * Redundancy of server power and cooling components strongly recommended
@@ -463,7 +465,7 @@ Our requirements design does factor in additional room to grow, and considers th
 
 ### Cudos public testnet ("Somniorum") Validator node
 
-* Intel Xeon ('Skylake-SP' or newer) processor ‑or‑ AMD Epyc ('Naples' or newer) processor – Requires SGX ‑or‑ SEV feature, as well as AVX and AES-NI feature – Minimum model ≥8 cores at ≥2.0 GHz required
+* Intel Xeon ('Skylake-SP' or newer) processor ‑or‑ AMD Epyc ('Naples' or newer) processor – Requires SGX ‑or‑ SEV feature – Minimum model ≥8 cores at ≥2.0 GHz required
 * ≥32GiB ECC system memory
 * ≥1TB NVMe SSD
 * Private 1Gb/s internal network for peer node connections
