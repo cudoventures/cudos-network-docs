@@ -1,16 +1,43 @@
 ---
-title: Validator Setup
+title: Validator Setup version 0.2
 ---
 
-## How to run a Cudos Validator Node
+## Version 0.2 updates 22/09/2021
+
+Find the full list of exact updates **22/09/2021**
+1. Add new section [How to separate your running nodes](/build/validator.html#how-to-separate-your-running-nodes)
+2. Update the parameter **PRIVATE_PEERS** in the step 6 within the section [Configure and start the Sentry node as a validator](/build/validator.html#configure-and-start-the-sentry-node-as-a-validator)
+3. Update the parameter **PRIVATE_PEERS** in the step 6 within the section [Configure and start the Seed node as a validator](/build/validator.html#configure-and-start-the-seed-node-as-a-validator)
+4. Update the [Ethereum full-node](/build/validator.html#ethereum-full-node) section with the [standard recommendation and specification](https://ethereum.org/en/developers/docs/nodes-and-clients/#recommended-specifications)
+5. Add new section [How to delete a current running node](/build/validator.html#how-to-delete-a-current-running-node)
+6. Update the section [hardware requirements](/build/validator.html#hardware-requirements)
+
+## Validator Setup
+
+### How to separate your running nodes
 
 As explained in the article [Types of Nodes](/learn/validators.html#types-of-nodes) there are three types of nodes: Full, Sentry, and Seed node.
+
+In order to have a secure and running network, you will need to run each of the following nodes on a separate and different machine:
+
+1. Validator Full node along with the Orchestrator configuration
+2. Sentry node on a separate local machine
+3. Seed node on a separate local machine
+4. Ethereum full node, you can run it virtually on a cloud
+
+As a validator, you must run an orchestrator. The orchestrator requires an Ethereum full node to connect to. If your Ethereum full node and the orchestrator are within a private network, you need to run the orchestrator on the same physical machine as the validator. Otherwise, If the network is public, you will need a separate machine for the orchestrator that must reside in the validator's private network. This will ensure that the validator machine is not making a public connection with any physical machine.
 
 For one or more validator nodes it is recommended to launch a layer of sentry nodes (at least 1 Sentry node) and optionally Seed nodes with isolating the validator node behind that layer.
 
 You need an IP-address per node which is directly connected to the network. For example, If you have **N** validator nodes and only one Sentry node then only the Sentry node is directly connected to the network. In this case you will need a single IP-address.
 
-## Validator Setup
+The picture below shows the diagram of validator topology:
+
+![img](./validator-topoligy.jpg)
+
+Note that if you are running the setup not for the first time, then you will need to read the section [How to delete a current running node](/build/validator.html#how-to-delete-a-current-running-node).
+
+This article guides you through the instruction for running each one of those nodes.
 
 ### ﻿Run a Full node
 
@@ -21,7 +48,7 @@ To run a full node, you need to complete the following steps:
 - Initialize the node
 - Configure and start the node
 
-#### Initialize the node as a validator
+#### Initialize the Full node as a validator
 
 When you run a validator node, you play an important role in the security of a network. A validator must be secure and fault-tolerant. So it is recommended to run your validator with a layer of 1 or more sentry nodes and to isolate the validator node behind that layer. Also, you will need an IP-address per node that is connected to the network. For example, if you have 10 validator nodes and only one Sentry node then only the Sentry node will be connected to the network where you will need a single IP-address.
 
@@ -49,11 +76,14 @@ sudo docker-compose --env-file full-node.client.testnet.public01.arg -f init-ful
 
 If all steps are completed successfully, you should see a newly generated folder called **CudosData** at the same directory where you placed *CudosBuilders* and *CudosNode*. The subdirectory *cudos-data-full-node-client-testnet-public-01* of **CudosData"** folder has a file called **tendermint.nodeid**. This file contains your node **Id,** to see your node id you can open this file in any code editor and you will get one line that represents your node id such as 13f359c90582b12e291311980a855854668d80pc.
 
-#### Configure and start the node
-
-This step is valid only if you are running the full node as a validator. Note that if you are not a validator, you do not need to follow this step.
+#### Configure and start the Full node
 
 Now you need to configure and start the full node. So far the full node is set to be isolated and to connect the full node to the network, it needs Sentry peers. The full node should run behind the layer of running a Seed node and a Sentry node with all necessary configuration and starting the node as a validator.
+
+There are two different parameters for selecting the way to connect peers:
+
+* **PERSISTENT_PEERS** are list of peers that your current node is ALWAYS connected to (usually it is the list of all sentry nodes). It contains a list of comma separated peers that you will always want to be connected to.
+* **PRIVATE_PEERS** are list of peers that your current node does not share and it is totally private. For example - the Sentry/Seed node MUST set its validator (if available) as a private peer in order to avoid sharing your validator's id/ip to the rest of the network. So it is a comma-separated list of node ids that will not be exposed to other peers which can be filled with a validator’s node id.
 
 The full node must communicate only through the created layer of peers. To achieve that, you will need to apply the following steps:
 
@@ -79,28 +109,13 @@ Note that you can see the logs by running the command:
 sudo docker logs -f cudos-start-full-node-client-testnet-public-01
 ```
 
-#### Initialize and start the node without being a validator
-
-If you are not a validator and you want to initialize a full node, all you need to do is to follow the same steps for [Initialize the node as a validator](#configure-and-start-the-node-as-a-validator) but make sure that you set the flag **"SHOULD_USE_GLOBAL_PEERS"** to true. To do that, open the file **full-node.client.testnet.public01.env.** in any editor then set the flag to true:
-```
-SHOULD_USE_GLOBAL_PEERS=true
-```
-
-You can start your Full node by running the command:
-```
-sudo docker-compose --env-file full-node.client.testnet.public01.arg -f start-full-node.yml -p cudos-start-full-node-client-testnet-public-01 up --build --detach
-```
-
 ### ﻿Run a Sentry node
 
 Before running a node, make sure that you have followed the guide for [setting up your prerequisites and environment](/build/prerequisites.html).
 
-To run a sentry node, you need to complete the following steps:
+To run a sentry node, you need to configure and start the node.
 
-- Initialize the node
-- Configure and start the node
-
-#### Initialize and start the node without being a validator
+#### Configure and start the Sentry node as a validator
 
 1. Navigate to the directory *CudosBuilders/docker/sentry-node*
 2. Find the file **sentry-node.env.example** and create a copy of it
@@ -110,30 +125,9 @@ To run a sentry node, you need to complete the following steps:
 ```
 MONIKER=MySentryNodeName
 ```
-6. Initiliaze the node by running this command:
+6. Paste the full node's nodeId in the **PRIVATE_PEERS** line. If there are multiple full nodes ids, separate them by a comma such as:
 ```
-sudo docker-compose --env-file sentry-node.client.testnet.public01.arg -f init-sentry-node.yml -p cudos-init-sentry-node-client-testnet-public-01 up --build
-```
-7. Start the node by running this command:
-```
-sudo docker-compose --env-file sentry-node.client.testnet.public01.arg -f start-sentry-node.yml -p cudos-start-sentry-node-client-testnet-public-01 up --build
-```
-
-#### Configure and start the node as a validator
-
-This step is valid only if you are running the sentry node as a validator. Note that if you are not a validator, you do not need to follow this step.
-
-1. Navigate to the directory *CudosBuilders/docker/sentry-node*
-2. Find the file **sentry-node.env.example** and create a copy of it
-3. Rename the copied file to **sentry-node.client.testnet.public01.env**
-4. Open the file, which you renamed, **sentry-node.client.testnet.public01.env** in any editor
-5. Find  the **"MONIKER"** attribute and set a name to it as the following:
-```
-MONIKER=MySentryNodeName
-```
-6. Paste the full node's nodeId in the **PERSISTENT_PEERS** line. If there are multiple full nodes ids, separate them by a comma such as:
-```
-PERSISTENT_PEERS=<full-node1-id>@<full-node1-ip>:26656,<full-node2-id>@<full-node2-ip>:26656
+PRIVATE_PEERS=<full-node1-id>@<full-node1-ip>:26656,<full-node2-id>@<full-node2-ip>:26656
 ```
 7. Make sure that you are still in the correct directory **CudosBuilders/docker/sentry-node**
 8. Initialize the node by running this command:
@@ -154,33 +148,9 @@ sudo docker logs -f cudos-start-sentry-node-client-testnet-public-01
 
 Before running a node, make sure that you have followed the guide for [setting up your prerequisites and environment](/build/prerequisites.html).
 
-To run a seed node, you need to complete the following steps:
+To run a seed node, you need to configure and start the node.
 
-- Initialize the node
-- Configure and start the node
-
-#### Initialize and start the node without being a validator
-
-1. Navigate to the directory *CudosBuilders/docker/seed-node*
-2. Find the file **seed-node.env.example** and create a copy of it
-3. Rename the copied file to **seed-node.client.testnet.public01.env**
-4. Open the file, which you renamed, **seed-node.client.testnet.public01.env** in any editor
-5. Find  the **"MONIKER"** attribute and set a name to it as the following:
-```
-MONIKER=MySeedNodeName
-```
-6. Initiliaze the node by running this command:
-```
-sudo docker-compose --env-file seed-node.client.testnet.public01.arg -f init-seed-node.yml -p cudos-init-seed-node-client-testnet-public-01 up --build
-```
-7. Start the node by running this command:
-```
-sudo docker-compose --env-file seed-node.client.testnet.public01.arg -f start-seed-node.yml -p cudos-start-seed-node-client-testnet-public-01 up --build
-```
-
-#### Configure and start the node as a validator
-
-This step is valid only if you are running the seed node as a validator. Note that if you are not a validator, you do not need to follow this step.
+#### Configure and start the Seed node as a validator
 
 1. Navigate to the directory *CudosBuilders/docker/seed-node*
 2. Find the file **seed-node.env.example** and create a copy of it
@@ -190,9 +160,9 @@ This step is valid only if you are running the seed node as a validator. Note th
 ```
 MONIKER=MyseedNodeName
 ```
-6. Paste the full node's nodeId in the **PERSISTENT_PEERS** line. If there are multiple full nodes ids, separate them by a comma such as:
+6. Paste the full node's nodeId in the **PRIVATE_PEERS** line. If there are multiple full nodes ids, separate them by a comma such as:
 ```
-PERSISTENT_PEERS=<full-node1-id>@<full-node1-ip>:26656,<full-node2-id>@<full-node2-ip>:26656
+PRIVATE_PEERS=<full-node1-id>@<full-node1-ip>:26656,<full-node2-id>@<full-node2-ip>:26656
 ```
 7. Make sure that you are still in the correct directory **CudosBuilders/docker/seed-node**
 8. Initialize the node by running this command:
@@ -212,20 +182,18 @@ sudo docker logs -f cudos-start-seed-node-client-testnet-public-01
 ## Create a validator
 
 To create a validator account, you need:
-1. A running ethereum full-node
-2. A Cudos full-node which is a validator node
-3. An orchestrator
-4. A gravity bridge
+1. A running Ethereum full-node
+2. A running Cudos Full node ,which has the validator configuration, and a setup of the orchestrator.
 
-Only after finalizing previous steps, you can start the process of creating a validator and running it on your node. this section explains how to achieve each step in detail.
+Only after finalizing previous steps, you can start the process of creating a validator. this section explains how to achieve each step in detail.
 
-### Ethereum full-node
+### Ethereum full node
 
 First make sure that you have the [standard recommendation and specification](https://ethereum.org/en/developers/docs/nodes-and-clients/#recommended-specifications) for the Ethereum node.
 
 You can use either an existing [Ethereum full-node](https://ethereum.org/en/developers/docs/nodes-and-clients/#full-node) (if you have one) or you can follow the procedure below to start one but make sure not to use Infura:
 
-1. Run your ethereum binary on a different machine that your validator is running
+1. Run your Ethereum binary on a different machine that your validator is running
 2. Clone the correct branch from the [CudosBuilders](https://github.com/CudoVentures/cudos-builders) repository with renaming the folders accordingly to exactly _CudosBuilders_:
 ```
 git clone --depth 1 --branch sdk-0.43  https://github.com/CudoVentures/cudos-builders.git CudosBuilders
@@ -240,7 +208,13 @@ Note that you have to wait ~12 hours to finish syncing the Rinkeby test network.
 sudo docker logs -f ethereum
 ```
 
-### Cudos Validator node
+You should periodically monitor the free space on the disk you are operating on and if you fall under a certain limit you should shutdown the node. Otherwise, you will get the following ERROR message:
+
+```
+Low disk space. Gracefully shutting down Geth to prevent database corruption.
+```
+
+### Cudos Validator node and Orchestrator
 
 Make sure that you are [running Cudos full-node as a validator](#validator-setup)
 
@@ -289,7 +263,9 @@ Be aware not to exit the docker shell. You will need it for the next step that i
 
 ### Orchestrator
 
-The orchestrator is a program that runs on every validator beside the Cudos code. Validators, running a chain with the Gravity module installed, use the orchestrator to sign messages or transactions with a validator's unique key.
+The orchestrator is a program that runs on every validator node beside the Cudos code. The Gravity bridge enables token transfers from Ethereum to Cudos and back again. Validators running a chain with an installed Gravity module use the orchestrator's wallet to sign messages or transactions. During the process of creating an orchestrator, the validator signs a transaction that contains data about the orchestrator address of this validator. Therefore, the orchestrator uses the wallet to sign this data and all gravity-related transactions.
+
+The Orchestrator monitors the Ethereum chain, submitting events that occur on Ethereum to Cudos as messages. To send transactions from Cudos to Ethereum, the Gravity Bridge module first packages the transaction data and makes it available on an endpoint. The Orchestrator then signs this data with the validator’s Ethereum key, and submits it as a message. These signatures will then be assembled and submitted to the Ethereum chain. For more information, please read the [Gravity bridge design overview](https://github.com/althea-net/cosmos-gravity-bridge/blob/main/docs/design/overview.md).
 
 #### Get the validator address
 
@@ -303,7 +279,7 @@ the resulting output looks similar to the picture below, you need to find your v
 
 #### Add the orchestrator wallet
 
-Now you need to add another wallet to use for the orchestrator but first make sure that **it has some CUDOS tokens**. You can achieve that by running the command:
+Now you MUST [add another wallet](/build/account-setup.html#creating-a-keplr-wallet) to use for the orchestrator (do not use the same validator wallet) and make sure that **it has some CUDOS tokens**. You can achieve that by running the command:
 ```
 cudos-noded keys add orchestrator --recover --keyring-backend="os"
 ```
@@ -316,7 +292,7 @@ The resulting output looks similar to the picture below. You will need the addre
 
 ![](./Cosmos-orchestrator2.png)
 
-#### Register orchestrator
+#### Register and run the orchestrator
 
 1. Add the following variables:
 ```
@@ -329,9 +305,7 @@ export ETH_ADDRESS="<eth address, starting with 0x, that have some ETH on rinkeb
 cudos-noded tx gravity set-orchestrator-address $VALIDATOR_ADDRESS $ORCH_ADDRESS $ETH_ADDRESS --from validator --keyring-backend "os" --chain-id $CHAIN_ID
 ```
 
-#### Gravity bridge
-
-Make sure to run your gravity bridge binary on the same machine that your validator node is running on.
+Now let's run the orchestrator, please make sure to run your gravity bridge binary on the same machine that your validator node is running on.
 1. Open shell and navigate to the directory _CudosBuilders/docker/orchestrator_
 2. Create a copy of **orchestrator.env.example**
 3. Rename it to **orchestrator.client.testnet.public01.env**
@@ -356,7 +330,7 @@ you can see the logs by running the command:
 sudo docker logs -f cudos-orchestrator-client-testnet-public-01-release
 ```
 
-### Send funds using the bridge
+### Send funds using the gravity bridge
 
 You have two different options to send funds (it is recommended to use the first option UI):
 1. Using gravity bridge UI
@@ -394,6 +368,21 @@ Open [Gravity Bridge](http://35.192.177.142:4000/). Then you can use [Kelpr](htt
 
 Note that The commands of sending funds takes up to few minutes to be executed.
 
+## How to delete a current running node
+
+If you stop the docker container that is running a Full node then you are not able to use it. But if you want to remove the full node docker data then you need to clear the volume of full node docker, if you remove the folder it will remove all the data but make sure first that you stop the docker container.
+
+Clear the volume of full node docker:
+* Navigate and open the file **CudosBuilders/docker/full-node/full-node.client.testnet.public01.arg**
+* Find the var **VOLUME_NAME=cudos-data-full-node-client-testnet-public-01** and clear it
+* Navigate to the file **CudosBuilders/docker/full-node/start-full-node.yml**
+* Find the one volume field
+volumes: **- '../../../CudosData/$VOLUME_NAME:$CUDOS_HOME'**
+* Above **VOLUME_NAME**  is mapped with this **../../../CudosData/$VOLUME_NAME**, clear it
+
+Remove the folder:
+Navigate to the folder **CudosData**, you may find a folder known as **cudos-data-full-node-client-testnet-public-01**, this is the folder which store all data of full node and needs to be removed.
+
 ## Secure your node
 
 Setting up a Cudos Node is the starting point for any user wanting to interact with, and play a greater part in, the network. In order to set up a Cudos node, users will require the use of Go/Golang version 1.15 or higher. On-premise or bare metal server providers such as OVH, Leaseweb, IBM, Alibaba, Amazon Web Services, Google Cloud Computing platform, or Microsoft Azure, can be used to generate Cudos nodes and join the Cudos Network.
@@ -422,49 +411,93 @@ An extension of the sentry node architecture optionally sees a Validator operato
 
 Beyond the set up of a server, a node, an authenticated way of joining the Cudos blockchain using our in-built public key infrastructure, in coordination with Ledger HSM or YubiHSM for those Validators choosing to implement them, the use of full nodes when interacting the network is highly recommended. We plan to implement the ability for Cudos Validator Nodes to store a history of previously signed blocks in order to more seamlessly prevent double-signing by adverse or deficient nodes in the Cudos Network. This feature is currently absent in earlier-generation Tendermint blockchains. The final element keeping Cudos Network Validating nodes safe is the Tendermint Core Byzantine Fault Tolerant Proof of Stake consensus algorithm.
 
-## Hardware Requirements
+## Hardware requirements
 
-The following are the minimum hardware requirements Validators will need to run to successfully join and operate on the Cudos Network for the Testnet and Mainnet (Version 1) stage:
+The below hardware requirements are based upon extrapolating Cosmos minimums into our observations of an under-continuing-development testnet environment. Our ongoing performance and capacity monitoring may highlight needed changes as development continues, and so the requirements should be considered subject to revision.
 
-#### Cudos mainnet ("Ingenii") Validator node
+Our requirements design does factor in additional room to grow, and considers the additional value-add features that the Cudos network will incorporate over and above a simple Tendermint-based network.
 
-* Intel Xeon ('Skylake-SP' or newer) processor ‑or‑ AMD Epyc ('Naples' or newer) processor – Requires SGX ‑or‑ SEV feature, as well as AVX and AES-NI feature – Minimum model ≥8 cores at ≥2.0 GHz required (≥16 cores preferred)
+### Cudos mainnet ("Ingenii") Validator node
+
+* Intel Xeon ('Skylake-SP' or newer) processor ‑or‑ AMD Epyc ('Naples' or newer) processor – Requires SGX ‑or‑ SEV feature – Minimum model ≥8 cores at ≥2.0 GHz required (≥16 cores preferred)
 * 32GiB ECC system memory (≥64GiB preferred)
 * ≥2TB NVMe SSD - RAID1 or better resilience required (RAID 1+0 performance preferred) – High DWPD/TBW endurance drives strongly recommended
-* Redundancy of server power and cooling components is strongly recommended
+* Redundancy of server power and cooling components strongly recommended
 * Private 1Gb/s or 10Gb/s internal network for peer node connections
-'Four‑nines' availability target or better
-* Linux Debian 10
+* 'Four‑nines' availability target or better
+* Linux Debian 10 recommended
 
-#### Cudos mainnet ("Ingenii") Sentry node
+### Cudos mainnet ("Ingenii") Sentry node
 
 * Intel Xeon ('Haswell' or newer) processor ‑or‑ AMD Opteron/Epyc ('Toronto' or newer) processor – Minimum model ≥4 cores at ≥2.0 GHz required (≥8 cores preferred)
 * ≥16GiB ECC system memory
-* ≥500GB NVMe SSD - RAID1 or better resilience required
-* Redundancy of server power and cooling components is strongly recommended
+* ≥1TB NVMe SSD - RAID1 or better resilience required
+* Redundancy of server power and cooling components strongly recommended
 * Private 1Gb/s or 10Gb/s internal network for peer node connections
 * 1Gb/s internet connection (≥2.5Gb/s preferred)
 * Publicly accessible IPv4 address (additionally IPv6 recommended)
-* Anti-DDoS protection is strongly recommended
-'Four‑nines' availability target or better
-* Linux Debian 10
+* Anti-DDoS protection strongly recommended
+* 'Four‑nines' availability target or better
+* Linux Debian 10 recommended
 
-#### Cudos public testnet ("Somniorum") Validator node
-
-* Intel Xeon ('Skylake-SP' or newer) processor ‑or‑ AMD Epyc ('Naples' or newer) processor – Requires SGX ‑or‑ SEV feature, as well as AVX and AES-NI feature – Minimum model ≥8 cores at ≥2.0 GHz required (≥16 cores preferred)
-* 32GiB ECC system memory (≥64GiB preferred)
-* ≥2TB NVMe SSD - RAID1 or better resilience recommended
-* Private 1Gb/s or 10Gb/s internal network for peer node connections
-* Linux Debian 10
-
-#### Cudos public testnet ("Somniorum") Sentry node
+### Cudos mainnet ("Ingenii") Seed node
 
 * Intel Xeon ('Haswell' or newer) processor ‑or‑ AMD Opteron/Epyc ('Toronto' or newer) processor – Minimum model ≥4 cores at ≥2.0 GHz required (≥8 cores preferred)
 * ≥16GiB ECC system memory
-* ≥500GB NVMe SSD - RAID1 or better resilience recommended
+* ≥1TB NVMe SSD - RAID1 or better resilience required
+* Redundancy of server power and cooling components strongly recommended
 * Private 1Gb/s or 10Gb/s internal network for peer node connections
-* 1Gb/s internet connection (≥2.5Gb/s preferred)
-* Publicly accessible IPv4 address (additionally IPv6 recommended)
-* Linux Debian 10
+* 'Four‑nines' availability target or better
+* Linux Debian 10 recommended
 
-As the network evolves and the Cudos community receives more feedback on the above, we expect these figures to be updated and communicated to network stakeholders on an ongoing basis.
+### Cudos mainnet ("Ingenii") Ethereum node
+
+* Intel Xeon ('Haswell' or newer) processor ‑or‑ AMD Opteron/Epyc ('Toronto' or newer) processor – Minimum model ≥4 cores at ≥2.0 GHz required
+* ≥16GiB ECC system memory
+* ≥2TB NVMe SSD - RAID1 or better resilience required
+* Redundancy of server power and cooling components strongly recommended
+* Private 1Gb/s or 10Gb/s internal network for peer node connections
+* 100Mb/s internet connection or better
+* 'Four‑nines' availability target or better
+* Linux Debian 10 recommended
+
+
+
+### Cudos public testnet ("Somniorum") Validator node
+
+* Intel Xeon ('Skylake-SP' or newer) processor ‑or‑ AMD Epyc ('Naples' or newer) processor – Requires SGX ‑or‑ SEV feature – Minimum model ≥8 cores at ≥2.0 GHz required
+* ≥32GiB ECC system memory
+* ≥1TB NVMe SSD
+* Private 1Gb/s internal network for peer node connections
+* Linux Debian 10 recommended
+
+### Cudos public testnet ("Somniorum") Sentry node
+
+* Intel Xeon ('Haswell' or newer) processor ‑or‑ AMD Opteron/Epyc ('Toronto' or newer) processor – Minimum model ≥4 cores at ≥2.0 GHz required
+* ≥16GiB ECC system memory
+* ≥500GB NVMe SSD
+* Private 1Gb/s internal network for peer node connections
+* 100Mb/s internet connection (≥1Gb/s preferred)
+* Publicly accessible IPv4 address (additionally IPv6 recommended)
+* Linux Debian 10 recommended
+
+### Cudos public testnet ("Somniorum") Seed node
+
+* Intel Xeon ('Haswell' or newer) processor ‑or‑ AMD Opteron/Epyc ('Toronto' or newer) processor – Minimum model ≥4 cores at ≥2.0 GHz required
+* ≥16GiB ECC system memory
+* ≥500GB NVMe SSD
+* Private 1Gb/s internal network for peer node connections
+* Linux Debian 10 recommended
+
+### Cudos public testnet ("Somniorum") Ethereum node
+
+- Intel Xeon ('Haswell' or newer) processor ‑or‑ AMD Opteron/Epyc ('Toronto' or newer) processor -* Minimum model ≥4 cores at ≥2.0 GHz required
+* ≥16GiB ECC system memory
+* ≥1TB NVMe SSD
+* Private 1Gb/s internal network for peer node connections
+* 100Mb/s internet connection or better
+* Linux Debian 10 recommended
+
+Note that while we only provide specifications for dedicated physical hardware nodes for each of mainnet and testnet, we do not discourage validator operators who choose to identify virtual equivalents.
+
+At this time, we do not provide detailed storage IOPS/throughput or network PPS/bandwidth minimums. As the testnet evolves, we will share our observations of real-world statistics, to hopefully assist virtualised environment operators with right-sizing their deployments.

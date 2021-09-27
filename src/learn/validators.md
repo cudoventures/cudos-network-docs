@@ -10,27 +10,35 @@ Cudos Network is a Proof of Stake chain so each Validator must put up a token de
 
 ### Types of Nodes
 
-We currently have three distinct Cudos Nodes types:
+We currently have three distinct types of Cudos node:
 
-* Full Nodes
-* Seed Nodes
-* Sentry Nodes
+* Full node
+* Seed node
+* Sentry node
 
 We will be layering on [Cudos Compute Nodes](#compute-nodes) to the network in the future. Find a description of each Cudos Node below:
 
-#### Full Node
+#### Full node
 
 A full node is a node that participates in the network but without support in securing it. You can use this type to store the entire state of a blockchain, including blocks and the modified state of transactions. When running a full node, you support the network to reach the consensus until the current block. So it is important to secure your node from adversarial actors by using a firewall and a proxy.
 
-#### Seed Node
+You can configure your full node to become a **Validator Node** that interfaces with a validator signing key. Validator nodes must have high security setup, and should not accept incoming connections. They should maintain outgoing connections to a controlled set of Sentry Nodes that serve as their proxy shield to the rest of the network.
 
-A seed node generates a list of peers to which another node can connect. When you want to start a node, you need to give at least one type of node to join the desired network. This will allow you to populate your address quickly. Note that after a seed node provides a list of peers, it will no longer be a peer and will disconnect from your node.
+Validators that know and trust each other can accept incoming connections from one another and maintain direct private connectivity via VPN. The validator nodes only needs to be able to connect to its sentry nodes, preferably via a private network and never to be exposed directly on the public network.
 
-#### Sentry Node
+#### Seed node
 
-A sentry node is like a full node, but it has one or more private peers. The private peers can represent validators or other full nodes in the network. It provides a security layer for your validator.
+A seed node generates a list of peers to which another node can connect. So you can think of a seed node as the first point of contact for a new node joining the network. After a seed node provides a list of peers to the network, it will no longer be a peer and will disconnect.
 
-### Compute Nodes
+Note that installing a Seed node is optional.
+
+#### Sentry node
+
+You can think of a Sentry node as a communication bridge between the public internet and the Validator nodes. This adds a layer of security to the whole network and to validators in specific. The communication between the Sentry nodes and the validator is always a private connection. A sentry node is like a full node, but it has one or more private peers. The private peers can represent validators or other full nodes in the network. They should always expect to have direct incoming connections from the Validator node.
+
+The Validator node talks to the Sentry nodes that are provided, the Sentry nodes communicate to the Validator node via a private connection and the rest of the network via a public connection. The Sentry nodes have the option to communicate with other Sentry nodes as well.
+
+### Compute nodes
 
 Compute Nodes will be responsible for listening to the Cudos smart contracts and running any workloads when relevant. When selecting a workload from the CUDOS smart contracts the requestor may choose to use nodes supporting AMD’s SEV technology for added security. AMD’s SEV technology allows the memory contents of a VM to be transparently encrypted with a key unique to the guest VM. This adds an extra layer of security and protection to the network, for both the node and the job requester.
 

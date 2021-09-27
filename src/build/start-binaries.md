@@ -20,7 +20,7 @@ git clone --depth 1 --branch cosmos-sdk-0.43 https://github.com/CudoVentures/cos
 4. Navigate to the directory _CudosBuilders/docker/binary-builder_ directory
 5. Build and start the binaries by running this command:
 ```
-sudo docker-compose --env-file binary-builder.arg -f binary-builder.yml -p cudos-binary-builder up --build
+sudo docker-compose --env-file binary-builder.arg -f binary-builder.yml -p cudos-binary-builder up --build --detach
 ```
 6. If you would like to start the docker image that has already been built and contains the cudos binary then run the following command:
 ```
