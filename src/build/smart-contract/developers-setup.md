@@ -1,6 +1,93 @@
 ---
-title: Developers Setup version 0.1
+title: Developers Setup Version 0.1
 ---
+
+This article explains the following:
+
+* [How to send tokens to another wallet](/build/smart-contract/developers-setup.html#send-tokens-to-another-wallet)
+* [How to delegate tokens to a validator](/build/smart-contract/developers-setup.html#delegate-tokens-to-a-validator-using-cudos-explorer)
+* [How to claim your rewards](/build/smart-contract/developers-setup.html#claim-rewards-using-cudos-explorer)
+* [How to unstake your tokens](/build/smart-contract/developers-setup.html#unstake-tokens-using-cudos-explorer)
+* [How to initialize and start a Full node](/build/smart-contract/developers-setup.html#initialize-and-start-full-node)
+* [How to initialize and start a Sentry node](/build/smart-contract/developers-setup.html#initialize-and-start-sentry-node)
+* [How to initialize and start a Seed node](/build/smart-contract/developers-setup.html#initialize-and-start-seed-node)
+* [Deployment and interaction of CW20](/build/smart-contract/developers-setup.html#deployment-and-interaction-of-cw20)
+
+## Send tokens to another wallet
+
+if you did not create an account on Keplr, then you need to follow the steps in the article [Account Setup](/build/account-setup.md) and [link your Keplr account to the Cudos explorer](/build/account-setup.html#link-keplr-to-the-cudos-network). Note that you can get tokens via the [Cudos Faucet](/build/funding-your-wallet.html#get-funds-via-faucet).
+
+You can send tokens either via the Keplr extension or via Cudos explorer:
+
+1. Open your Keplr extension
+2. Click on the button **Send**:
+
+<img src="./send-tokens.png" width="300" height="500">
+
+3. Put the recipient address and add the amount that you want to send then click on the button **Send**:
+
+<img src="./send-tokens-2.png" width="300" height="500">
+
+4. Click on the button **Approve** to successfully send your tokens:
+
+<img src="./send-tokens-3.png" width="300" height="500">
+
+In order to send tokens via [Cudos explorer](https://explorer.cudos.org/), you need to go to your account and click on the button **transfer**:
+
+<img src="./send-tokens-5.png" width="800" height="500">
+
+then you need to add the recipient address and the amount:
+
+<img src="./send-tokens-6.png" width="800" height="500">
+
+## Delegate tokens to a validator using Cudos explorer
+
+1. Go to [Cudos explorer](https://explorer.cudos.org/)
+2. Click on the tab [Validators](https://explorer.cudos.org/validators) and choose the active validator that you want to delegate your stake to:
+
+<img src="./send-tokens-4.png" width="800" height="500">
+
+3. Click on the green button **DELEGATE**:
+
+<img src="./send-tokens-7.png" width="800" height="500">
+
+4. Add the amount of tokens that you want to delegate and click on the button **Next**
+
+<img src="./send-tokens-8.png" width="500" height="500">
+
+5. Click on the button **Approve**:
+
+<img src="./send-tokens-9.png" width="400" height="500">
+
+## Claim rewards using Cudos explorer
+
+1. Open your Keplr extension
+2. Click on the button **Claim**:
+
+<img src="./send-tokens-12.png" width="300" height="500">
+
+3. Click on the button **Approve**:
+
+<img src="./send-tokens-13.png" width="300" height="500">
+
+## Unstake tokens using Cudos explorer
+
+1. Go to [Cudos explorer](https://explorer.cudos.org/)
+2. Click on the tab [Validators](https://explorer.cudos.org/validators) and choose the active validator that you want to delegate your stake to:
+
+<img src="./send-tokens-4.png" width="800" height="500">
+
+3. Click on the button **UNDELEGTAE**:
+
+<img src="./send-tokens-7.png" width="800" height="500">
+
+4. Add the amount of tokens that you want to undelegate and click on the button **Next**
+
+<img src="./send-tokens-10.png" width="500" height="500">
+
+5. Click on the button **Approve**:
+
+<img src="./send-tokens-11.png" width="400" height="500">
 
 ## Initialize and start Full node
 
@@ -163,9 +250,9 @@ foo@bar:~$ export KEYRING="--keyring-backend test --keyring-dir $HOME/.wasmd_key
 **main is the human readable account which is already added by wasmd**
 
 **using command**
-**wasmd keys add** _ **\&lt;name\&gt;** _
+**wasmd keys add** _ **\&lt;name\&gt;**
 
-**Add some balance in wasm-power, bob and alice using**  [**explorer.cudos.org/faucet** ](https://explorer.cudos.org/faucet) **.**
+**Add some balance in wasm-power, bob and alice using**  [**explorer.cudos.org/faucet** ](https://explorer.cudos.org/faucet).
 
 ```
 foo@bar:~$ cd cosmwasm-plus/artifacts
@@ -189,7 +276,7 @@ foo@bar:~$ RES=$(CUDOS_NODED  tx wasm store artifacts/cw20_base.wasm --from main
 foo@bar:~$ CODE_ID=$(echo $RES | jq -r '.logs[0].events[-1].attributes[-1].value')
 ```
 
-1. Instantiate the contract
+3. Instantiate the contract
 ```
 # instantiate contract and verify
 foo@bar:~$ INIT=$(jq -n --arg "wasmpower" $(CUDOS_NODED keys show -a wasm-power $KEYRING --address) '{ "name": "DIZZ COIN", "symbol": "DIZZ", "decimals": 6, "initial_balances": [{ "address": $wasmpower, "amount": "1000000" }], "mint": {"minter": $wasmpower,"cap": "99900000000"}}')
