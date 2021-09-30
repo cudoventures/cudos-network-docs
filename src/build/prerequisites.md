@@ -95,9 +95,9 @@ cd ~/cudos
 2. Make sure that you are in the correct directory (cudos directory in this example)
 3. Clone the correct branches from the [CudosNode](https://github.com/CudoVentures/cudos-node), [CudosBuilders](https://github.com/CudoVentures/cudos-builders), and [CudosGravityBridge](https://github.com/CudoVentures/cosmos-gravity-bridge) repositories with renaming the folders accordingly to exactly _CudosNode_, _CudosBuilders_, and _CudosGravityBridge_:
 ```
-git clone --depth 1 --branch gravity/sdk-0.43 https://github.com/CudoVentures/cudos-node.git CudosNode
-git clone --depth 1 --branch sdk-0.43  https://github.com/CudoVentures/cudos-builders.git CudosBuilders
-git clone --depth 1 --branch cosmos-sdk-0.43 https://github.com/CudoVentures/cosmos-gravity-bridge.git CudosGravityBridge
+git clone --depth 1 --branch v0.2 https://github.com/CudoVentures/cudos-node.git CudosNode
+git clone --depth 1 --branch v0.3  https://github.com/CudoVentures/cudos-builders.git CudosBuilders
+git clone --depth 1 --branch v0.2 https://github.com/CudoVentures/cosmos-gravity-bridge.git CudosGravityBridge
 ```
 4. Navigate to the _CudosBuilders_ directory
 5. Build the docker image of the binary by running the command:
