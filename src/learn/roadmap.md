@@ -27,3 +27,18 @@ Scope:
 ## Nubium
 
 v2.0 release of the Cudos Network in which compute-power is augmented by a layer-3 pool of service providers from our existing Mining and Compute communities
+
+Proposed Scope:
+- Scalable on-chain compute
+- Compute marketplace
+- EVM Support
+- Multi-chain bridges
+- Complex Reference DApps
+
+*expected 2022*
+
+# 🌝?
+
+- [Lacus Somniorum](https://en.wikipedia.org/wiki/Lacus_Somniorum)
+- [Mare Ingenii](https://en.wikipedia.org/wiki/Mare_Ingenii)
+- [Mare Nubium](https://en.wikipedia.org/wiki/Mare_Nubium)
