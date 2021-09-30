@@ -2,29 +2,52 @@
 title: Learn
 ---
 
-## Overview
+## Cudos Network
 
-The Cudos Network is a special-purpose blockchain designed to provide high-performance, trustless, and permissionless cloud computing for all. Consensus on the network is achieved by using the Tendermint Core and its Delegated Proof of Stake (DPoS) algorithm. In addition to leveraging Tendermint Core, the Cudos Network is supported by the Cosmos SDK to achieve high throughput, availability, and security. The promise of computing, which is core to the Cudos Network’s mission, is also expanded beyond Cosmos-based blockchains through bespoke bridges and cryptographic approaches to cross-chain interoperability. While Ethereum is the first Layer-1 blockchain we plan to interoperate during our Mainnet launch, we plan to expand our compute offering to a wider array of networks.
+The Cudos Network is a special-purpose blockchain designed to provide high-performance, trust-less, permission-less cloud computing for all.
 
-Developers, individuals, and businesses will deploy next-generation smart contracts that leverage CosmWasm (and later EVM via Ethermint) with equal security assurances to traditional blockchain networks on the Cudos Network. The added benefits are faster transaction speeds and fundamentally lower transaction costs. This will allow Cudos to fulfil its mission of providing an extra computing layer to blockchains, unlocking an extensive array of additional use cases for which high-performance computing power is needed.
+Builders on the network get access to:
+<br>🔧 High application performance
+<br>🏗 Developer-friendly smart contract tools
+<br>💱 Composable asset management
 
-This higher level of performance and security is possible thanks to the Cudos Blockchain’s ability to leverage a strong community of Validators with a robust node infrastructure. This gives users of the Cudos Network a high level of confidence in the various enterprise and developer use cases that are subsequently deployed. What makes the Cudos Network stand out from other blockchains is the deep level of integration for high-performance computes capacity at the very core of the network.
+Users of the chain benefit from:
+<br>🔐 High cryptographic security
+<br>🔬 Public blockchain transparency
+<br>📬 Cross-chain interoperability
+<br>🌳 Carbon-neutral transactions
 
-Validators, meaning individuals who have financially committed funds through a process known as staking, notarize, and in fact validate, every transaction proposed onto the network with high availability and trust levels that are assessed in a real-time and predictive manner. The Cudos Network rewards the most well-performing Validators with a predictable income stream. It also rapidly removes misbehaving actors from its Proof of Stake network to assure a greater level of security for all participants. The combination of these factors incentivise any individual today, from investors to data-centre or compute infrastructure providers, to interact reliably on the Cudos Network to buy or sell compute capacity at scale.
+Designed as a scalable alternative to larger, expensive chains the Cudos Network allows complex applications to run completely on-chain where that would've previously been prohibitively expensive or simply impossible due to gas limits. Cudos Network runs on a Delegated Proof of Stake (DPoS) consensus model, with Validators checking transactions and providing compute cycles for DApps on the network to consume.
 
-## What is CUDOS?
+Developers, individuals, and businesses will deploy next-generation smart contracts that leverage CosmWasm (and later EVM via Ethermint) with the security assurances of distributed ledger technology. This higher level of performance and security is possible thanks to the Cudos blockchain’s ability to leverage a strong community of Validators with a robust node infrastructure. This gives users of the Cudos Network a high level of confidence in the various enterprise and developer use cases that are subsequently deployed.
+
+What makes the Cudos Network stand out from other blockchains is the deep level of integration for high-performance compute capacity at the very core of the network. This allows Cudos to provide an extra computing layer to blockchains, unlocking an extensive array of additional use cases for which high-performance computing power is needed.
+
+### Ecosystem
+
+Cudos Network is built using Tendermint Core and inherits its Delegated Proof of Stake (DPoS) algorithm. In addition to leveraging Tendermint Core, the Cudos Network is supported by the Cosmos SDK to achieve high throughput, availability, and security. This architecture allows easy cross-chain compatibility with many other blockchains, particularly those already built on the Cosmos SDK, by leveraging the nascent IBC protocol for moving assets between these systems securely.
+
+The promise of computing, which is core to the Cudos Network’s mission, is also expanded beyond Cosmos-based blockchains through bespoke bridges and cryptographic approaches to cross-chain interoperability. Cudos Network launches with a bridge to Layer-1 Ethereum, and we plan to expand our compute offering to a wider array of networks in the future.
+
+### Design Principles
+
+1. Making efficient use of the world’s existing computing resources
+2. Multi-chain future
+3. Public, permission-less software > privately owned source code
+
+## CUDOS
 
 CUDOS is a multi-chain layer 2 solution, providing Turing-complete compute and external data to blockchains. Because blockchains are immutable, this means they are generally very limiting in what they can do. This very much restricts their use, and without another solution use cases like DeFi would not exist. CUDOS provides a bridge between the blockchain world and the outside world to enable blockchains to consume outside data, APIs and compute.
 
 CUDOS goes a step further as well, and integrates seamlessly with Cudo, a distributed computing platform that can effectively be understood as a layer 3 for blockchains. This allows the use of specialised hardware on-demand, requested directly on-chain from a smart contract.
 
-## Why is CUDOS needed?
+### Why is CUDOS needed?
 
 Layer 2 networks are a necessity for various blockchains, for different reasons. In ethereum, gas costs are prohibitively high when trying to run complex workloads or store data. In the case of Algorand (which is a Top 50 blockchain) their blockchain is not Turing complete which means it is very limited in its computing capability. CUDOS is working closely with the Algorand team to bring DeFi data feeds and a Layer 2 compute network to the Algorand network to make them a full computing network.
 
 Blockchains are also missing an effective method to fetch and use external data, which is crucial for many applications including DeFi. CUDOS is a necessary step for blockchain technology to progress to its next phase and reach mass-adoption.
 
-## CUDOS compute oracle
+### CUDOS compute oracle
 
 CUDOS is a bridge between blockchains and the outside world, to enable the use of external data, APIs and extra compute power that is not limited by the blockchain’s difficulties. This bridge is an absolute necessity for blockchain to reach mass-adoption, as most blockchains are completely disconnected from the outside world, making any interaction impossible.
 
@@ -51,6 +74,8 @@ The app hash is used in order to decide which code the CUDOS nodes need to run. 
 Once a node has heard an event and has decided that it should run the work, that triggers its WebAssembly executor part. Note that listening to the blockchain is already an off-chain process, so this process is not constrained by the blockchain’s limitations anymore. Once execution starts, the node will fetch the passed inputs, and will send the relevant API requests to the marketplace and the app in order to run the compute workload.
 
 After the result is obtained in each CUDOS validator node, a consensus check might be needed in order to return a unique result to the original requesting smart contract on the layer 1 blockchain. Once that unique result (or address storing the result) has been decided and sent to the CUDOS smart contract, the original smart contract can fetch it.
+
+Validators, meaning individuals who have financially committed funds through a process known as staking, notarize, and in fact validate, every transaction proposed onto the network with high availability and trust levels that are assessed in a real-time and predictive manner. The Cudos Network rewards the most well-performing Validators with a predictable income stream. It also rapidly removes misbehaving actors from its Proof of Stake network to assure a greater level of security for all participants. The combination of these factors incentivise any individual today, from investors to data-centre or compute infrastructure providers, to interact reliably on the Cudos Network to buy or sell compute capacity at scale.
 
 <!-- TODO
 
