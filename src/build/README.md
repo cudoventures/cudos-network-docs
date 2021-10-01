@@ -12,4 +12,4 @@ Developers can start building smart contracts on Somniorum today and be ready to
 
 ## Ingenii Mainnet
 
-As per our roadmap the Cudos Network will go into production at the conclusion of our incentivised public testnet [Project Artemis](/earn/incentives.html). ['Ingenii'](/learn/roadmap.html#ingenii) allows Validators to begin earning CUDOS for transaction processing and allows developers to build production smart contract functionality for their decentralised applications.
+As per our roadmap the Cudos Network will go into production at the conclusion of our incentivised public testnet [Project Artemis](/earn/incentives.html). ['Ingenii'](/learn/roadmap.html#ingenii) will allow Validators to begin earning CUDOS for transaction processing and will allow developers to build production smart contract functionality for their decentralised applications.
