@@ -1,10 +1,12 @@
 ---
-title: Validator Setup version 0.2
+title: Validator Setup Instructions (v0.2)
 ---
 
-## Version 0.2 updates 22/09/2021
+# Validator Setup Instructions (v0.2)
 
-Find the full list of exact updates **22/09/2021**
+# Updates 22/09/2021
+
+Find the full list of latest updates:
 1. Add new section [How to separate your running nodes](/build/validator.html#how-to-separate-your-running-nodes)
 2. Update the parameter **PRIVATE_PEERS** in the step 6 within the section [Configure and start the Sentry node as a validator](/build/validator.html#configure-and-start-the-sentry-node-as-a-validator)
 3. Update the parameter **PRIVATE_PEERS** in the step 6 within the section [Configure and start the Seed node as a validator](/build/validator.html#configure-and-start-the-seed-node-as-a-validator)

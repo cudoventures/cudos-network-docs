@@ -8,7 +8,7 @@ The Cudos Network is currently in a public testnet entitled 'Somniorum' ([See wh
 
 Developers can start building smart contracts on Somniorum today and be ready to launch their products at launch of Cudos Network mainnet.
 
-[Start a Somniorum Validator](/build/validator.html), or [dive into our docs now to start building!](/build/smart-contract/developers-setup.html)
+[Start a Somniorum Validator](/build/validator.html), or [dive into our docs now to start building!](/build/developers-setup.html)
 
 ## Ingenii Mainnet
 

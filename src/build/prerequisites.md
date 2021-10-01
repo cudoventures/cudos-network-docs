@@ -1,13 +1,16 @@
 ---
-title: Prerequisites and Operating Systems
+title: Prerequisites
 ---
 
-# ﻿Prerequisites and operating systems
+# ﻿Prerequisites
 
 This article explains:
-* How to install all necessary prerequisites
-* Important notes of installing docker for first time
-* How to setup your environment before running a node
+* [How to install all necessary prerequisites](/build/prerequisites.html#install-prerequisites)
+* [Important notes of installing docker for first time](/build/prerequisites.html#notes-for-installing-docker-for-the-first-time)
+* [How to setup your environment before running a node](/build/prerequisites.html#setup-the-environment-before-running-a-node)
+* [How to create an account and set up a Keplr wallet](/build/prerequisites.html#create-an-account-and-set-up-a-keplr-wallet)
+
+## Install prerequisites
 
 You can run your node in different operating systems such as Debian 10, Ubuntu, WSL, and macOS Catalina version 10.15.4 or above. If you are installing docker for the first time, please check the next section, “Notes for Installing Docker for the First Time”.
 

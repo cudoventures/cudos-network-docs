@@ -59,11 +59,13 @@ module.exports = {
 
       '/build/': [
         '',
-        'validator',
-        'smart-contract/developers-setup',
+        'prerequisites',
         'account-setup',
         'funding-your-wallet',
-        'prerequisites',
+        'validator',
+        'developers-setup',
+        'interact-keplr-explorer',
+        'smart-contracts',
         'start-binaries'
       ],
 
