@@ -10,73 +10,48 @@ This article explains the following:
 
 ## Deployment and interaction of CW20
 
-### Overview
-
 CW20 is equivalent to ERC20 **.** CW-20 is similar, in some respects, to bitcoin, Litecoin, and any other cryptocurrency; CW-20 tokens are blockchain-based assets that have value and can be sent and received. The primary difference is that instead of running on their own blockchain, CW-20 tokens are issued on the CosmWasm network.
 
 This section explains how to deploy and interact with CW20 using cudos-noded.
 
 ### Functions present in CW20 base standard
 
-### Actions
+#### Actions
 
-- **mint**
+- **mint** - Create new tokens, update total supply, and add them to the balance of recipient, as long as it does not exceed the cap. The caller must be a minter.
 
-Mint token to recipient and caller must be minter
+- **transfer** - Moves the specified amount of tokens from the sender account to the recipient account. This is designed to send to an address controlled by a private key and does not trigger any actions on the recipient if it is a contract.
 
-- **transfer**
+- **burn** - Remove the specified amount tokens from the balance of the sender.
 
-Transfer tokens to recipient from caller&#39;s address
+- **increaseAllowance** - Set or increase the allowance limit of spender for a given caller such that spender may access up to amount + current allowance tokens from the sender account.
 
-- **burn**
+- **decreaseAllowance** - Decrease or clear the allowance limit of spender for a given caller such that spender may access up to the current allowance minus the amount tokens from the sender account.
 
-Destroy token present inside caller&#39;s wallet
+- **transferFrom** - Used to transfer token from src to target and caller must be the address who is pre approved by the src. Pre approve of address is done by increaseAllowance. This makes use of an allowance and if there was a valid, un-expired pre-approval for the sender, then moves amount tokens from owner to recipient and deduct it from the available allowances.
 
-- **increaseAllowance**
+#### Queries
 
-Increase the allowance limit of spender for a given caller
+- **balance** - Returns the balance of the given address.
 
-- **decreaseAllowance**
+- **allowance** - Returns the available allowance that spender can access from the owner's account.
 
-Decrease the allowance limit of spender for a given caller
+- **allAllowances** - Returns a list of all address who are allowed to spend(non-expired allowances) by given owner address.
 
-- **transferFrom**
+- **allAccounts** - Returns paginated list of all accounts with their balance equals to 0.
 
-Used to transfer token from src to target and caller must be the address who is pre approved by the src. Pre approve of address is done by increaseAllowance
+- **tokenInfo**- Returns the name and symbol of a token.
 
-### Queries
+- **minter** - Returns a the address of a minter for a given contract(who and how much can be minted).
 
-- **balance**
-
-Display balance of given address
-
-- **allowance**
-
-Display allowance limit spender has for a given address
-
-- **allAllowances**
-
-Display list of all address who are allowed to spend from given owner address
-
-- **allAccounts**
-
-Display paginated list of all accounts with balance \&gt; 0
-
-- **tokenInfo**
-
-Display name and symbol of a token
-
-- **minter**
-Display a minter address for a given contract
-
-### Download Node and Code
+### Download Cudos node and code
 
 - Setup a CUDOS\_NODED using binary builder mentioned here [https://github.com/CudoVentures/cudos-network-docs/blob/Table-of-Content-folders/src/docs/build-and-earn/testnet-guides/start-binaries.md](https://github.com/CudoVentures/cudos-network-docs/blob/Table-of-Content-folders/src/docs/build-and-earn/testnet-guides/start-binaries.md)
-- Download [cosmwasm-plus](https://github.com/CosmWasm/cw-plus) contract and compile the contracts using docker(make sure you run docker command inside the root folder)
+- Download [cosmwasm-plus](https://github.com/CosmWasm/cw-plus) contract and compile the contracts using docker. Please make sure that you run the docker command inside the root folder.
 
 ### Compile the contracts
 
-- Go to cosmwasm-plus folder and run the following command
+- Go to cosmwasm-plus folder and run the following command:
 ```
 foo@bar:~$ docker run --rm -v "$(pwd)":/code \
 --mount type=volume,source="$(basename "$(pwd)")_cache",target=/code/target \
@@ -84,10 +59,9 @@ foo@bar:~$ docker run --rm -v "$(pwd)":/code \
 cosmwasm/workspace-optimizer:0.11.3
 ```
 
-### Deployment And Instantiation
+### Deployment and instantiation
 
-1. Set environment variables
-
+1. Set the environment variables:
 ```
 foo@bar:~$ RPC="http://localhost:26657"
 foo@bar:~$ CHAIN_ID="localnet"
@@ -95,15 +69,12 @@ foo@bar:~$ export NODE="--node $RPC"
 foo@bar:~$ export TXFLAG="${NODE} --chain-id ${CHAIN_ID} --gas auto --gas-adjustment 1.3"
 foo@bar:~$ export KEYRING="--keyring-backend test --keyring-dir $HOME/.wasmd_keys"
 ```
-
-1. Compilation will take some time and will provide you with artifacts folder in the root
-2. Upload the contract on the chain
+The compilation will take some time and it will provide you with artifacts folder in the root
+Upload the contract on the chain.
 
 **main is the human readable account which is already added by wasmd**
-
 **using command**
 **wasmd keys add** _ **\&lt;name\&gt;**
-
 **Add some balance in wasm-power, bob and alice using**  [**explorer.cudos.org/faucet** ](https://explorer.cudos.org/faucet).
 
 ```
@@ -128,7 +99,7 @@ foo@bar:~$ RES=$(CUDOS_NODED  tx wasm store artifacts/cw20_base.wasm --from main
 foo@bar:~$ CODE_ID=$(echo $RES | jq -r '.logs[0].events[-1].attributes[-1].value')
 ```
 
-3. Instantiate the contract
+3. Instantiate and verify the contract
 ```
 # instantiate contract and verify
 foo@bar:~$ INIT=$(jq -n --arg "wasmpower" $(CUDOS_NODED keys show -a wasm-power $KEYRING --address) '{ "name": "DIZZ COIN", "symbol": "DIZZ", "decimals": 6, "initial_balances": [{ "address": $wasmpower, "amount": "1000000" }], "mint": {"minter": $wasmpower,"cap": "99900000000"}}')
@@ -145,7 +116,7 @@ foo@bar:~$ CONTRACT=$(wasmd query wasm list-contract-by-code $CODE_ID $NODE --ou
 echo $CONTRACT
 ```
 
-Upto this point we have successfully deployed and instantiated contract.
+Congrats, you have successfully deployed and instantiated contract.
 
 ### Mint CW20 Tokens
 
@@ -168,9 +139,9 @@ data:
 
 ### Transfer CW20 Tokens
 
-**Prerequisite:**
+As a prerequisite, you need to mint tokens that was mentioned in the previous section(Mint CW20 Tokens).
 
-- **Mint tokens mentioned in &quot;Mint CW20 Tokens&quot; section**
+Transfer tokens by running this command:
 
 ```
 MINT=$(jq -n --arg bob $(CUDOS_NODED keys show -a bob $KEYRING --address) '{ "mint": { "recipient": $bob, "amount": "1000000" } }')
@@ -202,9 +173,9 @@ data:
 
 ### Increase Allowance
 
-**Prerequisite:**
+As a prerequisite, you need to mint tokens that was mentioned in the previous section(Mint CW20 Tokens).
 
-- **Mint tokens mentioned in &quot;Mint CW20 Tokens&quot; section**
+Increase allowance by running this command:
 
 ```
 foo@bar:~$ INCREASE_ALLOWANCE=$(jq -n --arg alice $(CUDOS_NODED keys show -a alice $KEYRING --address) '{ "increase_allowance": { "spender": $alice, "amount": "15000" } }')
@@ -224,9 +195,9 @@ data:
 
 ### Transfer a CW20 Tokens (via spender)
 
-**Prerequisite:**
+As a prerequisite, you need to approve the token using the steps mentioned in the previous section(Increase Allowance).
 
-- **Approve the token using steps mentioned in &quot;Increase Allowance&quot; section**
+Transfer tokens via spender:
 
 ```
 foo@bar:~$ BALANCE_OF_SENDER=$(jq -n --arg wasmPower $(CUDOS_NODED keys show -a wasm-power $KEYRING --address) '{ "balance": { "address": $wasmPower} }')
@@ -267,10 +238,9 @@ data:
 
 ### Decrease Allowance
 
-**Prerequisite**
+As a prerequisite, you need to mint tokens that was mentioned in the previous section(Mint CW20 Tokens) and you need to approve the token using the steps mentioned in the previous section(Increase Allowance).
 
-- **Mint a new token using steps mentioned in &quot;Mint CW20 Tokens&quot; section**
-- **Approve the token using steps mentioned in &quot;Increase Allowance&quot; section**
+Decrease allowance by running this command:
 
 ```
 foo@bar:~$ BALANCE_OF_SENDER=$(jq -n --arg wasmPower $(CUDOS_NODED keys show -a wasm-power $KEYRING --address) '{ "balance": { "address": $wasmPower} }')
@@ -308,9 +278,9 @@ data:
 
 ### Burn CW20 Tokens
 
-**Prerequisite**
+As a prerequisite, you need to mint tokens that was mentioned in the previous section(Mint CW20 Tokens).
 
-- **Mint few new tokens using steps mentioned in &quot;Mint CW20 Tokens&quot; section**
+Burn tokens by running this command:
 ```
 foo@bar:~$ BALANCE_OF_SENDER=$(jq -n --arg wasmPower $(CUDOS_NODED keys show -a wasm-power $KEYRING --address) '{ "balance": { "address": $wasmPower} }')
 foo@bar:~$ echo $BALANCE_OF_SENDER
@@ -328,9 +298,9 @@ data:
 
 ### All Allowances
 
-**Prerequisite**
+As a prerequisite, you need to mint tokens that was mentioned in the previous section(Mint CW20 Tokens).
 
-- **Mint few new tokens using steps mentioned in &quot;Mint CW20 Tokens&quot; section**
+Get all allowances by running this command:
 ```
 foo@bar:~$ ALL_ALLOWANCES=$(jq -n --arg wasmPower $(CUDOS_NODED keys show -a wasm-power $KEYRING) '{ "all_allowances": { "owner": $wasmPower } }')
 foo@bar:~$ echo $ALL_ALLOWANCES
@@ -344,12 +314,11 @@ data:
     spender: cudos1jz2nxvlgqscjxtw0q26rqyrpdfvyh5j3nlnmn9
 ```
 
-
 ### All Accounts
 
-**Prerequisite**
+As a prerequisite, you need to mint tokens that was mentioned in the previous section(Mint CW20 Tokens).
 
-- **Mint few new tokens using steps mentioned in &quot;Mint CW20 Tokens&quot; section**
+Get all accounts by running this command:
 ```
 foo@bar:~$ ALL_ACCOUNTS='{ "all_accounts": {} }'
 foo@bar:~$ CUDOS_NODED query wasm contract-state smart $CONTRACT "$ALL_ACCOUNTS" $NODE
