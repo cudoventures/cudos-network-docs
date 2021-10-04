@@ -118,7 +118,9 @@ echo $CONTRACT
 
 Congrats, you have successfully deployed and instantiated contract.
 
-### Mint CW20 Tokens
+### Examples
+
+#### Mint CW20 tokens
 
 ```
  foo@bar:~$ MINT=$(jq -n --arg bob $(CUDOS_NODED keys show -a bob $KEYRING --address) '{ "mint": { "recipient": $bob, "amount": "1000000" } }')
@@ -137,7 +139,7 @@ data:
   balance: "1000000"
 ```
 
-### Transfer CW20 Tokens
+#### Transfer CW20 tokens
 
 As a prerequisite, you need to mint tokens that was mentioned in the previous section(Mint CW20 Tokens).
 
@@ -171,7 +173,7 @@ data:
   balance: "990000"
 ```
 
-### Increase Allowance
+#### Increase allowance
 
 As a prerequisite, you need to mint tokens that was mentioned in the previous section(Mint CW20 Tokens).
 
@@ -193,7 +195,7 @@ data:
     never: {}
 ```
 
-### Transfer a CW20 Tokens (via spender)
+#### Transfer a CW20 tokens (via spender)
 
 As a prerequisite, you need to approve the token using the steps mentioned in the previous section(Increase Allowance).
 
@@ -236,7 +238,7 @@ data:
     never: {}
 ```
 
-### Decrease Allowance
+#### Decrease allowance
 
 As a prerequisite, you need to mint tokens that was mentioned in the previous section(Mint CW20 Tokens) and you need to approve the token using the steps mentioned in the previous section(Increase Allowance).
 
@@ -276,7 +278,7 @@ data:
     never: {}
 ```
 
-### Burn CW20 Tokens
+#### Burn CW20 tokens
 
 As a prerequisite, you need to mint tokens that was mentioned in the previous section(Mint CW20 Tokens).
 
@@ -296,7 +298,7 @@ data:
   balance: "979000"
 ```
 
-### All Allowances
+### Return all allowances
 
 As a prerequisite, you need to mint tokens that was mentioned in the previous section(Mint CW20 Tokens).
 
@@ -314,7 +316,7 @@ data:
     spender: cudos1jz2nxvlgqscjxtw0q26rqyrpdfvyh5j3nlnmn9
 ```
 
-### All Accounts
+#### Return all accounts
 
 As a prerequisite, you need to mint tokens that was mentioned in the previous section(Mint CW20 Tokens).
 
