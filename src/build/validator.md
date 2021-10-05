@@ -29,7 +29,7 @@ As a validator, you must run an orchestrator. The orchestrator requires an Ether
 
 For one or more validator nodes it is recommended to launch a layer of sentry nodes (at least 1 Sentry node) and optionally Seed nodes with isolating the validator node behind that layer.
 
-You need an IP-address per node which is directly connected to the network. For example, If you have **N** validator nodes and only one Sentry node then only the Sentry node is directly connected to the network. In this case you will need a single IP-address.
+You need an public IP-address per node which is directly connected to the network. For example, If you have **N** validator nodes and only one Sentry node then only the Sentry node is directly connected to the network. In this case you will need a single public IP-address.
 
 The picture below shows the diagram of validator topology:
 
@@ -196,7 +196,7 @@ You can use either an existing [Ethereum full-node](https://ethereum.org/en/deve
 1. Run your Ethereum binary on a different machine that your validator is running
 2. Clone the correct branch from the [CudosBuilders](https://github.com/CudoVentures/cudos-builders) repository with renaming the folders accordingly to exactly _CudosBuilders_:
 ```
-git clone --depth 1 --branch sdk-0.43  https://github.com/CudoVentures/cudos-builders.git CudosBuilders
+git clone --depth 1 --branch v0.3  https://github.com/CudoVentures/cudos-builders.git CudosBuilders
 ```
 3. Open shell, navigate to the directory _CudosBuilders/docker/ethereum_ and start the Ethereum full-node by running the command:
 ```
@@ -216,7 +216,13 @@ Low disk space. Gracefully shutting down Geth to prevent database corruption.
 
 ### Cudos Validator node and Orchestrator
 
-Make sure that you are [running Cudos full-node as a validator](#validator-setup)
+Make sure that you are [running Cudos full-node as a validator](#validator-setup). Note that you will need to leave the node running for around 12 hours before the staking will work. You can check if the node is syncing with the blockchain by running the command:
+```
+apt update ; apt install -y jq
+cudos-noded status 2>&1 | jq -M ".SyncInfo.catching_up"
+```
+If the call to cudos-noded returns **true**, then you need to wait 12 hours before staking.
+
 
 Access the container, that is needed to connect to its bash, directly with its name by running the command:
 ```
@@ -225,10 +231,6 @@ sudo docker exec -it cudos-start-full-node-client-testnet-public-01 bash
 
 1. As a first step, you need to get the private key of your node. So, if you created the account by Keplr then just connect to the full nodes' container and run the following commands to add it to the node:
 ```
-# The amount you want to stake, denominate them in acudos, without spaces (min 1 000 000 000 000 000 000 acudos) export
-export STAKE="1000000000000000000acudos"
-export CHAIN_ID="cudos-testnet-public"
-
 # Add the wallet in your nodes' keyring:
 cudos-noded keys add validator --recover --keyring-backend="os"
 ```
@@ -238,6 +240,10 @@ cudos-noded keys add validator --recover --keyring-backend="os"
 5. You can change the rates as you desire for your validator
 6. Create a validator by entering the password and running the following command (change the rates with the ones you want for your validator):
 ```
+# The amount you want to stake, denominate them in acudos, without spaces (min 1 000 000 000 000 000 000 acudos) export
+export STAKE="1000000000000000000acudos"
+export CHAIN_ID="cudos-testnet-public"
+
 cudos-noded tx staking create-validator --amount=$STAKE \
     --from=validator \
     --pubkey=$(cudos-noded tendermint show-validator) \
@@ -370,7 +376,7 @@ Note that The commands of sending funds takes up to few minutes to be executed.
 
 ## How to delete a current running node
 
-If you stop the docker container that is running a Full node then you are not able to use it. But if you want to remove the full node docker data then you need to clear the volume of full node docker, if you remove the folder it will remove all the data but make sure first that you stop the docker container.
+If you want to remove the full node docker data then you need to clear the volume of full node docker, if you remove the folder it will remove all the data but make sure first that you stop the docker container.
 
 Clear the volume of full node docker:
 * Navigate and open the file **CudosBuilders/docker/full-node/full-node.client.testnet.public01.arg**
