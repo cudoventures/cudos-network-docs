@@ -20,15 +20,15 @@ You can send tokens either via the Keplr extension or via Cudos explorer:
 1. Open your Keplr extension
 2. Click on the button **Send**:
 
-<img src="./send-tokens.png" width="300" height="500">
+<img src="./send-tokens.png" width="500" height="800">
 
 3. Put the recipient address and add the amount that you want to send then click on the button **Send**:
 
-<img src="./send-tokens-2.png" width="300" height="500">
+<img src="./send-tokens-2.png" width="500" height="800">
 
 4. Click on the button **Approve** to successfully send your tokens:
 
-<img src="./send-tokens-3.png" width="300" height="500">
+<img src="./send-tokens-3.png" width="500" height="800">
 
 In order to send tokens via [Cudos explorer](https://explorer.cudos.org/), you need to go to your account and click on the button **transfer**:
 
@@ -55,18 +55,18 @@ then you need to add the recipient address and the amount:
 
 5. Click on the button **Approve**:
 
-<img src="./send-tokens-9.png" width="400" height="500">
+<img src="./send-tokens-9.png" width="500" height="500">
 
 ## Claim rewards using Cudos explorer
 
 1. Open your Keplr extension
 2. Click on the button **Claim**:
 
-<img src="./send-tokens-12.png" width="300" height="500">
+<img src="./send-tokens-12.png" width="500" height="800">
 
 3. Click on the button **Approve**:
 
-<img src="./send-tokens-13.png" width="300" height="500">
+<img src="./send-tokens-13.png" width="500" height="800">
 
 ## Unstake tokens using Cudos explorer
 

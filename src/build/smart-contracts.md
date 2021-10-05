@@ -373,6 +373,7 @@ Once Docker is installed, clone or download the [CosmWasm-Examples](https://gith
 ### Run and deploy Escrow contract
 
 #### Create an alias to your full-node or builder docker instance:
+
 ```
 alias CUDOS_NODED='docker exec <container-id> cudos-noded'
 git clone https://github.com/CudoVentures/cosmwasm-examples
@@ -382,6 +383,7 @@ cd contracts/escrow/
 ```
 
 Create your main project directory. Once this is done, run the following command at Terminal in your project folder:
+
 ```
 docker run --rm -v "$(pwd)":/code \
   --mount type=volume,source="$(basename "$(pwd)")_cache",target=/code/target \
