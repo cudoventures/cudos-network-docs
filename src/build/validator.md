@@ -198,7 +198,7 @@ You can use either an existing [Ethereum full-node](https://ethereum.org/en/deve
 1. Run your Ethereum binary on a different machine that your validator is running
 2. Clone the correct branch from the [CudosBuilders](https://github.com/CudoVentures/cudos-builders) repository with renaming the folders accordingly to exactly _CudosBuilders_:
 ```
-git clone --depth 1 --branch sdk-0.43  https://github.com/CudoVentures/cudos-builders.git CudosBuilders
+git clone --depth 1 --branch v0.3 https://github.com/CudoVentures/cudos-builders.git CudosBuilders
 ```
 3. Open shell, navigate to the directory _CudosBuilders/docker/ethereum_ and start the Ethereum full-node by running the command:
 ```
