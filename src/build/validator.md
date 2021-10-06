@@ -29,7 +29,7 @@ As a validator, you must run an orchestrator. The orchestrator requires an Ether
 
 For one or more validator nodes it is recommended to launch a layer of sentry nodes (at least 1 Sentry node) and optionally Seed nodes with isolating the validator node behind that layer.
 
-You need an public IP-address per node which is directly connected to the network. For example, If you have **N** validator nodes and only one Sentry node then only the Sentry node is directly connected to the network. In this case you will need a single public IP-address.
+You need a public IP address per node which is directly connected to the network. For example, If you have **N** validator nodes and only one Sentry node then only the Sentry node is directly connected to the network. In this case you will need a single public IP address.
 
 The picture below shows the diagram of validator topology:
 
