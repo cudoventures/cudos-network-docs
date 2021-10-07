@@ -218,7 +218,10 @@ Low disk space. Gracefully shutting down Geth to prevent database corruption.
 
 ### Cudos Validator node and Orchestrator
 
-Make sure that you are [running Cudos full-node as a validator](#validator-setup)
+Make sure that you are [running Cudos full-node as a validator](#validator-setup). Your validator node needs to catch up to the current network height and you can check your current progress by running the command:
+```
+cudos-noded status 2>&1 | jq -M ".SyncInfo.latest_block_height"
+```
 
 Access the container, that is needed to connect to its bash, directly with its name by running the command:
 ```
@@ -263,6 +266,8 @@ Note that if you get a message that the transaction is not included in any block
 Be aware not to exit the docker shell. You will need it for the next step that is registering the orchestrator.
 :::
 
+
+
 ### Orchestrator
 
 The orchestrator is a program that runs on every validator node beside the Cudos code. The Gravity bridge enables token transfers from Ethereum to Cudos and back again. Validators running a chain with an installed Gravity module use the orchestrator's wallet to sign messages or transactions. During the process of creating an orchestrator, the validator signs a transaction that contains data about the orchestrator address of this validator. Therefore, the orchestrator uses the wallet to sign this data and all gravity-related transactions.
@@ -296,12 +301,14 @@ The resulting output looks similar to the picture below. You will need the addre
 
 #### Register and run the orchestrator
 
-1. Add the following variables:
+1. Add the following variables, note that the **ETH_ADDRESS** is the public receiving address of your Ethereum wallet so it does not require any node installation, only copy-paste your Ehtereum address from your [Metamask account/wallet](https://metamask.zendesk.com/hc/en-us/articles/360015290012-Using-a-Local-Node):
 ```
 export VALIDATOR_ADDRESS="<*operator_address* from above>"
 export ORCH_ADDRESS="<*address* from the previous step>"
 export ETH_ADDRESS="<eth address, starting with 0x, that have some ETH on rinkeby test network>"
 ```
+If you do not have any Ehtereum tokens in your wallet, then you can read the article [Ethereum Blockchain – Getting Free Test Ethers For Rinkeby Test Network](https://www.geeksforgeeks.org/ethereum-blockchain-getting-free-test-ethers-for-rinkeby-test-network/)
+
 2. Register the orchestrator:
 ```
 cudos-noded tx gravity set-orchestrator-address $VALIDATOR_ADDRESS $ORCH_ADDRESS $ETH_ADDRESS --from validator --keyring-backend "os" --chain-id $CHAIN_ID
