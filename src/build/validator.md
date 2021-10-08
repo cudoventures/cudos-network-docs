@@ -218,15 +218,17 @@ Low disk space. Gracefully shutting down Geth to prevent database corruption.
 
 ### Cudos Validator node and Orchestrator
 
-Make sure that you are [running Cudos full-node as a validator](#validator-setup).
-After starting the validator and ethereum nodes, the chain will begin to sync to the network. The time to sync to the network will vary depending on your setup and the current size of the blockchain, but could take a very long time. To query the status of your node, run the command:
-```
-cudos-noded status 2>&1 | jq '.SyncInfo.latest_block_height'
-```
-
 Access the container, that is needed to connect to its bash, directly with its name by running the command:
 ```
 sudo docker exec -it cudos-start-full-node-client-testnet-public-01 bash
+```
+
+Make sure that you are [running Cudos full-node as a validator](#validator-setup).
+After starting the validator and ethereum nodes, the chain will begin to sync to the network. The time to sync to the network will vary depending on your setup and the current size of the blockchain, but could take a very long time. To query the status of your node, run the command:
+```
+apt update ; apt install -y jq
+cudos-noded status 2>&1 | jq -M ".SyncInfo.catching_up"
+cudos-noded status 2>&1 | jq '.SyncInfo.latest_block_height'
 ```
 
 1. As a first step, you need to get the private key of your node. So, if you created the account by Keplr then just connect to the full nodes' container and run the following commands to add it to the node:
@@ -267,8 +269,6 @@ Note that if you get a message that the transaction is not included in any block
 Be aware not to exit the docker shell. You will need it for the next step that is registering the orchestrator.
 :::
 
-
-
 ### Orchestrator
 
 The orchestrator is a program that runs on every validator node beside the Cudos code. The Gravity bridge enables token transfers from Ethereum to Cudos and back again. Validators running a chain with an installed Gravity module use the orchestrator's wallet to sign messages or transactions. During the process of creating an orchestrator, the validator signs a transaction that contains data about the orchestrator address of this validator. Therefore, the orchestrator uses the wallet to sign this data and all gravity-related transactions.
@@ -308,7 +308,7 @@ export VALIDATOR_ADDRESS="<*operator_address* from above>"
 export ORCH_ADDRESS="<*address* from the previous step>"
 export ETH_ADDRESS="<eth address, starting with 0x, that have some ETH on rinkeby test network>"
 ```
-If you do not have any Ehtereum tokens in your wallet, then you can read the article [Ethereum Blockchain – Getting Free Test Ethers For Rinkeby Test Network](https://www.geeksforgeeks.org/ethereum-blockchain-getting-free-test-ethers-for-rinkeby-test-network/)
+If you do not have any Ehtereum tokens in your wallet, then you can read the article [Ethereum Blockchain – Getting Free Test Ethers For Rinkeby Test Network](https://www.geeksforgeeks.org/ethereum-blockchain-getting-free-test-ethers-for-rinkeby-test-network/) and the [how to use Metamask article](https://levelup.gitconnected.com/how-to-use-metamask-a-step-by-step-guide-f380a3943fb1)
 
 2. Register the orchestrator:
 ```
