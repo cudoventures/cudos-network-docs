@@ -221,7 +221,7 @@ Low disk space. Gracefully shutting down Geth to prevent database corruption.
 Make sure that you are [running Cudos full-node as a validator](#validator-setup).
 After starting the validator and ethereum nodes, the chain will begin to sync to the network. The time to sync to the network will vary depending on your setup and the current size of the blockchain, but could take a very long time. To query the status of your node, run the command:
 ```
-cudos-noded status 2>&1 | jq -M ".SyncInfo.latest_block_height"
+cudos-noded status 2>&1 | jq '.SyncInfo.latest_block_height'
 ```
 
 Access the container, that is needed to connect to its bash, directly with its name by running the command:
