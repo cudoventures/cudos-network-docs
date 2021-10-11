@@ -230,6 +230,8 @@ sudo docker exec -ti cudos-start-full-node-client-testnet-public-01 cudos-noded 
 sudo docker exec -ti cudos-start-full-node-client-testnet-public-01 cudos-noded status | jq '.SyncInfo.latest_block_height'
 ```
 
+If the call to cudos-noded returns **true**, then you need to wait 12 hours before staking.
+
 1. As a first step, you need to get the private key of your node. So, if you created the account by Keplr then just connect to the full nodes' container and run the following commands to add it to the node:
 ```
 # The amount you want to stake, denominate them in acudos, without spaces (min 1 000 000 000 000 000 000 acudos) export
