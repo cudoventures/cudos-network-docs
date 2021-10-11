@@ -68,11 +68,11 @@ Note that compilation will take some time and will provide you with artifacts su
 1. Set the environment variables:
 
 ```
-foo@bar:~$ RPC="http://localhost:26657"
-foo@bar:~$ CHAIN_ID="cudos-testnet-public"
+foo@bar:~$ export RPC="http://localhost:26657"
+foo@bar:~$ export CHAIN_ID="cudos-testnet-public"
 foo@bar:~$ export NODE="--node $RPC"
 foo@bar:~$ export TXFLAG="${NODE} --chain-id ${CHAIN_ID} --gas auto --gas-adjustment 1.3"
-foo@bar:~$ export KEYRING="--keyring-backend os"
+foo@bar:~$ export KEYRING="os"
 ```
 
 2. Create accounts
@@ -81,7 +81,7 @@ foo@bar:~$ export KEYRING="--keyring-backend os"
 foo@bar:~$ docker cp artifacts/cw20_base.wasm binary-builder:/usr/cudoss
 foo@bar:~$ alias CUDOS_NODED='docker exec -it binary-builder cudos-noded'
 foo@bar:~$ export KEYRING="os"
-foo@bar:~$ CUDOS_NODED keys add wasm-power
+foo@bar:~$ CUDOS_NODED keys add wasm-power --keyring-backend "$KEYRING"
 foo@bar:~$ CUDOS_NODED keys add bob --keyring-backend "$KEYRING"
 foo@bar:~$ CUDOS_NODED keys add alice --keyring-backend "$KEYRING"
 
