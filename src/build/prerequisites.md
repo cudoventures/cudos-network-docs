@@ -20,6 +20,11 @@ The first step is to ensure that you have set up all requirements and prerequisi
 - Install [Docker Compose](https://docs.docker.com/compose/install/) 1.29.1 or above
 - Install [Git](https://github.com/git-guides/install-git)
 - Install a code editor such as Nano, Atom, etc.
+- Install JQ to extract data from JSON documents:
+```
+apt update
+apt install -y jq
+```
 
 Missing any of the prerequisites above can lead to errors and being unable to run your node. It is recommended to have the latest version of Docker and Docker compose installed. If you already installed them, you can check the version by running the following commands in your terminal:
 ```

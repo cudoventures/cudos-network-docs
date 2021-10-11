@@ -226,9 +226,8 @@ sudo docker exec -it cudos-start-full-node-client-testnet-public-01 bash
 Make sure that you are [running Cudos full-node as a validator](#validator-setup).
 After starting the validator and ethereum nodes, the chain will begin to sync to the network. The time to sync to the network will vary depending on your setup and the current size of the blockchain, but could take a very long time. To query the status of your node, run the command:
 ```
-apt update ; apt install -y jq
-cudos-noded status 2>&1 | jq -M ".SyncInfo.catching_up"
-cudos-noded status 2>&1 | jq '.SyncInfo.latest_block_height'
+sudo docker exec -ti cudos-start-full-node-client-testnet-public-01 cudos-noded status | jq '.SyncInfo.catching_up'
+sudo docker exec -ti cudos-start-full-node-client-testnet-public-01 cudos-noded status | jq '.SyncInfo.latest_block_height'
 ```
 
 1. As a first step, you need to get the private key of your node. So, if you created the account by Keplr then just connect to the full nodes' container and run the following commands to add it to the node:

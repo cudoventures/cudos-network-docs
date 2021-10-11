@@ -65,7 +65,6 @@ module.exports = {
         'validator',
         'developers-setup',
         'interact-keplr-explorer',
-        'smart-contracts',
         'start-binaries'
       ],
 
