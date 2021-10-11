@@ -53,6 +53,7 @@ module.exports = {
     sidebar: {
       '/learn/': [
         '',
+        'roadmap',
         'validators',
         'resources'
       ],
