@@ -78,7 +78,7 @@ foo@bar:~$ export KEYRING="os"
 2. Create accounts
 
 ```
-foo@bar:~$ docker cp artifacts/cw20_base.wasm binary-builder:/usr/cudoss
+foo@bar:~$ docker cp artifacts/cw20_base.wasm binary-builder:/usr/cudos
 foo@bar:~$ alias CUDOS_NODED='docker exec -it binary-builder cudos-noded'
 foo@bar:~$ export KEYRING="os"
 foo@bar:~$ CUDOS_NODED keys add wasm-power --keyring-backend "$KEYRING"
