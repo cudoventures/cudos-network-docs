@@ -1,10 +1,12 @@
 ---
-title: Validator Setup version 0.2
+title: Validator Setup Instructions (v0.2)
 ---
 
-## Version 0.2 updates 22/09/2021
+# Validator Setup Instructions (v0.2)
 
-Find the full list of exact updates **22/09/2021**
+# Updates 22/09/2021
+
+Find the full list of latest updates:
 1. Add new section [How to separate your running nodes](/build/validator.html#how-to-separate-your-running-nodes)
 2. Update the parameter **PRIVATE_PEERS** in the step 6 within the section [Configure and start the Sentry node as a validator](/build/validator.html#configure-and-start-the-sentry-node-as-a-validator)
 3. Update the parameter **PRIVATE_PEERS** in the step 6 within the section [Configure and start the Seed node as a validator](/build/validator.html#configure-and-start-the-seed-node-as-a-validator)
@@ -29,7 +31,7 @@ As a validator, you must run an orchestrator. The orchestrator requires an Ether
 
 For one or more validator nodes it is recommended to launch a layer of sentry nodes (at least 1 Sentry node) and optionally Seed nodes with isolating the validator node behind that layer.
 
-You need a public IP address per node which is directly connected to the network. For example, If you have **N** validator nodes and only one Sentry node then only the Sentry node is directly connected to the network. In this case you will need a single public IP address.
+You need an IP-address per node which is directly connected to the network. For example, If you have **N** validator nodes and only one Sentry node then only the Sentry node is directly connected to the network. In this case you will need a single IP-address.
 
 The picture below shows the diagram of validator topology:
 
@@ -196,7 +198,7 @@ You can use either an existing [Ethereum full-node](https://ethereum.org/en/deve
 1. Run your Ethereum binary on a different machine that your validator is running
 2. Clone the correct branch from the [CudosBuilders](https://github.com/CudoVentures/cudos-builders) repository with renaming the folders accordingly to exactly _CudosBuilders_:
 ```
-git clone --depth 1 --branch v0.3  https://github.com/CudoVentures/cudos-builders.git CudosBuilders
+git clone --depth 1 --branch v0.3 https://github.com/CudoVentures/cudos-builders.git CudosBuilders
 ```
 3. Open shell, navigate to the directory _CudosBuilders/docker/ethereum_ and start the Ethereum full-node by running the command:
 ```
@@ -216,21 +218,26 @@ Low disk space. Gracefully shutting down Geth to prevent database corruption.
 
 ### Cudos Validator node and Orchestrator
 
-Make sure that you are [running Cudos full-node as a validator](#validator-setup). Note that you will need to leave the node running for around 12 hours before the staking will work. You can check if the node is syncing with the blockchain by running the command:
-```
-apt update ; apt install -y jq
-cudos-noded status 2>&1 | jq -M ".SyncInfo.catching_up"
-```
-If the call to cudos-noded returns **true**, then you need to wait 12 hours before staking.
-
-
 Access the container, that is needed to connect to its bash, directly with its name by running the command:
 ```
 sudo docker exec -it cudos-start-full-node-client-testnet-public-01 bash
 ```
 
+Make sure that you are [running Cudos full-node as a validator](#validator-setup).
+After starting the validator and ethereum nodes, the chain will begin to sync to the network. The time to sync to the network will vary depending on your setup and the current size of the blockchain, but could take a very long time. To query the status of your node, run the command:
+```
+sudo docker exec -ti cudos-start-full-node-client-testnet-public-01 cudos-noded status | jq '.SyncInfo.catching_up'
+sudo docker exec -ti cudos-start-full-node-client-testnet-public-01 cudos-noded status | jq '.SyncInfo.latest_block_height'
+```
+
+If the call to cudos-noded returns **true**, then you need to wait 12 hours before staking.
+
 1. As a first step, you need to get the private key of your node. So, if you created the account by Keplr then just connect to the full nodes' container and run the following commands to add it to the node:
 ```
+# The amount you want to stake, denominate them in acudos, without spaces (min 1 000 000 000 000 000 000 acudos) export
+export STAKE="1000000000000000000acudos"
+export CHAIN_ID="cudos-testnet-public"
+
 # Add the wallet in your nodes' keyring:
 cudos-noded keys add validator --recover --keyring-backend="os"
 ```
@@ -240,10 +247,6 @@ cudos-noded keys add validator --recover --keyring-backend="os"
 5. You can change the rates as you desire for your validator
 6. Create a validator by entering the password and running the following command (change the rates with the ones you want for your validator):
 ```
-# The amount you want to stake, denominate them in acudos, without spaces (min 1 000 000 000 000 000 000 acudos) export
-export STAKE="1000000000000000000acudos"
-export CHAIN_ID="cudos-testnet-public"
-
 cudos-noded tx staking create-validator --amount=$STAKE \
     --from=validator \
     --pubkey=$(cudos-noded tendermint show-validator) \
@@ -300,12 +303,14 @@ The resulting output looks similar to the picture below. You will need the addre
 
 #### Register and run the orchestrator
 
-1. Add the following variables:
+1. Add the following variables, note that the **ETH_ADDRESS** is the public receiving address of your Ethereum wallet so it does not require any node installation, only copy-paste your Ehtereum address from your [Metamask account/wallet](https://metamask.zendesk.com/hc/en-us/articles/360015290012-Using-a-Local-Node):
 ```
 export VALIDATOR_ADDRESS="<*operator_address* from above>"
 export ORCH_ADDRESS="<*address* from the previous step>"
 export ETH_ADDRESS="<eth address, starting with 0x, that have some ETH on rinkeby test network>"
 ```
+If you do not have any Ehtereum tokens in your wallet, then you can read the article [Ethereum Blockchain – Getting Free Test Ethers For Rinkeby Test Network](https://www.geeksforgeeks.org/ethereum-blockchain-getting-free-test-ethers-for-rinkeby-test-network/) and the [how to use Metamask article](https://levelup.gitconnected.com/how-to-use-metamask-a-step-by-step-guide-f380a3943fb1)
+
 2. Register the orchestrator:
 ```
 cudos-noded tx gravity set-orchestrator-address $VALIDATOR_ADDRESS $ORCH_ADDRESS $ETH_ADDRESS --from validator --keyring-backend "os" --chain-id $CHAIN_ID
@@ -376,7 +381,7 @@ Note that The commands of sending funds takes up to few minutes to be executed.
 
 ## How to delete a current running node
 
-If you want to remove the full node docker data then you need to clear the volume of full node docker, if you remove the folder it will remove all the data but make sure first that you stop the docker container.
+If you stop the docker container that is running a Full node then you are not able to use it. But if you want to remove the full node docker data then you need to clear the volume of full node docker, if you remove the folder it will remove all the data but make sure first that you stop the docker container.
 
 Clear the volume of full node docker:
 * Navigate and open the file **CudosBuilders/docker/full-node/full-node.client.testnet.public01.arg**
