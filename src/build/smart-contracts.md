@@ -95,16 +95,13 @@ foo@bar:~$ CODE_ID=$(echo $RES | jq -r '.logs[0].events[-1].attributes[-1].value
 ```
 3. Get balance
 
-**using command**
-**wasmd keys add** _ **\&lt;name\&gt;**
 **Add some balance in wasm-power, bob and alice using** [faucet](https://explorer.cudos.org/faucet).
 
 4. Instantiate and verify the contract:
 
-Note that under the parameter "name" you can choose any name for your coin. For example, "Cudos coin" or as in our example below we used "DIZ COIN".
+Note that under the parameter "name" you can choose any name for your coin. For example, "Cudos coin" or as in our example below we used "DIZZ COIN".
 
 ```
-# instantiate contract and verify
 foo@bar:~$ INIT=$(jq -n --arg "wasmpower" $(CUDOS_NODED keys show -a wasm-power --keyring-backend "$KEYRING" --address) '{ "name": "DIZZ COIN", "symbol": "DIZZ", "decimals": 6, "initial_balances": [{ "address": $wasmpower, "amount": "1000000" }], "mint": {"minter": $wasmpower,"cap": "99900000000"}}')
 
 foo@bar:~$ CUDOS_NODED tx wasm instantiate $CODE_ID "$INIT" \
