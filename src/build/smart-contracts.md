@@ -68,11 +68,11 @@ Note that compilation will take some time and will provide you with artifacts su
 1. Set the environment variables:
 
 ```
-foo@bar:~$ export RPC="http://localhost:26657"
-foo@bar:~$ export CHAIN_ID="cudos-testnet-public"
-foo@bar:~$ export NODE="--node $RPC"
-foo@bar:~$ export TXFLAG="${NODE} --chain-id ${CHAIN_ID} --gas auto --gas-adjustment 1.3"
-foo@bar:~$ export KEYRING="os"
+foo@bar:~$ RPC="https://sentry1.gcp-uscentral1.cudos.org:26657"
+foo@bar:~$ CHAIN_ID="cudos-testnet-public"
+foo@bar:~$ NODE="--node $RPC"
+foo@bar:~$ TXFLAG="${NODE} --chain-id ${CHAIN_ID} --gas auto --gas-adjustment 1.3"
+foo@bar:~$ KEYRING="os"
 ```
 
 2. Create accounts
@@ -80,7 +80,7 @@ foo@bar:~$ export KEYRING="os"
 ```
 foo@bar:~$ docker cp artifacts/cw20_base.wasm binary-builder:/usr/cudos
 foo@bar:~$ alias CUDOS_NODED='docker exec -it binary-builder cudos-noded'
-foo@bar:~$ export KEYRING="os"
+foo@bar:~$ KEYRING="os"
 foo@bar:~$ CUDOS_NODED keys add wasm-power --keyring-backend "$KEYRING"
 foo@bar:~$ CUDOS_NODED keys add bob --keyring-backend "$KEYRING"
 foo@bar:~$ CUDOS_NODED keys add alice --keyring-backend "$KEYRING"
@@ -103,7 +103,9 @@ foo@bar:~$ CODE_ID=$(echo $RES | jq -r '.logs[0].events[-1].attributes[-1].value
 **wasmd keys add** _ **\&lt;name\&gt;**
 **Add some balance in wasm-power, bob and alice using** [faucet](https://explorer.cudos.org/faucet).
 
-4. Instantiate and verify the contract
+4. Instantiate and verify the contract:
+
+Note that under the parameter "name" you can choose any name for your coin. For example, "Cudos coin" or as in our example below we used "DIZ COIN".
 
 ```
 # instantiate contract and verify
