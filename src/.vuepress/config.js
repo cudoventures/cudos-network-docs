@@ -53,6 +53,7 @@ module.exports = {
     sidebar: {
       '/learn/': [
         '',
+        'roadmap',
         'validators',
         'resources'
       ],
@@ -64,6 +65,8 @@ module.exports = {
         'funding-your-wallet',
         'validator',
         'smart-contracts',
+        'developers-setup',
+        'interact-keplr-explorer',
         'start-binaries'
       ],
 
