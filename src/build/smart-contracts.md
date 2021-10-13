@@ -53,10 +53,6 @@ git clone --depth 1 --branch v0.9.0 https://github.com/CosmWasm/cw-plus.git
 
 ```
 foo@bar:~$ cd cw-plus
-foo@bar:~$ RUSTFLAGS='-C link-arg=-s' cargo wasm
-foo@bar:~$ cp ../../target/wasm32-unknown-unknown/release/cw20_base.wasm .
-foo@bar:~$ ls -l cw20_base.wasm
-foo@bar:~$ sha256sum cw20_base.wasm
 foo@bar:~$ docker run --rm -v "$(pwd)":/code \
 --mount type=volume,source="$(basename "$(pwd)")_cache",target=/code/target \
 --mount type=volume,source=registry_cache,target=/usr/local/cargo/registry \
