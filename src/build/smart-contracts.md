@@ -41,7 +41,7 @@ Note that you can find all messages, actions, and queries within the list above.
 
 ### Get the binaries and download the CosmWasm Plus contracts
 
-* Follow the [instructions to start and build the binaries](/build/start-binaries)
+* Follow the [instructions to start and build the binaries](/build/start-binaries.html)
 * Clone the [cw-plus](https://github.com/CosmWasm/cw-plus) repo with [release tag of v0.9.0](https://github.com/CosmWasm/cw-plus/tree/v0.9.0) by running the command:
 ```
 git clone --depth 1 --branch v0.9.0 https://github.com/CosmWasm/cw-plus.git
@@ -50,19 +50,27 @@ git clone --depth 1 --branch v0.9.0 https://github.com/CosmWasm/cw-plus.git
 ### Compile the contracts
 
 - Navigate to cw-plus folder and run the following command:
+
 ```
 foo@bar:~$ cd cw-plus
+foo@bar:~$ RUSTFLAGS='-C link-arg=-s' cargo wasm
+foo@bar:~$ cp ../../target/wasm32-unknown-unknown/release/cw20_base.wasm .
+foo@bar:~$ ls -l cw20_base.wasm
+foo@bar:~$ sha256sum cw20_base.wasm
 foo@bar:~$ docker run --rm -v "$(pwd)":/code \
 --mount type=volume,source="$(basename "$(pwd)")_cache",target=/code/target \
 --mount type=volume,source=registry_cache,target=/usr/local/cargo/registry \
 cosmwasm/workspace-optimizer:0.12.3
 ```
 
-Note that compilation will take some time and will provide you with artifacts subfolder
+Note that compilation will take some time and will provide you with artifacts subfolder. If you hit any issues there and want to debug, you can try to run the following in the contract dir:
+```
+RUSTFLAGS="-C link-arg=-s" cargo build --release --target=wasm32-unknown-unknown --locked
+```
 
 ### Deployment and instantiation
 
-1. Set the environment variables:
+1. Set the environment variables, note that the parameter **RPC** should refer to the IP address of your sentry or full/validator node that is running on the Cudos public testnet:
 
 ```
 foo@bar:~$ RPC="https://sentry1.gcp-uscentral1.cudos.org:26657"
@@ -84,7 +92,7 @@ foo@bar:~$ CUDOS_NODED keys add alice --keyring-backend "$KEYRING"
 # to view address of wasm-power, bob and alice account.
 foo@bar:~$ CUDOS_NODED keys show -a <name> --keyring-backend "$KEYRING"
 
-# For eg
+# For Example, show the address of the account wasm-power
 foo@bar:~$ CUDOS_NODED keys show -a wasm-power --keyring-backend "$KEYRING"
 cudos1r8y6rddc8psqcll22kyaf7gphe8kswk99fxv75
 
