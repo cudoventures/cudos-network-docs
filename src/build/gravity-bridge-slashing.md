@@ -6,7 +6,7 @@ title: Gravity Bridge Slashing Policy
 
 * [Brief](/build/gravity-bridge-slashing.html#brief)
 * [Slashing Parameters for the Network](/build/gravity-bridge-slashing.html#slashing-parameters-for-the-network)
-* [Infraction Timelines](/build/gravity-bridge-slashing.html#infriction-timelines)
+* [Infraction Timelines](/build/gravity-bridge-slashing.html#infraction-timelines)
 * [Liveness Tracking](/build/gravity-bridge-slashing.html#liveness-tracking)
 
 ## Brief
