@@ -66,7 +66,8 @@ module.exports = {
         'validator',
         'developers-setup',
         'interact-keplr-explorer',
-        'start-binaries'
+        'start-binaries',
+        'gravity-bridge-slashing'
       ],
 
       '/earn/': [
