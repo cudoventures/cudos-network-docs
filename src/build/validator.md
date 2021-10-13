@@ -1,8 +1,14 @@
 ---
-title: Validator Setup Instructions (v0.2)
+title: Validator Setup Instructions (v0.3)
 ---
 
-# Validator Setup Instructions (v0.2)
+# Validator Setup Instructions (v0.3)
+
+# Updates 14/10/2021
+
+Find the full list of latest updates:
+
+Update the section [Cudos Validator node and Orchestrator](/build/validator.html#cudos-validator-node-and-orcheatrator)
 
 # Updates 22/09/2021
 
