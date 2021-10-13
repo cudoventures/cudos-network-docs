@@ -1,5 +1,5 @@
 ---
-title: Gravity Bridge Slashing Polivy
+title: Gravity Bridge Slashing Policy
 ---
 
 # Gravity Bridge Slashing Policy
