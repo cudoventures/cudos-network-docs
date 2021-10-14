@@ -6,7 +6,7 @@ title: Project Artemis
 
 During the Cudos Public 'Somniorum' Testnet we will be running our incentive programme Project Artemis. We're inviting the Cudos community to help contribute towards the testing to help move the network closer to mainnet. To help maximise participation in our public testnet and to get the best feedback we're offering token rewards to users who join us and fulfil some key testing tasks.
 
-During Project Artemis participants are able to earn CUDOS by completing tasks. Once our mainnet is deployed participants of Project Artemis will have native CUDOS airdropped to their wallets as reward for their contributions.
+During Project Artemis participants are able to earn CUDOS by completing tasks. Once our mainnet is deployed participants of Project Artemis will have native CUDOS sent to their wallets as reward for their contributions.
 
 Project Artemis is broken down into 4 key phases which will run sequentially, find more details of each below:
 
@@ -78,10 +78,10 @@ Once you're signed up and approved as a Developer or Validator, take a look at t
 
 Upon completion of each task please submit your evidence to [this form](https://docs.google.com/forms/d/e/1FAIpQLSdsGDUvtF70O1LLMWsKhNTVmiW_HzodGDFRgW-6YLYloA3hdg/viewform?usp=sf_link). Tasks will be monitored and validated on-chain for completion.
 
-## CUDOS Airdrop
+## CUDOS Rewards
 
-CUDOS tokens will be distributed to the top Project Artemis participants when the Cudos Network mainnet is deployed, the same wallet addresses used for testnet **must** be retained to ensure access to your airdrop account.
+CUDOS tokens will be distributed to the top Project Artemis participants when the Cudos Network mainnet is deployed. The same wallet addresses used for testnet **must** be retained to ensure access to your funds.
 
-Participation in Project Artemis is open to everyone, but only the top 300 Developer addresses, and 100 Validator addresses will be eligible for airdrops. Details of which users have contributed the most and qualified for CUDOS rewards will be revealed shortly after each phase concludes.
+Participation in Project Artemis is open to everyone, but only the top 300 Developer addresses and 100 Validator addresses will be eligible for rewards. Details of which users have contributed the most and qualified for CUDOS rewards will be revealed shortly after each phase concludes.
 
 We will be using blockchain snapshots to validate the state of tasks on-chain, and manual verification for any 'off-chain' tasks. We reserve the right to decide all reward eligibility.
