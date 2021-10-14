@@ -8,6 +8,8 @@ During the Cudos Public 'Somniorum' Testnet we will be running our incentive pro
 
 During Project Artemis participants are able to earn CUDOS by completing tasks. Once our mainnet is deployed participants of Project Artemis will have native CUDOS sent to their wallets as reward for their contributions.
 
+Tasks are broken down by user group; as either Validator tasks or Developer tasks. Anyone can participate on either side but Validator tasks require a much higher level of technical involvement and are only recommended for those with significant experience. Any Validators who're whitelisted for Mainnet and have already staked tokens via [CUDOS Staking](https://wallet.cudos.org/wallet) should be participating in each test phase, particularly Phase 4.
+
 Project Artemis is broken down into 4 key phases which will run sequentially, find more details of each below:
 
 ## Testnet Phases
@@ -15,6 +17,10 @@ Project Artemis is broken down into 4 key phases which will run sequentially, fi
 ### Phase 1 - Apollo
 
 Starter setup tasks for Cudos Network onboarding for Validators and users, focussing on account creation, hardware provisioning, node syncing and the CUDOS faucet.
+
+Total amount available per user:
+- Validator = $n + $p/m
+- Developer = $n
 
 #### Validator Tasks
 
@@ -48,6 +54,10 @@ Starter setup tasks for Cudos Network onboarding for Validators and users, focus
 
 Test all aspects of Validation, including staking, delegated staking, rewards. Additionally exploring CosmWasm smart contracts including: contract interaction, contract deployment, contract interfaces. Testing of our Gravity bridge implementation with Rinkeby Ethereum.
 
+Total amount available per user:
+- Validator = $n + $p/m
+- Developer = $n
+
 |**Task ID**|**Description**|**Resources**|**$ Reward**|
 | - | - | - | - |
 |`ARTEMIS-BUZZ#1`| 🌎 | 🚀 | 🌝 |
@@ -56,6 +66,10 @@ Test all aspects of Validation, including staking, delegated staking, rewards. A
 
 Adversarial stress tests bringing a coordinated strike to bring as much diversity in transaction activity as possible to the Cudos Network. Validators will run network load and performing maintenance tasks.
 
+Total amount available per user:
+- Validator = $n + $p/m
+- Developer = $n
+
 |**Task ID**|**Description**|**Resources**|**$ Reward**|
 | - | - | - | - |
 |`ARTEMIS-ARMSTRONG#1`| 🌎 | 🚀 | 🌝 |
@@ -63,6 +77,8 @@ Adversarial stress tests bringing a coordinated strike to bring as much diversit
 ### Phase 4 - Collins (Launching Soon)
 
 Migration testing to performa a dry-run of our genesis and token migration plan for the new native Cudos Network.
+
+Total amount available per Validator = $n + $p/m
 
 |**Task ID**|**Description**|**Resources**|**Reward**|
 | - | - | - | - |
