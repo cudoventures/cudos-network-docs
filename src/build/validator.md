@@ -8,7 +8,7 @@ title: Validator Setup Instructions (v0.3)
 
 Find the full list of latest updates:
 
-Update the section [Cudos Validator node and Orchestrator](/build/validator.html#cudos-validator-node-and-orcheatrator)
+Update the section [Cudos Validator node and Orchestrator](/build/validator.html#cudos-validator-node-and-orchestrator)
 
 # Updates 22/09/2021
 
@@ -436,7 +436,7 @@ http://sentry-1.example.com:9090
 - **ETHRPC** is the http URL pointing to port 8545 of the ethereum node eg
 http://ethereum.example.com:8545
 - **COSMOS_ORCH_MNEMONIC** is the mnemonic address of the keplr wallet designated for use by the orchestrator. See "**Add the orchestrator wallet**" above.
-- **ETH_PRIV_KEY_HEX** is the private key of your eth  metamsk wallet that was used to registered for use by the orcheatrator>" # in hex format without leading 0x
+- **ETH_PRIV_KEY_HEX** is the private key of your eth  metamsk wallet that was used to registered for use by the orchestrator>" # in hex format without leading 0x
 
 6. Execute the following command to start the orchestrator process, Note that the command must be run within the same directory used to hold and fill in the file *orchestrator.client.testnet.public01.env*. Note that this command must be run on the validator node as root, in the main shell, not inside the docker container. The command calls into the container to complete the process:
 ```
