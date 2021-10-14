@@ -353,13 +353,10 @@ The Orchestrator monitors the Ethereum chain, submitting events that occur on Et
 
 #### Get the validator address
 
-After you have created a validator account, you must find your validator address by running the command:
+If you want to find your operator within the validator list, you need to run the command:
 ```
-cudos-noded q staking validators
+cudos-noded q staking validators | grep -B13 -A9 "$MONIKER" | grep operator_address
 ```
-
-the resulting output looks similar to the picture below, you need to find your validator, you can refer to the moniker to find it, and copy its **operator_address**:
-![](./Cosmos-orchestrator1.png)
 
 #### Add the orchestrator wallet
 
