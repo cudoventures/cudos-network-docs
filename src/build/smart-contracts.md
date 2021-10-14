@@ -21,7 +21,6 @@ If the rust version is less than 1.51.0+, update all dependencies in the lockfil
 ```
 cargo update
 rustup update
-Update :
 ```
 
 ## Deployment and interaction of CW20
@@ -79,10 +78,12 @@ foo@bar:~$ KEYRING="os"
 2. Create accounts
 
 ```
-foo@bar:~$ docker cp artifacts/cw20_base.wasm binary-builder:/usr/cudos
-foo@bar:~$ alias CUDOS_NODED='docker exec -it binary-builder cudos-noded'
+# Add correct value to the KEYRING_PASS
 
-# create accounts and create a password once it asks you to enter keyring passphrase, it is important to remember this password because you will need to use it in next steps
+foo@bar:~$ docker cp artifacts/cw20_base.wasm binary-builder:/usr/cudos
+foo@bar:~$ alias CUDOS_NODED='docker exec -i binary-builder cudos-noded' KEYRING_PASS="password"
+
+# Create accounts and create a password once it asks you to enter keyring passphrase, it is important to remember this password because you will need to use it in next steps
 foo@bar:~$ CUDOS_NODED keys add wasm-power --keyring-backend "$KEYRING"
 foo@bar:~$ CUDOS_NODED keys add bob --keyring-backend "$KEYRING"
 foo@bar:~$ CUDOS_NODED keys add alice --keyring-backend "$KEYRING"
@@ -91,14 +92,21 @@ foo@bar:~$ CUDOS_NODED keys add alice --keyring-backend "$KEYRING"
 foo@bar:~$ CUDOS_NODED keys show -a <name> --keyring-backend "$KEYRING"
 
 # For Example, show the address of the account wasm-power
-foo@bar:~$ CUDOS_NODED keys show -a wasm-power --keyring-backend "$KEYRING"
-cudos1r8y6rddc8psqcll22kyaf7gphe8kswk99fxv75
+foo@bar:~$ WASM_POWER_ADDR=$(echo "$KEYRING_PASS" | CUDOS_NODED keys show -a wasm-power --keyring-backend "$KEYRING")
+
+# You can test it with
+echo $WASM_POWER_ADDR
 
 # After running the following command, you must enter your keyring passphrase and press enter (even if the terminal does not notify you to enter the keyring passphrase)
-foo@bar:~$ RES=$(CUDOS_NODED tx wasm store /usr/cudos/cw20_base.wasm --from wasm-power $TXFLAG -y --keyring-backend "$KEYRING")
+# gas estimate: 1891864
+foo@bar:~$ RES=$(echo "$KEYRING_PASS" | CUDOS_NODED tx wasm store /usr/cudos/cw20_base.wasm --from wasm-power $TXFLAG -y --keyring-backend "$KEYRING")
 
-# you can also get the code this way
-foo@bar:~$ CODE_ID=$(echo $RES | jq -r '.logs[0].events[-1].attributes[-1].value')
+# Check the value
+echo $RES
+
+# You can also get the code this way
+foo@bar:~$ CODE_ID=$(echo $RES | jq -r '.logs[0].events[-1].attributes[-1].value'
+echo $CODE_ID
 ```
 3. Get balance
 
