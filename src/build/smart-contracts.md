@@ -17,12 +17,6 @@ cargo --version
 rustup target list --installed
 ```
 
-If the rust version is less than 1.51.0+, update all dependencies in the lockfile for cargo and rustup by running the command:
-```
-cargo update
-rustup update
-```
-
 ## Deployment and interaction of CW20
 
 [CW20](https://github.com/CosmWasm/cw-plus/tree/v0.9.0/contracts/cw20-base) is equivalent to ERC20. CW-20 is similar, in some respects, to bitcoin, Litecoin, and any other cryptocurrency. CW-20 tokens are blockchain-based assets that have value and can be sent and received. The primary difference is that instead of running on their own blockchain, CW-20 tokens are issued on the CosmWasm network.
@@ -58,32 +52,32 @@ foo@bar:~$ docker run --rm -v "$(pwd)":/code \
 cosmwasm/workspace-optimizer:0.12.3
 ```
 
-Note that compilation will take some time and will provide you with artifacts subfolder. If you hit any issues there and want to debug, you can try to run the following in the contract dir:
-```
-RUSTFLAGS="-C link-arg=-s" cargo build --release --target=wasm32-unknown-unknown --locked
-```
-
 ### Deployment and instantiation
 
-1. Set the environment variables, note that the parameter **RPC** should refer to the IP address of your sentry or full/validator node that is running on the Cudos public testnet:
+1. Set the environment variables:
 
 ```
-foo@bar:~$ RPC="https://sentry1.gcp-uscentral1.cudos.org:26657"
+foo@bar:~$ NODE="https://sentry1.gcp-uscentral1.cudos.org:26657"
 foo@bar:~$ CHAIN_ID="cudos-testnet-public"
-foo@bar:~$ NODE="--node $RPC"
-foo@bar:~$ TXFLAG="${NODE} --chain-id ${CHAIN_ID} --gas auto --gas-adjustment 1.3"
+foo@bar:~$ TXFLAG="--node ${NODE} --chain-id ${CHAIN_ID} --gas auto --gas-adjustment 1.3"
 foo@bar:~$ KEYRING="os"
+foo@bar:~$ KEYRING_PASS="CreateYourPassword"
 ```
+
+Where:
+* **NODE** should refer to the IP address of your sentry or full/validator node that is running on the Cudos public testnet.
+* **CHAIN_ID** is the blockchain network ID, here it is the testnet ID.
+* **TXFLAG** is the transaction flags that is used to collect additional information from the user (e.g. the amount of fees the user is willing to pay).
+* **KEYRING** uses the operating system's default credentials store (os) to handle keys storage operations securely. The keyring holds the private/public keypairs used to interact with a node and it will request a password each time it is accessed.
+* **KEYRING_PASS** is your new password that must be at least 8 characters to enable the security feature,  it is important to remember this password because you will need to use it in next steps.
 
 2. Create accounts
 
 ```
-# Add correct value to the KEYRING_PASS
-
 foo@bar:~$ docker cp artifacts/cw20_base.wasm binary-builder:/usr/cudos
-foo@bar:~$ alias CUDOS_NODED='docker exec -i binary-builder cudos-noded' KEYRING_PASS="password"
+foo@bar:~$ alias CUDOS_NODED='docker exec -i binary-builder cudos-noded'
 
-# Create accounts and create a password once it asks you to enter keyring passphrase, it is important to remember this password because you will need to use it in next steps
+# Create accounts and create a password once, it asks you to enter keyring passphrase
 foo@bar:~$ CUDOS_NODED keys add wasm-power --keyring-backend "$KEYRING"
 foo@bar:~$ CUDOS_NODED keys add bob --keyring-backend "$KEYRING"
 foo@bar:~$ CUDOS_NODED keys add alice --keyring-backend "$KEYRING"
