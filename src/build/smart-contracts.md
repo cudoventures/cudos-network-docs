@@ -155,20 +155,6 @@ As a prerequisite, you need to mint tokens that was mentioned in the previous se
 Transfer tokens by running this command:
 
 ```
-MINT=$(jq -n --arg bob $(CUDOS_NODED keys show -a bob --keyring-backend "$KEYRING" --address) '{ "mint": { "recipient": $bob, "amount": "1000000" } }')
-
-{ "mint": { "recipient": "cudos1er4ekhej7xrs8yn45qn5q6485q6dxq0tu33zft", "amount": "1000000" } }
-
-foo@bar:~$ CUDOS_NODED tx wasm execute $CONTRACT "$MINT" \
-    --from wasm-power $TXFLAG -y --keyring-backend "$KEYRING"
-
-foo@bar:~$ BALANCE_OF=$(jq -n --arg bob $(CUDOS_NODED keys show -a bob --keyring-backend "$KEYRING" --address) '{ "balance": { "address": $bob } }')
-foo@bar:~$ echo $BALANCE_OF
-{ "balance": { "address": "cudos1er4ekhej7xrs8yn45qn5q6485q6dxq0tu33zft" } }
-
-foo@bar:~$ CUDOS_NODED query wasm contract-state smart $CONTRACT "$BALANCE_OF" $NODE
-data:
-  balance: "1000000"
 foo@bar:~$ TRANSFER=$(jq -n --arg alice $(CUDOS_NODED keys show -a alice --keyring-backend "$KEYRING" --address) '{ "transfer": { "recipient": $alice, "amount": "10000" } }')
 foo@bar:~$ echo $TRANSFER
 { "transfer": { "recipient": "cudos1jz2nxvlgqscjxtw0q26rqyrpdfvyh5j3nlnmn9", "amount": "10000" } }
