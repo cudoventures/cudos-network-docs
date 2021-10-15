@@ -1,8 +1,14 @@
 ---
-title: Validator Setup Instructions (v0.2)
+title: Validator Setup Instructions (v0.3)
 ---
 
-# Validator Setup Instructions (v0.2)
+# Validator Setup Instructions (v0.3)
+
+# Updates 14/10/2021
+
+Find the full list of latest updates:
+
+Update the section [Cudos Validator node and Orchestrator](/build/validator.html#cudos-validator-node-and-orchestrator)
 
 # Updates 22/09/2021
 
@@ -183,11 +189,12 @@ sudo docker logs -f cudos-start-seed-node-client-testnet-public-01
 
 ## Create a validator
 
-To create a validator account, you need:
+In order for your cudos node to act in the role of validator, it will need bring together the validator server and the orchestarator server with the 3 wallets identified above. It will require:
+
 1. A running Ethereum full-node
 2. A running Cudos Full node ,which has the validator configuration, and a setup of the orchestrator.
 
-Only after finalizing previous steps, you can start the process of creating a validator. this section explains how to achieve each step in detail.
+Only after finalising previous steps, you can start the process of staking to the node, making it a fully functional validator node. this section explains how to achieve each step in detail.
 
 ### Ethereum full node
 
@@ -205,7 +212,7 @@ git clone --depth 1 --branch v0.3 https://github.com/CudoVentures/cudos-builders
 cd CudosBuilders/docker/ethereum && sudo docker-compose -f ethereum-full.yml -p ethereum up --build --detach
 ```
 
-Note that you have to wait ~12 hours to finish syncing the Rinkeby test network. Its size is almost 70GB. You can see the logs by running the command:
+In order for the Ethereum node to function properly it needs to syncronise to the Etehreum blockchain. This takes around 12 hours on a reasonably performing network and hardware and will require at least 150GB of free filesystem space, over and above the operating system, to accomodate this database. You can see the logs by running the command:
 ```
 sudo docker logs -f ethereum
 ```
@@ -218,34 +225,92 @@ Low disk space. Gracefully shutting down Geth to prevent database corruption.
 
 ### Cudos Validator node and Orchestrator
 
-Access the container, that is needed to connect to its bash, directly with its name by running the command:
+#### Executing "cudos-noded" commands
+
+The cudos-noded service is a single binary running inside a docker container. It cannot be called directly from the main operating system. To do so requires either running the "docker" command with the command at issue on the end eg:
+
+```
+sudo docker exec -it cudos-start-full-node-client-testnet-public-01 <My Command>
+```
+
+The above will run the command "<My Command>" in the docker context, ie inside the container. Or an interactive prompt can be produced by calling:
+
+```
+# Access the container, that is needed to connect to its bash, directly with its name This will run the command "bash" inside the docker container "cudos-start-full-node-client-testnet-public-01". Note that the "-it" flags ensure that the bash prompt that will then be visible is usable in the normal way. In order to script the above, different choices would be needed.
+
+sudo docker exec -it cudos-start-full-node-client-testnet-public-01 bash
+```
+
+#### Checking the state of the seed and sentry nodes
+
+This section requires that the section [running Cudos full-node as a validator](#validator-setup) has already been completed.
+
+After starting the validator and ethereum nodes, the chain will begin to sync to the network. The time to sync to the network will vary depending on your setup and the current size of the blockchain, but could take a very long time (up to 12 hours or more). To query the status of your node, run the command:
+
+```
+# To determine the value of the status variable "catching_up"
+
+sudo docker exec -ti cudos-start-full-node-client-testnet-public-01 cudos-noded status | jq '.SyncInfo.catching_up'
+
+# To determine the "block height". For reference, the current block height is in excess of 663000 If "catching_up" is "**true"**, then the machine is not ready and will need a period of 12 hours or more before it will be ready for staking.
+
+sudo docker exec -ti cudos-start-full-node-client-testnet-public-01 cudos-noded status | jq '.SyncInfo.latest_block_height'
+```
+
+#### Stashing the wallet keys
+
+The next step is to stash the wallet address (mnemonic) in the validator node's internal keychain.
+
+For this the following information is required:
+
+- The mnemonic of the Keplr wallet designated for use with the validator
+
+The "mnemonic" of the keplr wallet is the long string of random words that is generated when the wallet was first created, and that is used subsequently open the wallet. This string is both the password to get the wallet open and the location of the wallet, it is both the address and the password combined. Use of copy/paste is advised to enter this value.
+
+- The validator's keychain passphrase
+
+The validator has an internal keychain used to hold such things as, in this case, the mnemonic of the wallet it should use. If this is the first time the validator's internal keychain has been used it will not have a passphrase set and will require one when the command is run. If this is the second or subsequent time, the wallet is already locked and will require the same passphrase that was previously used to create the keychain.
+
+In the case where the keychain has not previously been used, the passphrase will be requested twice as a precaution. On subsequent occasions it only requires the user to enter this value once to open the existing wallet.
+
+It is advised that the user generate this ahead of time and note it down with the keplr mneminics (one each for the validator and the orchestrator). The use of such tools as "pwgen" is advised along with copy/pasting to enter the passphrase, as it should be a long random string.
+
+The command itself should be executed as is. The "wallet name", in this case "validator" (the 3rd option below) can be any name, the name is reused further on in this process, so it is advised to stick to the name "validator" for this wallet link.
+
+Run the command:
+```
+# Add the wallet in your nodes' keyring:
+cudos-noded keys add validator --recover --keyring-backend="os"
+```
+
+If the command returns without error and produces something like the following, then the process is complete and the keychain is now loaded with the validator wallet address:
+```
+- name: validator
+  type: local
+  address: cudos17g4kjshkjhuhfvihhns9e36epgs9yxpz8k
+  pubkey: '{"@type":"/cosmos.crypto.secp256k1.PubKey","key":"AxuisjteQw5ZNchnFk0nXsdknchefygeirfgIWeC"}'
+  mnemonic: ""
+```
+
+#### The staking process
+
+This step, if successful, will put the node on the list of validators at:
+[https://explorer.cudos.org/validators](https://explorer.cudos.org/validators)
+
+In this section of the process the validator node will need to be supplied with the staking request using a cudos-noded sub-command, done in this case using a number of environment variables on the command line:
+
+- **CHAIN_ID**, This is a fixed text naming the blockchain to be operated on. In the public testnet this name is "cudos-testnet-public"
+
+- **STAKE**, The actual amount in "acudos" that will be staked to the validator. Note that *acodos* is a very small denomination. Be very careful about the number of zeros in the amount. For example "1000000000000000000acudos" = 1 CUDOS.
+
+Note that This command must be run within the docker container. Use the following command to start a bash shell within the container:
+
 ```
 sudo docker exec -it cudos-start-full-node-client-testnet-public-01 bash
 ```
 
-Make sure that you are [running Cudos full-node as a validator](#validator-setup).
-After starting the validator and ethereum nodes, the chain will begin to sync to the network. The time to sync to the network will vary depending on your setup and the current size of the blockchain, but could take a very long time. To query the status of your node, run the command:
-```
-sudo docker exec -ti cudos-start-full-node-client-testnet-public-01 cudos-noded status | jq '.SyncInfo.catching_up'
-sudo docker exec -ti cudos-start-full-node-client-testnet-public-01 cudos-noded status | jq '.SyncInfo.latest_block_height'
-```
+It is then advised that the following be copy/pasted into the shell prompt created by the above.
 
-If the call to cudos-noded returns **true**, then you need to wait 12 hours before staking.
-
-1. As a first step, you need to get the private key of your node. So, if you created the account by Keplr then just connect to the full nodes' container and run the following commands to add it to the node:
-```
-# The amount you want to stake, denominate them in acudos, without spaces (min 1 000 000 000 000 000 000 acudos) export
-export STAKE="1000000000000000000acudos"
-export CHAIN_ID="cudos-testnet-public"
-
-# Add the wallet in your nodes' keyring:
-cudos-noded keys add validator --recover --keyring-backend="os"
-```
-2. Enter your mnemonic address for the account, your account should hold at least 1000000000000000000acudos (1 CUDOS).
-3. Create a password, which will be used to lock the internal Keystore
-4. Re-enter the password
-5. You can change the rates as you desire for your validator
-6. Create a validator by entering the password and running the following command (change the rates with the ones you want for your validator):
 ```
 cudos-noded tx staking create-validator --amount=$STAKE \
     --from=validator \
@@ -262,13 +327,23 @@ cudos-noded tx staking create-validator --amount=$STAKE \
     --keyring-backend="os" \
     -y
 ```
-7. If you see the transaction hash without getting any error, then congrats you have successfully created a validator account.
 
-Note that if you get a message that the transaction is not included in any block, please wait a few seconds and do not start another transaction.
+This command will request the validator keyring passphrase. This will not be the first time the keychain has been used. It will at least contain the validator's keplr wallet mnemonic, so it will only ask for the passphrase once, and then it has all it needs to complete the transaction.
 
 :::tip
-Be aware not to exit the docker shell. You will need it for the next step that is registering the orchestrator.
+Be aware not to exit the docker shell. You will need it for the next step that is registering the orchestrator. Note that if you get a message that the transaction is not included in any block, please wait a few seconds and do not start another transaction.
 :::
+
+If you get a message along the lines of:
+```
+Error: rpc error: code = NotFound desc = rpc error: code = NotFound desc = account cudos1mnc7gm9sazrmcfdkshhmx3f0s4n2wp944wzjj4 not found: key not found
+```
+
+Then it is likely that either the validator node hasn't actually caught up with the blockchain sync operation yet (so the validator can't find the block in the blockchain in which the keplr wallet took in its funds), or the validator keplr wallet has insufficient funds to cover the transaction, or both.
+
+If the command succeeds, you should see your new validator appear on the list of validators referenced above. Do ensure that you also check the **"Inactive"** tab as well, as there may be a problem with the machine that prevents it from being active.
+
+If you see the transaction hash without getting any error, then congrats you have successfully created a validator account.
 
 ### Orchestrator
 
@@ -278,19 +353,30 @@ The Orchestrator monitors the Ethereum chain, submitting events that occur on Et
 
 #### Get the validator address
 
-After you have created a validator account, you must find your validator address by running the command:
+If you want to find your operator within the validator list, you need to run the command:
 ```
-cudos-noded q staking validators
+cudos-noded q staking validators | grep -B13 -A9 "$MONIKER" | grep operator_address
 ```
-
-the resulting output looks similar to the picture below, you need to find your validator, you can refer to the moniker to find it, and copy its **operator_address**:
-![](./Cosmos-orchestrator1.png)
 
 #### Add the orchestrator wallet
 
 Now you MUST [add another wallet](/build/account-setup.html#creating-a-keplr-wallet) to use for the orchestrator (do not use the same validator wallet) and make sure that **it has some CUDOS tokens**. You can achieve that by running the command:
 ```
 cudos-noded keys add orchestrator --recover --keyring-backend="os"
+```
+
+This command is very similar to the command that added your validator wallet address to the validator's internal keychain above. The only differences between executing that command and this are:
+
+- The name of the key to add to the keychain. Here, "**orchestrator**" is used, where the last time "validator" was used. This is because the validator requires two separate wallets.
+- The command will only request your keychain passphrase the once this time. Last time it was creating the wallet, so required that a passphrase was created, whereas this time the keychain already exists and already has content, so the passphrase is used only for unlocking, so it requested only once.
+
+If the command succeeds it will output something like (note that this time the name is orchestrator rather than validator):
+```
+- name: orchestrator
+  type: local
+  address: cudoskjhkjhkjhkjhuhfvihhns9e36epgs9yxpz8k
+  pubkey: '{"@type":"/cosmos.crypto.secp256k1.PubKey","key":"txtfcvuhyibnoknmhnFk0nXsdknchefygeirfgIWeC"}'
+  mnemonic: ""
 ```
 
 :::tip
@@ -303,18 +389,27 @@ The resulting output looks similar to the picture below. You will need the addre
 
 #### Register and run the orchestrator
 
-1. Add the following variables, note that the **ETH_ADDRESS** is the public receiving address of your Ethereum wallet so it does not require any node installation, only copy-paste your Ehtereum address from your [Metamask account/wallet](https://metamask.zendesk.com/hc/en-us/articles/360015290012-Using-a-Local-Node):
-```
-export VALIDATOR_ADDRESS="<*operator_address* from above>"
-export ORCH_ADDRESS="<*address* from the previous step>"
-export ETH_ADDRESS="<eth address, starting with 0x, that have some ETH on rinkeby test network>"
-```
-If you do not have any Ehtereum tokens in your wallet, then you can read the article [Ethereum Blockchain – Getting Free Test Ethers For Rinkeby Test Network](https://www.geeksforgeeks.org/ethereum-blockchain-getting-free-test-ethers-for-rinkeby-test-network/) and the [how to use Metamask article](https://levelup.gitconnected.com/how-to-use-metamask-a-step-by-step-guide-f380a3943fb1)
+Note that to complete this section a **3rd wallet is required**. There was the keplr wallet used above for the staking process and the orchestarator keplr wallet used in this process, but there's a need for a 3rd wallet to store funds in ETH for this process. It is advised that a [Metamask wallet be created](https://metamask.zendesk.com/hc/en-us/articles/360015290012-Using-a-Local-Node).
 
-2. Register the orchestrator:
+
+Add the following variables and register the orchestrator:
 ```
+export VALIDATOR_ADDRESS="<validator's operator_address>"
+export ORCH_ADDRESS="<orchestrator's CUDOS wallet address (Keplr)>"
+export ETH_ADDRESS="<orchestrator's ETH wallet address (Metmask)>"
+export CHAIN_ID="cudos-testnet-public"
+
 cudos-noded tx gravity set-orchestrator-address $VALIDATOR_ADDRESS $ORCH_ADDRESS $ETH_ADDRESS --from validator --keyring-backend "os" --chain-id $CHAIN_ID
 ```
+Where:
+- **VALIDATOR_ADDRESS** is the validator's operator address, as seen in the output from "cudos-noded q staking validators" above. Note that this is of the form "**cudosvaloper**17g4pjqjtxrxz35jcsx3jhns9e36epgs9e40rxt"
+- **ORCH_ADDRESS** is the address of the keplr wallet designated for the orchestrator. Note that this is if the form "**cudos**17g4pjqjtxrxz35jcsx3jhns9e36epgs9yxpz8k"
+- **ETH_ADDRESS** is the public receiving address of your Ethereum wallet so it does not require any node installation, only copy-paste your Ehtereum address from your Metamask account/wallet
+- **CHAIN_ID** is, as above the fixed string "cudos-testnet-public"
+
+If you do not have any Ehtereum tokens in your wallet, then you can read the article [Ethereum Blockchain – Getting Free Test Ethers For Rinkeby Test Network](https://www.geeksforgeeks.org/ethereum-blockchain-getting-free-test-ethers-for-rinkeby-test-network/) and the [how to use Metamask article](https://levelup.gitconnected.com/how-to-use-metamask-a-step-by-step-guide-f380a3943fb1)
+
+
 
 Now let's run the orchestrator, please make sure to run your gravity bridge binary on the same machine that your validator node is running on.
 1. Open shell and navigate to the directory _CudosBuilders/docker/orchestrator_
@@ -323,15 +418,27 @@ Now let's run the orchestrator, please make sure to run your gravity bridge bina
 4. Open the file _orchestrator.client.testnet.public01.env_ in any editor and set all of the parameters.
 5. Delete any comments from this file (delete # and everything after it), the parameter **GRPC** is the port value of the Sentry node.
 ```
-ADDRESS_PREFIX="cudos" # ADDRESS_PREFIX must be exactly as here
-FEES="<fee that you will have to pay for each bridge operation>" # format "100acudos"
+ADDRESS_PREFIX="cudos"
+FEES="100acudos"
+CONTRACT_ADDR="0xb22F2A4c231e69703FC524Eb2E3eb7B83C316F42"
+
 GRPC="http://<ip of your cudos node>:9090" # port should be 9090
 ETHRPC="http://<ip of ethereum node>:8545" # port should be 8545
-CONTRACT_ADDR="0xb22F2A4c231e69703FC524Eb2E3eb7B83C316F42" # CONTRACT_ADDR must be exactly as here
 COSMOS_ORCH_MNEMONIC="<mnemonic of your orchestrator account>"
-ETH_PRIV_KEY_HEX="<private key of your eth wallet that was used to register the validator>" # in hex format without leading 0x
+ETH_PRIV_KEY_HEX="<private key of your eth wallet>"
 ```
-6. Finally run the orchestrator
+Where:
+- **ADDRESS_PREFIX** is a fixed string "cudos"
+- **FEES** is a value in acudos for the fee that you will have to pay for each bridge operation. In this example 100 acudos.
+- **CONTRACT_ADDR** is a fixed string "0xb22F2A4c231e69703FC524Eb2E3eb7B83C316F42"
+- **GRPC** is the http URL pointing to port 9090 of the sentry node eg:
+http://sentry-1.example.com:9090
+- **ETHRPC** is the http URL pointing to port 8545 of the ethereum node eg
+http://ethereum.example.com:8545
+- **COSMOS_ORCH_MNEMONIC** is the mnemonic address of the keplr wallet designated for use by the orchestrator. See "**Add the orchestrator wallet**" above.
+- **ETH_PRIV_KEY_HEX** is the private key of your eth  metamsk wallet that was used to registered for use by the orchestrator>" # in hex format without leading 0x
+
+6. Execute the following command to start the orchestrator process, Note that the command must be run within the same directory used to hold and fill in the file *orchestrator.client.testnet.public01.env*. Note that this command must be run on the validator node as root, in the main shell, not inside the docker container. The command calls into the container to complete the process:
 ```
 sudo docker-compose --env-file orchestrator.client.testnet.public01.arg -f orchestrator.release.yml -p cudos-orchestrator-client-testnet-public-01-release up --build --detach
 ```
@@ -340,6 +447,8 @@ you can see the logs by running the command:
 ```
 sudo docker logs -f cudos-orchestrator-client-testnet-public-01-release
 ```
+Note that the container used in this command is different to the one used in similar commands run for the validator function.
+
 
 ### Send funds using the gravity bridge
 
