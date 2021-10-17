@@ -85,11 +85,10 @@ $ docker cp artifacts/cw20_base.wasm binary-builder:/usr/cudos
 1. Set up the environment
 
 ```
-$ NODE="https://sentry1.gcp-uscentral1.cudos.org:26657"
-$ CHAIN_ID="cudos-testnet-public"
+$ NODE="--node https://sentry1.gcp-uscentral1.cudos.org:26657"
 $ KEYRING="os"
 
-$ TXFLAGS="--node $NODE --chain-id $CHAIN_ID --gas auto --gas-adjustment 1.3 --keyring-backend $KEYRING -y"
+$ TXFLAGS="$NODE --chain-id cudos-testnet-public --gas auto --gas-adjustment 1.3 --keyring-backend $KEYRING -y"
 
 $ alias CUDOS_NODED='docker exec -it binary-builder cudos-noded'
 ```
@@ -97,7 +96,6 @@ $ alias CUDOS_NODED='docker exec -it binary-builder cudos-noded'
 Where:
 
 * **NODE** should refer to the IP address of your sentry or full/validator node that is running on the Cudos public testnet.
-* **CHAIN_ID** is the blockchain network ID, here it is the public testnet ID.
 * **KEYRING** uses the operating system's default credentials store (os) to handle keys storage operations securely. The keyring holds the private/public keypairs used to interact with a node and it will request a password each time it is accessed.
 * **TXFLAGS** is used as a shorthand for common transaction flags.
 * **CUDOS_NODED** is an alias for cudos-noded in binary-builder.
@@ -158,10 +156,10 @@ $ INIT=$( jq -n --arg address $OWNER '{ "name": "DIZZ COIN", "symbol": "DIZZ", "
 $ CUDOS_NODED tx wasm instantiate $CODE_ID "$INIT" --from owner --label "CW20" $TXFLAGS
 
 # check the contract state
-$ CUDOS_NODED query wasm list-contract-by-code $CODE_ID --node $NODE --output json | jq -s
+$ CUDOS_NODED query wasm list-contract-by-code $CODE_ID $NODE --output json | jq -s
 
 # fetch contract address
-$ CONTRACT=$( CUDOS_NODED query wasm list-contract-by-code $CODE_ID --node $NODE --output json | jq -r '.contracts[-1]' | tee /dev/tty | tail -1 | tr -d '\r' )
+$ CONTRACT=$( CUDOS_NODED query wasm list-contract-by-code $CODE_ID $NODE --output json | jq -r '.contracts[-1]' | tee /dev/tty | tail -1 | tr -d '\r' )
 ```
 
 Congrats, you have successfully deployed and instantiated contract.
@@ -181,7 +179,7 @@ Check the current balance of Bob:
 
 ```
 $ BALANCE_OF_BOB=$( jq -n --arg address $BOB '{ "balance": { "address": $address } }' | tee /dev/tty )
-$ CUDOS_NODED query wasm contract-state smart $CONTRACT "$BALANCE_OF_BOB" --node $NODE
+$ CUDOS_NODED query wasm contract-state smart $CONTRACT "$BALANCE_OF_BOB" $NODE
 data:
   balance: "1000000"
 ```
@@ -199,12 +197,12 @@ Now check the current balance of owner and Alice:
 
 ```
 $ BALANCE_OF_OWNER=$( jq -n --arg address $OWNER '{ "balance": { "address": $address } }' | tee /dev/tty )
-$ CUDOS_NODED query wasm contract-state smart $CONTRACT "$BALANCE_OF_OWNER" --node $NODE
+$ CUDOS_NODED query wasm contract-state smart $CONTRACT "$BALANCE_OF_OWNER" $NODE
 data:
   balance: "990000"
 
 $ BALANCE_OF_ALICE=$( jq -n --arg address $ALICE '{ "balance": { "address": $address } }' | tee /dev/tty )
-$ CUDOS_NODED query wasm contract-state smart $CONTRACT "$BALANCE_OF_ALICE" --node $NODE
+$ CUDOS_NODED query wasm contract-state smart $CONTRACT "$BALANCE_OF_ALICE" $NODE
 data:
   balance: "10000"
 ```
@@ -222,7 +220,7 @@ Check allowance for Alice:
 
 ```
 $ ALLOWANCE_FOR_ALICE=$( jq -n --arg owner $OWNER --arg spender $ALICE '{ "allowance": { "owner": $owner, "spender": $spender } }' | tee /dev/tty )
-$ CUDOS_NODED query wasm contract-state smart $CONTRACT "$ALLOWANCE_FOR_ALICE" --node $NODE
+$ CUDOS_NODED query wasm contract-state smart $CONTRACT "$ALLOWANCE_FOR_ALICE" $NODE
 data:
   allowance: "15000"
   expires:
@@ -241,19 +239,19 @@ $ CUDOS_NODED tx wasm execute $CONTRACT "$TRANSFER_FROM_ALICE" --from alice $TXF
 Check all current accounts' balances and allowance for Alice:
 
 ```
-$ CUDOS_NODED query wasm contract-state smart $CONTRACT "$BALANCE_OF_OWNER" --node $NODE
+$ CUDOS_NODED query wasm contract-state smart $CONTRACT "$BALANCE_OF_OWNER" $NODE
 data:
   balance: "985000"
 
-$ CUDOS_NODED query wasm contract-state smart $CONTRACT "$BALANCE_OF_BOB" --node $NODE
+$ CUDOS_NODED query wasm contract-state smart $CONTRACT "$BALANCE_OF_BOB" $NODE
 data:
   balance: "1005000"
 
-$ CUDOS_NODED query wasm contract-state smart $CONTRACT "$BALANCE_OF_ALICE" --node $NODE
+$ CUDOS_NODED query wasm contract-state smart $CONTRACT "$BALANCE_OF_ALICE" $NODE
 data:
   balance: "10000"
 
-$ CUDOS_NODED query wasm contract-state smart $CONTRACT "$ALLOWANCE_FOR_ALICE" --node $NODE
+$ CUDOS_NODED query wasm contract-state smart $CONTRACT "$ALLOWANCE_FOR_ALICE" $NODE
 data:
   allowance: "10000"
   expires:
@@ -272,7 +270,7 @@ $ CUDOS_NODED tx wasm execute $CONTRACT "$DECREASE_ALLOWANCE_FOR_ALICE" --from o
 Check current allowance for Alice:
 
 ```
-$ CUDOS_NODED query wasm contract-state smart $CONTRACT "$ALLOWANCE_FOR_ALICE" --node $NODE
+$ CUDOS_NODED query wasm contract-state smart $CONTRACT "$ALLOWANCE_FOR_ALICE" $NODE
 data:
   allowance: "8000"
   expires:
@@ -291,7 +289,7 @@ $ CUDOS_NODED tx wasm execute $CONTRACT "$BURN" --from owner $TXFLAGS
 Check the current balance of the owner:
 
 ```
-$ CUDOS_NODED query wasm contract-state smart $CONTRACT "$BALANCE_OF_OWNER" --node $NODE
+$ CUDOS_NODED query wasm contract-state smart $CONTRACT "$BALANCE_OF_OWNER" $NODE
 data:
   balance: "984000"
 ```
@@ -302,7 +300,7 @@ Get all allowances by running this command:
 
 ```
 $ ALL_ALLOWANCES=$( jq -n --arg owner $OWNER '{ "all_allowances": { "owner": $owner } }' | tee /dev/tty )
-$ CUDOS_NODED query wasm contract-state smart $CONTRACT "$ALL_ALLOWANCES" --node $NODE
+$ CUDOS_NODED query wasm contract-state smart $CONTRACT "$ALL_ALLOWANCES" $NODE
 data:
   allowances:
   - allowance: "8000"
@@ -317,7 +315,7 @@ Get all accounts by running this command:
 
 ```
 $ ALL_ACCOUNTS='{ "all_accounts": {} }'
-$ CUDOS_NODED query wasm contract-state smart $CONTRACT "$ALL_ACCOUNTS" --node $NODE
+$ CUDOS_NODED query wasm contract-state smart $CONTRACT "$ALL_ACCOUNTS" $NODE
 data:
   accounts:
   - cudos15yvgtr5ppu92hx0hu53ygdhnajrhgmjpfe8vdc
