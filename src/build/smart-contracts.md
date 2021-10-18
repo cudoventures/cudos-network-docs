@@ -114,6 +114,20 @@ $ CUDOS_NODED keys add alice --keyring-backend "$KEYRING"
 $ CUDOS_NODED keys add bob --keyring-backend "$KEYRING"
 ```
 
+Example of expected output results:
+
+```
+- name: owner
+  type: local
+  address: cudos16xws8z7zh7yjj69tglyks3jefp7rw38dlq5k0g
+  pubkey: '{"@type":"/cosmos.crypto.secp256k1.PubKey","key":"ApRCDX7zSgLqrFSbNpURfMSpb2BEySjRy7ijMvqpBiTO"}'
+  mnemonic: ""
+
+
+**Important** write this mnemonic phrase in a safe place.
+It is the only way to recover your account if you ever forget your password.
+```
+
 To view address of an account, use the following format (where _\<name\>_ should be replaced with an account - eg, _owner_, _alice_ or _bob_):
 
 ```
@@ -149,7 +163,7 @@ $ CODE_ID=$( echo $RES | jq -r '.logs[0].events[-1].attributes[-1].value' | tee 
 
 5. Instantiate and verify the contract
 
-Let's now instantiate a new CW20 contract, setting the initial balance of owner's address to 1M DIZZ tokens. 
+Let's now instantiate a new CW20 contract, setting the initial balance of owner's address to 1M DIZZ tokens.
 
 ***Note*** in this example, the "DIZZ" is used for the token name and symbol, but it can be replaced with any other name.
 
@@ -164,6 +178,39 @@ $ CUDOS_NODED query wasm list-contract-by-code $CODE_ID --node $NODE --output js
 $ CONTRACT=$( CUDOS_NODED query wasm list-contract-by-code $CODE_ID --node $NODE --output json | jq -r '.contracts[-1]' | tee /dev/tty | tail -1 | tr -d '\r' )
 ```
 
+Example of expected output results:
+
+```
+{
+  "name": "DIZZ COIN",
+  "symbol": "DIZZ",
+  "decimals": 6,
+  "initial_balances": [
+    {
+      "address": "cudos16xws8z7zh7yjj69tglyks3jefp7rw38dlq5k0g",
+      "amount": "1000000"
+    }
+  ],
+  "mint": {
+    "minter": "cudos16xws8z7zh7yjj69tglyks3jefp7rw38dlq5k0g",
+    "cap": "99900000000"
+  }
+}
+
+
+[
+  {
+    "contracts": [
+      "cudos19mquhvx58jrrk9pklf3uxx624q0f3zqhhmqhws"
+    ],
+    "pagination": {
+      "next_key": null,
+      "total": "0"
+    }
+  }
+]
+```
+
 Congrats, you have successfully deployed and instantiated contract.
 
 ### Examples of interaction
@@ -175,6 +222,17 @@ Mint 1M tokens to Bob:
 ```
 $ MINT=$( jq -n --arg recipient $BOB '{ "mint": { "recipient": $recipient, "amount": "1000000" } }' | tee /dev/tty )
 $ CUDOS_NODED tx wasm execute $CONTRACT "$MINT" --from owner $TXFLAGS
+```
+
+Example of expected output results:
+
+```
+{
+  "mint": {
+    "recipient": "cudos15yvgtr5ppu92hx0hu53ygdhnajrhgmjpfe8vdc",
+    "amount": "1000000"
+  }
+}
 ```
 
 Check the current balance of Bob:
@@ -193,6 +251,17 @@ Transfer 10k tokens from owner to Alice:
 ```
 $ TRANSFER_TO_ALICE=$( jq -n --arg recipient $ALICE '{ "transfer": { "recipient": $recipient, "amount": "10000" } }' | tee /dev/tty )
 $ CUDOS_NODED tx wasm execute $CONTRACT "$TRANSFER_TO_ALICE" --from owner $TXFLAGS
+```
+
+Example of expected output results:
+
+```
+{
+  "transfer": {
+    "recipient": "cudos19uudvppffqzqetmeuuux47sgh0xecu07unqwwa",
+    "amount": "10000"
+  }
+}
 ```
 
 Now check the current balance of owner and Alice:
@@ -236,6 +305,18 @@ Transfer 5k tokens from Alice to Bob using allowance:
 ```
 $ TRANSFER_FROM_ALICE=$( jq -n --arg owner $OWNER --arg recipient $BOB '{ "transfer_from": { "owner": $owner, "recipient": $recipient, "amount": "5000" } }' | tee /dev/tty )
 $ CUDOS_NODED tx wasm execute $CONTRACT "$TRANSFER_FROM_ALICE" --from alice $TXFLAGS
+```
+
+Example of expected output results:
+
+```
+{
+  "transfer_from": {
+    "owner": "cudos16xws8z7zh7yjj69tglyks3jefp7rw38dlq5k0g",
+    "recipient": "cudos15yvgtr5ppu92hx0hu53ygdhnajrhgmjpfe8vdc",
+    "amount": "5000"
+  }
+}
 ```
 
 Check all current accounts' balances and allowance for Alice:
@@ -288,7 +369,14 @@ $ BURN='{ "burn": { "amount": "1000" } }'
 $ CUDOS_NODED tx wasm execute $CONTRACT "$BURN" --from owner $TXFLAGS
 ```
 
-Check the current balance of the owner:
+Example of expected output results:
+
+```
+gas estimate: 124961
+{"height":"719919","txhash":"30440EBD4A1F2102E1E912C31620A2594FDE3755646AC3A204D01295614A9AE6","codespace":"","code":0,"data":"0A260A242F636F736D7761736D2E7761736D2E76312E4D736745786563757465436F6E7472616374","raw_log":"[{\"events\":[{\"type\":\"execute\",\"attributes\":[{\"key\":\"_contract_address\",\"value\":\"cudos19mquhvx58jrrk9pklf3uxx624q0f3zqhhmqhws\"}]},{\"type\":\"message\",\"attributes\":[{\"key\":\"action\",\"value\":\"/cosmwasm.wasm.v1.MsgExecuteContract\"},{\"key\":\"module\",\"value\":\"wasm\"},{\"key\":\"sender\",\"value\":\"cudos16xws8z7zh7yjj69tglyks3jefp7rw38dlq5k0g\"}]},{\"type\":\"wasm\",\"attributes\":[{\"key\":\"_contract_address\",\"value\":\"cudos19mquhvx58jrrk9pklf3uxx624q0f3zqhhmqhws\"},{\"key\":\"action\",\"value\":\"burn\"},{\"key\":\"from\",\"value\":\"cudos16xws8z7zh7yjj69tglyks3jefp7rw38dlq5k0g\"},{\"key\":\"amount\",\"value\":\"1000\"}]}]}]","logs":[{"msg_index":0,"log":"","events":[{"type":"execute","attributes":[{"key":"_contract_address","value":"cudos19mquhvx58jrrk9pklf3uxx624q0f3zqhhmqhws"}]},{"type":"message","attributes":[{"key":"action","value":"/cosmwasm.wasm.v1.MsgExecuteContract"},{"key":"module","value":"wasm"},{"key":"sender","value":"cudos16xws8z7zh7yjj69tglyks3jefp7rw38dlq5k0g"}]},{"type":"wasm","attributes":[{"key":"_contract_address","value":"cudos19mquhvx58jrrk9pklf3uxx624q0f3zqhhmqhws"},{"key":"action","value":"burn"},{"key":"from","value":"cudos16xws8z7zh7yjj69tglyks3jefp7rw38dlq5k0g"},{"key":"amount","value":"1000"}]}]}],"info":"","gas_wanted":"124961","gas_used":"94597","tx":null,"timestamp":""}
+```
+
+You can check the current balance of the owner by running the command:
 
 ```
 $ CUDOS_NODED query wasm contract-state smart $CONTRACT "$BALANCE_OF_OWNER" --node $NODE
@@ -309,6 +397,15 @@ data:
     expires:
       never: {}
     spender: cudos19uudvppffqzqetmeuuux47sgh0xecu07unqwwa
+```
+
+Example of the expected output results:
+```
+{
+  "all_allowances": {
+    "owner": "cudos16xws8z7zh7yjj69tglyks3jefp7rw38dlq5k0g"
+  }
+}
 ```
 
 #### Query all accounts
