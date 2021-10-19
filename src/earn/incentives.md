@@ -19,8 +19,8 @@ Project Artemis is broken down into 4 key phases which will run sequentially, fi
 Starter setup tasks for Cudos Network onboarding for Validators and users, focussing on account creation, hardware provisioning, node syncing and the CUDOS faucet.
 
 Total amount available per user:
-- Validators: up to $360 plus $200 p/m
-- Developers: up to $36
+- Validators: up to $360 each plus $200 p/m
+- Developers: up to $36 each
 
 #### Validator Tasks
 
