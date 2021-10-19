@@ -6,7 +6,7 @@ The Cudos Network roadmap for core protocol upgrades
 
 ## Somniorum Testnet
 
-A fully functional public blockchain running in testnet to review performance and feature-set ahead of launch
+A fully functional public blockchain running in testnet to review performance and feature-set ahead of launch. To participate in the testnet please jump into [Project Artemis](/earn/incentives.html) where you can explore functionality and earn rewards!
 
 ## Ingenii
 
