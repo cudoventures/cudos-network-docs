@@ -312,6 +312,9 @@ sudo docker exec -it cudos-start-full-node-client-testnet-public-01 bash
 It is then advised that the following be copy/pasted into the shell prompt created by the above.
 
 ```
+export STAKE="1000000000000000000acudos"
+export CHAIN_ID="cudos-testnet-public"
+
 cudos-noded tx staking create-validator --amount=$STAKE \
     --from=validator \
     --pubkey=$(cudos-noded tendermint show-validator) \
