@@ -55,6 +55,7 @@ module.exports = {
         '',
         'roadmap',
         'validators',
+        'gravity-bridge-slashing',
         'resources'
       ],
 
@@ -66,8 +67,7 @@ module.exports = {
         'validator',
         'developers-setup',
         'interact-keplr-explorer',
-        'start-binaries',
-        'gravity-bridge-slashing'
+        'start-binaries'
       ],
 
       '/earn/': [
