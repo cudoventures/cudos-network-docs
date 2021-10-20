@@ -1,15 +1,28 @@
 ---
-title: Gravity Bridge Slashing Policy
+title: Gravity Bridge
 ---
 
-# Gravity Bridge Slashing Policy
+## Overview
 
-* [Brief](/build/gravity-bridge-slashing.html#brief)
-* [Slashing Parameters for the Network](/build/gravity-bridge-slashing.html#slashing-parameters-for-the-network)
-* [Infraction Timelines](/build/gravity-bridge-slashing.html#infraction-timelines)
-* [Liveness Tracking](/build/gravity-bridge-slashing.html#liveness-tracking)
+Gravity Bridge - an independent and credibly neutral Cosmos-SDK blockchain providing the entire SDK community with a neutral bridge to Ethereum and eventually all major EVM chains.
 
-## Brief
+The bridge currently supports bridging of CUDOS tokens between the Ethereum and Cudos ecosystems, the bridge will be able to support any ERC-20 or ERC-721 asset to be bridged in the future.
+
+## Bridging CUDOS
+
+The Gravity Bridge is available [here](http://104.154.17.186:4000/) via a web interface or can be accessed directly via an Orchestrator Node
+
+#### Somniorum Bridge
+
+In the public testnet Somniorum the Gravity Bridge connects from Somniorum to Rinkeby Ethereum so test assets can be moved between these two ecosystems
+
+#### Ingenii Bridge
+
+Once the mainnet Cudos Network is deployed the Gravity Bridge will connect to mainnet Ethereum for real-world bridging of token assets
+
+### Gravity Bridge Security Policy
+
+The Gravity Bridge mechanism is a decentralised interface relying on a distributed series of Orchestrator Nodes that sit across these ecosystems. These nodes are incentivised to behave properly using a stake-based slashing policy
 
 The slashing policy is described in the resources below. In short the slashing is defined by the validator (*the node which actually signs each block*) not by the orchestrator (*the helper binary which is running along side the validator's node*).
 
@@ -27,7 +40,7 @@ If a validator does not sign an operation (*valset update, batch confirm, logica
 
 There is a little catch especially about batches. Once a batch is submitted to the Ethereum (*has been signed by less than 2/3 of the voting power*) then it is deleted from the database. Once the batch is deleted, there is no way to check whether a validator hasn't signed it. In short - if a validator couldn't sign a batch for some reason and if this batch had been submitted to the Ethereum then the validator who hasn't signed it, will not be slashed.
 
-## Slashing Parameters for the Network
+#### Slashing Parameters for the Network
 
 Parameter defining the size (*number of blocks*) of the sliding window used to track validator liveness:
 ```
@@ -71,11 +84,11 @@ The fraction percent that will be taken from validator:
 
 At any given time, there are any number of validators registered in the state machine. In each block, the top **MaxValidators** (*defined by x/staking*) who are not jailed become bonded, meaning that they may propose and vote on blocks. Validators who are bonded are at stake, meaning that part or all of their stake and their delegators' stake is at risk if they commit a protocol fault.
 
-## Infraction Timelines
+#### Infraction Timelines
 
 To illustrate how the **x/slashing** module handles submitted evidence through Tendermint consensus, consider the following examples:
 
-### Definitions:
+##### Definitions:
 
 **[:** timeline start <br/>
 **]**: timeline end <br/>
@@ -84,11 +97,11 @@ To illustrate how the **x/slashing** module handles submitted evidence through T
 **Vb**: validator bonded <br/>
 **Vu**: validator unbonded <br/>
 
-### Single Double Sign Infraction:
+##### Single Double Sign Infraction:
 
 <-----------------> [-------------C1--------D1,Vu-----] <br/>
 
-### Multiple Double Sign Infractions:
+##### Multiple Double Sign Infractions:
 
 <---------------------------> [----------C1---C2---C3---D1,D2,D3Vu-----] <br/>
 
@@ -96,7 +109,7 @@ Multiple infractions are committed and then later discovered, at which point the
 
 Slashing will occur when a validator has joined the network, but doesn't have Gravity bridge components. In this case after 16 hours the validator will be slashed and removed from the set of validators.
 
-## Liveness Tracking
+#### Liveness Tracking
 
 At the beginning of each block, we update the **ValidatorSigningInfo** for each validator and check if they've crossed below the liveness threshold over a sliding window. This sliding window is defined by **SignedBlocksWindow** and the index in this window is determined by **IndexOffset** found in the validator's **ValidatorSigningInfo**. For each block processed, the **IndexOffset** is incremented regardless if the validator signed or not. Once the index is determined, the **MissedBlocksBitArray** and **MissedBlocksCounter** are updated accordingly.
 
