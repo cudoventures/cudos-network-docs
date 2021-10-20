@@ -65,6 +65,8 @@ Governance proposals will be used for decision making on the future of the Cudos
 
 Please visit the [Proposals page](https://explorer.cudos.org/proposals) to find out more on active proposals.
 
+<!-- TODO: write a full step-by-step instruction on how to initiate a new proposal and vote on an active proposal for ARTEMIS-BUZZ#7 -->
+
 ### Faucet
 
 The Cudos Network Faucet is a way for any user of the Somniorum testnet to be able to claim some free test CUDOS for use as gas within the test network. Each address can claim their allocation of test CUDOS once, if you require tokens please visit [this page](https://explorer.cudos.org/faucet).

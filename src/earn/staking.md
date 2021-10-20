@@ -27,6 +27,8 @@ Cudos is also finalising the architecture of the compute capabilities of the net
 
 The Cudos Network penalises adverse behaviours, and the node operators or Validators linked to these automatically to incentivise the highest level of security, availability, and economic integrity. The types of penalties a Validator can incur on the network have several levels of severity. Some may lead to immediate, irreversible exclusion. Others may lead to time-outs from additional Staking rewards. Cudos as a team is working to ensure that these metrics are real-time and accurately predictive to guarantee that we only offer the highest quality of computing power on our network.
 
+<!-- TODO: add a new '## Validator Staking Instructions' section with a full step-by-step on how to add, remove stake as a Validator via the Explorer and claim rewards. Also take into account instructions for ARTEMIS-BUZZ#8 -->
+
 ## Delegator Rewards
 
 The Cudos network will support delegated staking through the Validators. The Validators earn a proportion of the rewards of the users who delegated the staked through them. Each Validator can freely choose the fee. However, it will always need to be above a predefined minimum value set for security reasons. This minimum will be 2% at the start.
@@ -44,6 +46,8 @@ Rather than staking all tokens in a Validator hosted by the project, Cudos will 
 Recently, most networks that require the nodes to stake also allow delegated staking. The concept is completely analogous: the nodes of the network stake a certain amount of tokens in order to qualify to be a node, and get rewarded accordingly. For users willing to stake tokens but not necessarily wanting to host a full node, there is the possibility to stake in one of the aforementioned nodes, in order to support it and the network. This is what is commonly understood by delegated staking, and also gives rewards for the contribution.
 
 #### How to stake via a validator
+
+<!-- TODO: rewrite this section with full step-by-step on how to add, remove stake via the Explorer and claim rewards -->
 
 In order to delegate your stake via a validator you will need the funds you want to delegate and to decide to which validator node you want to delegate the stake to. Once that is done, you can either follow the process for a staking provider, or the instructions that we will be updating on this page soon.
 

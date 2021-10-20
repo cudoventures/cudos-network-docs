@@ -24,6 +24,8 @@ The bridge is currently available [here](http://104.154.17.186:4000/) for testin
 Make sure you are connected to the correct network RPC endpoints via the connected wallets (`Rinkeby` & `CudosPublicTesnet`)
 :::
 
+<!-- TODO: write a full step-by-step instruction on how to use the Gravity Bridge UI for each journey for ARTEMIS-BUZZ#4 -->
+
 #### Ingenii Bridge
 
 Once the mainnet Cudos Network is deployed the Gravity Bridge will connect to mainnet Ethereum for real-world bridging of token assets
