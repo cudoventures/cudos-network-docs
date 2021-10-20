@@ -39,7 +39,39 @@ The promise of computing, which is core to the Cudos Network’s mission, is als
 
 The Cudos Network is powered by CUDOS, the native token on the network, which can be used for; funding compute workloads (as gas), contributing to network security (as stake), and governance participation.
 
-CUDOS can be bridged between the Cudos Network and Ethereum (and vice versa) using the Gravity bridge.
+CUDOS can be bridged between the Cudos Network and Ethereum (and vice versa) using the [Gravity Bridge](/learn/gravity-bridge.html).
+
+## Explorer
+
+The [Cudos Network Explorer](https://explorer.cudos.org/) is a web application that allows users an easy insight into activity on the network as well as access some of the fundamental features of the blockchain
+
+### Staking
+
+Connecting to the Explorer with a [Keplr Wallet](/build/account-setup.html) allows any user to use their tokens within the network as stake (which props up the security mechanism of the entire chain via DPoS consensus).
+
+To use CUDOS to stake as a Validator you will first have to [install the node](/build/validator.html) and then stake 2,000,000+ CUDOS
+
+To use CUDOS as a Delegator please visit the [Earn page](/earn/staking.html#delegator-rewards) for more details on using the Explorer UI
+
+### Transactions
+
+The Cudos Network is a public blockchain and as such anyone can view or consume the transaction information passing through each block. The Explorer UI is an easy window into the current transaction activity showing details of the transaction details themselves as well as address data for the sender/location.
+
+Please visit the [Transactions page](https://explorer.cudos.org/transactions) to dig into the data.
+
+### Proposals
+
+Governance proposals will be used for decision making on the future of the Cudos Network. The Explorer UI allows anyone to easily check any live proposals and if they connect via a valid wallet also vote on the outcome of any live proposal.
+
+Please visit the [Proposals page](https://explorer.cudos.org/proposals) to find out more on active proposals.
+
+### Faucet
+
+The Cudos Network Faucet is a way for any user of the Somniorum testnet to be able to claim some free test CUDOS for use as gas within the test network. Each address can claim their allocation of test CUDOS once, if you require tokens please visit [this page](https://explorer.cudos.org/faucet).
+
+## Wallet
+
+The [Cudos Network Wallet](https://wallet.cudos.org/) is a web application which is used by ERC-20 CUDOS holders to signup as Validators to the network or delegate their tokens as stake to other Validators
 
 ## Existing CUDOS Products
 
