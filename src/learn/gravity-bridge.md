@@ -18,10 +18,10 @@ When using the web interface a user can connect to either side of the bridge usi
 
 In the public testnet Somniorum the Gravity Bridge connects from Somniorum to Rinkeby Ethereum so test assets can be moved between these two ecosystems.
 
-The bridge is currently available [here](http://104.154.17.186:4000/) for testing.
+The bridge is currently available [here](http://35.192.177.142:4000/) for testing.
 
 ::: warning
-Make sure you are connected to the correct network RPC endpoints via the connected wallets (`Rinkeby` & `CudosPublicTesnet`)
+Make sure you are connected to the correct network RPC endpoints via the connected wallets (`Rinkeby` & `CudosPublicTestnet`)
 :::
 
 <!-- TODO: write a full step-by-step instruction on how to use the Gravity Bridge UI for each journey for ARTEMIS-BUZZ#4 -->
