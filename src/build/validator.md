@@ -1,8 +1,13 @@
 ---
-title: Validator Setup Instructions (v0.3)
+title: Validator Setup Instructions
 ---
 
 # Validator Setup Instructions (v0.3)
+
+# Updates 21/10/2021
+
+Find the full list of latest updates:
+- Validator mechanics outlined in full
 
 # Updates 14/10/2021
 
@@ -41,7 +46,7 @@ You need an IP-address per node which is directly connected to the network. For 
 
 The picture below shows the diagram of validator topology:
 
-![img](./validator-topoligy.jpg)
+![img](./validator-topology.jpg)
 
 Note that if you are running the setup not for the first time, then you will need to read the section [How to delete a current running node](/build/validator.html#how-to-delete-a-current-running-node).
 
@@ -56,7 +61,7 @@ To run a full node, you need to complete the following steps:
 - Initialize the node
 - Configure and start the node
 
-#### Initialize the Full node as a validator
+#### Initialize the Full Node as a Validator
 
 When you run a validator node, you play an important role in the security of a network. A validator must be secure and fault-tolerant. So it is recommended to run your validator with a layer of 1 or more sentry nodes and to isolate the validator node behind that layer. Also, you will need an IP-address per node that is connected to the network. For example, if you have 10 validator nodes and only one Sentry node then only the Sentry node will be connected to the network where you will need a single IP-address.
 
