@@ -65,6 +65,7 @@ module.exports = {
         'account-setup',
         'funding-your-wallet',
         'validator',
+        'validator-mechanics',
         'developers-setup',
         'interact-keplr-explorer',
         'start-binaries'
