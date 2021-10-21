@@ -66,17 +66,17 @@ Governance proposals will be used for decision making on the future of the Cudos
 The governance module inherited from CosmosSDK currently supports:
 
 - Proposal submission: Users can submit proposals with a deposit. Once the minimum deposit is reached, proposal enters voting period
-- Vote: Participants can vote on proposals that reached MinDeposit
+- Voting: Participants can vote on proposals that reached MinDeposit
 - Inheritance and penalties: Delegators inherit their validator's vote if they don't vote themselves.
 - Claiming deposit: Users that deposited on proposals can recover their deposits if the proposal was accepted OR if the proposal never entered voting period.
 
 Please visit the [Proposals page](https://explorer.cudos.org/proposals) to find out more on active proposals.
 
-For full guides on how this all works, please read [the official CosmosSDK docs](https://docs.cosmos.network/master/modules/gov/#contents)
+For full guides on how this all works, please read [the latest CosmosSDK docs](https://docs.cosmos.network/master/modules/gov/#contents)
 
 ### Faucet
 
-The Cudos Network Faucet is a way for any user of the Somniorum testnet to be able to claim some free test CUDOS for use as gas within the test network. Each address can claim their allocation of test CUDOS once, if you require tokens please visit [this page](https://explorer.cudos.org/faucet).
+The Cudos Network Faucet is a way for any user of the Somniorum testnet to be able to claim 10 free test CUDOS for use as gas within the test network. Each address can claim their allocation of test 10 CUDOS once, if you require tokens please visit [this page](https://explorer.cudos.org/faucet).
 
 ## Wallet
 
