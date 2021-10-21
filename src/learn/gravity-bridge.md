@@ -10,21 +10,29 @@ The bridge currently supports bridging of CUDOS tokens between the Ethereum and 
 
 ## Bridging CUDOS
 
-The Gravity Bridge is available via a web interface or can be accessed directly via an Orchestrator Node.
+The Gravity Bridge is available for token holders via a web interface which allows any user on either network to bridge ERC-20 CUDOS tokens.
 
 When using the web interface a user can connect to either side of the bridge using either [Metamask](https://metamask.io/), or [Keplr](/build/account-setup.html#what-is-keplr), depending on the direction required. The bridging mechanism requires a transaction and signature from the sender location (so this side needs to be connected via a wallet) and the receiver is a simple public address to send the tokens to.
+
+For example if a user wanted to send CUDOS from Ethereum to Cudos Network:
+1. Make this selection from the dropdown menus
+2. Enter an amount of CUDOS you wish to send between these ecosystems
+3. Enter a destination address - this is where the CUDOS will be deposited after the bridge, it can be an account you control or any other. The address will follow the standard CosmosSDK format and look something like `cudos1hutad4hec0rnw7plhzd2ywmdjh06pqsd86vu5x`
+
+If a user wanted to send CUDOS from Cudos back to Ethereum:
+1. Make this selection from the dropdown menus
+2. Enter an amount of CUDOS you wish to send between these ecosystems
+3. Enter a destination address - this is where the CUDOS will be deposited after the bridge, it can be an account you control or any other. The address will follow the standard Ethereum address format and look something like `0xfD619F91C38A86be881d8eD4B8ef88De1E1afD50`
 
 #### Somniorum Bridge
 
 In the public testnet Somniorum the Gravity Bridge connects from Somniorum to Rinkeby Ethereum so test assets can be moved between these two ecosystems.
 
+::: tip
 The bridge is currently available [here](http://35.192.177.142:4000/) for testing.
 
-::: warning
 Make sure you are connected to the correct network RPC endpoints via the connected wallets (`Rinkeby` & `CudosPublicTestnet`)
 :::
-
-<!-- TODO: write a full step-by-step instruction on how to use the Gravity Bridge UI for each journey for ARTEMIS-BUZZ#4 -->
 
 #### Ingenii Bridge
 
