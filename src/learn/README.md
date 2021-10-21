@@ -61,11 +61,18 @@ Please visit the [Transactions page](https://explorer.cudos.org/transactions) to
 
 ### Proposals
 
-Governance proposals will be used for decision making on the future of the Cudos Network. The Explorer UI allows anyone to easily check any live proposals and if they connect via a valid wallet also vote on the outcome of any live proposal.
+Governance proposals will be used for decision making on the future of the Cudos Network. Holders of the native CUDOS token can vote on proposals on a 1 token 1 vote basis. The Explorer UI allows anyone to easily check any live proposals and if they connect via a valid wallet also create or vote on the outcome of any live proposal.
+
+The governance module inherited from CosmosSDK currently supports:
+
+- Proposal submission: Users can submit proposals with a deposit. Once the minimum deposit is reached, proposal enters voting period
+- Vote: Participants can vote on proposals that reached MinDeposit
+- Inheritance and penalties: Delegators inherit their validator's vote if they don't vote themselves.
+- Claiming deposit: Users that deposited on proposals can recover their deposits if the proposal was accepted OR if the proposal never entered voting period.
 
 Please visit the [Proposals page](https://explorer.cudos.org/proposals) to find out more on active proposals.
 
-<!-- TODO: write a full step-by-step instruction on how to initiate a new proposal and vote on an active proposal for ARTEMIS-BUZZ#7 -->
+For full guides on how this all works, please read [the official CosmosSDK docs](https://docs.cosmos.network/master/modules/gov/#contents)
 
 ### Faucet
 
