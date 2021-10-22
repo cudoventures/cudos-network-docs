@@ -8,6 +8,8 @@ title: Validator Setup Instructions
 
 Find the full list of latest updates:
 - Validator mechanics outlined in full
+- Unjail a Validator command added
+- Validator account types described
 
 # Updates 14/10/2021
 
@@ -38,13 +40,13 @@ In order to have a secure and running network, you will need to run each of the 
 3. Seed node on a separate local machine
 4. Ethereum full node, you can run it virtually on a cloud
 
-As a validator, you must run an orchestrator. The orchestrator requires an Ethereum full node to connect to. If your Ethereum full node and the orchestrator are within a private network, you need to run the orchestrator on the same physical machine as the validator. Otherwise, If the network is public, you will need a separate machine for the orchestrator that must reside in the validator's private network. This will ensure that the validator machine is not making a public connection with any physical machine.
+As a Validator, you must run an Orchestrator. The Orchestrator requires an Ethereum full node to connect to. If your Ethereum full node and the Orchestrator are within a private network, you need to run the Orchestrator on the same physical machine as the Validator. Otherwise, If the network is public, you will need a separate machine for the Orchestrator that must reside in the Validator's private network. This will ensure that the Validator machine is not making a public connection with any physical machine.
 
-For one or more validator nodes it is recommended to launch a layer of sentry nodes (at least 1 Sentry node) and optionally Seed nodes with isolating the validator node behind that layer.
+For one or more Validator nodes it is recommended to launch a layer of Sentry nodes (at least 1 Sentry node) and optionally Seed nodes with isolating the Validator node behind that layer.
 
 You need an IP-address per node which is directly connected to the network. For example, If you have **N** validator nodes and only one Sentry node then only the Sentry node is directly connected to the network. In this case you will need a single IP-address.
 
-The picture below shows the diagram of validator topology:
+The picture below shows the diagram of Validator topology:
 
 ![img](./validator-topology.jpg)
 
@@ -192,14 +194,23 @@ Note that you can see the logs by running the command:
 sudo docker logs -f cudos-start-seed-node-client-testnet-public-01
 ```
 
-## Create a validator
+## Create a Validator
 
-In order for your cudos node to act in the role of validator, it will need bring together the validator server and the orchestarator server with the 3 wallets identified above. It will require:
+In order for your cudos node to act in the role of Validator, it will need bring together the Validator server and the Orchestrator server with the 3 wallets identified above. It will require:
 
 1. A running Ethereum full-node
 2. A running Cudos Full node ,which has the validator configuration, and a setup of the orchestrator.
 
 Only after finalising previous steps, you can start the process of staking to the node, making it a fully functional validator node. this section explains how to achieve each step in detail.
+
+#### Accounts
+
+There are 3 types of accounts and addresses inherited from Cosmos SDK:
+1. Account address: Starting with the `cudos` prefix. These are standard address types seen across the network and used by anyone.
+2. Validator address: Starting with the `cudosvaloper` prefix. These are Validator addresses which are generated when a new Validator is created. They can be queried using the `cudos-noded q staking validators` command.
+3. Consensus node address: Starting with `cudosvalcons`. These addresses are used by Tendermint. They are created when a node is initialized.
+
+Cosmos SDK does not allow you to create more than 1 validator address from a single account address. So you cannot make either a double-signing error nor can you share a single account address to different Validator nodes.
 
 ### Ethereum full node
 
