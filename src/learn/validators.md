@@ -46,7 +46,7 @@ The following sketch shows a request triggering a Cudos workload. A layer 1 smar
 
 ![CUDOS node diagram](./node-for-wiki.png)
 
-### Validator Mechanics
+## Validator Mechanics
 
 After a Validator is [setup](/build/validator.html) and officially added to the Cudos Network with a `create-validator` transaction, they can be in three states:
 
@@ -54,7 +54,7 @@ After a Validator is [setup](/build/validator.html) and officially added to the 
 - `jailed`: Validator misbehaved and is in jail, i.e. outside of the validator set. If the jailing is due to being offline for too long, the validator can send an `unjail` transaction in order to re-enter the validator set. If the jailing is due to double signing, the validator cannot unjail.
 - `unbonded`: Validator is not in the active set, and therefore not signing blocs. Validator cannot be slashed, and does not earn any reward. It is still possible to delegate Atoms to this validator. Un-delegating from an unbonded validator is immediate.
 
-## Slashing
+### Slashing
 
 Slashing incentivises network participants to act in the interests of the Cudos Network rather than their own self interest and is the main game theoretic mechanism to secure a proof of stake system. If a Validator misbehaves, their delegated stake will be partially slashed.
 
