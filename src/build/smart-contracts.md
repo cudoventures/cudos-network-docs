@@ -250,7 +250,6 @@ Transfer 10k tokens from owner to Alice:
 
 ```
 $ TRANSFER_TO_ALICE=$( jq -n --arg recipient $ALICE '{ "transfer": { "recipient": $recipient, "amount": "10000" } }' | tee /dev/tty )
-$ CUDOS_NODED tx wasm execute $CONTRACT "$TRANSFER_TO_ALICE" --from owner $TXFLAGS
 ```
 
 Example of expected output results:
@@ -262,6 +261,11 @@ Example of expected output results:
     "amount": "10000"
   }
 }
+```
+
+execute the transfer contract:
+```
+$ CUDOS_NODED tx wasm execute $CONTRACT "$TRANSFER_TO_ALICE" --from owner $TXFLAGS
 ```
 
 Now check the current balance of owner and Alice:
