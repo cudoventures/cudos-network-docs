@@ -46,11 +46,35 @@ The following sketch shows a request triggering a Cudos workload. A layer 1 smar
 
 ![CUDOS node diagram](./node-for-wiki.png)
 
-#### 24x7 Utilisation of Infrastructure
+### Validator Mechanics
 
-Cudos Network can fully utilise the hardware of all nodes at all times. When there are not enough blockchain workloads coming from the Cudos smart contracts to fully utilise the node’s hardware, the nodes can use the Cudo platform to receive workloads, including cryptocurrency mining. Thus, the nodes are able to receive workloads to stay at full utilisation at all times.
+After a Validator is [setup](/build/validator.html) and officially added to the Cudos Network with a `create-validator` transaction, they can be in three states:
 
-Cudos nodes can receive compute workloads from many different sources. These include work requested from the Cudos smart contracts, cryptocurrency mining, other blockchain workloads and more traditional “cloud-like” workloads, such as video rendering, scientific simulations or weather prediction.
+- `in validator set`: Validator is in the active set and participates in consensus. Validator is earning rewards and can be slashed for misbehaviour.
+- `jailed`: Validator misbehaved and is in jail, i.e. outside of the validator set. If the jailing is due to being offline for too long, the validator can send an `unjail` transaction in order to re-enter the validator set. If the jailing is due to double signing, the validator cannot unjail.
+- `unbonded`: Validator is not in the active set, and therefore not signing blocs. Validator cannot be slashed, and does not earn any reward. It is still possible to delegate Atoms to this validator. Un-delegating from an unbonded validator is immediate.
+
+## Slashing
+
+Slashing incentivises network participants to act in the interests of the Cudos Network rather than their own self interest and is the main game theoretic mechanism to secure a proof of stake system. If a Validator misbehaves, their delegated stake will be partially slashed.
+
+There are currently two faults that can result in slashing of funds for a Validator and their respective Delegators:
+
+- Double signing: If someone reports on chain A that a validator signed two blocks at the same height on chain A and chain B, and if chain A and chain B share a common ancestor, then this validator will get slashed by 5% on chain A.
+- Downtime: If a validator misses more than 95% of the last 10.000 blocks, they will get slashed by 0.01%.
+
+In the Cudos Network, slashed tokens go to the community CUDOS Treasury. That way, participants that misbehave who would seek to harm the network will compensate the damage done to the whole community, by contributing to its maintenance and growth.
+
+### Unjailing a Validator
+
+To `unjail` a Validator you must send a transaction to the network from the Validator address itself to show that you are back online
+
+Run the following command:
+```
+cudos-noded tx slashing unjail --chain-id="$CHAIN_ID" --from="$VALIDATOR_ADDRESS" --keyring-backend "os"
+```
+
+See full docs [here](https://hub.cosmos.network/main/validators/validator-setup.html#unjail-validator)
 
 ## Staking
 
@@ -63,16 +87,6 @@ Validators will get rewarded for their support to the network in the form of sta
 ### Transaction Fees / Gas
 
 Validators earn CUDOS used in the network as gas, each transaction costs gas which is paid to the Validators for helping secure the operation of the Cudos Network.
-
-## Slashing
-
-Slashing refers to the action of removing tokens that are staked by a Cudos Validator due to malicious or harmful behaviour to the network. This security mechanism underpins the Cudos Network ensuring it is in the Validators interest to not act maliciously or try to game the system, as otherwise they will be financially penalised.
-
-In the Cudos Network, slashed tokens go to the community CUDOS Treasury. That way, participants that misbehave who would seek to harm the network will compensate the damage done to the whole community, by contributing to its maintenance and growth.
-
-### Offences
-
-Slashing in the Cudos network will be calculated based on a mixture of factors, including downtime and incomplete or failed workloads received through the Cudos smart contract. Slashing might also affect the trust score of a Cudos Node.
 
 ## Be a Cudos Validator
 
