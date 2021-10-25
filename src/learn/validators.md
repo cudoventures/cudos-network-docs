@@ -10,6 +10,8 @@ Cudos Network is a Proof of Stake chain so each Validator must put up a CUDOS to
 
 The Validator pool is currently permissioned to allow the network to launch from testnet with stability, this will fully open once the network is deployed to mainnet. The active Validators on the network are determined by who has the most stake delegated to them — the top 100 Validator candidates with the most stake will become Cudos Network Validators.
 
+Validators have a responsibility to be able to constantly run a correct version of the software, meaning their servers are always online and their private keys are not compromised. They also have a duty to participate in governance to ensure the decentralised decision making of the Cudos Network.
+
 ### Become A Validator
 
 If you are interested in becoming an early Cudos Validator during the testnet please get in touch with us using [this application form](https://www.cudos.org/#contact-us).
@@ -71,15 +73,17 @@ After a Validator is [setup](/build/validator.html) and officially added to the 
 
 ### Staking
 
-Validators need to stake 2,000,000 CUDOS when they connect to the Cudos Network in order to become eligible for rewards. Users can also delegate additional CUDOS stake to a Validator to earn a portion of rewards.
-
-### Staking Rewards
+Validators need to stake 2,000,000 CUDOS when they connect to the Cudos Network in order to become eligible for transaction processing and rewards. Validators can also delegate additional CUDOS stake on top of the minimum threshold to earn an additional cut of available rewards.
 
 Validators and their Delegators earn CUDOS as staking rewards for their support to the network security. These reward percentages will depend on the number of Validators and users delegating their stake in the network: the more staking there is, the lower the staking rewards for all participants will be as the total amount to distribute over a 10 year period is fixed.
 
+When a Validator or a Delegator wants to retrieve part or all of their staked CUDOS, they send an `unbonding` transaction directly (or via the Explorer). Unbonding CUDOS undergo a 21 day unbonding period during which they are liable to being slashed for potential misbehaviours committed by the Validator before the unbonding process started, this ensures no-one can withdraw their secure stake immediately after commiting a slashable offence.
+
+If a Validator misbehaves, a certain portion of their total stake is slashed meaning that every Delegator that staked CUDOS to this Validator gets penalised in proportion to their amount staked. Delegators are therefore incentivised to delegate to Validators that they anticipate will function safely.
+
 ### Transaction Fees / Gas
 
-Validators and their Delegators earn CUDOS used in the network as gas, each transaction costs gas for execution of computational tasks on the network, which is then paid to the Validators for helping secure the operation of the Cudos Network.
+Validators and their Delegators earn CUDOS used in the network as gas. Each transaction costs gas for execution of computational tasks on the network, which is then paid to the Validators for running these jobs and helping secure the operation of the Cudos Network.
 
 ### Slashing
 
@@ -96,7 +100,7 @@ In the Cudos Network, slashed tokens go to the community CUDOS Treasury. That wa
 
 ### Unjailing a Validator
 
-To `unjail` a Validator the user must send a transaction to the network from the Validator address itself to prove their back online.
+To `unjail` a Validator the user must send a transaction to the network from the Validator address itself to prove they are back online.
 
 Run the following command:
 ```
