@@ -18,7 +18,7 @@ git lfs version
 ```
 Check that the version is 2.5.1 or later. If it is not, install it from [Git LFS](https://git-lfs.github.com/)
 
-Install the netlify-cli and login using the credentials in 1password:
+Install the netlify-cli and login using the credentials in 1password marketing vault:
 ```
 npm install -g netlify-cli
 netlify login

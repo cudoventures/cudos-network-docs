@@ -1,13 +1,16 @@
 ---
-title: Prerequisites and Operating Systems
+title: Prerequisites
 ---
 
-# ﻿Prerequisites and operating systems
+# ﻿Prerequisites
 
 This article explains:
-* How to install all necessary prerequisites
-* Important notes of installing docker for first time
-* How to setup your environment before running a node
+* [How to install all necessary prerequisites](/build/prerequisites.html#install-prerequisites)
+* [Important notes of installing docker for first time](/build/prerequisites.html#notes-for-installing-docker-for-the-first-time)
+* [How to setup your environment before running a node](/build/prerequisites.html#setup-the-environment-before-running-a-node)
+* [How to create an account and set up a Keplr wallet](/build/prerequisites.html#create-an-account-and-set-up-a-keplr-wallet)
+
+## Install prerequisites
 
 You can run your node in different operating systems such as Debian 10, Ubuntu, WSL, and macOS Catalina version 10.15.4 or above. If you are installing docker for the first time, please check the next section, “Notes for Installing Docker for the First Time”.
 
@@ -112,7 +115,7 @@ cd docker/binary-builder && sudo docker-compose --env-file binary-builder.arg -f
 
 Note that you need to repeat the same steps for each node that you want to create.
 
-## Create an account and set up a Keplr wallet
+## Create an account and set up a Keplr wallet (Only in the Validator node)
 
 1. You can use the docker terminal to locate the containers' ID:
 ```
@@ -120,13 +123,13 @@ sudo docker ps --filter "name=binary-builder"
 ```
 2. Copy the CONTAINER_ID and create the _CUDOS_NODED_ instance by running the command:
 ```
-alias CUDOS_NODED='sudo docker exec -it binary-builder cudos-noded'
+alias cudos-noded='sudo docker exec -it binary-builder cudos-noded'
 ```
-3. Create an account by running the command (write the mnemonic phrase in a safe place):
+3. Follow the guide [Set up a Keplr wallet and link it to your account on the Cudos testnet network](/docs/build/account-setup.html)
+4. Create an account by running the command (write the mnemonic phrase in a safe place):
 ```
 cudos-noded keys add validator --recover --keyring-backend="os"
 ```
-4. Follow the guide [Set up a Keplr wallet and link it to your account on the Cudos testnet network](/docs/build/account-setup.html)
 
 Note that the **cudos-noded** is a command-line interface. It is the same command-line interface used for deploying smart contracts. You can get the list of all commands by running:
 ```
