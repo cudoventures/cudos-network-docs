@@ -115,7 +115,7 @@ cd docker/binary-builder && sudo docker-compose --env-file binary-builder.arg -f
 
 Note that you need to repeat the same steps for each node that you want to create.
 
-## Create an account and set up a Keplr wallet
+## Create an account and set up a Keplr wallet (Only in the Validator node)
 
 1. You can use the docker terminal to locate the containers' ID:
 ```
@@ -123,13 +123,13 @@ sudo docker ps --filter "name=binary-builder"
 ```
 2. Copy the CONTAINER_ID and create the _CUDOS_NODED_ instance by running the command:
 ```
-alias CUDOS_NODED='sudo docker exec -it binary-builder cudos-noded'
+alias cudos-noded='sudo docker exec -it binary-builder cudos-noded'
 ```
-3. Create an account by running the command (write the mnemonic phrase in a safe place):
+3. Follow the guide [Set up a Keplr wallet and link it to your account on the Cudos testnet network](/docs/build/account-setup.html)
+4. Create an account by running the command (write the mnemonic phrase in a safe place):
 ```
 cudos-noded keys add validator --recover --keyring-backend="os"
 ```
-4. Follow the guide [Set up a Keplr wallet and link it to your account on the Cudos testnet network](/docs/build/account-setup.html)
 
 Note that the **cudos-noded** is a command-line interface. It is the same command-line interface used for deploying smart contracts. You can get the list of all commands by running:
 ```
