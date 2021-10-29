@@ -24,6 +24,8 @@ If a user wanted to send CUDOS from Cudos back to Ethereum:
 2. Enter an amount of CUDOS you wish to send between these ecosystems
 3. Enter a destination address - this is where the CUDOS will be deposited after the bridge, it can be an account you control or any other. The address will follow the standard Ethereum address format and look something like `0xfD619F91C38A86be881d8eD4B8ef88De1E1afD50`
 
+<!-- TODO: add a new '## Architecture' section with diagrams explaining how this works technically: Orchestrators, Queues, Data flow, decentralised in nature --> 
+
 ### NFT Bridge
 
 Coming soon.. 😏
