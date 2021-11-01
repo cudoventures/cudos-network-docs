@@ -61,7 +61,7 @@ Please visit the [Transactions page](https://explorer.cudos.org/transactions) to
 
 ### Proposals
 
-Governance proposals will be used for decision making on the future of the Cudos Network. Holders of the native CUDOS token can vote on proposals on a 1 token 1 vote basis. The Explorer UI allows anyone to easily check any live proposals and if they connect via a valid wallet also create or vote on the outcome of any live proposal.
+Governance proposals will be used for decision making on the future of the Cudos Network. Validators with CUDOS can vote on proposals on a 1 token 1 vote basis, including any stake they have delegated via them by other CUDOS holders. The Explorer UI allows anyone to easily check any live proposals and if they connect via a valid wallet also create or vote on the outcome of any live proposal.
 
 The governance module inherited from CosmosSDK currently supports:
 
@@ -73,6 +73,8 @@ The governance module inherited from CosmosSDK currently supports:
 Please visit the [Proposals page](https://explorer.cudos.org/proposals) to find out more on active proposals.
 
 For full guides on how this all works, please read [the latest CosmosSDK docs](https://docs.cosmos.network/master/modules/gov/#contents)
+
+<!-- TODO: for ARTEMIS-BUZZ#7 add a new '#### Proposal Guide' section with screenshots of the explorer explaining how to setup a new Proposal as a Validator and then vote on one with your CUDOS holdings --> 
 
 ### Faucet
 
