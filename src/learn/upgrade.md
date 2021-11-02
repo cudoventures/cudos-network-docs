@@ -44,17 +44,17 @@ cudos-noded tx gov vote <proposal_id> yes --from <walled_name> --keyring-backend
 
 If enough votes with "yes" are sent, the proposal will be approved and the network will stop at the specified block height or time.
 
-The chain will stop at specified height. When the chain stops we need to stop the nodes as well.
+The chain will stop at specified height. When the chain stops all nodes need to stoped as well.
 
 # Soft upgrade (without breaking changes)
 
 It is being done by "in-place migration", described [here](https://docs.cosmos.network/master/core/upgrade.html).
 
-In short - after the network stops we have to pull and build the new binary and start the chain again.
+In short - after the network stops all validators have to pull and build the new binary and start the chain again.
 
 # Hard fork (with breaking changes)
 
-After the network stops we must:
+After the network stops all validators must:
 
 1. Export the current state
 2. Pull and build the new binary
