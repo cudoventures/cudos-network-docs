@@ -65,8 +65,9 @@ module.exports = {
         'account-setup',
         'funding-your-wallet',
         'validator',
-        'smart-contracts',
         'developers-setup',
+        'smart-contracts',
+        'nft',
         'interact-keplr-explorer',
         'start-binaries'
       ],
