@@ -8,14 +8,11 @@ Validators play a unique role in the Cudos Network’s day-to-day workings. They
 
 As part of that, Validators run and execute smart contracts, which are one of the key aspects of the network, and coordinate the triggering and execution of computing workloads. Thus, the network’s health depends on Validators availability and performance and the early identification of any dangerous and harmful behaviours.
 
-Validators earn several types of standard rewards, in addition to one-off additional ones:
+Validators earn several types of standard rewards, apart from one-off additional ones:
 
 * They earn Staking Rewards to incentivise their crypto-economic contributions to the network over time.
 * They earn a commission on the stake delegated through them, as part of the delegated proof of stake mechanism, from any users who do not run infrastructure for the network but want to support it.
 * They earn gas fees.
-
-After the mainnet launch and the network gains traction, staking rewards will become a secondary source of revenue, and network fees will become the main one.
-
 
 After the mainnet is launched and the network gains traction, staking rewards will become a secondary source of revenue, and network fees will become the main one.
 
