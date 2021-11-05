@@ -50,6 +50,8 @@ Total amount available per user:
 |`ARTEMIS-APOLLO#13`|Complete `ARTEMIS-APOLLO#10`, `ARTEMIS-APOLLO#11`, `ARTEMIS-APOLLO#12`, then unstake CUDOS tokens using the explorer|[Docs](/build/interact-keplr-explorer.html#unstake-tokens-using-cudos-explorer)|10|
 |`ARTEMIS-APOLLO#17`|Complete 5 unique transaction types (Developer completion bonus)|n/a|5|
 
+Results will be shared very soon -- stay tuned!
+
 ### Phase 2 - Buzz
 
 Next stage in our public testing of the network, covering all aspects of Validation, including staking, delegated staking and rewards.
