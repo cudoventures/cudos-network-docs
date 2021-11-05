@@ -24,7 +24,33 @@ Cudos is also finalising the architecture of the compute capabilities of the net
 
 The Cudos Network penalises adverse behaviours, and the node operators or Validators linked to these automatically to incentivise the highest level of security, availability, and economic integrity. The types of penalties a Validator can incur on the network have several levels of severity. Some may lead to immediate, irreversible exclusion. Others may lead to time-outs from additional Staking rewards. Cudos as a team is working to ensure that these metrics are real-time and accurately predictive to guarantee that we only offer the highest quality of computing power on our network.
 
-<!-- TODO: add a new '## Validator Staking Instructions' section with a full step-by-step on how to add, remove stake as a Validator via the Explorer and claim rewards. Also take into account instructions for ARTEMIS-BUZZ#8 -->
+## Validator Staking Instructions
+
+The process to add or remove stake as a Validator is completely analogous to the delegation one described in the [delegation page](/build/interact-keplr-explorer.html#delegate-tokens-to-a-validator-using-cudos-explorer), but using the Validator's wallet.
+
+###  Add stake to my Validator
+
+1. Connect your Validator wallet into the explorer, and navigate to your own Validator's page
+
+<img src="./validator-staking.png" width="500" height="198">
+
+2. Click **DELEGATE** and introduce the amount you wish to stake in order to increase your Validator's share
+
+<img src="./validator-staking.png" width="499" height="306">
+
+3. Click **Next** and approve the transaction in Keplr to increase your Validator's stake.
+
+### Move part of my stake from my Validator to a different Validator
+
+The same process as above, but clicking the **REDELEGATE** button instead and selecting the new Validator which should receive the staked tokens.
+
+### Remove stake from my Validator
+
+Same process again, but clicking the **UNDELEGATE** button.
+Please keep in mind that
+
+- A Validator needs a minimum amount staked (1 CUDOS for testnet, 2,000,000 CUDOS for mainnet).
+- There is a 21-day unbonding period between token undelegation and the tokens being usable in your wallet, for security reasons.
 
 ## Delegator Rewards
 
