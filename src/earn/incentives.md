@@ -61,6 +61,8 @@ Total amount available per user:
 - Validators: up to $60 (plus $200 p/m for whitelisted mainnet Validators)
 - Developers: up to $65
 
+The date and time for the network upgrade will communicated shortly, please keep an eye on our [communication channels](/#help-and-support).
+
 #### Validator Tasks
 
 |**Task ID**|**Description**|**Resources**|**$ Reward**|
