@@ -31,7 +31,7 @@ Total amount available per user:
 |`ARTEMIS-APOLLO#3`|Add Prometheus monitoring to the Validator Node|[Docs](https://prometheus.io/docs/prometheus/latest/getting_started/)|-|
 |`ARTEMIS-APOLLO#4`|Create a Grafana dashboard to show `ARTEMIS-APOLLO#3` Prometheus data/sending Validator data monthly to Cudo Network|[Docs](https://prometheus.io/docs/visualization/grafana/)|100|
 |`ARTEMIS-APOLLO#6`|Write a unique blog post setting up a Validator Node (in any language of your choice)|n/a|30|
-|**`ARTEMIS-APOLLO#8`**|Maintain an 80% uptime for the remaining Phase 1|n/a|200|
+|**`ARTEMIS-APOLLO#8`**|Maintain an 80% uptime for the remaining Phase 1|n/a|200 p/m*|
 |**`ARTEMIS-APOLLO#14`**|Stake more than the minimum CUDOS to become a Validator|n/a|-|
 |**`ARTEMIS-APOLLO#15`**|Receive delegated staking and receive a commission on delegated tokens to your Validator|n/a|-|
 |**`ARTEMIS-APOLLO#16`**|Complete `ARTEMIS-APOLLO#14`, `ARTEMIS-APOLLO#15`, then unstake part of your excess staked CUDOS tokens|n/a|15|
@@ -52,15 +52,37 @@ Total amount available per user:
 
 ### Phase 2 - Buzz (Launching Soon)
 
-Test all aspects of Validation, including staking, delegated staking, rewards. Additionally exploring CosmWasm smart contracts including: contract interaction, contract deployment, contract interfaces. Testing of our Gravity bridge implementation with Rinkeby Ethereum.
+Next stage in our public testing of the network, covering all aspects of Validation, including staking, delegated staking and rewards.
+Additionally, also testing CosmWasm smart contracts, including contract interaction, contract deployment and contract interfaces, as well as Gravity bridge implementation with Rinkeby Ethereum and a network upgrade.
 
 Total amount available per user:
-- Validator = $n + $p/m
-- Developer = $n
+- Validators: up to $60 (plus $200 p/m for whitelisted mainnet Validators)
+- Developers: up to $65
+
+#### Validator Tasks
 
 |**Task ID**|**Description**|**Resources**|**$ Reward**|
 | - | - | - | - |
-|`ARTEMIS-BUZZ#1`| 🌎 | 🚀 | 🌝 |
+|`ARTEMIS-BUZZ#4`|Vote on a governance proposal|[Docs](/learn/#proposals.html)|5|
+|`ARTEMIS-BUZZ#5`|Change your validator fee|[Docs](/build/validator.html#how-to-change-your-validator-fee)|5|
+|`ARTEMIS-BUZZ#6`|Participate successfully in the network upgrade|[Docs](/build/network-upgrades.html)|20|
+|`ARTEMIS-BUZZ#7`|Maintain an uptime record of at least 80%|n/a|200 p/m*|
+
+#### Developer Tasks
+
+|**Task ID**|**Description**|**Resources**|**$ Reward**|
+| - | - | - | - |
+|`ARTEMIS-BUZZ#1`| Deploy a cosmwasm example smart contract (*e.g.* cw20) | [Docs](/build/smart-contracts.html#smart-contracts) |-|
+|`ARTEMIS-BUZZ#2`| Complete `ARTEMIS-BUZZ#1` and then interact with your deployed smart contract (*e.g.* send tokens between wallets) | [Docs](/build/smart-contracts.html#examples-of-interaction) |10|
+|`ARTEMIS-BUZZ#3`| Via the Gravity Bridge, transfer CUDOS tokens from Cudos to Ethereum and vice-versa | [Docs](/build/validator.html#using-the-gravity-bridge-ui-recommended-option) |5|
+|`ARTEMIS-BUZZ#10`| Developer task list completion bonus |n/a|20|
+
+#### All Users
+
+|**Task ID**|**Description**|**Resources**|**$ Reward**|
+| - | - | - | - |
+|`ARTEMIS-BUZZ#8`| Create a quality Youtube video showcasing an aspect of the testnet |n/a|20|
+|`ARTEMIS-BUZZ#9`| Write a quality blog on deploying a smart contract on Cudos |n/a|10|
 
 ### Phase 3 - Armstrong (Launching Soon)
 
