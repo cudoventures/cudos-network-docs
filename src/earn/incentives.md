@@ -14,7 +14,7 @@ Project Artemis is broken down into 4 key phases which will run sequentially, fi
 
 ## Testnet Phases
 
-### Phase 1 - Apollo
+### Phase 1 - Apollo (finished October 22)
 
 Starter setup tasks for Cudos Network onboarding for Validators and users, focussing on account creation, hardware provisioning, node syncing and the CUDOS faucet.
 
@@ -31,11 +31,11 @@ Total amount available per user:
 |`ARTEMIS-APOLLO#3`|Add Prometheus monitoring to the Validator Node|[Docs](https://prometheus.io/docs/prometheus/latest/getting_started/)|-|
 |`ARTEMIS-APOLLO#4`|Create a Grafana dashboard to show `ARTEMIS-APOLLO#3` Prometheus data/sending Validator data monthly to Cudo Network|[Docs](https://prometheus.io/docs/visualization/grafana/)|100|
 |`ARTEMIS-APOLLO#6`|Write a unique blog post setting up a Validator Node (in any language of your choice)|n/a|30|
-|**`ARTEMIS-APOLLO#8`**|Maintain an 80% uptime for the remaining Phase 1|n/a|200 p/m*|
-|**`ARTEMIS-APOLLO#14`**|Stake more than the minimum CUDOS to become a Validator|n/a|-|
-|**`ARTEMIS-APOLLO#15`**|Receive delegated staking and receive a commission on delegated tokens to your Validator|n/a|-|
-|**`ARTEMIS-APOLLO#16`**|Complete `ARTEMIS-APOLLO#14`, `ARTEMIS-APOLLO#15`, then unstake part of your excess staked CUDOS tokens|n/a|15|
-|**`ARTEMIS-APOLLO#18`**|Validator task list completion bonus|n/a|200|
+|`ARTEMIS-APOLLO#8`|Maintain an 80% uptime for the remaining Phase 1|n/a|200 p/m*|
+|`ARTEMIS-APOLLO#14`|Stake more than the minimum CUDOS to become a Validator|n/a|-|
+|`ARTEMIS-APOLLO#15`|Receive delegated staking and receive a commission on delegated tokens to your Validator|n/a|-|
+|`ARTEMIS-APOLLO#16`|Complete `ARTEMIS-APOLLO#14`, `ARTEMIS-APOLLO#15`, then unstake part of your excess staked CUDOS tokens|n/a|15|
+|`ARTEMIS-APOLLO#18`|Validator task list completion bonus|n/a|200|
 
 #### Developer Tasks
 
@@ -43,14 +43,14 @@ Total amount available per user:
 | - | - | - | - |
 |`ARTEMIS-APOLLO#5`|Setup a Cudos Wallet and redeem Somniorum CUDOS from the Faucet|[Docs](/build/account-setup.html)|10|
 |`ARTEMIS-APOLLO#7`|Join our community [Telegram](https://t.me/cudostelegram), [Discord](https://discord.com/invite/NUmUXEmvBn), and follow CUDOS on [Twitter](https://twitter.com/CUDOS_)|n/a|1|
-|**`ARTEMIS-APOLLO#9`**|Run a full Cudos Node to connect to the network|[Docs](/build/developers-setup.html#initialize-and-start-full-node)|10|
-|**`ARTEMIS-APOLLO#10`**|Send tokens to another wallet using the Keplr extension|[Docs](/build/interact-keplr-explorer.html#send-tokens-to-another-wallet)|-|
-|**`ARTEMIS-APOLLO#11`**|Delegate tokens to at least 3 different Validators using the Cudos Explorer|[Docs](/build/interact-keplr-explorer.html#delegate-tokens-to-a-validator-using-cudos-explorer)|-|
-|**`ARTEMIS-APOLLO#12`**|Claim CUDOS staking rewards using the Cudos Explorer|[Docs](/build/interact-keplr-explorer.html#claim-rewards-using-cudos-explorer)|-|
-|**`ARTEMIS-APOLLO#13`**|Complete `ARTEMIS-APOLLO#10`, `ARTEMIS-APOLLO#11`, `ARTEMIS-APOLLO#12`, then unstake CUDOS tokens using the explorer|[Docs](/build/interact-keplr-explorer.html#unstake-tokens-using-cudos-explorer)|10|
-|**`ARTEMIS-APOLLO#17`**|Complete 5 unique transaction types (Developer completion bonus)|n/a|5|
+|`ARTEMIS-APOLLO#9`|Run a full Cudos Node to connect to the network|[Docs](/build/developers-setup.html#initialize-and-start-full-node)|10|
+|`ARTEMIS-APOLLO#10`|Send tokens to another wallet using the Keplr extension|[Docs](/build/interact-keplr-explorer.html#send-tokens-to-another-wallet)|-|
+|`ARTEMIS-APOLLO#11`|Delegate tokens to at least 3 different Validators using the Cudos Explorer|[Docs](/build/interact-keplr-explorer.html#delegate-tokens-to-a-validator-using-cudos-explorer)|-|
+|`ARTEMIS-APOLLO#12`|Claim CUDOS staking rewards using the Cudos Explorer|[Docs](/build/interact-keplr-explorer.html#claim-rewards-using-cudos-explorer)|-|
+|`ARTEMIS-APOLLO#13`|Complete `ARTEMIS-APOLLO#10`, `ARTEMIS-APOLLO#11`, `ARTEMIS-APOLLO#12`, then unstake CUDOS tokens using the explorer|[Docs](/build/interact-keplr-explorer.html#unstake-tokens-using-cudos-explorer)|10|
+|`ARTEMIS-APOLLO#17`|Complete 5 unique transaction types (Developer completion bonus)|n/a|5|
 
-### Phase 2 - Buzz (Launching Soon)
+### Phase 2 - Buzz
 
 Next stage in our public testing of the network, covering all aspects of Validation, including staking, delegated staking and rewards.
 Additionally, also testing CosmWasm smart contracts, including contract interaction, contract deployment and contract interfaces, as well as Gravity bridge implementation with Rinkeby Ethereum and a network upgrade.
