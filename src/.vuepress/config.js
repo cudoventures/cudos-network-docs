@@ -56,6 +56,7 @@ module.exports = {
         'roadmap',
         'validators',
         'gravity-bridge',
+        'upgrade',
         'resources'
       ],
 
