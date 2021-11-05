@@ -110,13 +110,9 @@ Total amount available per Validator = $n + $p/m
 
 ## How to Participate
 
-If you're a Developer wanting to build on Cudos please signup with [this form](https://docs.google.com/forms/d/e/1FAIpQLSfoEV-SyCnWooqiTw1_7YjNP1eINGotMvwavLNh_gFzUFBOzg/viewform)
+Just head to the current [active tasks](#phase-2-buzz) and dive into the Somniorum Testnet.
 
-If you're a Validator wanting to get setup with a Cudos Node, please apply via [this form](https://docs.google.com/forms/d/e/1FAIpQLSeRLDxZACtgRd2Q7FW3JRm-AXLg22lTGjuVA28FoLhoeYcDKQ/viewform)
-
-Once you're signed up and approved as a Developer or Validator, take a look at the [active tasks](#phase-1-apollo) for the current phase and dive into the Somniorum Testnet.
-
-Upon completion of each task please submit your evidence to [this form](https://docs.google.com/forms/d/e/1FAIpQLSdsGDUvtF70O1LLMWsKhNTVmiW_HzodGDFRgW-6YLYloA3hdg/viewform?usp=sf_link). Tasks will be monitored and validated on-chain for completion.
+Upon completion of each task please submit your evidence to [this form](https://docs.google.com/forms/d/e/1FAIpQLSfKPRDGuAE8msXVfaH-wwMw7gw4NyTeEBXHuPzuWdH9LlfE4A/viewform). Tasks will be monitored and validated on-chain for completion.
 
 ## CUDOS Rewards
 
