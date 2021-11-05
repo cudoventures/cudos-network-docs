@@ -507,7 +507,7 @@ Open [Gravity Bridge](http://35.192.177.142:4000/). Then you can use [Kelpr](htt
 
 Note that The commands of sending funds takes up to few minutes to be executed.
 
-## How to change the fee of your Validator node
+## How to change your Validator fee
 
 In order to change your Validator's fee
 
