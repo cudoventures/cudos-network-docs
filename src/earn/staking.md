@@ -80,9 +80,8 @@ Recently, most networks that require the nodes to stake also allow delegated sta
 
 #### How to stake via a validator
 
-<!-- TODO: rewrite this section with full step-by-step on how to add, remove stake via the Explorer and claim rewards -->
-
-In order to delegate your stake via a validator you will need the funds you want to delegate and to decide to which validator node you want to delegate the stake to. Once that is done, you can either follow the process for a staking provider, or the instructions that we will be updating on this page soon.
+In order to delegate your stake via a validator you will need the funds you want to delegate (plus a few extra to pay for the transaction fees), and to decide to which validator node you want to delegate the stake to.
+After that, the step by step instructions on how to stake your tokens can be found on [this page](/build/interact-keplr-explorer.html#delegate-tokens-to-a-validator-using-cudos-explorer)
 
 #### Staking pool and provider fees
 
