@@ -52,6 +52,16 @@ Please keep in mind that
 - A Validator needs a minimum amount staked (1 CUDOS for testnet, 2,000,000 CUDOS for mainnet).
 - There is a 21-day unbonding period between token undelegation and the tokens being usable in your wallet, for security reasons.
 
+### Claiming rewards
+
+In order to claim pending rewards with your validator, simply
+
+1. Open your Keplr wallet and click the **Claim** button
+
+<img src="./validator-claim-rewards.png" width="188" height="300">
+
+2. Approve the transaction, and wait for it to be processed.
+
 ## Delegator Rewards
 
 The Cudos network will support delegated staking through the Validators. The Validators earn a proportion of the rewards of the users who delegated the staked through them. Each Validator can freely choose the fee. However, it will always need to be above a predefined minimum value set for security reasons. This minimum will be 2% at the start.
