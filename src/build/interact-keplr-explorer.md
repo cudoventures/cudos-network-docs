@@ -57,6 +57,21 @@ then you need to add the recipient address and the amount:
 
 <img src="./send-tokens-9.png" width="500" height="500">
 
+## Move your staked tokens to another validator
+
+In order to move staked tokens to one validator to another, there is no need to undelegate and delegate them again.
+Once you have delegated tokens to one validator, you can move them any time without penalty or waiting times (except for the transaction to be processed) by clicking the **REDELEGATE** button.
+Namely,
+
+1. Delegate tokens to a validator following the steps above
+2. Go back to that Validator's page in the explorer
+3. Click the red **REDELEGATE** button that sits between the delegate and the undelegate ones
+4. Select the Validator you wish to move your tokens to, and the amount you want to move
+
+<img src="./redelegate.png" width="500" height="335">
+
+5. Click **Next**, and then approve the transaction in Keplr.
+
 ## Claim rewards using Cudos explorer
 
 1. Open your Keplr extension
