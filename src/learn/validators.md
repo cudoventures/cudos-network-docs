@@ -51,7 +51,7 @@ The Validator node talks to the Sentry nodes that are provided, the Sentry nodes
 
 ### Orchestrator Nodes
 
-The [Gravity Bridge](/learn/gravity-bridge-slashing.html) Orchestrator performs all the external tasks the Gravity bridge requires for validators. The submission of signatures and the submission of Ethereum events.
+The [Gravity Bridge](/learn/gravity-bridge.html) Orchestrator performs all the external tasks the Gravity bridge requires for validators. The submission of signatures and the submission of Ethereum events.
 
 While the Gravity module concerns itself with the correctness and consensus state of the bridge the Orchestrator locates or creates the correct inputs.
 

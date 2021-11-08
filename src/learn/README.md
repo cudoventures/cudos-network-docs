@@ -39,7 +39,120 @@ The promise of computing, which is core to the Cudos Network’s mission, is als
 
 The Cudos Network is powered by CUDOS, the native token on the network, which can be used for; funding compute workloads (as gas), contributing to network security (as stake), and governance participation.
 
-CUDOS can be bridged between the Cudos Network and Ethereum (and vice versa) using the Gravity bridge.
+CUDOS can be bridged between the Cudos Network and Ethereum (and vice versa) using the [Gravity Bridge](/learn/gravity-bridge.html).
+
+## Explorer
+
+The [Cudos Network Explorer](https://explorer.cudos.org/) is a web application that allows users an easy insight into activity on the network as well as access some of the fundamental features of the blockchain
+
+### Staking
+
+Connecting to the Explorer with a [Keplr Wallet](/build/account-setup.html) allows any user to use their tokens within the network as stake (which props up the security mechanism of the entire chain via DPoS consensus).
+
+To use CUDOS to stake as a Validator you will first have to [install the node](/build/validator.html) and then stake 2,000,000+ CUDOS
+
+To use CUDOS as a Delegator please visit the [Earn page](/earn/staking.html#delegator-rewards) for more details on using the Explorer UI
+
+### Transactions
+
+The Cudos Network is a public blockchain and as such anyone can view or consume the transaction information passing through each block. The Explorer UI is an easy window into the current transaction activity showing details of the transaction details themselves as well as address data for the sender/location.
+
+Please visit the [Transactions page](https://explorer.cudos.org/transactions) to dig into the data.
+
+### Proposals
+
+Governance proposals will be used for decision making on the future of the Cudos Network. Validators with CUDOS can vote on proposals on a 1 token 1 vote basis, including any stake they have delegated via them by other CUDOS holders. The Explorer UI allows anyone to easily check any live proposals and if they connect via a valid wallet also create or vote on the outcome of any live proposal.
+
+The governance module inherited from CosmosSDK currently supports:
+
+- Proposal submission: Users can submit proposals with a deposit. Once the minimum deposit is reached, proposal enters voting period
+- Voting: Participants can vote on proposals that reached MinDeposit
+- Inheritance and penalties: Delegators inherit their validator's vote if they don't vote themselves.
+- Claiming deposit: Users that deposited on proposals can recover their deposits if the proposal was accepted OR if the proposal never entered voting period.
+
+Please visit the [Proposals page](https://explorer.cudos.org/proposals) to find out more on active proposals.
+
+For full guides on how this all works, please read [the latest CosmosSDK docs](https://docs.cosmos.network/master/modules/gov/#contents)
+
+#### Proposal Guide
+<!-- TODO: improve this section, maybe move it to build, create subsections within it, explain more what each thing and each option is. Also add CLI instructions --> 
+As mentioned above, any CUDOS holder is able to create a proposal to be voted via governance.
+In order for a proposal to reach the voting stage, a [minimum deposit](https://docs.cosmos.network/master/modules/gov/01_concepts.html#deposit) is required (for the Cudos Testnet that value is 10 CUDOS).
+Any CUDOS holder is able to deposit tokens to take the proposal to the voting stage.
+In the Cudos Testnet, if after 10 minutes a proposal has not reached the voting stage it is automatically rejected.
+
+##### Creating a new proposal
+
+In order to create a new proposal,
+
+1. Connect you Keplr wallet to the explorer by clicking the top-right key symbol
+
+<img src="./login.png" width="500" height="124">
+
+2. Navigate to the proposals tab
+
+<img src="./new-proposal.png" width="500" height="209">
+
+3. Click on **NEW PROPOSAL**
+
+4. Fill the new proposal form with your desired information. For a description of the fields and what each proposal type is please visit the [Cosmos docs](https://docs.cosmos.network/master/modules/gov/01_concepts.html#proposal-types)
+
+<img src="./new-proposal-submission.png" width="497" height="477">
+
+5. Click **NEXT** and confirm the transaction in your Keplr wallet.
+
+##### Depositing CUDOS in an active proposal
+
+In order to deposit CUDOS in an active proposal, the process starts in the same way as above,
+
+1. Connect you Keplr wallet to the explorer by clicking the top-right key symbol
+
+2. Navigate to the proposals tab
+
+3. Click on an active proposal (status should be "Deposit Period")
+
+<img src="./active-proposal.png" width="500" height="218">
+
+4. Click on **DEPOSIT**
+
+<img src="./deposit.png" width="500" height="237">
+
+5. Write the amount of CUDOS you wish to deposit to this proposal
+
+<img src="./deposit-amount.png" width="496" height="282">
+
+6. Click **NEXT** and confirm the transaction in your Keplr wallet.
+
+##### Voting in a proposal (Validators only)
+
+Only Validators are allowed to vote for proposals that have reached the voting period.
+In order to vote, similar to the above, Validators should
+
+1. Connect the Keplr wallet to the explorer
+
+2. Navigate to the Proposals tab
+
+3. Click on a proposal that has the "Voting Period" status
+
+4. Once in, click on the **VOTE** button next to the deposit one
+
+<img src="./vote-proposal.png" width="500" height="249">
+
+5. A window will pop up, where you should choose your vote and then click **NEXT**. The voting options can be found in the [Cosmos docs](https://docs.cosmos.network/master/modules/gov/01_concepts.html#option-set).
+
+<img src="./vote-on-proposal.png" width="504" height="287">
+
+6. Once your vote has been casted, you will see your vote reflected on the proposal page.
+
+<img src="./voted-yes.png" width="500" height="209">
+
+### Faucet
+
+The Cudos Network Faucet is a way for any user of the Somniorum testnet to be able to claim 10 free test CUDOS for use as gas within the test network. Each address can claim their allocation of test 10 CUDOS once, if you require tokens please visit [this page](https://explorer.cudos.org/faucet).
+
+## Wallet
+
+The [Cudos Network Wallet](https://wallet.cudos.org/) is a web application which is used by ERC-20 CUDOS holders to signup as Validators to the network or delegate their tokens as stake to other Validators
 
 ## Existing CUDOS Products
 

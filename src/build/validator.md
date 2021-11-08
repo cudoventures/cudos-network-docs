@@ -507,6 +507,29 @@ Open [Gravity Bridge](http://35.192.177.142:4000/). Then you can use [Kelpr](htt
 
 Note that The commands of sending funds takes up to few minutes to be executed.
 
+## How to change your Validator fee
+
+In order to change your Validator's fee
+
+1. Start your Docker shell
+
+2. Execute the following command:
+```
+cudos-noded tx staking edit-validator \
+--from=validator \
+--chain-id=$CHAIN_ID \
+--commission-rate="0.50" \
+--keyring-backend="test" \
+-y
+```
+where you can set `commission-rate` to the updated number that you want.
+
+You can check your current Validator's fee by running
+```
+cudos-noded q staking validators > validatorsInfo.txt
+```
+and reading the value assigned to `commission-rate` for your Validator.
+
 ## How to delete a current running node
 
 If you stop the docker container that is running a Full node then you are not able to use it. But if you want to remove the full node docker data then you need to clear the volume of full node docker, if you remove the folder it will remove all the data but make sure first that you stop the docker container.

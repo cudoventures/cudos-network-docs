@@ -1,15 +1,52 @@
 ---
-title: Gravity Bridge Slashing Policy
+title: Gravity Bridge
 ---
 
-# Gravity Bridge Slashing Policy
+## Overview
 
-* [Brief](/build/gravity-bridge-slashing.html#brief)
-* [Slashing Parameters for the Network](/build/gravity-bridge-slashing.html#slashing-parameters-for-the-network)
-* [Infraction Timelines](/build/gravity-bridge-slashing.html#infraction-timelines)
-* [Liveness Tracking](/build/gravity-bridge-slashing.html#liveness-tracking)
+[Gravity Bridge](https://www.gravitybridge.net/) - an independent and credibly neutral Cosmos-SDK blockchain providing the entire SDK community with a neutral bridge to Ethereum and eventually all major EVM chains.
 
-## Brief
+The bridge currently supports bridging of CUDOS tokens between the Ethereum and Cudos ecosystems, the bridge will be able to support any ERC-20 or ERC-721 asset to be bridged in the future.
+
+## Bridging CUDOS
+
+The Gravity Bridge is available for token holders via a web interface which allows any user on either network to bridge ERC-20 CUDOS tokens.
+
+When using the web interface a user can connect to either side of the bridge using either [Metamask](https://metamask.io/), or [Keplr](/build/account-setup.html#what-is-keplr), depending on the direction required. The bridging mechanism requires a transaction and signature from the sender location (so this side needs to be connected via a wallet) and the receiver is a simple public address to send the tokens to.
+
+For example if a user wanted to send CUDOS from Ethereum to Cudos Network:
+1. Make this selection from the dropdown menus
+2. Enter an amount of CUDOS you wish to send between these ecosystems
+3. Enter a destination address - this is where the CUDOS will be deposited after the bridge, it can be an account you control or any other. The address will follow the standard CosmosSDK format and look something like `cudos1hutad4hec0rnw7plhzd2ywmdjh06pqsd86vu5x`
+
+If a user wanted to send CUDOS from Cudos back to Ethereum:
+1. Make this selection from the dropdown menus
+2. Enter an amount of CUDOS you wish to send between these ecosystems
+3. Enter a destination address - this is where the CUDOS will be deposited after the bridge, it can be an account you control or any other. The address will follow the standard Ethereum address format and look something like `0xfD619F91C38A86be881d8eD4B8ef88De1E1afD50`
+
+<!-- TODO: add a new '## Architecture' section with diagrams explaining how this works technically: Orchestrators, Queues, Data flow, decentralised in nature --> 
+
+### NFT Bridge
+
+Coming soon.. 😏
+
+#### Somniorum Bridge
+
+In the public testnet Somniorum the Gravity Bridge connects from Somniorum to Rinkeby Ethereum so test assets can be moved between these two ecosystems.
+
+::: tip
+The bridge is currently available [here](http://35.192.177.142:4000/) for testing.
+
+Make sure you are connected to the correct network RPC endpoints via the connected wallets (`Rinkeby` & `CudosPublicTestnet`)
+:::
+
+#### Ingenii Bridge
+
+Once the mainnet Cudos Network is deployed the Gravity Bridge will connect to mainnet Ethereum for real-world bridging of token assets
+
+## Bridge Security
+
+The Gravity Bridge mechanism is a decentralised interface relying on a distributed series of Orchestrator Nodes that sit across these ecosystems. These nodes are incentivised to behave properly using a stake-based slashing policy
 
 The slashing policy is described in the resources below. In short the slashing is defined by the validator (*the node which actually signs each block*) not by the orchestrator (*the helper binary which is running along side the validator's node*).
 
@@ -27,7 +64,7 @@ If a validator does not sign an operation (*valset update, batch confirm, logica
 
 There is a little catch especially about batches. Once a batch is submitted to the Ethereum (*has been signed by less than 2/3 of the voting power*) then it is deleted from the database. Once the batch is deleted, there is no way to check whether a validator hasn't signed it. In short - if a validator couldn't sign a batch for some reason and if this batch had been submitted to the Ethereum then the validator who hasn't signed it, will not be slashed.
 
-## Slashing Parameters for the Network
+### Slashing Parameters for the Network
 
 Parameter defining the size (*number of blocks*) of the sliding window used to track validator liveness:
 ```
@@ -71,11 +108,11 @@ The fraction percent that will be taken from validator:
 
 At any given time, there are any number of validators registered in the state machine. In each block, the top **MaxValidators** (*defined by x/staking*) who are not jailed become bonded, meaning that they may propose and vote on blocks. Validators who are bonded are at stake, meaning that part or all of their stake and their delegators' stake is at risk if they commit a protocol fault.
 
-## Infraction Timelines
+### Infraction Timelines
 
 To illustrate how the **x/slashing** module handles submitted evidence through Tendermint consensus, consider the following examples:
 
-### Definitions:
+#### Definitions:
 
 **[:** timeline start <br/>
 **]**: timeline end <br/>
@@ -84,11 +121,11 @@ To illustrate how the **x/slashing** module handles submitted evidence through T
 **Vb**: validator bonded <br/>
 **Vu**: validator unbonded <br/>
 
-### Single Double Sign Infraction:
+#### Single Double Sign Infraction:
 
 <-----------------> [-------------C1--------D1,Vu-----] <br/>
 
-### Multiple Double Sign Infractions:
+#### Multiple Double Sign Infractions:
 
 <---------------------------> [----------C1---C2---C3---D1,D2,D3Vu-----] <br/>
 
@@ -96,7 +133,7 @@ Multiple infractions are committed and then later discovered, at which point the
 
 Slashing will occur when a validator has joined the network, but doesn't have Gravity bridge components. In this case after 16 hours the validator will be slashed and removed from the set of validators.
 
-## Liveness Tracking
+### Liveness Tracking
 
 At the beginning of each block, we update the **ValidatorSigningInfo** for each validator and check if they've crossed below the liveness threshold over a sliding window. This sliding window is defined by **SignedBlocksWindow** and the index in this window is determined by **IndexOffset** found in the validator's **ValidatorSigningInfo**. For each block processed, the **IndexOffset** is incremented regardless if the validator signed or not. Once the index is determined, the **MissedBlocksBitArray** and **MissedBlocksCounter** are updated accordingly.
 
