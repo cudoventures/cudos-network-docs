@@ -29,4 +29,4 @@ This site contains technical resources for the Cudos Network and associated tool
 
 ## Feedback
 
-If you have any feedback for us please take a moment to submit some information to us via [this link](https://forms.gle/2p2gQyGq9NJcaqzHA)
+If you have any feedback for us please take a moment to submit some information to us via [this link](https://forms.gle/2p2gQyGq9NJcaqzHA).
