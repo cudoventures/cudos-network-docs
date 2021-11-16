@@ -56,7 +56,6 @@ module.exports = {
         'roadmap',
         'validators',
         'gravity-bridge',
-        'upgrade',
         'resources'
       ],
 
@@ -69,6 +68,7 @@ module.exports = {
         'developers-setup',
         'smart-contracts',
         'interact-keplr-explorer',
+        'upgrade',
         'start-binaries'
       ],
 
