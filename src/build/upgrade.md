@@ -58,17 +58,17 @@ To vote using the explorer, please follow the instructions described [here](/lea
 If enough positive votes are casted, the proposal will be approved and the network will stop at the specified block height or time.
 When the chain stops all nodes need to stop as well.
 
-# Soft upgrade
+## Soft upgrade
 
 Soft upgrades do not imply breaking changes for the network.
 These are done by "in-place migration", as described [here](https://docs.cosmos.network/master/core/upgrade.html).
 More details will be shared shortly.
 
-# Hard fork
+## Hard fork
 
 Hard forks do imply breaking changes for the network.
 
-## High-level overview
+### High-level overview
 
 After the upgrade proposal is accepted and the network stops, all validators must:
 
@@ -77,7 +77,7 @@ After the upgrade proposal is accepted and the network stops, all validators mus
 3. Migrate the state
 4. Run the network.
 
-### Exporting the network state
+#### Exporting the network state
 
 This is done with the following command on a **stopped** node:
 
@@ -87,11 +87,11 @@ cudos-noded export |& tee  <export_file_name.json>
 
 Check the file to make sure it is populated with the network state.
 
-### Set the new binary
+#### Set the new binary
 
 Pull and build the new binary based on the nodes' types that you are running.
 
-### Migrating the network state file
+#### Migrating the network state file
 
 The exported file from before needs to be migrated, which basically populates it with the fields needed by the new version. This is done with the following command:
 
@@ -101,7 +101,7 @@ cudos-noded migrate <software_upgrade_proposal_name> <export_file_name.json> --c
 
 All the necessary state changes are handled in the **migrate** command. However, Tendermint parameters are not handled in this command. You might need to update these parameters manually. Make sure that your genesis JSON file contains the correct values specific to your chain. If the cudos-noded migrate errors with a message saying that the genesis file cannot be parsed, these are the fields to check first.
 
-#### Reset the old state
+##### Reset the old state
 
 This is done with the following command:
 
@@ -109,7 +109,7 @@ This is done with the following command:
 cudos-noded unsafe-reset-all
 ```
 
-#### Move the new genesis.json to your daemon config directory. Ex
+##### Move the new genesis.json to your daemon config directory. Ex
 
 Either copy it manually or run command like the following example:
 
@@ -123,7 +123,7 @@ You can run the following command to check the software version, it should state
 cudos-noded version --long
 ```
 
-### Start the network
+#### Start the network
 
 Start the network with:
 
@@ -133,14 +133,14 @@ cudos-noded start
 
 It should start from the the block it stopped before the upgrade without any error and with all the state unchanged.
 
-## Step by step instructions
+### Step by step instructions
 
 First of all, in order to upgrade your node(s) to the new version of the network, you need to have running nodes.
 If you do not have any nodes running in the network at the moment, please follow [these instructions](/build/validator.html#validator-setup) to deploy a validator into the network, or [these other ones](/build/developers-setup.html) to simply deploy a full node.
 
 These aim to be self-contained instructions, so let us give another overview of all the steps needed, and then describe each one with the exact commands.
 
-### Overview
+#### Overview
 
 1. Accept the upgrade proposal
 2. Wait for the network to stop at the specified height
@@ -150,7 +150,7 @@ These aim to be self-contained instructions, so let us give another overview of 
 6. Run the upgraded binary
 7. Start the orchestrator
 
-### Accept the upgrade proposal
+#### Accept the upgrade proposal
 
 As mentioned above, this needs to be done by Validators, either through the CLI or the explorer.
 
@@ -173,12 +173,12 @@ cudos-noded tx gov vote N yes --from $ACCOUNT --keyring-backend os --chain-id $C
 
 where `N` is the proposal number that we want to vote `yes` to.
 
-### Wait for the network to stop
+#### Wait for the network to stop
 
 There is no particular task on this section other than waiting, but this is however a crucial step.
 The rest of the steps that follow this one should only be followed after the network has stopped at the specified height.
 
-### Stop all running nodes/orchestrators
+#### Stop all running nodes/orchestrators
 
 It is very important to keep the Ethereum node running, as we want it to stay synced with the Ethereum network.
 All other nodes will need to be stopped and updated though, as they are Cudos Network ones.
@@ -203,12 +203,12 @@ For example, for a Validator running public testnet, the expected container name
 - cudos-start-sentry-node-client-testnet-public-01
 for full, seed and sentry nodes respectively.
 
-### Export the current network state
+#### Export the current network state
 
 **This process needs to be repeated for every node** type, full-node, seed and sentry, in the machine where they are running.
 To export the state first we define environment variables to make our life easier, and then we do the actual export of the state.
 
-#### Define env variables
+##### Define env variables
 
 For **full nodes**, in the case of public testnet,
 ```bash
@@ -237,7 +237,7 @@ export DATA_FOLDER="cudos-data-sentry-node-client-testnet-public-01"
 export CHAIN_ID="cudos-testnet-public"
 ```
 
-#### Exporting the state
+##### Exporting the state
 
 First we need to prepare the binary-builder, so navigate to its folder
 ```bash
@@ -297,7 +297,7 @@ sudo cp -r "$WORKING_DIR/CudosData/$DATA_FOLDER" "$WORKING_DIR/CudosData/$DATA_F
 
 Now we are ready for the state migration.
 
-### Migrate the exported state
+#### Migrate the exported state
 
 **This step needs to be repeated for every node that we are upgrading, just like the previous ones.**
 
@@ -383,7 +383,7 @@ and copy the new genesis file,
 sudo docker container exec $START_CONTAINER_NAME /bin/bash -c "cp \"\$CUDOS_HOME/backup/genesis.migrated-modified.json\" \"\$CUDOS_HOME/config/genesis.json\""
 ```
 
-### Run the upgraded binary
+#### Run the upgraded binary
 
 **This step needs to be repeated for every node that we are upgrading, just like the previous ones.**
 The first step is to undo one of our previous changes, to get the node ready for normal operation
@@ -406,7 +406,7 @@ sudo docker-compose --env-file "./$NODE_NAME.testnet.public.arg"  -f "./start-$N
 
 The last step we are missing is starting the orchestrator.
 
-### Start the orchestrator
+#### Start the orchestrator
 
 Please note that this step assumes that the orchestrator runs on the same machine as the validator, as explained in our [recommended Validator setup](/build/validator.html#validator-setup).
 In that machine, in the case of public testnet, copy the old .env file
@@ -425,7 +425,7 @@ sudo docker-compose --env-file orchestrator.client.testnet.public01.arg -f orche
 After this, all the nodes and the orchestrator should have upgraded to the new network.
 As a last step, now that all nodes and the orchestrator have been successfully updated, we can delete and backups that we did in previous steps as a security measure in case things went wrong.
 
-### Clean up
+#### Clean up
 
 We would recommend waiting a few hours or a couple of days before cleaning up the backups, in case something breaks down in the hours following the upgrade.
 If all has gone well, then we can now delete the data backup,
