@@ -1,20 +1,21 @@
 # Upgrade procedure
 
-To be able to do an upgrade, there needs to be an approved software upgrade proposal.
-There are two types of upgrade procedures available, the ones that do not imply any breaking changes (soft upgrades) and the ones that do (hard forks).
+There are two types of upgrade procedures available.
+The ones that do not imply any breaking changes (soft upgrades), and the ones that do (hard forks).
 
-# Preparation
+## Overview
+To be able to do any upgrade, there needs to be an approved software upgrade proposal first.
+This proposal needs to be triggered with a governance vote.
 
-The preparation steps are required in both cases - with or without breaking changes.
-
-## Software upgrade proposal
+### Software upgrade proposal
 
 The first step is to submit a software upgrade proposal.
+You can learn more on governance proposals [on this page](/learn/#proposals).
 After the proposal is submitted it enters into a deposit period, during which a certain amount of tokens need to be deposited into it, so the voting period can start.
 After the voting period starts, only validators can vote and approve it.
-If the proposal is passed, the network stops at a specified block height, until the upgrade is made and network is restarted.
+If the proposal is passed, the network stops at a specified block height, until the upgrade is made and the network is restarted.
 
-### Submitting a software upgrade proposal
+#### Submitting a software upgrade proposal
 
 A proposal can be submitted with the following command in a node terminal:
 
@@ -22,7 +23,9 @@ A proposal can be submitted with the following command in a node terminal:
 cudos-noded tx gov submit-proposal software-upgrade <proposal_name> --upgrade-height <block_at_which_to_stop> --from <wallet_name> --deposit <amount_to_deposit_with_denomination> --title <proposal_title> --description <proposal_description> --keyring-backend <os or file or test> --chain-id <chain_id> -y
 ```
 
-### Depositing to a proposal
+Alternatively, software upgrade proposals can also be created using the explorer, as explained [here](/learn/#creating-a-new-proposal).
+
+#### Depositing to a proposal
 
 To get the ID of the proposal that we want to deposit into, enter the following command:
 
@@ -36,24 +39,28 @@ This will return a list with all the proposals, in which we can find the one we 
 cudos-noded tx gov deposit <proposal_id> <amount_with_denomination> --from <wallet_name> --keyring-backend <os or file or test> --chain-id <chain_id> -y
 ```
 
+The instructions on how to deposit CUDOS into a proposals using the explorer can be found in our [relevant learn page](/learn/#depositing-cudos-in-an-active-proposal).
+
 If the funds are enough, the proposal should enter in a voting status, which can again be seen with the command we used for the proposal ID.
 
-### Voting a proposal
+#### Voting a proposal
 
-To vote *yes* in a proposal, use the following command:
+Only validator can vote in governance proposals.
+To vote *yes* in a proposal usingn the CLI, use the following command:
 
 ```bash
 cudos-noded tx gov vote <proposal_id> yes --from <walled_name> --keyring-backend <os or file or test> --chain-id <chain_id> -y
 ```
 
-If enough votes with "yes" are sent, the proposal will be approved and the network will stop at the specified block height or time.
+To vote using the explorer, please follow the instructions described [here](/learn/#voting-in-a-proposal-validators-only).
+
+If enough positive votes are casted, the proposal will be approved and the network will stop at the specified block height or time.
 When the chain stops all nodes need to stop as well.
 
 # Soft upgrade (without breaking changes)
 
-It is done by "in-place migration", as described [here](https://docs.cosmos.network/master/core/upgrade.html).
-
-In short - after the network stops all validators have to pull and build the new binary and start the chain again.
+Soft upgrades do not imply breaking changes for the network.
+These are done by "in-place migration", as described [here](https://docs.cosmos.network/master/core/upgrade.html).
 
 # Hard fork (with breaking changes)
 
