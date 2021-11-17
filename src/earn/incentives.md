@@ -69,7 +69,7 @@ The date and time for the network upgrade will communicated shortly, please keep
 | - | - | - | - |
 |`ARTEMIS-BUZZ#4`|Vote on a governance proposal that gets accepted|[Docs](/learn/#proposals.html)|5|
 |`ARTEMIS-BUZZ#5`|Change your validator fee|[Docs](/build/validator.html#how-to-change-your-validator-fee)|5|
-|`ARTEMIS-BUZZ#6`|Participate successfully in the network upgrade|[Docs](/learn/upgrade.html)|20|
+|`ARTEMIS-BUZZ#6`|Participate successfully in the network upgrade|[Docs](/build/upgrade-v0.3.html)|20|
 |`ARTEMIS-BUZZ#7`|Maintain an uptime record of at least 80%|n/a|200 p/m*|
 
 #### Developer Tasks
