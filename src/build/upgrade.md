@@ -44,10 +44,10 @@ The instructions on how to deposit CUDOS into a proposals using the explorer can
 
 If the funds are enough, the proposal should enter in a voting status, which can again be seen with the command we used for the proposal ID.
 
-#### Voting a proposal
+#### Voting on a proposal
 
-Only validator can vote in governance proposals.
-To vote *yes* in a proposal usingn the CLI, use the following command:
+Only validator can vote on governance proposals.
+To vote *yes* on a proposal usingn the CLI, use the following command:
 
 ```bash
 cudos-noded tx gov vote <proposal_id> yes --from <walled_name> --keyring-backend <os or file or test> --chain-id <chain_id> -y

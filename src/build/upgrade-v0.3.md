@@ -1,11 +1,11 @@
 # Public testnet upgrade v0.3
 
-This section describes in details all steps that need to be executed for the v0.3 upgrade of the public testnet. The upgrade is planned for 18th November 2021.
+This section describes in detail all steps that need to be executed for the v0.3 upgrade of the public testnet. The upgrade is planned for 18th November 2021.
 
 First of all, in order to upgrade your node(s) to the new version of the network, you need to have running nodes.
 If you do not have any nodes running in the network at the moment, please follow [these instructions](/build/validator.html#validator-setup) to deploy a validator into the network, or [these other ones](/build/developers-setup.html) to simply deploy a full node.
 
-These aim to be self-contained instructions, so let us give another overview of all the steps needed, and then describe each one with the exact commands.
+These aim to be self-contained instructions, so let us give first an overview of all the steps needed, and then describe each one with the exact commands.
 
 ## Overview
 
@@ -19,13 +19,13 @@ These aim to be self-contained instructions, so let us give another overview of 
 
 ## Accept the upgrade proposal
 
-As mentioned above, this needs to be done by Validators, either through the CLI or the explorer.
+As mentioned above, this needs to be done by the Validators, either through the CLI or through the explorer.
 
 To vote using the explorer, connect your Validator wallet into it and then vote "Yes" on the upgrade proposal.
 Proposals in the explorer can be found at [https://explorer.cudos.org/proposals](https://explorer.cudos.org/proposals).
 
 To vote from the command line, first export the variable names.
-For example, for public testnet,
+Namely, start setting a couple of variables,
 
 ```bash
 export CHAIN_ID="cudos-testnet-public"
@@ -42,8 +42,9 @@ where `N` is the proposal number that we want to vote `yes` to.
 
 ## Wait for the network to stop
 
-There is no particular task on this section other than waiting, but this is however a crucial step.
-The rest of the steps that follow this one should only be followed after the network has stopped at the specified height.
+There is no particular task on this section other than waiting.
+This is however a crucial step.
+The rest of the instructions after this section should only be followed after the network has stopped at the specified height.
 
 ## Stop all running nodes/orchestrators
 
@@ -64,7 +65,7 @@ sudo docker stop <CONTAINER NAME>
 ```
 
 This needs to be done for each node of the network.
-For example, for a Validator running public testnet, the expected container names are
+For a Validator running public testnet, the expected container names are
 - cudos-start-full-node-client-testnet-public-01
 - cudos-start-seed-node-client-testnet-public-01
 - cudos-start-sentry-node-client-testnet-public-01
@@ -80,7 +81,7 @@ To export the state first we define environment variables to make our life easie
 
 ### Define env variables
 
-For **full nodes**, in the case of public testnet,
+For **full nodes**,
 ```bash
 export WORKING_DIR="" # Absolute path to the parent folder of CudosBuilders, CudosNode and CudosGravityBridge
 export NODE_NAME="full-node" 
@@ -181,7 +182,7 @@ sudo mv ./CudosBuilders ./CudosBuilders-backup
 ```
 
 Then, we need to pull the new versions from the Github repositories.
-In the case of the version 0.3 upgrade,
+For this version 0.3 upgrade,
 ```bash
 git clone --depth 1 --branch v0.3 https://github.com/CudoVentures/cudos-node.git CudosNode
 git clone --depth 1 --branch v0.3.1  https://github.com/CudoVentures/cudos-builders.git CudosBuilders
@@ -256,20 +257,19 @@ sudo docker container exec $START_CONTAINER_NAME /bin/bash -c "cp \"\$CUDOS_HOME
 ## Run the upgraded binary
 
 **This step needs to be repeated for every node that we are upgrading, just like the previous ones.**
-The first step is to undo one of our previous changes, to get the node ready for normal operation
+The first step is to undo one of our previous changes, to get the node ready for normal operation.
 ```bash
 cd "$WORKING_DIR/CudosBuilders"
 cd "./docker/$NODE_NAME"
 sed -i "s/sleep infinity/cudos-noded start/g" "./start-$NODE_NAME.dockerfile"
 ```
 
-For seed and sentry nodes, we also need to add back an extra line
+For seed and sentry nodes, we also need to add back an extra line,
 ```bash
 sed -i "s/sleep infinity/cudos-noded start --state-sync.snapshot-interval 2000 --state-sync.snapshot-keep-recent 2/g" "./start-$NODE_NAME.dockerfile"
 ```
 
-We can now start the node normally.
-In the case of public testnet,
+We can now start the node normally,
 ```bash
 sudo docker-compose --env-file "./$NODE_NAME.testnet.public.arg"  -f "./start-$NODE_NAME.yml" -p "cudos-start-$NODE_NAME" up --build -d
 ```
@@ -279,7 +279,7 @@ The last step we are missing is starting the orchestrator.
 ## Start the orchestrator
 
 Please note that this step assumes that the orchestrator runs on the same machine as the validator, as explained in our [recommended Validator setup](/build/validator.html#validator-setup).
-In that machine, in the case of public testnet, copy the old .env file
+In that machine, copy the old .env file
 ```bash
 cd "$WORKING_DIR"
 cp "./CudosBuilders-backup/docker/orchestrator/orchestrator.client.testnet.public01.env" "./CudosBuilders/docker/orchestrator/orchestrator.client.testnet.public01.env"
