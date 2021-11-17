@@ -77,14 +77,21 @@ sudo docker stop <CONTAINER NAME>
 ```
 
 This needs to be done for each node of the network.
-For a Validator running public testnet, the expected container names are
+For a Validator running public testnet, the expected container names are:
+
 - cudos-start-full-node-client-testnet-public-01
-- cudos-start-seed-node-client-testnet-public-01
-- cudos-start-sentry-node-client-testnet-public-01
 - cudos-orchestrator-client-testnet-public-01
 
+OR
 
-for full, seed, sentry and orchestrator nodes respectively.
+- cudos-start-seed-node-client-testnet-public-01
+
+OR
+
+- cudos-start-sentry-node-client-testnet-public-01
+
+
+for full, orchestrator, seed and sentry nodes respectively.
 
 ## Export the current network state
 
@@ -147,7 +154,7 @@ sudo docker container prune -f
 ```
 and then finally start the node in the desired state,
 ```bash
-sudo docker-compose --env-file "./$NODE_NAME.testnet.public.arg"  -f "./start-$NODE_NAME.yml" -p "cudos-start-$NODE_NAME" up --build -d
+sudo docker-compose --env-file "./$NODE_NAME.client.testnet.public01.arg"  -f "./start-$NODE_NAME.yml" -p "cudos-start-$NODE_NAME-client-testnet-public-01" up --build -d
 ```
 
 After that's done, first remove any existing backups,
@@ -222,7 +229,7 @@ cd "$WORKING_DIR/CudosBuilders"
 cd "./docker/$NODE_NAME"
 sed -i "s/cudos-noded start/sleep infinity/g" "./start-$NODE_NAME.dockerfile"
 sed -i "s/ --state-sync.snapshot-interval 2000 --state-sync.snapshot-keep-recent 2//g" "./start-$NODE_NAME.dockerfile"
-sudo docker-compose --env-file "./$NODE_NAME.testnet.public.arg"  -f "./start-$NODE_NAME.yml" -p "cudos-start-$NODE_NAME" up --build -d
+sudo docker-compose --env-file "./$NODE_NAME.client.testnet.public01.arg"  -f "./start-$NODE_NAME.yml" -p "cudos-start-$NODE_NAME-client-testnet-public-01" up --build -d
 ```
 
 We are now ready to migrate the genesis,
@@ -238,10 +245,10 @@ sudo docker container exec $START_CONTAINER_NAME /bin/bash -c "cp \"\$CUDOS_HOME
 sudo docker container exec $START_CONTAINER_NAME /bin/bash -c "cat \"\$CUDOS_HOME/backup/genesis.migrated-modified.json\" | jq '.app_state.gravity.params.signed_batches_window = \"10000\"' > \"\$CUDOS_HOME/backup/genesis.migrated-modified.json.tmp\""
 sudo docker container exec $START_CONTAINER_NAME /bin/bash -c "mv \"\$CUDOS_HOME/backup/genesis.migrated-modified.json.tmp\" \"\$CUDOS_HOME/backup/genesis.migrated-modified.json\""
 
-sudo docker container exec $START_CONTAINER_NAME /bin/bash -c "cat \"\$CUDOS_HOME/backup/genesis.migrated-modified.json\" | jq '.app_state.gravity.last_tx_pool_id = \"78\"' > \"\$CUDOS_HOME/backup/genesis.migrated-modified.json.tmp\""
+sudo docker container exec $START_CONTAINER_NAME /bin/bash -c "cat \"\$CUDOS_HOME/backup/genesis.migrated-modified.json\" | jq '.app_state.gravity.last_tx_pool_id = \"81\"' > \"\$CUDOS_HOME/backup/genesis.migrated-modified.json.tmp\""
 sudo docker container exec $START_CONTAINER_NAME /bin/bash -c "mv \"\$CUDOS_HOME/backup/genesis.migrated-modified.json.tmp\" \"\$CUDOS_HOME/backup/genesis.migrated-modified.json\""
 
-sudo docker container exec $START_CONTAINER_NAME /bin/bash -c "cat \"\$CUDOS_HOME/backup/genesis.migrated-modified.json\" | jq '.app_state.gravity.last_outgoing_batch_id = \"75\"' > \"\$CUDOS_HOME/backup/genesis.migrated-modified.json.tmp\""
+sudo docker container exec $START_CONTAINER_NAME /bin/bash -c "cat \"\$CUDOS_HOME/backup/genesis.migrated-modified.json\" | jq '.app_state.gravity.last_outgoing_batch_id = \"78\"' > \"\$CUDOS_HOME/backup/genesis.migrated-modified.json.tmp\""
 sudo docker container exec $START_CONTAINER_NAME /bin/bash -c "mv \"\$CUDOS_HOME/backup/genesis.migrated-modified.json.tmp\" \"\$CUDOS_HOME/backup/genesis.migrated-modified.json\""
 
 sudo docker container exec $START_CONTAINER_NAME /bin/bash -c "cat \"\$CUDOS_HOME/backup/genesis.migrated-modified.json\" | jq '.app_state.slashing.params.signed_blocks_window = \"19200\"' > \"\$CUDOS_HOME/backup/genesis.migrated-modified.json.tmp\""
@@ -283,7 +290,7 @@ sed -i "s/sleep infinity/cudos-noded start --state-sync.snapshot-interval 2000 -
 
 We can now start the node normally,
 ```bash
-sudo docker-compose --env-file "./$NODE_NAME.testnet.public.arg"  -f "./start-$NODE_NAME.yml" -p "cudos-start-$NODE_NAME" up --build -d
+sudo docker-compose --env-file "./$NODE_NAME.client.testnet.public01.arg"  -f "./start-$NODE_NAME.yml" -p "cudos-start-$NODE_NAME-client-testnet-public-01" up --build -d
 ```
 
 The last step we are missing is starting the orchestrator.
