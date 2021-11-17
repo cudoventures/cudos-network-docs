@@ -69,7 +69,8 @@ module.exports = {
         'smart-contracts',
         'interact-keplr-explorer',
         'upgrade',
-        'start-binaries'
+        'start-binaries',
+        'upgrade-v0.3'
       ],
 
       '/earn/': [
