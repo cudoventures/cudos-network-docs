@@ -2,14 +2,12 @@
 
 This section describes in details all steps that need to be executed for the v0.3 upgrade of the public testnet. The upgrade is planned for 18th November 2021.
 
-### Step by step instructions
-
 First of all, in order to upgrade your node(s) to the new version of the network, you need to have running nodes.
 If you do not have any nodes running in the network at the moment, please follow [these instructions](/build/validator.html#validator-setup) to deploy a validator into the network, or [these other ones](/build/developers-setup.html) to simply deploy a full node.
 
 These aim to be self-contained instructions, so let us give another overview of all the steps needed, and then describe each one with the exact commands.
 
-#### Overview
+## Overview
 
 1. Accept the upgrade proposal
 2. Wait for the network to stop at the specified height
@@ -19,7 +17,7 @@ These aim to be self-contained instructions, so let us give another overview of 
 6. Run the upgraded binary
 7. Start the orchestrator
 
-#### Accept the upgrade proposal
+## Accept the upgrade proposal
 
 As mentioned above, this needs to be done by Validators, either through the CLI or the explorer.
 
@@ -42,12 +40,12 @@ cudos-noded tx gov vote N yes --from $ACCOUNT --keyring-backend os --chain-id $C
 
 where `N` is the proposal number that we want to vote `yes` to.
 
-#### Wait for the network to stop
+## Wait for the network to stop
 
 There is no particular task on this section other than waiting, but this is however a crucial step.
 The rest of the steps that follow this one should only be followed after the network has stopped at the specified height.
 
-#### Stop all running nodes/orchestrators
+## Stop all running nodes/orchestrators
 
 It is very important to keep the Ethereum node running, as we want it to stay synced with the Ethereum network.
 All other nodes will need to be stopped and updated though, as they are Cudos Network ones.
@@ -75,12 +73,12 @@ For example, for a Validator running public testnet, the expected container name
 
 for full, seed, sentry and orchestrator nodes respectively.
 
-#### Export the current network state
+## Export the current network state
 
 **This process needs to be repeated for every node** type, full-node, seed and sentry, in the machine where they are running.
 To export the state first we define environment variables to make our life easier, and then we do the actual export of the state.
 
-##### Define env variables
+### Define env variables
 
 For **full nodes**, in the case of public testnet,
 ```bash
@@ -109,7 +107,7 @@ export DATA_FOLDER="cudos-data-sentry-node-client-testnet-public-01"
 export CHAIN_ID="cudos-testnet-public"
 ```
 
-##### Exporting the state
+### Exporting the state
 
 First we need to prepare the binary-builder, so navigate to its folder
 ```bash
@@ -169,7 +167,7 @@ sudo cp -r "$WORKING_DIR/CudosData/$DATA_FOLDER" "$WORKING_DIR/CudosData/$DATA_F
 
 Now we are ready for the state migration.
 
-#### Migrate the exported state
+## Migrate the exported state
 
 **This step needs to be repeated for every node that we are upgrading, just like the previous ones.**
 
@@ -255,7 +253,7 @@ and copy the new genesis file,
 sudo docker container exec $START_CONTAINER_NAME /bin/bash -c "cp \"\$CUDOS_HOME/backup/genesis.migrated-modified.json\" \"\$CUDOS_HOME/config/genesis.json\""
 ```
 
-#### Run the upgraded binary
+## Run the upgraded binary
 
 **This step needs to be repeated for every node that we are upgrading, just like the previous ones.**
 The first step is to undo one of our previous changes, to get the node ready for normal operation
@@ -278,7 +276,7 @@ sudo docker-compose --env-file "./$NODE_NAME.testnet.public.arg"  -f "./start-$N
 
 The last step we are missing is starting the orchestrator.
 
-#### Start the orchestrator
+## Start the orchestrator
 
 Please note that this step assumes that the orchestrator runs on the same machine as the validator, as explained in our [recommended Validator setup](/build/validator.html#validator-setup).
 In that machine, in the case of public testnet, copy the old .env file
@@ -297,7 +295,7 @@ sudo docker-compose --env-file orchestrator.client.testnet.public01.arg -f orche
 After this, all the nodes and the orchestrator should have upgraded to the new network.
 As a last step, now that all nodes and the orchestrator have been successfully updated, we can delete and backups that we did in previous steps as a security measure in case things went wrong.
 
-#### Clean up
+## Clean up
 
 We would recommend waiting a few hours or a couple of days before cleaning up the backups, in case something breaks down in the hours following the upgrade.
 If all has gone well, then we can now delete the data backup,
