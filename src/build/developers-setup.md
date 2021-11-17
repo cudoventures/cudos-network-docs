@@ -25,7 +25,7 @@ SHOULD_USE_GLOBAL_PEERS=true
 
 6. Leave other variables such as "PERSISTENT_PEERS" and "SEEDS" empty and save the changes that you made to the file.
 7. Make sure that you are still in the correct directory **CudosBuilders/docker/full-node**
-8. Initialize the node by running this command:
+8. Initialize the node by running this command
 
 ```
 sudo docker-compose --env-file full-node.client.testnet.public01.arg -f init-full-node.yml -p cudos-init-full-node-client-testnet-public-01 up --build
