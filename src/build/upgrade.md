@@ -16,7 +16,7 @@ After the proposal is submitted it enters into a deposit period, during which a 
 After the voting period starts, only validators can vote and approve it.
 If the proposal is passed, the network stops at a specified block height, until the upgrade is made and the network is restarted.
 
-#### Submitting a software upgrade proposal
+### Submitting a software upgrade proposal
 
 A proposal can be submitted with the following command in a node terminal:
 
@@ -26,7 +26,7 @@ cudos-noded tx gov submit-proposal software-upgrade <proposal_name> --upgrade-he
 
 Alternatively, software upgrade proposals can also be created using the explorer, as explained [here](/learn/#creating-a-new-proposal).
 
-#### Depositing to a proposal
+### Depositing to a proposal
 
 To get the ID of the proposal that we want to deposit into, enter the following command:
 
@@ -44,7 +44,7 @@ The instructions on how to deposit CUDOS into a proposals using the explorer can
 
 If the funds are enough, the proposal should enter in a voting status, which can again be seen with the command we used for the proposal ID.
 
-#### Voting on a proposal
+### Voting on a proposal
 
 Only validator can vote on governance proposals.
 To vote *yes* on a proposal usingn the CLI, use the following command:
@@ -77,7 +77,7 @@ After the upgrade proposal is accepted and the network stops, all validators mus
 3. Migrate the state
 4. Run the network.
 
-#### Exporting the network state
+### Exporting the network state
 
 This is done with the following command on a **stopped** node:
 
@@ -87,11 +87,11 @@ cudos-noded export |& tee  <export_file_name.json>
 
 Check the file to make sure it is populated with the network state.
 
-#### Set the new binary
+### Set the new binary
 
 Pull and build the new binary based on the nodes' types that you are running.
 
-#### Migrating the network state file
+### Migrating the network state file
 
 The exported file from before needs to be migrated, which basically populates it with the fields needed by the new version. This is done with the following command:
 
@@ -101,7 +101,7 @@ cudos-noded migrate <software_upgrade_proposal_name> <export_file_name.json> --c
 
 All the necessary state changes are handled in the **migrate** command. However, Tendermint parameters are not handled in this command. You might need to update these parameters manually. Make sure that your genesis JSON file contains the correct values specific to your chain. If the cudos-noded migrate errors with a message saying that the genesis file cannot be parsed, these are the fields to check first.
 
-##### Reset the old state
+#### Reset the old state
 
 This is done with the following command:
 
@@ -109,7 +109,7 @@ This is done with the following command:
 cudos-noded unsafe-reset-all
 ```
 
-##### Move the new genesis.json to your daemon config directory. Ex
+#### Move the new genesis.json to your daemon config directory. Ex
 
 Either copy it manually or run command like the following example:
 
@@ -123,7 +123,7 @@ You can run the following command to check the software version, it should state
 cudos-noded version --long
 ```
 
-#### Start the network
+### Start the network
 
 Start the network with:
 
