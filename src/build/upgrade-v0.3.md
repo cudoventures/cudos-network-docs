@@ -7,6 +7,18 @@ If you do not have any nodes running in the network at the moment, please follow
 
 These aim to be self-contained instructions, so let us give first an overview of all the steps needed, and then describe each one with the exact commands.
 
+## Disclaimer
+
+The commands below are tested under Linux OS. They could work under Windows/WSl as well.
+
+If you are using MacOS then please pay attention to the **sed** command. You MUST add an empty string just after with <em>-i</em> parameter.
+
+**For example:**
+
+<em>Linux version:</em> <code>sudo sed -i "s/....."</code>
+
+<em>MacOS version:</em> <code>sudo sed -i "" "s/....."</code>
+
 ## Overview
 
 1. Accept the upgrade proposal
