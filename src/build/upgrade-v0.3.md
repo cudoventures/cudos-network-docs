@@ -77,14 +77,21 @@ sudo docker stop <CONTAINER NAME>
 ```
 
 This needs to be done for each node of the network.
-For a Validator running public testnet, the expected container names are
+For a Validator running public testnet, the expected container names are:
+
 - cudos-start-full-node-client-testnet-public-01
-- cudos-start-seed-node-client-testnet-public-01
-- cudos-start-sentry-node-client-testnet-public-01
 - cudos-orchestrator-client-testnet-public-01
 
+OR
 
-for full, seed, sentry and orchestrator nodes respectively.
+- cudos-start-seed-node-client-testnet-public-01
+
+OR
+
+- cudos-start-sentry-node-client-testnet-public-01
+
+
+for full, orchestrator, seed and sentry nodes respectively.
 
 ## Export the current network state
 
