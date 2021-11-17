@@ -70,7 +70,6 @@ $ cudos-noded tx nft issue <denom-id> --from=<key-name> --name=<denom-name> --sc
 
 - arguments:
     - `denom-id` `string` `The denomId that this NFT will be associated` `required: true`
-    - `token-id` `string` `Unique Id that identifies the token. Must be all lowercase` `required: true`
 - flags:
     - `--from` `string` `The address that is minting the NFT. Must be denom creator. Can be either an address or alias to that address` `required: true`
     - `--recipient` `string` `The user(owner) that will receive the NFT` `required: true`
@@ -81,7 +80,7 @@ $ cudos-noded tx nft issue <denom-id> --from=<key-name> --name=<denom-name> --sc
 **Example:**
 
 ``` bash
-$ cudos-noded tx nft mint <denom-id> <token-id> --recipient=<recipient> --from=<key-name> --uri=<uri> --chain-id=<chain-id> --fees=<fee>
+$ cudos-noded tx nft mint <denom-id> --recipient=<recipient> --from=<key-name> --uri=<uri> --chain-id=<chain-id> --fees=<fee>
 
 ```
 
