@@ -1,4 +1,4 @@
-# Public testnet upgade v0.3
+# Public testnet upgrade v0.3
 
 This section describes in details all steps that need to be executed for the v0.3 upgrade of the public testnet. The upgrade is planned for 18th November 2021.
 
@@ -70,7 +70,10 @@ For example, for a Validator running public testnet, the expected container name
 - cudos-start-full-node-client-testnet-public-01
 - cudos-start-seed-node-client-testnet-public-01
 - cudos-start-sentry-node-client-testnet-public-01
-for full, seed and sentry nodes respectively.
+- cudos-orchestrator-client-testnet-public-01
+
+
+for full, seed, sentry and orchestrator nodes respectively.
 
 #### Export the current network state
 
