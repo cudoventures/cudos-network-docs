@@ -147,7 +147,7 @@ sudo docker container prune -f
 ```
 and then finally start the node in the desired state,
 ```bash
-sudo docker-compose --env-file "./$NODE_NAME.testnet.public.arg"  -f "./start-$NODE_NAME.yml" -p "cudos-start-$NODE_NAME" up --build -d
+sudo docker-compose --env-file "./$NODE_NAME.client.testnet.public01.arg"  -f "./start-$NODE_NAME.yml" -p "cudos-start-$NODE_NAME-client-testnet-public-01" up --build -d
 ```
 
 After that's done, first remove any existing backups,
@@ -222,7 +222,7 @@ cd "$WORKING_DIR/CudosBuilders"
 cd "./docker/$NODE_NAME"
 sed -i "s/cudos-noded start/sleep infinity/g" "./start-$NODE_NAME.dockerfile"
 sed -i "s/ --state-sync.snapshot-interval 2000 --state-sync.snapshot-keep-recent 2//g" "./start-$NODE_NAME.dockerfile"
-sudo docker-compose --env-file "./$NODE_NAME.testnet.public.arg"  -f "./start-$NODE_NAME.yml" -p "cudos-start-$NODE_NAME" up --build -d
+sudo docker-compose --env-file "./$NODE_NAME.client.testnet.public01.arg"  -f "./start-$NODE_NAME.yml" -p "cudos-start-$NODE_NAME-client-testnet-public-01" up --build -d
 ```
 
 We are now ready to migrate the genesis,
@@ -283,7 +283,7 @@ sed -i "s/sleep infinity/cudos-noded start --state-sync.snapshot-interval 2000 -
 
 We can now start the node normally,
 ```bash
-sudo docker-compose --env-file "./$NODE_NAME.testnet.public.arg"  -f "./start-$NODE_NAME.yml" -p "cudos-start-$NODE_NAME" up --build -d
+sudo docker-compose --env-file "./$NODE_NAME.client.testnet.public01.arg"  -f "./start-$NODE_NAME.yml" -p "cudos-start-$NODE_NAME-client-testnet-public-01" up --build -d
 ```
 
 The last step we are missing is starting the orchestrator.
