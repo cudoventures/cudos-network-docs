@@ -55,7 +55,7 @@ module.exports = {
         '',
         'roadmap',
         'validators',
-        'gravity-bridge-slashing',
+        'gravity-bridge',
         'resources'
       ],
 
@@ -69,6 +69,8 @@ module.exports = {
         'smart-contracts',
         'nft',
         'interact-keplr-explorer',
+        'upgrade',
+        'upgrade-v0.3',
         'start-binaries'
       ],
 
