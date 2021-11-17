@@ -10,6 +10,7 @@ These aim to be self-contained instructions, so let us give first an overview of
 ## Disclaimer
 
 The commands below are tested under Linux OS. They could work under Windows/WSl as well.
+
 If you are using MacOS then please pay attention to the **sed** command. You MUST add an empty string just after with <em>-i</em> parameter.
 
 **For example:**
