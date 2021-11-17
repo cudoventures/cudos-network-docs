@@ -200,7 +200,7 @@ copy the old .env file,
 
 ```bash
 cd "$WORKING_DIR"
-cp "./CudosBuilders-backup/docker/$NODE_NAME/$NODE_NAME.testnet.public.env" "./CudosBuilders/docker/$NODE_NAME/$NODE_NAME.testnet.public.env"
+cp "./CudosBuilders-backup/docker/$NODE_NAME/$NODE_NAME.client.testnet.public01.env" "./CudosBuilders/docker/$NODE_NAME/$NODE_NAME.client.testnet.public01.env"
 ```
 
 and start the node in sleep mode, just like we did before
