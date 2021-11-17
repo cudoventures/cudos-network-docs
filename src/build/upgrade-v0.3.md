@@ -245,10 +245,10 @@ sudo docker container exec $START_CONTAINER_NAME /bin/bash -c "cp \"\$CUDOS_HOME
 sudo docker container exec $START_CONTAINER_NAME /bin/bash -c "cat \"\$CUDOS_HOME/backup/genesis.migrated-modified.json\" | jq '.app_state.gravity.params.signed_batches_window = \"10000\"' > \"\$CUDOS_HOME/backup/genesis.migrated-modified.json.tmp\""
 sudo docker container exec $START_CONTAINER_NAME /bin/bash -c "mv \"\$CUDOS_HOME/backup/genesis.migrated-modified.json.tmp\" \"\$CUDOS_HOME/backup/genesis.migrated-modified.json\""
 
-sudo docker container exec $START_CONTAINER_NAME /bin/bash -c "cat \"\$CUDOS_HOME/backup/genesis.migrated-modified.json\" | jq '.app_state.gravity.last_tx_pool_id = \"78\"' > \"\$CUDOS_HOME/backup/genesis.migrated-modified.json.tmp\""
+sudo docker container exec $START_CONTAINER_NAME /bin/bash -c "cat \"\$CUDOS_HOME/backup/genesis.migrated-modified.json\" | jq '.app_state.gravity.last_tx_pool_id = \"81\"' > \"\$CUDOS_HOME/backup/genesis.migrated-modified.json.tmp\""
 sudo docker container exec $START_CONTAINER_NAME /bin/bash -c "mv \"\$CUDOS_HOME/backup/genesis.migrated-modified.json.tmp\" \"\$CUDOS_HOME/backup/genesis.migrated-modified.json\""
 
-sudo docker container exec $START_CONTAINER_NAME /bin/bash -c "cat \"\$CUDOS_HOME/backup/genesis.migrated-modified.json\" | jq '.app_state.gravity.last_outgoing_batch_id = \"75\"' > \"\$CUDOS_HOME/backup/genesis.migrated-modified.json.tmp\""
+sudo docker container exec $START_CONTAINER_NAME /bin/bash -c "cat \"\$CUDOS_HOME/backup/genesis.migrated-modified.json\" | jq '.app_state.gravity.last_outgoing_batch_id = \"78\"' > \"\$CUDOS_HOME/backup/genesis.migrated-modified.json.tmp\""
 sudo docker container exec $START_CONTAINER_NAME /bin/bash -c "mv \"\$CUDOS_HOME/backup/genesis.migrated-modified.json.tmp\" \"\$CUDOS_HOME/backup/genesis.migrated-modified.json\""
 
 sudo docker container exec $START_CONTAINER_NAME /bin/bash -c "cat \"\$CUDOS_HOME/backup/genesis.migrated-modified.json\" | jq '.app_state.slashing.params.signed_blocks_window = \"19200\"' > \"\$CUDOS_HOME/backup/genesis.migrated-modified.json.tmp\""
