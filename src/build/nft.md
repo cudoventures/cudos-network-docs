@@ -4,14 +4,14 @@ title: NFTs
 
 # Cudos Network NFTs
 
-NFTs are compatible with Cudos Network natively
+NFTs are compatible with Cudos Network natively.
 
 ## Module Overview
 
-A module for operating with Non-Fungible Tokens on the CUDOS network. The methods that are exposed by it are mainly based on [ERC721 interface](https://ethereum.org/en/developers/docs/standards/tokens/erc-721/) from the Ethereum network and not so much on the [CW-721](https://github.com/CosmWasm/cw-nfts) from the Cosmos network. The reason for this is that the main idea of the module is to transfer tokens through a [bridge](https://github.com/CudoVentures/cosmos-gravity-bridge) between CUDOS network and Ethereum and thus it is better to follow the ERC721 standard.
+A module for operating with Non-Fungible Tokens on the CUDOS network. The methods that are exposed by it are mainly based on the [ERC721 interface](https://ethereum.org/en/developers/docs/standards/tokens/erc-721/) from the Ethereum network and not so much on the [CW-721](https://github.com/CosmWasm/cw-nfts) from the Cosmos network. The reason for this is that the main idea of the module is to transfer tokens through the [bridge](https://github.com/CudoVentures/cosmos-gravity-bridge) between the Cudos Network and Ethereum, and thus it is better to follow the ERC721 standard.
 
 ## Module Interface
-The module gives the user the ability to either write(via transaction) or read(via query) to/from the network.
+The module gives the user the ability to either write (via transaction) or read (via query) to/from the network.
 
 ### The following commands are available (click on them for further info)
 
@@ -47,7 +47,7 @@ The module gives the user the ability to either write(via transaction) or read(v
 
 ### `issue`
 
-> Issues a new denom that will be used for minting new NFTs. Only the denom creator can issue new NFTs
+> Issues a new denom that will be used for minting new NFTs. Only the denom creator can issue new NFTs.
 
 - arguments:
   - `denom-id` `string` `Unique Id that identifies the denom. Must be all lowercase` `required: true`
@@ -66,7 +66,7 @@ $ cudos-noded tx nft issue <denom-id> --from=<key-name> --name=<denom-name> --sc
 
 ### `mint`
 
-> Mint a NFT and set the owner to the recipient. Only the denom creator can mint a new NFT
+> Mint a NFT and set the owner to the recipient. Only the denom creator can mint a new NFT.
 
 - arguments:
     - `denom-id` `string` `The denomId that this NFT will be associated` `required: true`
@@ -105,7 +105,7 @@ $ cudos-noded tx nft edit <denom-id> <token-id>  --from=<key-name> --uri=<uri> -
 
 ### `burn`
 
-> Burns the NFT - deletes it permanently
+> Burns the NFT - deletes it permanently.
 
 - arguments:
   - `denom-id` `string` `The denomId of the edited NFT` `required: true`
@@ -123,7 +123,7 @@ $ cudos-noded tx nft burn <denom-id> <token-id> --from=<key-name> --chain-id=<ch
 
 ### `transfer`
 
-> Transfer an NFT - from one owner to another The sender must be either the owner, approved address on NFT or globally approved operator.
+> Transfer an NFT - from one owner to a new owner. The sender must be either the owner, an approved address for that NFT or a globally approved operator.
 
 - arguments:
   - `from` `string` `The address of the NFT owner` `required: true`
@@ -144,7 +144,7 @@ $ cudos-noded tx nft transfer <from> <to> <denom-id> <token-id>  --from=<key-nam
 
 ### `approve`
 
-> Adds an address to the approved list. Approved address on NFT level can transfer the NFT from one owner to another. Approved addresses for the NFT are cleared upon transfer.
+> Adds an address to the approved list. Approved addresses on the NFT level can transfer the NFT from one owner to another. Approved addresses for the NFT are cleared upon transfer.
 
 - arguments:
   - `approvedAddress` `string` `The address that will be approved` `required: true`
@@ -163,7 +163,7 @@ $ cudos-noded tx nft approve <approvedAddress> <denom-id> <token-id> --from=<key
 
 ### `revoke`
 
-> Removes the address from the approved list. Approved address on NFT level can transfer the nft from one owner to another. Approved addresses for the NFT are cleared upon transfer.
+> Removes the address from the approved list. Approved addresses on the NFT level can transfer the NFT from one owner to another. Approved addresses for the NFT are cleared upon transfer.
 
 - arguments:
   - `addressToRevoke` `string` `The address that will be removed` `required: true`
@@ -182,7 +182,7 @@ $ cudos-noded tx nft revoke <addressToRevoke> <denom-id> <token-id>--uri=<uri> -
 
 ### `approveAll`
 
-> Adds the address to the approved operator list for the user. Approved address on user level can transfer the nft from one owner to another. The address is automatically added to the msg.sender(--from) approved list
+> Adds the address to the approved operator list for the user. Approved addresses on the user level can transfer the NFT from one owner to another. The address is automatically added to the msg.sender(--from) approved list.
 
 - arguments:
   - `operator` `string` `The address that will be approved` `required: true`
@@ -307,7 +307,7 @@ $ cudos-noded query nft token <denom-id> <token-id>
 
 ### `approvals`
 
-> Get the approved addresses for the NFT
+> Get the approved addresses for the NFT.
 
 - arguments:
   - `denom-id`: `The id of the denom collection` `required:true`
@@ -324,7 +324,7 @@ $ cudos-noded query nft approvals <denomId> <tokenId>
 
 ### `isApprovedForAll`
 
-> Query if an address is an authorized operator for another address
+> Query if an address is an authorised operator for another address.
 
 - arguments:
   - `owner`: `The owner addresses to search` `required:true`
@@ -380,7 +380,7 @@ type Collection struct {
 
 ## Owners
 
->Owner holds the address of the user and his collection of NFTs
+>Owner holds the address of the user and their collection of NFTs.
 
 ```go
 // Owner of non fungible tokens
@@ -391,7 +391,7 @@ type Owner struct {
 ```
 
 ## IDCollection
->IDCollection holds the denomId and the Ids of the NFTs(insted of the full object)
+>IDCollection holds the denomId and the Ids of the NFTs (instead of the full object).
 
 ```go
 // IDCollection of non fungible tokens
@@ -403,7 +403,7 @@ type IDCollection struct {
 ```
 
 ## Denom
-> The denomination is used to group NFTs under it
+> The denomination is used to group NFTs under it.
 ```go
 // Denom defines a type of NFT
 type Denom struct {
@@ -415,7 +415,7 @@ type Denom struct {
 ```
 
 ## Events
-> The events that are emitted after certain operations
+> The events that are emitted after certain operations.
 ```go
 	EventTypeIssueDenom    = "issue_denom"
 	EventTypeTransferNft   = "transfer_nft"
