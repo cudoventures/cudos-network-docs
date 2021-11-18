@@ -183,6 +183,8 @@ cd "$WORKING_DIR"
 cp "./CudosBuilders-backup/docker/$NODE_NAME/$NODE_NAME.client.testnet.public01.env" "./CudosBuilders/docker/$NODE_NAME/$NODE_NAME.client.testnet.public01.env"
 ```
 
+**<em>If you have already done the upgrade procedure, please repeat the steps from here till the end regarding the full, sentry and seed nodes. Otherwise just ignore this message and continue.</em>**
+
 and start the node in sleep mode, just like we did before
 
 ```bash
