@@ -199,6 +199,15 @@ reset the old state,
 sudo docker container exec $START_CONTAINER_NAME /bin/bash -c "cudos-noded unsafe-reset-all"
 ```
 
+install dependencies,
+```bash
+sudo docker container exec $START_CONTAINER_NAME apt-get update
+
+sudo docker container exec $START_CONTAINER_NAME apt-get install jq -y
+
+sudo docker container exec $START_CONTAINER_NAME apt-get install wget -y
+```
+
 download the new genesis file,
 
 ```bash
@@ -209,6 +218,18 @@ and copy the new genesis file,
 
 ```bash
 sudo docker container exec $START_CONTAINER_NAME /bin/bash -c "cp \"\$CUDOS_HOME/backup/genesis.migrated-modified.json\" \"\$CUDOS_HOME/config/genesis.json\""
+```
+
+validate the checksum,
+```bash
+sudo docker container exec $START_CONTAINER_NAME /bin/bash -c "sha256sum \"\$CUDOS_HOME/config/genesis.json\""
+```
+
+The hash should be: dadbf6fef791b6147c3c451c3bf509cd783729f3af9720e3dd71c48f0b4de597
+
+stop the running node
+```bash
+sudo docker stop "$START_CONTAINER_NAME"
 ```
 
 ## Run the upgraded binary
