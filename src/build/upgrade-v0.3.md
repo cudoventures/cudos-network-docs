@@ -127,36 +127,6 @@ export DATA_FOLDER="cudos-data-sentry-node-client-testnet-public-01"
 export CHAIN_ID="cudos-testnet-public"
 ```
 
-### Exporting the state
-
-First we need to prepare the binary-builder, so navigate to its folder
-```bash
-cd "$WORKING_DIR/CudosBuilders/docker/binary-builder"
-```
-and then prepare the binary,
-```bash
-sudo docker-compose --env-file ./binary-builder.arg -f ./binary-builder.yml -p cudos-binary-builder build
-```
-
-Then you need to start the node in "sleep" mode.
-To do so, navigate to the relevant folder,
-```bash
-cd "$WORKING_DIR/CudosBuilders/docker/$NODE_NAME"
-```
-modify the Docker files (the second command is only relevant for seed and sentry nodes),
-```bash
-sudo sed -i "s/cudos-noded start/sleep infinity/g" "./start-$NODE_NAME.dockerfile"
-sudo sed -i "s/ --state-sync.snapshot-interval 2000 --state-sync.snapshot-keep-recent 2//g" "./start-$NODE_NAME.dockerfile"
-```
-remove stopped containers
-```bash
-sudo docker container prune -f
-```
-and then finally start the node in the desired state,
-```bash
-sudo docker-compose --env-file "./$NODE_NAME.client.testnet.public01.arg"  -f "./start-$NODE_NAME.yml" -p "cudos-start-$NODE_NAME-client-testnet-public-01" up --build -d
-```
-
 After that's done, first remove any existing backups,
 ```bash
 sudo docker container exec "$START_CONTAINER_NAME" /bin/bash -c "rm -rf \"\$CUDOS_HOME/backup\""
@@ -164,15 +134,6 @@ sudo docker container exec "$START_CONTAINER_NAME" /bin/bash -c "rm -rf \"\$CUDO
 then create the backup folder,
 ```bash
 sudo docker container exec "$START_CONTAINER_NAME" /bin/bash -c "mkdir -p \"\$CUDOS_HOME/backup\""
-```
-and finally export the state,
-```bash
-sudo docker container exec "$START_CONTAINER_NAME" /bin/bash -c "cudos-noded export |& tee \"\$CUDOS_HOME/backup/genesis.exported.json\""
-```
-
-Now you can stop the sleeping container,
-```bash
-sudo docker stop "$START_CONTAINER_NAME"
 ```
 
 The last step of this export is saving a backup of the data as a security measure, in case something goes wrong.
@@ -222,6 +183,8 @@ cd "$WORKING_DIR"
 cp "./CudosBuilders-backup/docker/$NODE_NAME/$NODE_NAME.client.testnet.public01.env" "./CudosBuilders/docker/$NODE_NAME/$NODE_NAME.client.testnet.public01.env"
 ```
 
+**<em>If you have already done the upgrade procedure, please repeat the steps from here till the end regarding the full, sentry and seed nodes. Otherwise just ignore this message and continue.</em>**
+
 and start the node in sleep mode, just like we did before
 
 ```bash
@@ -232,45 +195,43 @@ sed -i "s/ --state-sync.snapshot-interval 2000 --state-sync.snapshot-keep-recent
 sudo docker-compose --env-file "./$NODE_NAME.client.testnet.public01.arg"  -f "./start-$NODE_NAME.yml" -p "cudos-start-$NODE_NAME-client-testnet-public-01" up --build -d
 ```
 
-We are now ready to migrate the genesis,
-```bash
-sudo docker container exec $START_CONTAINER_NAME /bin/bash -c "cudos-noded migrate v0.43 \"\$CUDOS_HOME/backup/genesis.exported.json\" --chain-id $CHAIN_ID |& tee \"\$CUDOS_HOME/backup/genesis.migrated.json\""
-
-sudo docker container exec $START_CONTAINER_NAME apt-get update
-
-sudo docker container exec $START_CONTAINER_NAME apt-get install jq -y
-
-sudo docker container exec $START_CONTAINER_NAME /bin/bash -c "cp \"\$CUDOS_HOME/backup/genesis.migrated.json\" \"\$CUDOS_HOME/backup/genesis.migrated-modified.json\""
-
-sudo docker container exec $START_CONTAINER_NAME /bin/bash -c "cat \"\$CUDOS_HOME/backup/genesis.migrated-modified.json\" | jq '.app_state.gravity.params.signed_batches_window = \"10000\"' > \"\$CUDOS_HOME/backup/genesis.migrated-modified.json.tmp\""
-sudo docker container exec $START_CONTAINER_NAME /bin/bash -c "mv \"\$CUDOS_HOME/backup/genesis.migrated-modified.json.tmp\" \"\$CUDOS_HOME/backup/genesis.migrated-modified.json\""
-
-sudo docker container exec $START_CONTAINER_NAME /bin/bash -c "cat \"\$CUDOS_HOME/backup/genesis.migrated-modified.json\" | jq '.app_state.gravity.last_tx_pool_id = \"81\"' > \"\$CUDOS_HOME/backup/genesis.migrated-modified.json.tmp\""
-sudo docker container exec $START_CONTAINER_NAME /bin/bash -c "mv \"\$CUDOS_HOME/backup/genesis.migrated-modified.json.tmp\" \"\$CUDOS_HOME/backup/genesis.migrated-modified.json\""
-
-sudo docker container exec $START_CONTAINER_NAME /bin/bash -c "cat \"\$CUDOS_HOME/backup/genesis.migrated-modified.json\" | jq '.app_state.gravity.last_outgoing_batch_id = \"78\"' > \"\$CUDOS_HOME/backup/genesis.migrated-modified.json.tmp\""
-sudo docker container exec $START_CONTAINER_NAME /bin/bash -c "mv \"\$CUDOS_HOME/backup/genesis.migrated-modified.json.tmp\" \"\$CUDOS_HOME/backup/genesis.migrated-modified.json\""
-
-sudo docker container exec $START_CONTAINER_NAME /bin/bash -c "cat \"\$CUDOS_HOME/backup/genesis.migrated-modified.json\" | jq '.app_state.slashing.params.signed_blocks_window = \"19200\"' > \"\$CUDOS_HOME/backup/genesis.migrated-modified.json.tmp\""
-sudo docker container exec $START_CONTAINER_NAME /bin/bash -c "mv \"\$CUDOS_HOME/backup/genesis.migrated-modified.json.tmp\" \"\$CUDOS_HOME/backup/genesis.migrated-modified.json\""
-
-sudo docker container exec $START_CONTAINER_NAME /bin/bash -c "cat \"\$CUDOS_HOME/backup/genesis.migrated-modified.json\" | jq '.app_state.gov.deposit_params.max_deposit_period = \"86400s\"' > \"\$CUDOS_HOME/backup/genesis.migrated-modified.json.tmp\""
-sudo docker container exec $START_CONTAINER_NAME /bin/bash -c "mv \"\$CUDOS_HOME/backup/genesis.migrated-modified.json.tmp\" \"\$CUDOS_HOME/backup/genesis.migrated-modified.json\""
-
-sudo docker container exec $START_CONTAINER_NAME /bin/bash -c "cat \"\$CUDOS_HOME/backup/genesis.migrated-modified.json\" | jq '.app_state.gov.voting_params.voting_period = \"86400s\"' > \"\$CUDOS_HOME/backup/genesis.migrated-modified.json.tmp\""
-sudo docker container exec $START_CONTAINER_NAME /bin/bash -c "mv \"\$CUDOS_HOME/backup/genesis.migrated-modified.json.tmp\" \"\$CUDOS_HOME/backup/genesis.migrated-modified.json\""
-```
-
 reset the old state,
 
 ```bash
 sudo docker container exec $START_CONTAINER_NAME /bin/bash -c "cudos-noded unsafe-reset-all"
 ```
 
+install dependencies,
+```bash
+sudo docker container exec $START_CONTAINER_NAME apt-get update
+
+sudo docker container exec $START_CONTAINER_NAME apt-get install jq -y
+
+sudo docker container exec $START_CONTAINER_NAME apt-get install wget -y
+```
+
+download the new genesis file,
+
+```bash
+sudo docker container exec "$START_CONTAINER_NAME" /bin/bash -c "wget -O \"\$CUDOS_HOME/backup/genesis.migrated-modified.json\" https://raw.githubusercontent.com/CudoVentures/cudos-builders/945af42d7522d7b6989e1b782119a0cd2dc2ead2/docker/config/genesis.testnet.public.json"
+```
+
 and copy the new genesis file,
 
 ```bash
 sudo docker container exec $START_CONTAINER_NAME /bin/bash -c "cp \"\$CUDOS_HOME/backup/genesis.migrated-modified.json\" \"\$CUDOS_HOME/config/genesis.json\""
+```
+
+validate the checksum,
+```bash
+sudo docker container exec $START_CONTAINER_NAME /bin/bash -c "sha256sum \"\$CUDOS_HOME/config/genesis.json\""
+```
+
+The hash should be: dadbf6fef791b6147c3c451c3bf509cd783729f3af9720e3dd71c48f0b4de597
+
+stop the running node
+```bash
+sudo docker stop "$START_CONTAINER_NAME"
 ```
 
 ## Run the upgraded binary
@@ -285,7 +246,7 @@ sed -i "s/sleep infinity/cudos-noded start/g" "./start-$NODE_NAME.dockerfile"
 
 For seed and sentry nodes, we also need to add back an extra line,
 ```bash
-sed -i "s/sleep infinity/cudos-noded start --state-sync.snapshot-interval 2000 --state-sync.snapshot-keep-recent 2/g" "./start-$NODE_NAME.dockerfile"
+sed -i "s/cudos-noded start/cudos-noded start --state-sync.snapshot-interval 2000 --state-sync.snapshot-keep-recent 2/g" "./start-$NODE_NAME.dockerfile"
 ```
 
 We can now start the node normally,
