@@ -139,11 +139,16 @@ sudo docker container exec "$START_CONTAINER_NAME" /bin/bash -c "mkdir -p \"\$CU
 The last step of this export is saving a backup of the data as a security measure, in case something goes wrong.
 To do that, first remove any previous backups,
 ```bash
-sudo rm -rf "$WORKING_DIR/CudosData/$DATA_FOLDER-backup"
+sudo rm -rf "$HOME/CudosData/$DATA_FOLDER-backup"
 ```
 and then copy the `CudosData` folder to create the backup,
 ```bash
-sudo cp -r "$WORKING_DIR/CudosData/$DATA_FOLDER" "$WORKING_DIR/CudosData/$DATA_FOLDER-backup"
+sudo cp -r "$WORKING_DIR/CudosData/$DATA_FOLDER" "$HOME/CudosData/$DATA_FOLDER-backup"
+```
+
+Now we can remove old database, to save the space during docker build
+```bash
+sudo rm -rf "$WORKING_DIR/CudosData/$DATA_FOLDER/data"
 ```
 
 Now we are ready for the state migration.
@@ -280,7 +285,7 @@ As a last step, now that all nodes and the orchestrator have been successfully u
 We would recommend waiting a few hours or a couple of days before cleaning up the backups, in case something breaks down in the hours following the upgrade.
 If all has gone well, then we can now delete the data backup,
 ```bash
-sudo rm -rf "$WORKING_DIR/CudosData/$DATA_FOLDER-backup"
+sudo rm -rf "$HOME/CudosData/$DATA_FOLDER-backup"
 ```
 and also the source code backup,
 ```bash
