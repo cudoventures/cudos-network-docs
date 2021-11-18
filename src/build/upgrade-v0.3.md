@@ -246,7 +246,7 @@ sed -i "s/sleep infinity/cudos-noded start/g" "./start-$NODE_NAME.dockerfile"
 
 For seed and sentry nodes, we also need to add back an extra line,
 ```bash
-sed -i "s/sleep infinity/cudos-noded start --state-sync.snapshot-interval 2000 --state-sync.snapshot-keep-recent 2/g" "./start-$NODE_NAME.dockerfile"
+sed -i "s/cudos-noded start/cudos-noded start --state-sync.snapshot-interval 2000 --state-sync.snapshot-keep-recent 2/g" "./start-$NODE_NAME.dockerfile"
 ```
 
 We can now start the node normally,
