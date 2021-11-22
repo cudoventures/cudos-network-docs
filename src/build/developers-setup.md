@@ -48,6 +48,12 @@ After your full node is up and running, you can use it to create an account in t
 That will provide you with a wallet address, which you will be able to use to send transactions and store tokens.
 The details of that account will be stored in your [keyring](https://docs.cosmos.network/master/run-node/keyring.html), which you can also use to export your account into your Keplr wallet and, conversely, import an account created in Keplr into it.
 
+There are different locations where you private keys can be stored.
+In the keyring, these are called backends.
+We recommend using the `os` backend, which in the case of our public testnet will need to be specified in the commands.
+If you are planning on using the same accounts in mainnet, we strongly recommend using the `os` backend already, as it will store the private keys more securely.
+If you only want to do some quick testing, you can leave out the backend flag, but please keep in mind that your private keys will not be encrypted.
+
 In order to create an account, first you need to locate the container ID of your full node.
 You can find that by opening a terminal, listing your Docker containers,
 
@@ -70,11 +76,14 @@ If at any point you are unsure of the available `cudos-noded` commands you can r
 To create an account, simply run the following command in the Docker container
 
 ```bash
-cudos-noded keys add <myKeyName>
+cudos-noded keys add <myKeyName> --keyring-backend os
 ```
 
 where `<myKeyName>` is a name you can choose for your account.
-This will create the account for you, and will return an output similar to
+Please note that the first time you use the `os` backend you will need to set your password.
+After that, you will be prompted to introduce your password every time.
+
+The above command will create the account for you, and will return an output similar to
 
 ```bash
 - name: <myKeyName>
@@ -98,15 +107,18 @@ If you run it again with a different key name, it will add another account in yo
 In order to see all the accounts stored in your keyring you can run the following command:
 
 ```bash
-cudos-noded keys list
+cudos-noded keys list --keyring-backend os
 ```
+
+Please note that this will only show the accounts added to the `os` backend.
+If you add any to, say, the `test` backend, you need to run the above instruction again but with the `test` backend.
 
 ## Importing a Keplr account into your keyring
 
 If you have followed the steps described in the [Keplr setup page](/build/account-setup.html#installing-keplr), and created a wallet there which you now want to import into your keyring in order to send transactions with, you can do so by simply running the following command
 
 ```bash
-cudos-noded keys add <myKeyName> --recover
+cudos-noded keys add <myKeyName> --recover --keyring-backend os
 ```
 
 where `<myKeyName>` is the name you can choose for this account in your keyring (it can be different from the one you have assigned in Keplr).
@@ -126,7 +138,7 @@ The next step is then to paste the mnemonic of your wallet, which can be found i
 As described above, you can check that you have imported your wallet successfully by checking that it has been added to your keyring,
 
 ```bash
-cudos-noded keys list
+cudos-noded keys list --keyring-backend os
 ```
 
 ## Exporting a wallet's private key
@@ -134,10 +146,10 @@ cudos-noded keys list
 In order to get the private key of a wallet, you can simply run
 
 ```bash
-cudos-noded keys export <myKeyName>
+cudos-noded keys export <myKeyName> --keyring-backend os
 ```
 
-and paste the mnemonic of the account when asked to `Enter passphrase to encrypt the exported key`.
+and choose a password (minimum 8 characters) when asked for a passphrase to encrypt the exported key.
 
 ## Initialize and start a Sentry node in testnet
 
