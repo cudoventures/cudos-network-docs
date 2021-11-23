@@ -9,7 +9,8 @@ Note that running just a full node is enough to be able to create wallets, send 
 
 ## Initialize and start a testnet full node
 
-As a developer, you can initialize and start a full node with the following steps:
+The first step is to make sure that you have installed all the [prerequisites needed](/build/prerequisites.html#prerequisites), and that you've set up the [environment](/build/prerequisites.html#setup-the-environment-before-running-a-node).
+Once that is done, you can initialize and start a full node with the following steps:
 
 1. Navigate to the directory *CudosBuilders/docker/full-node*
 2. Find the file **full-node.env.example** and create a copy of it
