@@ -442,7 +442,7 @@ $ cudos-noded query nft approvals <denomId> <tokenId>
 $ cudos-noded query nft approvals <owner> <operator>
 ```
 
-## Object types:
+## Object types
 
 ### NFT
 ```go
