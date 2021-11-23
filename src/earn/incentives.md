@@ -79,8 +79,8 @@ The date and time for the network upgrade will communicated shortly, please keep
 |`ARTEMIS-BUZZ#1`| Deploy a cosmwasm example smart contract (*e.g.* cw20) | [Docs](/build/smart-contracts.html#smart-contracts) |-|
 |`ARTEMIS-BUZZ#2`| Complete `ARTEMIS-BUZZ#1` and then interact with your deployed smart contract (*e.g.* send tokens between wallets) | [Docs](/build/smart-contracts.html#examples-of-interaction) |10|
 |`ARTEMIS-BUZZ#3`| Via the Gravity Bridge, transfer CUDOS tokens from Cudos to Ethereum and vice-versa | [Docs](/build/validator.html#using-the-gravity-bridge-ui-recommended-option) |5|
-|**`ARTEMIS-BUZZ#11`**| **Mint an NFT** | [Docs](/build/nft.html#minting-a-new-nft) |10|
-|**`ARTEMIS-BUZZ#12`**| **Send an NFT to another wallet** | [Docs](/build/nft.html#sending-an-nft-to-another-wallet) |5|
+|**`ARTEMIS-BUZZ#11`**| **Mint an NFT** | **[Docs]**(/build/nft.html#minting-a-new-nft) |**10**|
+|**`ARTEMIS-BUZZ#12`**| **Send an NFT to another wallet** | **[Docs]**(/build/nft.html#sending-an-nft-to-another-wallet) |**5**|
 |`ARTEMIS-BUZZ#10`| Developer task list completion bonus |n/a|20|
 
 #### All Users
