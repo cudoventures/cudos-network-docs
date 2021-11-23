@@ -67,6 +67,7 @@ module.exports = {
         'validator',
         'developers-setup',
         'smart-contracts',
+        'nft',
         'interact-keplr-explorer',
         'upgrade',
         'upgrade-v0.3',
