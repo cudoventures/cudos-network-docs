@@ -59,6 +59,7 @@ Thus, in order to mint an NFT, the first step is to [issue a denomination](/buil
 Denominations need to have an ID, which needs to be an alphanumeric string in lowercase -- we use the placeholder `<testdenom>` in the examples below.
 We also need to specify in flags the network where we want to issue our denomination, the wallet that will issue it (which needs to be in the keyring -- we use the placeholder `<walletAddress>` in what follows) and a name for the denomination, which we can choose.
 We will be using the `test` backend for the keyring (the default one in public testnet) for these instructions.
+However, if you are running a Validator using the `os` backend, you can use your Validator wallet, as long as you specify the `--keyring-backend os` flag in the commands below.
 
 Thus, in order to create a denomination in public testnet the command looks like
 
