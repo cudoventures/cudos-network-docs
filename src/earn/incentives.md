@@ -52,7 +52,7 @@ Total amount available per user:
 
 Results will be shared very soon -- stay tuned!
 
-### Phase 2 - Buzz
+### Phase 2 - Buzz (finished November 26)
 
 Next stage in our public testing of the network, covering all aspects of Validation, including staking, delegated staking and rewards.
 Additionally, also testing CosmWasm smart contracts, including contract interaction, contract deployment and contract interfaces, as well as Gravity bridge implementation with Rinkeby Ethereum and a network upgrade.
@@ -79,8 +79,8 @@ The date and time for the network upgrade will communicated shortly, please keep
 |`ARTEMIS-BUZZ#1`| Deploy a cosmwasm example smart contract (*e.g.* cw20) | [Docs](/build/smart-contracts.html#smart-contracts) |-|
 |`ARTEMIS-BUZZ#2`| Complete `ARTEMIS-BUZZ#1` and then interact with your deployed smart contract (*e.g.* send tokens between wallets) | [Docs](/build/smart-contracts.html#examples-of-interaction) |10|
 |`ARTEMIS-BUZZ#3`| Via the Gravity Bridge, transfer CUDOS tokens from Cudos to Ethereum and vice-versa | [Docs](/build/validator.html#using-the-gravity-bridge-ui-recommended-option) |5|
-|**`ARTEMIS-BUZZ#11`**| **Mint an NFT** | [Docs](/build/nft.html#minting-a-new-nft) |**10**|
-|**`ARTEMIS-BUZZ#12`**| **Send an NFT to another wallet** | [Docs](/build/nft.html#sending-an-nft-to-another-wallet) |**5**|
+|`ARTEMIS-BUZZ#11`| Mint an NFT | [Docs](/build/nft.html#minting-a-new-nft) |10|
+|`ARTEMIS-BUZZ#12`| Send an NFT to another wallet | [Docs](/build/nft.html#sending-an-nft-to-another-wallet) |5|
 |`ARTEMIS-BUZZ#10`| Developer task list completion bonus |n/a|20|
 
 #### All Users
@@ -114,9 +114,9 @@ Total amount available per Validator = $n + $p/m
 
 ## How to Participate
 
-Just head to the current [active tasks](#phase-2-buzz) and dive into the Somniorum Testnet.
-
-Upon completion of each task please submit your evidence to [this form](https://docs.google.com/forms/d/e/1FAIpQLSfKPRDGuAE8msXVfaH-wwMw7gw4NyTeEBXHuPzuWdH9LlfE4A/viewform). Tasks will be monitored and validated on-chain for completion.
+Phase 2 successfully finished on November 26.
+Keep an eye in our social media accounts to stay up to date with the latest news, as phase 3 will start very soon.
+In the meantime, feel free to complete any tasks you missed or explore the docs, to increase your familiarisation with the network.
 
 ## CUDOS Rewards
 
