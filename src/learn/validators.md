@@ -106,5 +106,21 @@ Run the following command:
 ```
 cudos-noded tx slashing unjail --chain-id="$CHAIN_ID" --from="$VALIDATOR_ADDRESS" --keyring-backend "os"
 ```
+cudos-noded tx slashing unjail --chain-id="$CHAIN_ID" --from="$VALIDATOR_ADDRESS" --keyring-backend "os"
 
+When a validator is "jailed" for a downtime, you must submit an Unjail transaction from the operator account in order to be able to get block proposer rewards again (depends on the zone fee distribution).
+
+Copy gaiad tx slashing unjail \ --from=<key_name> \ --chain-id=<chain_id> 
+
+### Confirm Your Validator is Running
+
+Your validator is active if the following command returns anything:
+
+Copygaiad query tendermint-validator-set | grep "$(gaiad tendermint show-address)" 
+
+You should now see your validator in one of the Cosmos Hub explorers. You are looking for the bech32 encoded address in the ~/.gaia/config/priv_validator.json file.
+
+Note
+
+To be in the validator set, you need to have more total voting power than the 100th validator
 See full docs [here](https://hub.cosmos.network/main/validators/validator-setup.html#unjail-validator)
