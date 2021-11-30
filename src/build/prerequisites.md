@@ -115,7 +115,7 @@ cd docker/binary-builder && sudo docker-compose --env-file binary-builder.arg -f
 
 Note that you need to repeat the same steps for each node that you want to create.
 
-### Ports
+## Ports
 
 A node is using several ports in order to function properly.
 Here is a list of ports and their descriptions:
