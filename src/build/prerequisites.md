@@ -115,6 +115,23 @@ cd docker/binary-builder && sudo docker-compose --env-file binary-builder.arg -f
 
 Note that you need to repeat the same steps for each node that you want to create.
 
+## Ports
+
+A node is using several ports in order to function properly.
+Here is a list of ports and their descriptions:
+
+- **1317:** API port.
+- **9090:** gRPC port.
+- **26656:** P2P port used by transferring internal data between nodes.
+- **26657:** Tendermint RPC server. Reference: <a href="https://docs.tendermint.com/master/rpc/">https://docs.tendermint.com/master/rpc/</a>
+- **26660:** Port for Prometheus monitoring.
+
+Full/Seed nodes use the following ports: **26656, 26657, 26660**.
+
+Sentry nodes use the following ports: **1317, 9090, 26656, 26657, 26660**.
+
+The Docker instance is binding the above ports to your host machine automatically, so you just have to open the following ports on your machine where the Cudos nodes are running.
+
 ## Create an account and set up a Keplr wallet (Only in the Validator node)
 
 1. You can use the docker terminal to locate the containers' ID:
