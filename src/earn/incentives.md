@@ -98,9 +98,30 @@ Total amount available per user:
 - Validator = $n + $p/m
 - Developer = $n
 
+#### Validator Tasks
+
 |**Task ID**|**Description**|**Resources**|**$ Reward**|
 | - | - | - | - |
-|`ARTEMIS-ARMSTRONG#1`| 🌎 | 🚀 | 🌝 |
+|`ARTEMIS-ARMSTRONG#4`| Get your Validator jailed and slashed |  |  |
+|`ARTEMIS-ARMSTRONG#5`| Unjail your Validator | [Docs](/build/validator-restart.html#unjailing-a-validator) |  |
+|`ARTEMIS-ARMSTRONG#6`| Deliberately mis-sign a transaction as a member of the Validator pool and share your methods and findings with the Cudos team | - | 80 |
+|`ARTEMIS-ARMSTRONG#7`| Propose a non-valid block as a member of the Validator pool and share your methods and findings with the Cudos team | - | 80 |
+|`ARTEMIS-ARMSTRONG#8`| Disconnect your Validator and restart it in all proposed scenarios | [Docs](/build/validator-restart.html) | 50 |
+|`ARTEMIS-ARMSTRONG#9`| Vote on a governance proposal |  |  |
+|`ARTEMIS-ARMSTRONG#10`| Network performance testing for developers: send X transactions per block, for at least 80% of the blocks | - |  |
+
+#### Developer Tasks
+
+|**Task ID**|**Description**|**Resources**|**$ Reward**|
+| - | - | - | - |
+|`ARTEMIS-ARMSTRONG#1`| Deploy a custom cosmwasm smart contract with extended functionality |  | 80 |
+|`ARTEMIS-ARMSTRONG#2`| Send n1 transactions in m1 seconds |  |  |
+|`ARTEMIS-ARMSTRONG#3`| Send n2 transactions in m2 seconds |  |  |
+|`ARTEMIS-ARMSTRONG#11`| Network performance testing for validators: metrics for the validator for at least 80% of phase 3 | - |  |
+|`ARTEMIS-ARMSTRONG#12`| Deploy a cosmwasm example smart contract (*e.g.* cw20) | [Docs](/build/smart-contracts.html#smart-contracts) | - |
+|`ARTEMIS-ARMSTRONG#13`| Complete `ARTEMIS-ARMSTRONG#12` and then interact with your deployed smart contract (*e.g.* send tokens between wallets) | [Docs](/build/smart-contracts.html#examples-of-interaction | 10 |
+|`ARTEMIS-ARMSTRONG#14`| Mint an NFT in the Cudos Network | [Docs](/build/nft.html#minting-a-new-nft) | 10 |
+|`ARTEMIS-ARMSTRONG#15`| Send an NFT from one wallet to another | [Docs](/build/nft.html#sending-an-nft-to-another-wallet) | 5 |
 
 ### Phase 4 - Collins (Launching Soon)
 
