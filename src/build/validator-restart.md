@@ -2,6 +2,8 @@
 title: Restarting a Validator
 ---
 
+# Restarting a Validator
+
 This page describes how to recover and reconnect your Validator after it disconnects from the network.
 The instructions are structured in different case scenarios, ranging from a scheduled DC shutdown event to a daemon crash.
 **When following all these cases as part of phase 3, please ensure you keep all logs, as they will be required as proof for completing the task.**
