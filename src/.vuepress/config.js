@@ -65,6 +65,7 @@ module.exports = {
         'account-setup',
         'funding-your-wallet',
         'validator',
+        'validator-restart',
         'developers-setup',
         'smart-contracts',
         'nft',
