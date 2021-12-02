@@ -90,13 +90,13 @@ The date and time for the network upgrade will communicated shortly, please keep
 |`ARTEMIS-BUZZ#8`| Create a quality Youtube video showcasing an aspect of the testnet |n/a|20|
 |`ARTEMIS-BUZZ#9`| Write a quality blog on deploying a smart contract on Cudos |n/a|10|
 
-### Phase 3 - Armstrong (Launching Soon)
+### Phase 3 - Armstrong
 
 Adversarial stress tests bringing a coordinated strike to bring as much diversity in transaction activity as possible to the Cudos Network. Validators will run network load and performing maintenance tasks.
 
 Total amount available per user:
-- Validator = $n + $p/m
-- Developer = $n
+- Validators: up to $270 (plus $200 p/m for whitelisted mainnet Validators)
+- Developers: up to $375
 
 #### Validator Tasks
 
@@ -135,9 +135,9 @@ Total amount available per Validator = $n + $p/m
 
 ## How to Participate
 
-Phase 2 successfully finished on November 26.
-Keep an eye in our social media accounts to stay up to date with the latest news, as phase 3 will start very soon.
-In the meantime, feel free to complete any tasks you missed or explore the docs, to increase your familiarisation with the network.
+Just head to the current [active tasks](/earn/incentives.html#phase-3-armstrong) and dive into the Somniorum Testnet.
+
+Upon completion of each task please submit your evidence to [this form](https://docs.google.com/forms/d/1xvjvSgFY2SzjA_XNM7RXHvTlMjpkzlg79usZPfvgbKM). Tasks will be monitored and validated on-chain for completion.
 
 ## CUDOS Rewards
 
