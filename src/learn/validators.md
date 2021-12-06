@@ -89,7 +89,9 @@ Validators and their Delegators earn CUDOS used in the network as gas. Each tran
 
 Slashing incentivises network participants to act in the interests of the Cudos Network rather than their own self interest and is the main game theoretic mechanism to secure a proof of stake system. If a Validator misbehaves, their delegated stake will be partially slashed.
 
-If validators double sign, are frequently offline or do not participate in governance, their staked CUDOS (including CUDOS of users that delegated to them) can be slashed. The penalty depends on the severity of the violation.
+If validators double sign, are frequently offline or do not participate in governance, their staked CUDOS (including CUDOS of users that delegated to them) can be slashed, and the Validator will be jailed.
+The penalty depends on the severity of the violation.
+For a validator to be unjailed, it needs to issue an `unjail` command
 
 There are currently two faults that can result in slashing of funds for a Validator and their respective Delegators:
 
@@ -97,14 +99,3 @@ There are currently two faults that can result in slashing of funds for a Valida
 - Downtime: If a validator misses more than 95% of the last 10.000 blocks, they will get slashed by 0.01%.
 
 In the Cudos Network, slashed tokens go to the community CUDOS Treasury. That way, participants that misbehave who would seek to harm the network will compensate the damage done to the whole community, by contributing to its maintenance and growth.
-
-### Unjailing a Validator
-
-To `unjail` a Validator the user must send a transaction to the network from the Validator address itself to prove they are back online.
-
-Run the following command:
-```
-cudos-noded tx slashing unjail --chain-id="$CHAIN_ID" --from="$VALIDATOR_ADDRESS" --keyring-backend "os"
-```
-
-See full docs [here](https://hub.cosmos.network/main/validators/validator-setup.html#unjail-validator)

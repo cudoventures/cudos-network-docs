@@ -90,17 +90,38 @@ The date and time for the network upgrade will communicated shortly, please keep
 |`ARTEMIS-BUZZ#8`| Create a quality Youtube video showcasing an aspect of the testnet |n/a|20|
 |`ARTEMIS-BUZZ#9`| Write a quality blog on deploying a smart contract on Cudos |n/a|10|
 
-### Phase 3 - Armstrong (Launching Soon)
+### Phase 3 - Armstrong
 
-Adversarial stress tests bringing a coordinated strike to bring as much diversity in transaction activity as possible to the Cudos Network. Validators will run network load and performing maintenance tasks.
+Adversarial stress tests and performance tests to bring as much diversity in transaction activity as possible to the Cudos Network. Validators will be experiencing higher volumes of transaction requests whilst also experimenting with non-happy path testing. Developers have great opportunities to learn about CosmWasm smart contracts and earn rewards for deploying their own custom smart contracts. 
 
 Total amount available per user:
-- Validator = $n + $p/m
-- Developer = $n
+- Validators: up to $270 (plus $200 p/m for whitelisted mainnet Validators)
+- Developers: up to $375
+
+#### Validator Tasks
 
 |**Task ID**|**Description**|**Resources**|**$ Reward**|
 | - | - | - | - |
-|`ARTEMIS-ARMSTRONG#1`| 🌎 | 🚀 | 🌝 |
+|`ARTEMIS-ARMSTRONG#4`| Get your Validator jailed and slashed | [Docs](/build/validator-restart.html#test-commands-2) | - |
+|`ARTEMIS-ARMSTRONG#5`| Complete `ARTEMIS-ARMSTRONG#4`, then unjail your Validator | [Docs](/build/validator-restart.html#unjailing-a-validator) | 5 |
+|`ARTEMIS-ARMSTRONG#6`| Deliberately mis-sign a transaction as a member of the Validator pool and share your methods and findings with the Cudos team | - | 80 |
+|`ARTEMIS-ARMSTRONG#7`| Propose a non-valid block as a member of the Validator pool and share your methods and findings with the Cudos team | - | 80 |
+|`ARTEMIS-ARMSTRONG#8`| Disconnect your Validator and restart it in all proposed scenarios | [Docs](/build/validator-restart.html) | 50 |
+|`ARTEMIS-ARMSTRONG#9`| Vote on a governance proposal that gets accepted | [Docs](/learn/#proposals.html) | 5 |
+|`ARTEMIS-ARMSTRONG#11`| Provide network and validator metrics for at least 80% of phase 3 (mempool, CPU usage, memory, etc.) | - | 50 |
+
+#### Developer Tasks
+
+|**Task ID**|**Description**|**Resources**|**$ Reward**|
+| - | - | - | - |
+|`ARTEMIS-ARMSTRONG#1`| Deploy a custom cosmwasm smart contract with extended functionality | [Docs](https://classroom.github.com/a/-dgMUt-E) | 100 |
+|`ARTEMIS-ARMSTRONG#2`| Send over 5,000 transactions in 6 seconds, and share your method with the Cudos team | - | 100 |
+|`ARTEMIS-ARMSTRONG#3`| Send 600k transactions in 10 minutes, and share your method with the Cudos team | - | 100 |
+|`ARTEMIS-ARMSTRONG#10`| Send between 1 and 10 transactions per block, for at least 80% of the blocks of phase 3 | - | 50 |
+|`ARTEMIS-ARMSTRONG#12`| Deploy a cosmwasm example smart contract (*e.g.* cw20) | [Docs](/build/smart-contracts.html#smart-contracts) | - |
+|`ARTEMIS-ARMSTRONG#13`| Complete `ARTEMIS-ARMSTRONG#12` and then interact with your deployed smart contract (*e.g.* send tokens between wallets) | [Docs](/build/smart-contracts.html#examples-of-interaction) | 10 |
+|`ARTEMIS-ARMSTRONG#14`| Mint an NFT in the Cudos Network | [Docs](/build/nft.html#minting-a-new-nft) | 10 |
+|`ARTEMIS-ARMSTRONG#15`| Send an NFT from one wallet to another | [Docs](/build/nft.html#sending-an-nft-to-another-wallet) | 5 |
 
 ### Phase 4 - Collins (Launching Soon)
 
@@ -114,9 +135,9 @@ Total amount available per Validator = $n + $p/m
 
 ## How to Participate
 
-Phase 2 successfully finished on November 26.
-Keep an eye in our social media accounts to stay up to date with the latest news, as phase 3 will start very soon.
-In the meantime, feel free to complete any tasks you missed or explore the docs, to increase your familiarisation with the network.
+Just head to the current [active tasks](/earn/incentives.html#phase-3-armstrong) and dive into the Somniorum Testnet.
+
+Upon completion of each task please submit your evidence to [this form](https://docs.google.com/forms/d/1xvjvSgFY2SzjA_XNM7RXHvTlMjpkzlg79usZPfvgbKM). Tasks will be monitored and validated on-chain for completion.
 
 ## CUDOS Rewards
 

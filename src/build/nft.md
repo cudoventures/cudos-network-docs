@@ -60,11 +60,12 @@ Denominations need to have an ID, which needs to be an alphanumeric string in lo
 We also need to specify in flags the network where we want to issue our denomination, the wallet that will issue it (which needs to be in the keyring -- we use the placeholder `<walletAddress>` in what follows) and a name for the denomination, which we can choose.
 We will be using the `test` backend for the keyring (the default one in public testnet) for these instructions.
 However, if you are running a Validator using the `os` backend, you can use your Validator wallet, as long as you specify the `--keyring-backend os` flag in the commands below.
+Also, we must specify the `node` flag, setting it to the IP address of the node that is running on the Cudos Network.
 
 Thus, in order to create a denomination in public testnet the command looks like
 
 ```bash
-cudos-noded tx nft issue <testdenom> --from=<walletAddress> --name="My first denom" --chain-id=cudos-testnet-public
+cudos-noded tx nft issue <testdenom> --from=<walletAddress> --name="My first denom" --chain-id=cudos-testnet-public --node https://sentry1.gcp-uscentral1.cudos.org:26657
 ```
 
 Please note that we will be prompted at all steps to confirm we want to broadcast the transaction.
@@ -79,7 +80,7 @@ Let us start by minting and NFT and sending it to our own address.
 To do so, simply run the following command, using the denom name you just chose and your wallet address,
 
 ```bash
-cudos-noded tx nft mint <testdenom> --from=<walletAddress> --recipient=<walletAddress> --chain-id=cudos-testnet-public
+cudos-noded tx nft mint <testdenom> --from=<walletAddress> --recipient=<walletAddress> --chain-id=cudos-testnet-public --node https://sentry1.gcp-uscentral1.cudos.org:26657
 ```
 
 To see our freshly minted NFT, we can run the following command
