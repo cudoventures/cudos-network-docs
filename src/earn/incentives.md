@@ -92,7 +92,7 @@ The date and time for the network upgrade will communicated shortly, please keep
 
 ### Phase 3 - Armstrong
 
-Adversarial stress tests bringing a coordinated strike to bring as much diversity in transaction activity as possible to the Cudos Network. Validators will run network load and performing maintenance tasks.
+Adversarial stress tests and performance tests to bring as much diversity in transaction activity as possible to the Cudos Network. Validators will be experiencing higher volumes of transaction requests whilst also experimenting with non-happy path testing. Developers have great opportunities to learn about CosmWasm smart contracts and earn rewards for deploying their own custom smart contracts. 
 
 Total amount available per user:
 - Validators: up to $270 (plus $200 p/m for whitelisted mainnet Validators)
