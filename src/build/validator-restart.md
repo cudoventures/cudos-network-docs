@@ -70,7 +70,7 @@ init 0
 ```
 
 Watch the Explorer page for that Validator, and wait until it gets jailed.
-This could take as long as 35 minutes.
+This could take around 33 hours.
 When the Explorer page indicates that teh validaor has been jailed, start the server back up again.
 Once the machine is back up, confirm it is still on the "Inactive" list
 To unjail the Validator, first enter into the container with the following command,
@@ -111,7 +111,7 @@ init 0
 ```
 
 Watch the Explorer page for that validator, and wait until it gets jailed.
-This could take as long as 35 minutes.
+This could take around 33 hours.
 When the Explorer page indicates that the validaor has been jailed, start all of the servers back up again.
 Once the validator is back up, confirm it is still on the [Inactive list](https://explorer.cudos.org/validators/inactive).
 
