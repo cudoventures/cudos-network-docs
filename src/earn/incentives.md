@@ -90,7 +90,7 @@ The date and time for the network upgrade will communicated shortly, please keep
 |`ARTEMIS-BUZZ#8`| Create a quality Youtube video showcasing an aspect of the testnet |n/a|20|
 |`ARTEMIS-BUZZ#9`| Write a quality blog on deploying a smart contract on Cudos |n/a|10|
 
-### Phase 3 - Armstrong
+### Phase 3 - Armstrong (finished December 17)
 
 Adversarial stress tests and performance tests to bring as much diversity in transaction activity as possible to the Cudos Network. Validators will be experiencing higher volumes of transaction requests whilst also experimenting with non-happy path testing. Developers have great opportunities to learn about CosmWasm smart contracts and earn rewards for deploying their own custom smart contracts. 
 
@@ -114,7 +114,7 @@ Total amount available per user:
 
 |**Task ID**|**Description**|**Resources**|**$ Reward**|
 | - | - | - | - |
-|`ARTEMIS-ARMSTRONG#1`| Deploy a custom cosmwasm smart contract with extended functionality | [Docs](https://classroom.github.com/a/-dgMUt-E) | 100 |
+|`ARTEMIS-ARMSTRONG#1`| Deploy a custom cosmwasm smart contract with extended functionality | - | 100 |
 |`ARTEMIS-ARMSTRONG#2`| Send over 5,000 transactions in 6 seconds, and share your method with the Cudos team | - | 100 |
 |`ARTEMIS-ARMSTRONG#3`| Send 600k transactions in 10 minutes, and share your method with the Cudos team | - | 100 |
 |`ARTEMIS-ARMSTRONG#10`| Send between 1 and 10 transactions per block, for at least 80% of the blocks of phase 3 | - | 50 |
@@ -135,9 +135,9 @@ Total amount available per Validator = $n + $p/m
 
 ## How to Participate
 
-Just head to the current [active tasks](/earn/incentives.html#phase-3-armstrong) and dive into the Somniorum Testnet.
-
-Upon completion of each task please submit your evidence to [this form](https://docs.google.com/forms/d/1xvjvSgFY2SzjA_XNM7RXHvTlMjpkzlg79usZPfvgbKM). Tasks will be monitored and validated on-chain for completion.
+Phase 3 successfully finished on December 17.
+Keep an eye in our social media accounts to stay up to date with the latest news, as phase 4 will start shortly after the new year starts.
+In the meantime, feel free to complete any tasks you missed or explore the docs, to increase your familiarisation with the network.
 
 ## CUDOS Rewards
 
