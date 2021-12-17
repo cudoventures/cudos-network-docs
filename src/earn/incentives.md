@@ -114,7 +114,7 @@ Total amount available per user:
 
 |**Task ID**|**Description**|**Resources**|**$ Reward**|
 | - | - | - | - |
-|`ARTEMIS-ARMSTRONG#1`| Deploy a custom cosmwasm smart contract with extended functionality | [Docs](https://classroom.github.com/a/-dgMUt-E) | 100 |
+|`ARTEMIS-ARMSTRONG#1`| Deploy a custom cosmwasm smart contract with extended functionality | - | 100 |
 |`ARTEMIS-ARMSTRONG#2`| Send over 5,000 transactions in 6 seconds, and share your method with the Cudos team | - | 100 |
 |`ARTEMIS-ARMSTRONG#3`| Send 600k transactions in 10 minutes, and share your method with the Cudos team | - | 100 |
 |`ARTEMIS-ARMSTRONG#10`| Send between 1 and 10 transactions per block, for at least 80% of the blocks of phase 3 | - | 50 |
