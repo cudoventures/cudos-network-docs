@@ -142,7 +142,7 @@ sudo docker ps --filter "name=binary-builder"
 ```
 alias cudos-noded='sudo docker exec -it binary-builder cudos-noded'
 ```
-3. Follow the guide [Set up a Keplr wallet and link it to your account on the Cudos testnet network](/docs/build/account-setup.html)
+3. Follow the guide [Set up a Keplr wallet and link it to your account on the Cudos testnet network](/build/account-setup.html#installing-keplr)
 4. Create an account by running the command (write the mnemonic phrase in a safe place):
 ```
 cudos-noded keys add validator --recover --keyring-backend="os"
