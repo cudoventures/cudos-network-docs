@@ -72,6 +72,7 @@ module.exports = {
         'interact-keplr-explorer',
         'upgrade',
         'upgrade-v0.3',
+        'upgrade-v0.4',
         'start-binaries'
       ],
 
