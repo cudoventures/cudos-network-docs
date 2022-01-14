@@ -1,6 +1,6 @@
 # Public testnet upgrade v0.4
 
-## Validate the environemnt
+## Validate the environment
 
 1. Clone the repo: https://github.com/CudoVentures/cudos-network-upgrade
 ```bash
