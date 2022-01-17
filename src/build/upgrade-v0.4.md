@@ -33,7 +33,7 @@ sudo ./validate.sh testnet-public sentry-node client
 
 ## Upgrade the network
 
-### Preparere the repo
+### Prepare the repo
 
 1. Clone the repo: https://github.com/CudoVentures/cudos-network-upgrade
 ```bash
