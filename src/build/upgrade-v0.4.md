@@ -85,7 +85,7 @@ The above commands have the same parameters in the following format:
 
 ./upgrade.sh testnet-public full-node client
 
-./clear-backup.sh testnet-public full-node client [If everything is successfull and your node is producing blocks] 
+./clean-backup.sh testnet-public full-node client [If everything is successfull and your node is producing blocks] 
 
 
 <em>Seed-node:</em>
@@ -94,7 +94,7 @@ The above commands have the same parameters in the following format:
 
 ./upgrade.sh testnet-public seed-node client
 
-./clear-backup.sh testnet-public seed-node client [If everything is successfull and your node is producing blocks] 
+./clean-backup.sh testnet-public seed-node client [If everything is successfull and your node is producing blocks] 
 
 <em>Sentry-node:</em>
 
@@ -102,5 +102,5 @@ The above commands have the same parameters in the following format:
 
 ./upgrade.sh testnet-public sentry-node client
 
-./clear-backup.sh testnet-public sentry-node client [If everything is successfull and your node is producing blocks] 
+./clean-backup.sh testnet-public sentry-node client [If everything is successfull and your node is producing blocks] 
 
