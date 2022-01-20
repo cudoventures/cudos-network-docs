@@ -25,7 +25,6 @@ We currently have four distinct types of Cudos Network node which Validators and
 - Full node
 - Seed node
 - Sentry node
-- Orchestrator node
 
 [Cudos Compute Nodes](#compute-nodes) will be added to the network in the future to allow for more compute scalability.
 
@@ -48,12 +47,6 @@ Note that installing a Seed node is optional.
 You can think of a Sentry node as a communication bridge between the public internet and the Validator nodes. This adds a layer of security to the whole network and to validators in specific. The communication between the Sentry nodes and the validator is always a private connection. A sentry node is like a full node, but it has one or more private peers. The private peers can represent validators or other full nodes in the network. They should always expect to have direct incoming connections from the Validator node.
 
 The Validator node talks to the Sentry nodes that are provided, the Sentry nodes communicate to the Validator node via a private connection and the rest of the network via a public connection. The Sentry nodes have the option to communicate with other Sentry nodes as well.
-
-### Orchestrator Nodes
-
-The [Gravity Bridge](/learn/gravity-bridge.html) Orchestrator performs all the external tasks the Gravity bridge requires for validators. The submission of signatures and the submission of Ethereum events.
-
-While the Gravity module concerns itself with the correctness and consensus state of the bridge the Orchestrator locates or creates the correct inputs.
 
 ### Compute Nodes
 
