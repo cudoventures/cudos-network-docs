@@ -82,7 +82,7 @@ docker exec -it cudos-start-full-node-client-testnet-public-01 bash
 Once inside the container, issue the `unjail` command as follows, replacing the `VALIDATOR_ADDRESS` with the one for your Validator (which can be found on the explorer page for the node),
 
 ```bash
-export CHAIN_ID="cudos-testnet-public"
+export CHAIN_ID="cudos-testnet-public-2"
 export VALIDATOR_ADDRESS="cudos1jxyabcdefrghhdksklashhrfirhysirl4a"
 
 cudos-noded tx slashing unjail --chain-id="$CHAIN_ID" --from="$VALIDATOR_ADDRESS" --keyring-backend "os"
@@ -124,7 +124,7 @@ docker exec -it cudos-start-full-node-client-testnet-public-01 bash
 Once inside the container, issue the unjail command as follows, setting `VALIDATOR_ADDRESS` with the address of your Validator,
 
 ```bash
-export CHAIN_ID="cudos-testnet-public"
+export CHAIN_ID="cudos-testnet-public-2"
 export VALIDATOR_ADDRESS="cudos1jxyabcdefrghhdksklashhrfirhysirl4a"
 
 cudos-noded tx slashing unjail --chain-id="$CHAIN_ID" --from="$VALIDATOR_ADDRESS" --keyring-backend "os"

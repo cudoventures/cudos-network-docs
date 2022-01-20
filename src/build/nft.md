@@ -65,7 +65,7 @@ Also, we must specify the `node` flag, setting it to the IP address of the node 
 Thus, in order to create a denomination in public testnet the command looks like
 
 ```bash
-cudos-noded tx nft issue <testdenom> --from=<walletAddress> --name="My first denom" --chain-id=cudos-testnet-public --node https://sentry1.gcp-uscentral1.cudos.org:26657
+cudos-noded tx nft issue <testdenom> --from=<walletAddress> --name="My first denom" --chain-id=cudos-testnet-public-2 --node https://sentry1.gcp-uscentral1.cudos.org:26657
 ```
 
 Please note that we will be prompted at all steps to confirm we want to broadcast the transaction.
@@ -80,7 +80,7 @@ Let us start by minting and NFT and sending it to our own address.
 To do so, simply run the following command, using the denom name you just chose and your wallet address,
 
 ```bash
-cudos-noded tx nft mint <testdenom> --from=<walletAddress> --recipient=<walletAddress> --chain-id=cudos-testnet-public --node https://sentry1.gcp-uscentral1.cudos.org:26657
+cudos-noded tx nft mint <testdenom> --from=<walletAddress> --recipient=<walletAddress> --chain-id=cudos-testnet-public-2 --node https://sentry1.gcp-uscentral1.cudos.org:26657
 ```
 
 To see our freshly minted NFT, we can run the following command
@@ -122,7 +122,7 @@ In order to add a fee, we also need to include its unit.
 For example, if we want to mint an NFT and set a 10acudos fee on it (acudos stands for attoCUDOS, the [SI prefix](https://en.wikipedia.org/wiki/Atto-)), we can execute the following
 
 ```bash
-cudos-noded tx nft mint <testdenom> --from=<walletAddress> --recipient=<walletAddress> --chain-id=cudos-testnet-public --fees=10acudos
+cudos-noded tx nft mint <testdenom> --from=<walletAddress> --recipient=<walletAddress> --chain-id=cudos-testnet-public-2 --fees=10acudos
 ```
 
 ### Sending an NFT to another wallet
@@ -141,7 +141,7 @@ where `<newAccount>` is a placeholder to be changed to the name you want to give
 After doing that, we can transfer the NFT by specifying the wallet where it comes from, the one we want to send it to, the denom ID, the NFT ID (the incremental ID we explained above, which was `1` for our first NFT) and the relevant flags:
 
 ```bash
-cudos-noded tx nft transfer <walletAddress> <newAccount> <testdenom> 1 --from=<walletAddress> --chain-id=cudos-testnet-public
+cudos-noded tx nft transfer <walletAddress> <newAccount> <testdenom> 1 --from=<walletAddress> --chain-id=cudos-testnet-public-2
 ```
 
 Note that we still need to specify the `--from` flag with the address that is requesting the transfer of the NFT.

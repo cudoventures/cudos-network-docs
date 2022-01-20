@@ -86,7 +86,7 @@ $ docker cp artifacts/cw20_base.wasm binary-builder:/usr/cudos
 
 ```
 $ NODE="https://sentry1.gcp-uscentral1.cudos.org:26657"
-$ CHAIN_ID="cudos-testnet-public"
+$ CHAIN_ID="cudos-testnet-public-2"
 $ KEYRING="os"
 
 $ TXFLAGS="--node $NODE --chain-id $CHAIN_ID --gas auto --gas-adjustment 1.3 --keyring-backend $KEYRING -y"
