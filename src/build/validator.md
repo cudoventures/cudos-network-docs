@@ -335,11 +335,7 @@ If you see the transaction hash without getting any error, then congrats you hav
 
 ### Send funds using the gravity bridge
 
-You have two different options to send funds (it is recommended to use the first option UI):
-1. Using gravity bridge UI
-2. Using the console
-
-#### Using the gravity bridge UI (recommended option)
+#### Using the gravity bridge UI
 
 Open [Gravity Bridge](http://35.192.177.142:4000/). Then you can use [Kelpr](https://wallet.keplr.app/) and [Metamask](https://metamask.io/) for sending funds between the two blockchains.
 
