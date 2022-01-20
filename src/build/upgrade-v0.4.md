@@ -54,7 +54,7 @@ There are 4 commands to help us perform the upgrade
 
 1. create-backup.sh - Creates a copy of all blockchain related date
 2. restore-backup.sh - Restores the data from the prevously made backup (using create-back.sh)
-3. clean-back.sh - Removes all backup related files
+3. clean-backup.sh - Removes all backup related files
 4. upgrade.sh - Upgrades the network.
 
 **PARAMETERS**
@@ -80,27 +80,47 @@ The above commands have the same parameters in the following format:
 **EXAMPLES**
 
 <em>Full-node:</em>
-
+```
 ./create-backup.sh testnet-public full-node client
 
 ./upgrade.sh testnet-public full-node client
 
-./clear-backup.sh testnet-public full-node client [If everything is successfull and your node is producing blocks] 
-
+./clean-backup.sh testnet-public full-node client [If everything is successfull and your node is producing blocks] 
+```
 
 <em>Seed-node:</em>
-
+```
 ./create-backup.sh testnet-public seed-node client
 
 ./upgrade.sh testnet-public seed-node client
 
-./clear-backup.sh testnet-public seed-node client [If everything is successfull and your node is producing blocks] 
-
+./clean-backup.sh testnet-public seed-node client [If everything is successfull and your node is producing blocks] 
+```
 <em>Sentry-node:</em>
-
+```
 ./create-backup.sh testnet-public sentry-node client
 
 ./upgrade.sh testnet-public sentry-node client
 
-./clear-backup.sh testnet-public sentry-node client [If everything is successfull and your node is producing blocks] 
+./clean-backup.sh testnet-public sentry-node client [If everything is successfull and your node is producing blocks] 
+```
+## If the Upgrade Fails
+**If you already started the upgrade process and the upgrade.sh phase has failed:**
+1. Delete the `cudos-network-upgrade` directory
+2. Reclone the repo
+3. The `validate.sh` script is not required at this point.
+4. You should already have a clean backup, please keep this.
+- <em>  **Do not rerun the backup!** </em>
+5. Instead of running `./upgrade.sh`, run `./fix.sh` with the same parameters.
+(The changes to the script include changes to the directory names and a change to the `validate.sh` script to handle a partial upgrade)
+6. You should now see validator activity in the log
 
+**If you haven’t started the upgrade process yet:**
+1. Delete the `cudos-network-upgrade` directory
+2. Reclone the upgrade repo
+3. Run through the process according to the previous docs!
+
+Please be aware that a necessary part of this upgrade is a change to the Chain ID from `cudos-testnet-public` to `cudos-testnet-public-2`, this is common practice for Cosmos-based chains. Note that some old docs may refer to the old Chain ID.
+
+## If the `./fix.sh` script fails due to no container running:
+Simply add `--force` to the `./fix.sh` command, this passes over the check for the running container.
