@@ -123,21 +123,31 @@ Total amount available per user:
 |`ARTEMIS-ARMSTRONG#14`| Mint an NFT in the Cudos Network | [Docs](/build/nft.html#minting-a-new-nft) | 10 |
 |`ARTEMIS-ARMSTRONG#15`| Send an NFT from one wallet to another | [Docs](/build/nft.html#sending-an-nft-to-another-wallet) | 5 |
 
-### Phase 4 - Collins (Launching Soon)
+### Phase 4 - Collins
 
 Migration testing to performa a dry-run of our genesis and token migration plan for the new native Cudos Network.
+These tasks are not listed nor described here in detail, as the start of the phase is internal to the Cudos team, and the second part the team is coordinating directly with whitelisted validators.
+The most popular developer tasks from the previous phases have been added additionally, to celebrate the last phase of the incentivised testnet and double down on the tests.
 
-Total amount available per Validator = $n + $p/m
+Total amount available per developer: up to $96
 
 |**Task ID**|**Description**|**Resources**|**Reward**|
 | - | - | - | - |
-|`ARTEMIS-COLLINS#1`| 🌎 | 🚀 | 🌝 |
+|`ARTEMIS-APOLLO#5`|Setup a Cudos Wallet and redeem Somniorum CUDOS from the Faucet|[Docs](/build/account-setup.html)|1|
+|`ARTEMIS-APOLLO#6`|Write a unique blog post setting up a Validator Node (in any language of your choice)|n/a|30|
+|`ARTEMIS-BUZZ#1`| Deploy a cosmwasm example smart contract (*e.g.* cw20) | [Docs](/build/smart-contracts.html#smart-contracts) |5|
+|`ARTEMIS-BUZZ#2`| Complete `ARTEMIS-BUZZ#1` and then interact with your deployed smart contract (*e.g.* send tokens between wallets) | [Docs](/build/smart-contracts.html#examples-of-interaction) |10|
+|`ARTEMIS-BUZZ#3`| Via the Gravity Bridge, transfer CUDOS tokens from Cudos to Ethereum and vice-versa | [Docs](/build/validator.html#using-the-gravity-bridge-ui-recommended-option) |5|
+|`ARTEMIS-BUZZ#8`| Create a quality Youtube video showcasing an aspect of the testnet |n/a|20|
+|`ARTEMIS-BUZZ#9`| Write a quality blog on deploying a smart contract on Cudos |n/a|10|
+|`ARTEMIS-ARMSTRONG#14`| Mint an NFT in the Cudos Network | [Docs](/build/nft.html#minting-a-new-nft) | 10 |
+|`ARTEMIS-ARMSTRONG#15`| Send an NFT from one wallet to another | [Docs](/build/nft.html#sending-an-nft-to-another-wallet) | 5 |
 
 ## How to Participate
 
-Phase 3 successfully finished on December 17.
-Keep an eye in our social media accounts to stay up to date with the latest news, as phase 4 will start shortly after the new year starts.
-In the meantime, feel free to complete any tasks you missed or explore the docs, to increase your familiarisation with the network.
+Just head to the current [active tasks](/earn/incentives.html#phase-4-collins) and dive into the Somniorum Testnet.
+Upon completion of each task please submit your evidence to [this form](https://docs.google.com/forms/d/1B_lLK5SR4txbgIHR_xXxa495EIqV2lcxMjn-SaZRhX0).
+Tasks will be monitored and validated on-chain for completion.
 
 ## CUDOS Rewards
 
