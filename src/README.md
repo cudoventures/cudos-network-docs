@@ -1,18 +1,21 @@
 ---
 title: Welcome
 footer: Copyright © 2020-present Cudo Ventures
-sidebar: false
 ---
 
-# Welcome to the Cudos Network Documentation
+# Welcome to the Cudos Technical Documentation
 
 The Cudos Network is a special-purpose blockchain designed to provide high-performance, trustless, and permissionless cloud computing for all.
 
-This site contains technical resources for the Cudos Network and associated tooling. Please follow the links to explore user documentation for various guides, help and support for interacting with the network.
+This site contains technical resources for the Cudos Network and associated tooling. Please follow the sidebar links to explore user documentation for various guides, help and support for interacting with the network.
 
+The site mostly focuses on Cudos **Mainnet**. If you wish to use our **Testnet** for experimentation and testing purposes, please refer to the [Testnet](/testnet/testnetinstall.html) section.
+
+<!---
 <a href="/learn/" rel="some text">![](./learn.png)</a>
 <a href="/build/" rel="some text">![](./build.png)</a>
 <a href="/earn/" rel="some text">![](./earn.png)</a>
+--->
 
 # Community
 

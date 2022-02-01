@@ -2,6 +2,7 @@
 title: Validator Setup Instructions
 ---
 
+
 # Validator Setup Instructions (v0.3)
 
 # Updates 21/10/2021

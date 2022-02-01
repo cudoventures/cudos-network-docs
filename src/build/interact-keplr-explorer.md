@@ -1,8 +1,8 @@
 ---
-title: Interact with Keplr wallet and Cudos Explorer
+title: Common tasks with Keplr wallet and Cudos Explorer
 ---
 
-# Interact with Keplr wallet and Cudos Explorer
+# Common tasks with Keplr wallet and Cudos Explorer
 
 This article explains the following:
 
@@ -104,3 +104,6 @@ Namely,
 
 Please note that there is a 21-day unbonding period when you undelegate tokens, meaning it will take 21 days for these tokens to show in your wallet and be usable, for security reasons.
 For more information please have a look at the [Cosmos docs](https://docs.cosmos.network/master/modules/staking/02_state_transitions.html#complete-unbonding).
+
+
+
