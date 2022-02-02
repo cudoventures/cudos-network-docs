@@ -13,12 +13,6 @@ git clone --branch phase-4  https://github.com/CudoVentures/cudos-builders.git C
 git clone --depth 1 --branch phase-4 https://github.com/CudoVentures/cosmos-gravity-bridge.git CudosGravityBridge
 git clone --depth 1 --branch phase-4 https://github.com/CudoVentures/cudos-node.git CudosNode
 ```
-Make sure you have set the proper rights for the scripts
-
-```
-sudo chmod +x ${WORKING_DIR}/cudos-builders/tools-bash/constructor/src/start.sh
-sudo chmod +x ${WORKING_DIR}/cudos-builders/tools-bash/constructor/src/init.sh
-```
 
 ## Nodes inicialization
 
@@ -32,7 +26,8 @@ Setup your environment
 Create your main Cudos directory. Note this step for the next
 
 ```
-mkrid /usr/cudos
+CUDOS_DIR = "/usr/cudos"
+mkrid $CUDOS_DIR
 ```
 
 Copy the ${WORKING_DIR}/cudos-builders/tools-bash/constructor/config/init.env.example and rename it to init.env. Example content of the file: 
@@ -55,6 +50,35 @@ START_CONTAINER_NAME=cudos-start-root-node
 
 // TODO describe the process for ledger use
 
+
+Now it's time to init your node. 
+
+Make sure you have set the proper rights for the scripts
+
+```
+sudo chmod +x ${WORKING_DIR}/cudos-builders/tools-bash/constructor/src/start.sh
+sudo chmod +x ${WORKING_DIR}/cudos-builders/tools-bash/constructor/src/init.sh
+```
+
+Initialize the node by running:
+```
+cd ${WORKING_DIR}/cudos-builders/tools-bash/constructor
+./src/init.sh full-node
+```
+The command will use the configuration you have setup in the previous step and build the needed binaries. Successfull run should print someting like: 
+
+//TODO add full log screenshot
+```
+This node ID is: 2da7ceedb41efd2389c2c813557ac30da805677f
+This node ID can be found at ${CUDOS_DIR}/cudos/CudosData/cudos-data-full-node-client-mainnet/tendermint.nodeid
+This node ID could always be checked using cudos-noded tendermint show-node-id
+
+You MUST NOT delete the constructor script nor the destination folder where node's data is. They will be used later on for starting the nodes.
+
+Initialiazing...DONE
+```
+If you see any additional messages or error please reffer to the troubleshooting section.
+
 ### Sentry node setup
 
 ### Seed node setup
@@ -68,3 +92,6 @@ START_CONTAINER_NAME=cudos-start-root-node
 # Things to keep in mind
 1. The folder you use for a node needs to be created and empty. You will get errors otherwise.
 2. If you are running more than one node on a same server, you might not be able to create the docker, because they will try to ppen the same ports.
+
+
+# Troubleshooting
