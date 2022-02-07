@@ -64,7 +64,7 @@ cd ${WORKING_DIR}/cudos-builders/tools-bash/constructor
 ./src/init.sh full-node
 ```
 The command will use the configuration you have setup in the previous step and build the needed binaries. Successfull run should print someting like: 
-![Alt text](init-full.png?raw=true "start log")
+<img src="./init-full.png" width="500">
 
 
 
@@ -86,8 +86,7 @@ Once everything is configured we can start the node
 cd ${WORKING_DIR}/cudos-builders/tools-bash/constructor
 ./src/init.sh full-node
 ```
-
-![Alt text](start-log.png?raw=true "start log")
+<img src="./start-log.png" width="500">
 
 If you see any additional messages or error please reffer to the troubleshooting section.
 ## Sentry node setup
