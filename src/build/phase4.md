@@ -211,7 +211,7 @@ Once your validator is running you should get it's gentx. It is located under /u
 ```
 sudo docker exec -it cudos-start-full-node-client-mainnet-01 "cat /usr/cudos/cudos-data/config/gentx/gentx-<tendermint-id>.json
 ```
-
+Once you get the file contents submit them as a json file in https://github.com/CudoVentures/cudos-gentx. The name of the file should match the moniker of your validator node.
 
 # Things to keep in mind
 1. The folder you use for a node needs to be created and empty. You will get errors otherwise.
