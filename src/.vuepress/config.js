@@ -53,69 +53,73 @@ module.exports = {
     sidebar: [
       {
         title: 'Learn',
-        children: [
-          {
-            title: 'Introduction to Cudos',
-            collapsible: true,
-            path: '/learn/cudosnetwork.md',
-            //            sidebarDepth: 1,
-          },
-          {
-            title: 'Validators',
-            collapsible: true,
-            path: '/learn/validators.md',
-            //            sidebarDepth: 1,
-          },
-          {
-            title: 'Gravity Bridge',
-            collapsible: true,
-            path: '/learn/gravity-bridge.md'
-          }
-        ],
-      },
-      {
-        title: 'Installation Guide',
         collapsible: true,
-        children: ['/build/validator.md'],
+        children: ['/learn/cudosnetwork.md', '/earn/staking.md', '/learn/validators.md', '/learn/roadmap.md'],
       },
 
       {
-        title: 'Working with Cudos tokens',
+        title: 'Build',
         collapsible: true,
-        children: ['/build/interact-keplr-explorer.md', '/build/proposals.md'],
+        children: ['/build/tbcplaceholder.md', '/build/hardware.md'],
+      },
+      {
+        title: 'Funding & Earning with CUDOS Tokens',
+        collapsible: true,
+        children: ['/build/tbcplaceholder.md'],
       },
       {
         title: 'Developer Guides',
         collapsible: true,
-        children: ['/build/smart-contracts.md', '/build/nft.md'],
+        children: ['/build/tbcplaceholder.md'],
+      },
+      {
+        title: 'Operational Tasks & Troubleshooting',
+        collapsible: true,
+        children: ['/build/tbcplaceholder.md'],
       },
       {
         title: 'Upgrade',
         collapsible: true,
-        children: ['/build/upgrade.md', '/build/upgrade-v0.4.md'],
+        children: ['/build/upgrade.md'],
       },
       {
         title: 'Testnet',
         collapsible: true,
-        children: ['/testnet/testnetinstall.md'],
+        children: ['/testnet/testnetoverview.md', '/testnet/testnetenvprep.md', '/testnet/testnetcluster.md', '/testnet/testnetstandalone.md', '/build/securingnodes.md',
+          {
+            title: 'Testnet Hardware Requirements',
+            collapsible: true,
+            children: ['/testnet/testnet-hardware.md'],
+          },
+          {
+            title: 'Funding and earning with CUDOS tokens on Testnet',
+            collapsible: true,
+            children: ['/build/fundnodes.md', '/build/interact-keplr-explorer.md', '/build/proposals.md']
+          },
+          {
+            title: 'Testnet Operational Tasks and Troubleshooting',
+            collapsible: true,
+            children: ['/build/validator-restart.md', '/build/sync-troubleshooting.md'],
+          },
+          {
+            title: 'Testnet Developer Guide',
+            collapsible: true,
+            children: ['/build/smart-contracts.md', '/build/nft.md'],
+          },
+          {
+            title: 'Testnet Upgrade',
+            collapsible: true,
+            children: ['/build/upgrade-v0.4']
+          },
+        ],
       },
-      {
-        title: 'Roadmap',
-        collapsible: true,
-        children: ['/learn/roadmap.md'],
-      },
-      {
-        title: 'Resources',
-        collapsible: true,
-        children: ['/learn/resources.md'],
-      }
     ],
-    '/earn/': [
-      '',
-      'staking',
-      'incentives',
-      'grants'
-    ],
+    // '/earn/': [
+    //   '',
+    //   'staking',
+    //   'incentives',
+    //   'grants'
+    // ],
     // fallback
     '/': [
       '',

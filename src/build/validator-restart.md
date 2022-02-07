@@ -1,16 +1,16 @@
 ---
-title: Restarting a Validator
+title: Restarting a Validator and other Operational tasks
 ---
 
-# Restarting a Validator
+# Restarting a validator
 
-This page describes how to recover and reconnect your Validator after it disconnects from the network.
+This section describes how to recover and reconnect your Validator after it disconnects from the network.
 The instructions are structured in different case scenarios, ranging from a scheduled DC shutdown event to a daemon crash.
 **When following all these cases as part of phase 3, please ensure you keep all logs, as they will be required as proof for completing the task.**
 
 Any recovering of the Validator will likely imply that it was [jailed](/learn/validators.html#slashing), so this section starts with the unjailing command.
 
-## Unjailing a Validator
+### Unjailing a Validator
 
 After a Validator gets jailed, the validator needs to submit an `unjail` transaction in order to validate blocks and earn rewards again.
 To `unjail` a Validator, run the following command:
@@ -33,12 +33,12 @@ This is the simplest of the scenarios, and one of the most likely to happen in t
 For whatever reason, the server that is running the Validator needs to be shut down for a maintenance event in the DC.
 Depending on the length of the event, the Validator might or might not be jailed.
 
-### Short outage, no jailing
+## Short outage, no jailing
 
 This can be replicated by shutting the validator server down and immediately starting it back up again.
 This would be done after an OS upgrade for example, or for a simple hardware change that can happen in a few minutes like a non-hot-swap hard drive failure.
 
-#### Test commands
+### Test commands
 
 Log in as root and execute the following command to shut down and immediately restart the server
 
@@ -53,7 +53,7 @@ To collect the logs for the proof for phase 3 task 8, execute the following as r
 docker logs cudos-start-full-node-client-testnet-public-01 2> testnet-ph3-8_1_1.txt
 ```
 
-### Longer outage, validator jailed
+## Longer outage, validator jailed
 
 This can be replicated by shutting the validator down and waiting until the validator is shown as jailed in the [Cudos Explorer](https://explorer.cudos.org/) before bringing it back up again.
 This would be the situation for a longer DC maintenance event, or a more serious issue with the server hardware.
@@ -61,7 +61,7 @@ It would also likely be the result of moving the Validator to new hardware, wher
 The outage length would correspond to the time taken to clone the data to a new machine.
 This process can take up to an hour or even more, so would definitely result in the Validator being jailed.
 
-#### Test commands
+### Test commands
 
 Log in as root and execute the following command to shut down the server,
 
@@ -97,12 +97,12 @@ docker logs cudos-start-full-node-client-testnet-public-01 2> testnet-ph3-8_1_2.
 
 Last, check that the Validator is in the active list of the Explorer.
 
-### Longer outage, with seed and sentry also down
+## Longer outage, with seed and sentry also down
 
 If the validator has been set up according to [our recommendations](/build/validator.html#validator-setup), it will have a seed, a sentry and an Ethereum node attached.
 On the basis that they will also all get shut down in a lot of situations, the shutdown test is to be repeated, but with the other 3 servers also shut down for the longer outage period.
 
-#### Test commands
+### Test commands
 
 Log in as root to all of the Validator, seed, sentry and Ethereum nodes and execute the following command to shut down each server
 
@@ -184,7 +184,7 @@ The console access would be used to monitor the logs to gauge the effect that th
 
 The logs would be the evidence for this test.
 
-#### Test commands
+### Test commands
 
 Select a Validator with
 
@@ -260,7 +260,7 @@ The results will be the log of the cudos-noded post-crash-startup and the presen
 
 NB This test is purely about the Validator host server crashing; the sentry, seed and Ethereum nodes are not involved as it is assumed that they will keep going, and could potentially assist in the recovery of the Validator.
 
-#### Test commands
+### Test commands
 
 This test can be carried out on any standard Docker installed cudos-noded setup.
 To get started, log into the host server as root, and then execute the following command
@@ -291,7 +291,7 @@ This is distinct from the [server crash](/build/validator-restart.html#validator
 
 NB As this test is purely about the validator daemon software crashing, the sentry, seed and ETH nodes are not involved as it is assumed that they will keep going, and could potentially assist in the recovery of the validator.
 
-#### Test commands
+### Test commands
 
 This test can be carried out on any standard Docker installed cudos-noded setup.
 
@@ -331,7 +331,7 @@ NB This test will not involve the seed, sentry and Ethereum nodes as the scenari
 It is assumed that as the seed and sentry are functional subsets of the Validator, if it can survive this event, so will the seed and sentry.
 The Ethereum node will certainly survive as its job is just to keep up with the Ethereum network, so it can even be completely rebuilt from scratch and would then just need to catch up.
 
-#### Test commands
+### Test commands
 
 This test to be performed last as it could signify the end of the road for this instance, if not a more lengthy recovery process.
 
@@ -400,3 +400,18 @@ docker stop cudos-start-full-node-client-testnet-public-01
     - The node has a problem and is not going to restart (Fail)
 - Harvest the logs from the point that the node restarted to the point where the outcome became clear.
 - Attach the logfile as evidence.
+
+## How to delete a current running node
+
+If you stop the docker container that is running a Full node then you are not able to use it. But if you want to remove the full node docker data then you need to clear the volume of full node docker, if you remove the folder it will remove all the data but make sure first that you stop the docker container.
+
+Clear the volume of full node docker:
+* Navigate and open the file **CudosBuilders/docker/full-node/full-node.client.testnet.public01.arg**
+* Find the var **VOLUME_NAME=cudos-data-full-node-client-testnet-public-01** and clear it
+* Navigate to the file **CudosBuilders/docker/full-node/start-full-node.yml**
+* Find the one volume field
+volumes: **- '../../../CudosData/$VOLUME_NAME:$CUDOS_HOME'**
+* Above **VOLUME_NAME**  is mapped with this **../../../CudosData/$VOLUME_NAME**, clear it
+
+Remove the folder:
+Navigate to the folder **CudosData**, you may find a folder known as **cudos-data-full-node-client-testnet-public-01**, this is the folder which store all data of full node and needs to be removed.

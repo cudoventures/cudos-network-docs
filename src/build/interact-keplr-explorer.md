@@ -105,5 +105,8 @@ Namely,
 Please note that there is a 21-day unbonding period when you undelegate tokens, meaning it will take 21 days for these tokens to show in your wallet and be usable, for security reasons.
 For more information please have a look at the [Cosmos docs](https://docs.cosmos.network/master/modules/staking/02_state_transitions.html#complete-unbonding).
 
+## Send funds using the gravity bridge
 
+### Using the gravity bridge UI
 
+Open [Gravity Bridge](http://35.192.177.142:4000/). Then you can use [Kelpr](https://wallet.keplr.app/) and [Metamask](https://metamask.io/) for sending funds between the two blockchains.

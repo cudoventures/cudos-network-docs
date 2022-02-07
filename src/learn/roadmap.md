@@ -2,11 +2,13 @@
 title: Roadmap
 ---
 
-The Cudos Network roadmap for core protocol upgrades
+# Cudos Network Roadmap
 
+<!--
 ## Somniorum Testnet
 
 A fully functional public blockchain running in testnet to review performance and feature-set ahead of launch. To participate in the testnet please jump into [Project Artemis](/earn/incentives.html) where you can explore functionality and earn rewards!
+-->
 
 ## Ingenii
 
@@ -37,8 +39,10 @@ Proposed Scope:
 
 *expected 2022*
 
+<!--
 # 🌝?
 
 - [Lacus Somniorum](https://en.wikipedia.org/wiki/Lacus_Somniorum)
 - [Mare Ingenii](https://en.wikipedia.org/wiki/Mare_Ingenii)
 - [Mare Nubium](https://en.wikipedia.org/wiki/Mare_Nubium)
+-->
