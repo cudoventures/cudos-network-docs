@@ -10,11 +10,9 @@ This section describes the steps needed for validator setup as part of the Phase
 You need to have a local copy of our build tools.
 ```
 git clone --branch phase-4  https://github.com/CudoVentures/cudos-builders.git CudosBuilders
-git clone --depth 1 --branch phase-4 https://github.com/CudoVentures/cosmos-gravity-bridge.git CudosGravityBridge
-git clone --depth 1 --branch phase-4 https://github.com/CudoVentures/cudos-node.git CudosNode
 ```
 
-## Nodes inicialization
+## Nodes initialization
 
 Validators should run at least 3 nodes - Seed, Sentry and Validator node. For more details you can check the Validator Setup docs - https://docs.cudos.org/build/validator.html#validator-setup.
 
@@ -41,7 +39,7 @@ Copy the ${WORKING_DIR}/cudos-builders/tools-bash/constructor/config/node.env.ex
 
 ```
 MONIKER=<NAME_OF_THE_NODE>
-CHAIN_ID=phase-4
+CHAIN_ID=testnet-phase-4
 MONITORING_ENABLED=true
 PORT26656=60101
 PORT26660=60102
@@ -66,27 +64,154 @@ cd ${WORKING_DIR}/cudos-builders/tools-bash/constructor
 ./src/init.sh full-node
 ```
 The command will use the configuration you have setup in the previous step and build the needed binaries. Successfull run should print someting like: 
+![Alt text](init-full.png?raw=true "start log")
 
-//TODO add full log screenshot
-```
-This node ID is: 2da7ceedb41efd2389c2c813557ac30da805677f
-This node ID can be found at ${CUDOS_DIR}/cudos/CudosData/cudos-data-full-node-client-mainnet/tendermint.nodeid
-This node ID could always be checked using cudos-noded tendermint show-node-id
 
-You MUST NOT delete the constructor script nor the destination folder where node's data is. They will be used later on for starting the nodes.
 
-Initialiazing...DONE
-```
 If you see any additional messages or error please reffer to the troubleshooting section.
 
-### Sentry node setup
+### Start the full node
 
-### Seed node setup
+Copy the ${WORKING_DIR}/cudos-builders/tools-bash/constructor/config/start.env.example and rename it to start.env. Example content of the file: 
 
-### Validator node setup
+```
+PARAMS_PERSISTENT_PEERS=""
+PARAMS_SEED=""
+PARAMS_PRIVATE_PEER_IDS=""
+```
+
+Once everything is configured we can start the node
+
+```
+cd ${WORKING_DIR}/cudos-builders/tools-bash/constructor
+./src/init.sh full-node
+```
+
+![Alt text](start-log.png?raw=true "start log")
+
+If you see any additional messages or error please reffer to the troubleshooting section.
+## Sentry node setup
+
+### Initialise the sentry node
+Create your main Cudos directory. Note this step for the next
+```
+CUDOS_DIR = "/usr/cudos"
+mkrid $CUDOS_DIR
+```
+Copy the ${WORKING_DIR}/cudos-builders/tools-bash/constructor/config/init.env.example and rename it to init.env. Example content of the file:
+```
+MONIKER="cudos-sentry-node-mainnet-01"
+PERSISTENT_PEERS=""
+PRIVATE_PEERS=<tendermintId>:26656
+SEEDS=""
+
+SHOULD_USE_GLOBAL_PEERS="false"
+SHOULD_USE_STATE_SYNC="false"
+
+TLS_ENABLED="false"
+
+MONITORING_ENABLED="false"
+
+EXTERNAL_ADDRESS=""
+ADDR_BOOK_STRICT="true"
+```
+
+
+The most important step here is to setup the id of the full node in PRIVATE_PEERS
+```
+PRIVATE_PEERS=<tendermintId>:26656
+```
+
+To initialise the sentry node you need to execute the following
+
+```
+./src/init.sh sentry-node
+```
+
+### Start the sentry node
+```
+./src/start.sh sentry-node
+```
+
+## Seed node setup
+
+### Initialise the seed node
+Create your main Cudos directory. Note this step for the next
+```
+CUDOS_DIR = "/usr/cudos"
+mkrid $CUDOS_DIR
+
+```
+Copy the ${WORKING_DIR}/cudos-builders/tools-bash/constructor/config/init.env.example and rename it to init.env. Example content of the file:
+```
+MONIKER="cudos-sentry-node-mainnet-01"
+PERSISTENT_PEERS=""
+PRIVATE_PEERS=<tendermintId>:26656
+SEEDS=""
+
+SHOULD_USE_GLOBAL_PEERS="false"
+SHOULD_USE_STATE_SYNC="false"
+
+TLS_ENABLED="false"
+
+MONITORING_ENABLED="false"
+
+EXTERNAL_ADDRESS=""
+ADDR_BOOK_STRICT="true"
+```
+
+
+The most important step here is to setup the id of the full node in PRIVATE_PEERS
+```
+PRIVATE_PEERS=<tendermintId>:26656
+```
+
+To initialise the sentry node you need to execute the following
+
+```
+./src/init.sh seed-node
+```
+
+### Start the seed node
+```
+./src/start.sh seed-node
+```
+
+
+## Validator node initialization
+
+Once all your nodes are running you'll be able to initialize your validator node. Execute the following command on the full-node machine:
+
+```
+sudo docker exec -it cudos-start-full-node-client-mainnet-01 bash
+```
+
+```
+export STAKE="1000000000000000000acudos"
+export CHAIN_ID="testnet-phase-4"
+
+cudos-noded tx staking create-validator --amount=$STAKE \
+    --from=validator \
+    --pubkey=$(cudos-noded tendermint show-validator) \
+    --moniker=$MONIKER \
+    --chain-id=$CHAIN_ID \
+    --commission-rate="0.10" \
+    --commission-max-rate="0.20" \
+    --commission-max-change-rate="0.01" \
+    --min-self-delegation="1" \
+    --gas="auto" \
+    --gas-prices="0.025acudos" \
+    --gas-adjustment="1.80" \
+    --keyring-backend="os" \
+    -y
+```
 
 ## Gentx submition
 
+Once your validator is running you should get it's gentx. It is located under /usr/cudos/cudos-data/config/gentx/ on your docker container. To get the file of the you can use 
+```
+sudo docker exec -it cudos-start-full-node-client-mainnet-01 "cat /usr/cudos/cudos-data/config/gentx/gentx-<tendermint-id>.json
+```
 
 
 # Things to keep in mind
