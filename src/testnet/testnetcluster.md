@@ -27,8 +27,8 @@ The following section will take you through these steps in detail:
 **3. Apply peer values to your Validator and start it**
 
 Enter the Seed’s ID as the SEEDS value, and the Sentry’s ID as the `PERSISTENT PEER` value in your Validator node’s .env file.
-**Configure**your node 
-**Start** your validator Node
+- **Configure** your node 
+- **Start** your validator Node
 
 
 ## Cluster Build procedure
