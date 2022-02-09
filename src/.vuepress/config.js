@@ -85,16 +85,16 @@ module.exports = {
       {
         title: 'Testnet',
         collapsible: true,
-        children: ['/testnet/testnetoverview.md', '/testnet/testnetenvprep.md', '/testnet/testnetcluster.md', '/testnet/testnetstandalone.md', '/build/securingnodes.md',
+        children: ['/testnet/testnetoverview.md', '/testnet/testnetenvprep.md', '/testnet/testnetcluster.md', '/testnet/testnetstandalone.md', '/build/fundnodes.md', '/build/securingnodes.md',
           {
             title: 'Testnet Hardware Requirements',
             collapsible: true,
             children: ['/testnet/testnet-hardware.md'],
           },
           {
-            title: 'Funding and earning with CUDOS tokens on Testnet',
+            title: 'Common Tasks with Keplr Wallet and Cudos Explorer',
             collapsible: true,
-            children: ['/build/fundnodes.md', '/build/interact-keplr-explorer.md', '/build/proposals.md']
+            children: ['/build/interact-keplr-explorer.md', '/build/proposals.md']
           },
           {
             title: 'Testnet Operational Tasks and Troubleshooting',

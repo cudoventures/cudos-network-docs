@@ -1,8 +1,8 @@
 ---
-title: Common tasks with Keplr wallet and Cudos Explorer
+title: Working with your CUDOS tokens
 ---
 
-# Common tasks with Keplr wallet and Cudos Explorer
+# Working with your CUDOS tokens
 
 This article explains the following:
 
