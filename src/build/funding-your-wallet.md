@@ -2,6 +2,10 @@
 title: Funding your Wallet
 ---
 
+::: warning Note
+This page has been depreciated, please refer to the new docs by browsing the navigation menu bar to the left.
+:::
+
 # ﻿Funding your Wallet
 
 A wallet allows you to store and retrieve CUDOS tokens. When you buy or receive CUDOS tokens, you can keep them in a wallet and start different transactions. Owning CUDOS will provide you with more options, such as using your tokens to become a validator/delegator and participate in staking.

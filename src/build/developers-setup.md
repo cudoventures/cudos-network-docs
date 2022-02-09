@@ -2,6 +2,10 @@
 title: Developer Setup
 ---
 
+::: warning Note
+This page has been depreciated, please refer to the new docs by browsing the navigation menu bar to the left.
+:::
+
 # Developer setup
 
 This section explains how to set up a local full node for developing purposes, as well as seed and sentry nodes, and how to create wallets from the command line and send transactions to the network.

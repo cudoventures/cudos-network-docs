@@ -11,7 +11,7 @@ This proposal needs to be triggered with a governance vote.
 ### Software upgrade proposal
 
 The first step is to submit a software upgrade proposal.
-You can learn more on governance proposals [on this page](/learn/#proposals).
+You can learn more on governance proposals [on this page](/learn/cudosnetwork.html#proposals).
 After the proposal is submitted it enters into a deposit period, during which a certain amount of tokens need to be deposited into it, so the voting period can start.
 After the voting period starts, only validators can vote and approve it.
 If the proposal is passed, the network stops at a specified block height, until the upgrade is made and the network is restarted.

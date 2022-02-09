@@ -2,6 +2,10 @@
 title: Validator Setup Instructions
 ---
 
+::: warning Note
+This page has been depreciated, please refer to the new docs by browsing the navigation menu bar to the left.
+:::
+
 # Validator Setup Instructions (v0.3)
 
 # Updates 21/10/2021
@@ -18,7 +22,7 @@ Find the full list of latest updates:
 Update the section [Cudos Validator node and Orchestrator](/build/validator.html#cudos-validator-node-and-orchestrator)
 
 # Updates 22/09/2021
-
+<!---
 Find the full list of latest updates:
 1. Add new section [How to separate your running nodes](/build/validator.html#how-to-separate-your-running-nodes)
 2. Update the parameter **PRIVATE_PEERS** in the step 6 within the section [Configure and start the Sentry node as a validator](/build/validator.html#configure-and-start-the-sentry-node-as-a-validator)
@@ -376,7 +380,7 @@ volumes: **- '../../../CudosData/$VOLUME_NAME:$CUDOS_HOME'**
 
 Remove the folder:
 Navigate to the folder **CudosData**, you may find a folder known as **cudos-data-full-node-client-testnet-public-01**, this is the folder which store all data of full node and needs to be removed.
-
+--->
 ## Secure your node
 
 Setting up a Cudos Node is the starting point for any user wanting to interact with, and play a greater part in, the network. In order to set up a Cudos node, users will require the use of Go/Golang version 1.15 or higher. On-premise or bare metal server providers such as OVH, Leaseweb, IBM, Alibaba, Amazon Web Services, Google Cloud Computing platform, or Microsoft Azure, can be used to generate Cudos nodes and join the Cudos Network.
@@ -495,3 +499,5 @@ Our requirements design does factor in additional room to grow, and considers th
 Note that while we only provide specifications for dedicated physical hardware nodes for each of mainnet and testnet, we do not discourage validator operators who choose to identify virtual equivalents.
 
 At this time, we do not provide detailed storage IOPS/throughput or network PPS/bandwidth minimums. As the testnet evolves, we will share our observations of real-world statistics, to hopefully assist virtualised environment operators with right-sizing their deployments.
+
+
