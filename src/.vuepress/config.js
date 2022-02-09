@@ -63,9 +63,9 @@ module.exports = {
         children: ['/build/tbcplaceholder.md', '/build/hardware.md'],
       },
       {
-        title: 'Funding & Earning with CUDOS Tokens',
+        title: 'Common Tasks with Keplr Wallet and Cudos Explorer',
         collapsible: true,
-        children: ['/build/tbcplaceholder.md'],
+        children: ['/mainnet/keplr-explorer.md', '/mainnet/main-proposals.md'],
       },
       {
         title: 'Developer Guides',
