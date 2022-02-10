@@ -2,6 +2,10 @@
 title: Project Artemis
 ---
 
+::: warning Note
+This page has been deprecated, please refer to the new docs by browsing the navigation menu bar to the left.
+:::
+
 ![Project Artemis](./project-artemis.jpeg)
 
 During the Cudos Public 'Somniorum' Testnet we will be running our incentive programme Project Artemis. We're inviting the Cudos community to help contribute towards the testing to help move the network closer to mainnet. To help maximise participation in our public testnet and to get the best feedback we're offering token rewards to users who join us and fulfil some key testing tasks.

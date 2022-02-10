@@ -2,6 +2,10 @@
 title: Account Setup
 ---
 
+::: warning Note
+This page has been deprecated, please refer to the new docs by browsing the navigation menu bar to the left.
+:::
+
 # ﻿Creating a Keplr Wallet
 
 [Keplr](https://wallet.keplr.app/#/dashboard) is an open-sourced browser extension wallet Keplr that supports the Cudos interchain ecosystem. It provides functionalities for account and wallet management.

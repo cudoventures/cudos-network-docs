@@ -2,6 +2,10 @@
 title: Earn
 ---
 
+::: warning Note
+This page has been deprecated, please refer to the new docs by browsing the navigation menu bar to the left.
+:::
+
 ## Earning CUDOS
 
 There are several ways to use the Cudos Network to earn CUDOS

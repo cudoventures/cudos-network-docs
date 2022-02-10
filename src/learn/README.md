@@ -1,6 +1,9 @@
 ---
 title: Learn
 ---
+::: warning Note
+This page has been deprecated, please refer to the new docs by browsing the navigation menu bar to the left.
+:::
 
 ## Cudos Network
 
