@@ -33,6 +33,9 @@ Copy the ${$CUDOS_DIR}/cudos-builders/tools-bash/constructor/config/init.env.exa
 PARAM_SOURCE_DIR="${CUDOS_DIR}}" // is where the repos will be cloned and the binary compiled. It should be an existing and empty folder. The same you created above
 PARAM_VALIDATOR_MNEMONIC="<KEY>" // the private key of the account you want to use for your validator.
 PARAM_KEYRING_OS_PASS="<PASS>" // the password of your keyring
+PARAM_COMMISION_RATE="0.10" // commision rate of the validator. Must be between 0 and the validator's PARAM_COMMISSION_MAX_RATE
+PARAM_COMMISSION_MAX_RATE="0.20" // Can't be changed later
+PARAM_COMMISSION_MAX_CHANGE_RATE="0.01" //Can't be changed later
 ```
 
 // TODO describe the process for ledger use
