@@ -3,7 +3,7 @@ title: Developer Setup
 ---
 
 ::: warning Note
-This page has been depreciated, please refer to the new docs by browsing the navigation menu bar to the left.
+This page has been deprecated, please refer to the new docs by browsing the navigation menu bar to the left.
 :::
 
 # Developer setup
