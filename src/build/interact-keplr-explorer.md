@@ -1,8 +1,8 @@
 ---
-title: Working with your CUDOS tokens
+title: Common Tasks with CUDOS
 ---
 
-# Working with your CUDOS tokens
+# Common Tasks with CUDOS
 
 This article explains the following:
 
