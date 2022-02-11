@@ -38,31 +38,32 @@ PARAM_COMMISSION_MAX_RATE="0.20" // Can't be changed later
 PARAM_COMMISSION_MAX_CHANGE_RATE="0.01" //Can't be changed later
 ```
 
+<!--
 // TODO describe the process for ledger use
+-->
+
+**Now it's time to init your node.**
 
 
-Now it's time to init your node. 
+You can ether initialize the standalone validator node or a validator cluster:
 
-
-You can ether initialize validator standalone node or a validator cluster:
-
-Standalone validator
+- Standalone validator
 ```
 cd ${WORKING_DIR}/cudos-builders/tools-bash/constructor
 ./src/init.sh standalone-validator-node
 ```
-or validator cluster
+- Validator cluster
 ```
 cd ${WORKING_DIR}/cudos-builders/tools-bash/constructor
 ./src/init.sh clustered-validator-node
 ```
 
 The command will use the configuration you have setup in the previous step and build the needed binaries. Successfull run should print someting like: 
-<img src="./init-full.png" width="500">
+<img src="./init-full.png">
 
-
-If you see any additional messages or error please reffer to the troubleshooting section.
-
+<!--
+If you see any additional messages or error please refer to the troubleshooting section.
+-->
 
 ## Genesis submition
 
@@ -77,7 +78,8 @@ Once you get the file contents submit them as a json file in https://github.com/
 
 # Things to keep in mind
 1. The folder you use for a node needs to be created and empty. You will get errors otherwise.
-2. If you are running more than one node on a same server, you might not be able to create the docker, because they will try to ppen the same ports.
+2. If you are running more than one node on the same server, you might not be able to create the docker because they will try to open the same ports.
 
-
+<!--
 # Troubleshooting
+-->
