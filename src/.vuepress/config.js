@@ -63,9 +63,9 @@ module.exports = {
         children: ['/build/tbcplaceholder.md', '/build/hardware.md'],
       },
       {
-        title: 'Funding & Earning with CUDOS Tokens',
+        title: 'Using CUDOS Tokens',
         collapsible: true,
-        children: ['/build/tbcplaceholder.md'],
+        children: ['/mainnet/keplr-explorer.md', '/mainnet/main-proposals.md'],
       },
       {
         title: 'Developer Guides',
@@ -92,7 +92,7 @@ module.exports = {
             children: ['/testnet/testnet-hardware.md'],
           },
           {
-            title: 'Common Tasks with Keplr Wallet and Cudos Explorer',
+            title: 'Using CUDOS Tokens in Testnet',
             collapsible: true,
             children: ['/build/interact-keplr-explorer.md', '/build/proposals.md']
           },
