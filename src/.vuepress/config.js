@@ -111,6 +111,11 @@ module.exports = {
             collapsible: true,
             children: ['/build/upgrade-v0.4']
           },
+          {
+            title: 'Phase 4 Testnet',
+            collapsible: true,
+            children: ['/build/phase4.md']
+          }
         ],
       },
     ],
