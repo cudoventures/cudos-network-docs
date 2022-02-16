@@ -60,7 +60,7 @@ module.exports = {
       {
         title: 'Build',
         collapsible: true,
-        children: ['/build/tbcplaceholder.md', '/build/hardware.md'],
+        children: ['/mainnet/build/mainnet-overview.md', '/mainnet/build/mainnet-envprep.md', '/mainnet/build/mainnet-cluster.md', '/mainnet/build/mainnet-standalone.md', '/mainnet/build/mainnet-fundnodes.md', '/mainnet/build/mainnet-securingnodes.md', '/build/hardware.md'],
       },
       {
         title: 'Using CUDOS Tokens',
@@ -75,12 +75,7 @@ module.exports = {
       {
         title: 'Operational Tasks & Troubleshooting',
         collapsible: true,
-        children: ['/build/tbcplaceholder.md'],
-      },
-      {
-        title: 'Upgrade',
-        collapsible: true,
-        children: ['/build/upgrade.md'],
+        children: ['/mainnet/sync-troubleshooting.md'],
       },
       {
         title: 'Testnet',
