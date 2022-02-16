@@ -2,9 +2,6 @@
 title: Project Artemis
 ---
 
-::: warning Note
-This page has been deprecated, please refer to the new docs by browsing the navigation menu bar to the left.
-:::
 
 ![Project Artemis](./project-artemis.jpeg)
 
