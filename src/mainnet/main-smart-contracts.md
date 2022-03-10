@@ -6,13 +6,16 @@ title: Smart Contracts
 
 This article explains the deployment and interaction of CosmWasm Plus CW20 contracts.
 
-***Note*** for non-bash shell (eg, probably most macOS and some Linux) users: for below commands to work correctly without making modification to the environment (eg, check [_here_](https://zsh.sourceforge.io/Doc/Release/Expansion.html#Parameter-Expansion) how zsh does parameter expansion differently for details), please use the bash shell:
-
+::: warning Note 
+Non-bash shell (most macOS and some Linux) users, please be aware that for below commands to work correctly without making modification to the environment (eg, check [_here_](https://zsh.sourceforge.io/Doc/Release/Expansion.html#Parameter-Expansion) how zsh does parameter expansion differently for details), please use the bash shell:
 ```
 % bash
 ```
+:::
 
-***Note 2*** outputs of some commands shown below are just for illustration purposes and the output you get might differ.
+::: warning Note 
+outputs of some commands shown below are just for illustration purposes and the output you get might differ.
+:::
 
 ### Install rustup
 
@@ -82,11 +85,11 @@ $ docker cp artifacts/cw20_base.wasm binary-builder:/usr/cudos
 
 ### Deployment and instantiation
 
-1. Set up the environment
+1. **Set up the environment**
 
 ```
-$ NODE="https://sentry1.gcp-uscentral1.cudos.org:26657"
-$ CHAIN_ID="cudos-testnet-public-2"
+$ NODE=<tbc>
+$ CHAIN_ID="cudos-1"
 $ KEYRING="os"
 
 $ TXFLAGS="--node $NODE --chain-id $CHAIN_ID --gas auto --gas-adjustment 1.3 --keyring-backend $KEYRING -y"
@@ -96,13 +99,13 @@ $ alias CUDOS_NODED='docker exec -it binary-builder cudos-noded'
 
 Where:
 
-* **NODE** should refer to the IP address of your sentry or full/validator node that is running on the Cudos public testnet.
-* **CHAIN_ID** is the blockchain network ID, here it is the public testnet ID.
+* **NODE** should refer to the IP address of your sentry or full/validator node that is running on the Cudos public mainnet.
+* **CHAIN_ID** is the blockchain network ID, here it is the public mainnet ID.
 * **KEYRING** uses the operating system's default credentials store (os) to handle keys storage operations securely. The keyring holds the private/public keypairs used to interact with a node and it will request a password each time it is accessed.
 * **TXFLAGS** is used as a shorthand for common transaction flags.
 * **CUDOS_NODED** is an alias for cudos-noded in binary-builder.
 
-2. Manage accounts
+2. **Manage accounts**
 
 Create accounts for the owner, Alice and Bob:
 
@@ -150,18 +153,18 @@ Enter keyring passphrase:
 cudos15yvgtr5ppu92hx0hu53ygdhnajrhgmjpfe8vdc
 ```
 
-3. Get CUDOS tokens from faucet
-
+3. **Get CUDOS tokens** <!-- from faucet -->
+<!-- step needs to be replaced for mainnet
 To cover transactions fees, add 0.1 or more CUDOS tokens to the owner and Alice accounts' addresses (as shown in the previous step) using the [faucet](https://explorer.cudos.org/faucet).
-
-4. Deploy the contract
+-->
+4. **Deploy the contract**
 
 ```
 $ RES=$( CUDOS_NODED tx wasm store /usr/cudos/cw20_base.wasm --from owner $TXFLAGS | tee /dev/tty | tail -1 | tr -d '\r' )
 $ CODE_ID=$( echo $RES | jq -r '.logs[0].events[-1].attributes[-1].value' | tee /dev/tty )
 ```
 
-5. Instantiate and verify the contract
+5. **Instantiate and verify the contract**
 
 Let's now instantiate a new CW20 contract, setting the initial balance of owner's address to 1M DIZZ tokens.
 
