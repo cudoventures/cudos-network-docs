@@ -8,6 +8,7 @@ NFTs are compatible with Cudos Network natively.
 
 ## Module Overview
 
+<!-- tbc is the mainnet nft based on erc721? -->
 A module for operating with Non-Fungible Tokens on the CUDOS network. The methods that are exposed by it are mainly based on the [ERC721 interface](https://ethereum.org/en/developers/docs/standards/tokens/erc-721/) from the Ethereum network and not so much on the [CW-721](https://github.com/CosmWasm/cw-nfts) from the Cosmos network. The reason for this is that the main idea of the module is to transfer tokens through the [bridge](https://github.com/CudoVentures/cosmos-gravity-bridge) between the Cudos Network and Ethereum, and thus it is better to follow the ERC721 standard.
 
 ## Module Interface
@@ -41,12 +42,12 @@ The module gives the user the ability to either write (via transaction) or read 
 | [`approvals`](#approvals)                 | Get the approved addresses for the [`NFT`](#NFT)
 | [`isApprovedForAll`](#isapprovedforall)                 | Gets whether the address is approved for all
 
-## Quick start (public testnet)
+## Quick start (public mainnet)
 
 In this section we provide the basic commands that need to be executed in order to mint an NFT and send it to another wallet.
-For a full description of all the available functionality, please have a look at each [function's description](/build/nft.html#full-commands-info).
-In order to follow these instructions, a running node is needed (for example a [full node](/build/developers-setup.html#initialize-and-start-full-node)), as well as having added the keys of at least one wallet.
-You can find instructions on how to add an account into your keyring, or import a wallet you created in Keplr in the [developer setup page](/build/developers-setup.html#create-an-account).
+For a full description of all the available functionality, please have a look at each [function's description](#full-commands-information).
+In order to follow these instructions, a running node is needed (for example a [full node](/learn/validators.html#node-types)), as well as having added the keys of at least one wallet.
+You can find instructions on how to add an account into your keyring, or import a wallet you created in Keplr in the [Funding Your Nodes](/mainnet/build/mainnet-fundnodes.html) page.
 After doing so, keep your terminal inside the Docker container open to follow the next steps.
 
 ### Minting a new NFT
@@ -54,24 +55,27 @@ After doing so, keep your terminal inside the Docker container open to follow th
 All NFTs need to belong to a parent group, called denomination, or `denom` for short.
 A denomination can have many NFTs minted within it, and is used to identify the creator of an NFT.
 Denominations can be thought of as groups of NFTs.
-Thus, in order to mint an NFT, the first step is to [issue a denomination](/build/nft.html#issue) for our account.
+Thus, in order to mint an NFT, the first step is to [issue a denomination](#issue) for our account.
 
 Denominations need to have an ID, which needs to be an alphanumeric string in lowercase -- we use the placeholder `<testdenom>` in the examples below.
 We also need to specify in flags the network where we want to issue our denomination, the wallet that will issue it (which needs to be in the keyring -- we use the placeholder `<walletAddress>` in what follows) and a name for the denomination, which we can choose.
+
+<!-- is this the same for mainnet? -->
 We will be using the `test` backend for the keyring (the default one in public testnet) for these instructions.
+
 However, if you are running a Validator using the `os` backend, you can use your Validator wallet, as long as you specify the `--keyring-backend os` flag in the commands below.
 Also, we must specify the `node` flag, setting it to the IP address of the node that is running on the Cudos Network.
 
-Thus, in order to create a denomination in public testnet the command looks like
+Thus, in order to create a denomination in public mainnet the command looks like:
 
 ```bash
-cudos-noded tx nft issue <testdenom> --from=<walletAddress> --name="My first denom" --chain-id=cudos-testnet-public-2 --node https://sentry1.gcp-uscentral1.cudos.org:26657
+cudos-noded tx nft issue <testdenom> --from=<walletAddress> --name="My first denom" --chain-id=cudos-1 --node <tbc>
 ```
 
 Please note that we will be prompted at all steps to confirm we want to broadcast the transaction.
 When asked for confirmation, just type `y` and press enter.
 
-Now that we have created a `denom` for our account, we can [mint](/build/nft.html#mint) an NFT.
+Now that we have created a `denom` for our account, we can [mint](#mint) an NFT.
 When minting one, we can choose who the owner of that NFT is going to be at the start.
 More precisely, when minting an NFT we need to include the `--recipient` flag and assign it the wallet address where we want that NFT to go to.
 The address that we choose will be the owner of that NFT.
@@ -80,7 +84,7 @@ Let us start by minting and NFT and sending it to our own address.
 To do so, simply run the following command, using the denom name you just chose and your wallet address,
 
 ```bash
-cudos-noded tx nft mint <testdenom> --from=<walletAddress> --recipient=<walletAddress> --chain-id=cudos-testnet-public-2 --node https://sentry1.gcp-uscentral1.cudos.org:26657
+cudos-noded tx nft mint <testdenom> --from=<walletAddress> --recipient=<walletAddress> --chain-id=cudos-1 --node <tbc>
 ```
 
 To see our freshly minted NFT, we can run the following command
@@ -110,7 +114,7 @@ pagination:
 ```
 
 This provides a list of all the NFTs for the specified denom.
-All NFTs belong to a [`collection`](/build/nft.html#collections), and are uniquely identified by its denom and its NFT ID.
+All NFTs belong to a [`collection`](#collections), and are uniquely identified by its denom and its NFT ID.
 At the moment, we have only created one NFT, and thus its ID is 1.
 This ID is just a counter, so it will increase by one unit every time we mint a new NFT.
 
@@ -122,13 +126,15 @@ In order to add a fee, we also need to include its unit.
 For example, if we want to mint an NFT and set a 10acudos fee on it (acudos stands for attoCUDOS, the [SI prefix](https://en.wikipedia.org/wiki/Atto-)), we can execute the following
 
 ```bash
-cudos-noded tx nft mint <testdenom> --from=<walletAddress> --recipient=<walletAddress> --chain-id=cudos-testnet-public-2 --fees=10acudos
+cudos-noded tx nft mint <testdenom> --from=<walletAddress> --recipient=<walletAddress> --chain-id=cudos-1 --fees=10acudos
 ```
 
 ### Sending an NFT to another wallet
 
-In order to send an NFT we use the [`transfer`](/build/nft.html#transfer) function.
+In order to send an NFT we use the [`transfer`](#transfer) function.
+
 Please note that sending the NFT to someone else changes its owner, and owners are able to, amongst other things, change its metadata or approve addresses to move it.
+
 
 To test this, first we would recommend adding a second wallet to your keyring, so that you are still the owner after the NFT after moving it to a different account.
 As a reminder, you can create a new wallet and add it to your keyring by running the following command,
@@ -141,7 +147,7 @@ where `<newAccount>` is a placeholder to be changed to the name you want to give
 After doing that, we can transfer the NFT by specifying the wallet where it comes from, the one we want to send it to, the denom ID, the NFT ID (the incremental ID we explained above, which was `1` for our first NFT) and the relevant flags:
 
 ```bash
-cudos-noded tx nft transfer <walletAddress> <newAccount> <testdenom> 1 --from=<walletAddress> --chain-id=cudos-testnet-public-2
+cudos-noded tx nft transfer <walletAddress> <newAccount> <testdenom> 1 --from=<walletAddress> --chain-id=cudos-1
 ```
 
 Note that we still need to specify the `--from` flag with the address that is requesting the transfer of the NFT.
