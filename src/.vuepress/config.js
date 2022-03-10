@@ -70,7 +70,7 @@ module.exports = {
       {
         title: 'Developer Guides',
         collapsible: true,
-        children: ['/build/tbcplaceholder.md'],
+        children: ['/mainnet/main-smart-contracts.md', '/mainnet/main-nft.md'],
       },
       {
         title: 'Operational Tasks & Troubleshooting',
