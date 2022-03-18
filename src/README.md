@@ -13,21 +13,21 @@ The site mostly focuses on Cudos **Mainnet**. If you wish to use our **Testnet**
 
 <div class="home-grid-container">
   <div class="home-grid-item">
-    <a href="#">
+    <a href="/build/">
       <img src="/Build.svg" width="100%" />
       <h2>Build <span class="arrow right"></span></h2>
     </a>
     <p>A lot of llorem ipsum text here as a subtitle thing</p>
   </div>
   <div class="home-grid-item">
-    <a href="#">
+    <a href="/develop/">
       <img src="/Develop.svg" width="100%" />
       <h2>Develop <span class="arrow right"></span></h2>
     </a>
     <p>A lot of llorem ipsum text here as a subtitle thing</p>
   </div>
    <div class="home-grid-item">
-    <a href="#">
+    <a href="/learn/">
       <img src="/Learn.svg" width="100%" />
       <h2>Learn <span class="arrow right"></span></h2>
     </a>

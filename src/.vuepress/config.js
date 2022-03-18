@@ -41,6 +41,7 @@ module.exports = {
     //      { text: 'Earn', link: '/earn/' }
     //    ],
     logo: '/logo.svg',
+    logoDark: '/logo-dark.svg',
     repo: 'CudoVentures/',
     sidebar: [
       {
