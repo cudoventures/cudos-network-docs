@@ -34,9 +34,9 @@ For security reasons, Cudos Seed and Sentry nodes are configured to reject conne
 :::
 
 
-<center>
+<p align="center">
   <img src="./clusterbasic.png">
-</center>
+</p>
 <p style="text-align:center;"><b><i>Validator Cluster</i></b>
 </p>
 
