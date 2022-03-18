@@ -4,5 +4,8 @@
 
 yarn-error.log
 
+.temp
+.cache
+
 # Local Netlify folder
 .netlify
