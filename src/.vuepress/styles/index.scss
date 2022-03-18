@@ -1,3 +1,5 @@
+@import '@vuepress/theme-default/lib/client/styles/_variables';
+
 :root {
   // brand colors
   --c-brand: #4C80E9;
@@ -136,8 +138,8 @@
 
 html.dark {
   // brand colors
-  --c-brand: #4C80E9;
-  --c-brand-light: #4C80E9;
+  --c-brand: #5AC7C6;
+  --c-brand-light: #5AC7C6;
 
   // background colors
   --c-bg: #1B2133;
@@ -179,4 +181,47 @@ html.dark .DocSearch {
   --docsearch-key-gradient: linear-gradient(-225deg, #444950, #1c1e21);
   --docsearch-footer-shadow: inset 0 1px 0 0 rgba(73, 76, 106, 0.5),
     0 -4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+// Logo override
+.logo {
+  height:1.8rem!important;
+  vertical-align: middle!important;
+}
+
+// Home
+.home-grid-container {
+  display:flex; 
+  flex-direction:row;
+  width:100%; 
+  flex-wrap: nowrap;
+  justify-content:space-between;
+  margin-top: 2.5rem;
+}
+
+.home-grid-item {
+  display:block;
+  width:32%;
+  margin:0px;
+}
+
+.home-grid-item a {
+  color: var(--c-text);
+}
+
+.home-grid-item h2 .arrow {
+  vertical-align: middle;
+  margin-left:0.5em;
+}
+
+@media screen and (max-width: $MQMobileNarrow) {
+  .home-grid-container {
+    margin-top: 0.5rem;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+  .home-grid-item {
+    width:100%;
+    margin-top:1rem;
+  }
 }

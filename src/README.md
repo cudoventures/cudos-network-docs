@@ -11,11 +11,29 @@ This site contains technical resources and user guides for the Cudos Network and
 
 The site mostly focuses on Cudos **Mainnet**. If you wish to use our **Testnet** for experimentation and testing purposes, please refer to the [Testnet](/testnet/testnetoverview.html) section.
 
-<!---
-<a href="/learn/" rel="some text">![](./learn.png)</a>
-<a href="/build/" rel="some text">![](./build.png)</a>
-<a href="/earn/" rel="some text">![](./earn.png)</a>
---->
+<div class="home-grid-container">
+  <div class="home-grid-item">
+    <a href="#">
+      <img src="/Build.svg" width="100%" />
+      <h2>Build <span class="arrow right"></span></h2>
+    </a>
+    <p>A lot of llorem ipsum text here as a subtitle thing</p>
+  </div>
+  <div class="home-grid-item">
+    <a href="#">
+      <img src="/Develop.svg" width="100%" />
+      <h2>Develop <span class="arrow right"></span></h2>
+    </a>
+    <p>A lot of llorem ipsum text here as a subtitle thing</p>
+  </div>
+   <div class="home-grid-item">
+    <a href="#">
+      <img src="/Learn.svg" width="100%" />
+      <h2>Learn <span class="arrow right"></span></h2>
+    </a>
+    <p>A lot of llorem ipsum text here as a subtitle thing</p>
+  </div>
+</div>
 
 # Community
 
