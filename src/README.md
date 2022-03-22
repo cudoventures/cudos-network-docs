@@ -13,25 +13,25 @@ The site mostly focuses on Cudos **Mainnet**. If you wish to use our **Testnet**
 
 <div class="home-grid-container">
   <div class="home-grid-item">
-    <a href="/build/">
+    <a href="/mainnet/build/mainnet-overview.html">
       <img src="/Build.svg" width="100%" />
       <h2>Build <span class="arrow right"></span></h2>
     </a>
-    <p>A lot of llorem ipsum text here as a subtitle thing</p>
+    <p>Build nodes and validators on the Cudos network.</p>
   </div>
   <div class="home-grid-item">
-    <a href="/develop/">
+    <a href="/mainnet/main-smart-contracts.html">
       <img src="/Develop.svg" width="100%" />
       <h2>Develop <span class="arrow right"></span></h2>
     </a>
-    <p>A lot of llorem ipsum text here as a subtitle thing</p>
+    <p>Create Smart Contracts, NFTs and Dapps on the Cudos network.</p>
   </div>
    <div class="home-grid-item">
-    <a href="/learn/">
+    <a href="/learn/cudosnetwork.html">
       <img src="/Learn.svg" width="100%" />
       <h2>Learn <span class="arrow right"></span></h2>
     </a>
-    <p>A lot of llorem ipsum text here as a subtitle thing</p>
+    <p>Understand Cudos network fundamentals.</p>
   </div>
 </div>
 
