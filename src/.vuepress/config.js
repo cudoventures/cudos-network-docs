@@ -70,7 +70,7 @@ module.exports = {
       {
         title: 'Developer Guides',
         collapsible: true,
-        children: ['/build/tbcplaceholder.md'],
+        children: ['/build/tbcplaceholder.md', '/build/cudos-blast.md'],
       },
       {
         title: 'Operational Tasks & Troubleshooting',
