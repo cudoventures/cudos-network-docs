@@ -11,11 +11,29 @@ This site contains technical resources and user guides for the Cudos Network and
 
 The site mostly focuses on Cudos **Mainnet**. If you wish to use our **Testnet** for experimentation and testing purposes, please refer to the [Testnet](/testnet/testnetoverview.html) section.
 
-<!---
-<a href="/learn/" rel="some text">![](./learn.png)</a>
-<a href="/build/" rel="some text">![](./build.png)</a>
-<a href="/earn/" rel="some text">![](./earn.png)</a>
---->
+<div class="home-grid-container">
+  <div class="home-grid-item">
+    <a href="/mainnet/build/mainnet-overview.html">
+      <img src="/Build.svg" width="100%" />
+      <h2>Build <span class="arrow right"></span></h2>
+    </a>
+    <p>Build nodes and validators on the Cudos network.</p>
+  </div>
+  <div class="home-grid-item">
+    <a href="/mainnet/main-smart-contracts.html">
+      <img src="/Develop.svg" width="100%" />
+      <h2>Develop <span class="arrow right"></span></h2>
+    </a>
+    <p>Create Smart Contracts, NFTs and Dapps on the Cudos network.</p>
+  </div>
+   <div class="home-grid-item">
+    <a href="/learn/cudosnetwork.html">
+      <img src="/Learn.svg" width="100%" />
+      <h2>Learn <span class="arrow right"></span></h2>
+    </a>
+    <p>Understand Cudos network fundamentals.</p>
+  </div>
+</div>
 
 # Community
 

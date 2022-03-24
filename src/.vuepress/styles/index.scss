@@ -1,0 +1,79 @@
+@import '@vuepress/theme-default/lib/client/styles/_variables';
+
+:root {
+  // brand colors
+  --c-brand: #4C80E9;
+
+  // background colors
+  --c-bg: #ffffff;
+  // text colors
+  --c-text: #2c3e50;
+}
+
+// plugin-search
+.search-box {
+  --search-bg-color: var(--c-bg);
+  --search-accent-color: var(--c-brand);
+  --search-text-color: var(--c-text);
+  --search-border-color: var(--c-border);
+
+  --search-item-text-color: var(--c-text-lighter);
+  --search-item-focus-bg-color: var(--c-bg-light);
+}
+
+// DARK MODE OVERRIDES
+
+html.dark {
+  // brand colors
+  --c-brand: #5AC7C6;
+
+  // background colors
+  --c-bg: #1B2133;
+
+  // text colors
+  --c-text: #FFF;
+}
+
+
+// Logo override
+.logo {
+  height:1.8rem !important;
+  vertical-align: middle !important;
+}
+
+// Home grid
+.home-grid-container {
+  display:flex; 
+  flex-direction:row;
+  width:100%; 
+  flex-wrap: nowrap;
+  justify-content:space-between;
+  margin-top: 2.5rem;
+}
+
+.home-grid-item {
+  display:block;
+  width:32%;
+  margin:0px;
+}
+
+.home-grid-item a {
+  color: var(--c-text);
+}
+
+.home-grid-item h2 .arrow {
+  vertical-align: middle;
+  margin-left:0.5em;
+}
+
+@media screen and (max-width: $MQMobileNarrow) {
+  .home-grid-container {
+    margin-top: 0.5rem;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+  .home-grid-item {
+    width:100%;
+    margin-top:1rem;
+  }
+}
