@@ -63,7 +63,7 @@ Then, add the seed’s ID and IP address to your node. To do this:
 docker exec -it <container-name> bash
 ```
 
-- Then locate the `seeds =` variable in this file: `/usr/cudos/cudos-data/config/<tbc>.toml` , and append the details you have been given.
+- Then locate the `seeds =` variable in this file: `/usr/cudos/cudos-data/config/config.toml` , and append the details you have been given.
  
 - Finally, exit and restart your container:
  
