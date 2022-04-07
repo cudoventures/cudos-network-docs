@@ -110,10 +110,10 @@ You will also be asked to enter a new **passphrase** for your keyring. From then
  
 In the following example, a wallet’s mnemonic is added to keyring `validator1keyring`.
  
-Enter the docker container `<tbc>`:
+Enter the docker container `cudos-start-full-node-mainnet`:
 
 ```
-sudo docker exec -it <tbc> bash
+sudo docker exec -it cudos-start-full-node-mainnet bash
  ```
 
 To add your wallet’s mnemonic to the keyring `validator1keyring`, enter the following command:
@@ -160,13 +160,13 @@ In this section of the process the validator node will need to be supplied with 
 
 - CHAIN_ID, This is a fixed text naming the blockchain to be operated on. In the public mainnet this name is `cudos-1`
 - STAKE, The actual amount in "acudos" that will be staked to the validator. Note that acodos is a very small denomination. Be very careful about the number of zeros in the amount. For example "1000000000000000000acudos" = 1 CUDOS.
-- MONIKER, that you assigned in the validator node’s `/var/lib/cudos/CudosBuilders/docker/full-node/<tbc>.env` file.
+- MONIKER, that you assigned in the validator node’s `/var/lib/cudos/CudosBuilders/docker/full-node/full-node.client.mainnet.env` file.
  
  
 Enter your docker container:
 
 ```
-sudo docker exec -it <tbc> bash
+sudo docker exec -it cudos-start-full-node-mainnet bash
 ```
 
 This script will stake and self delegate 2 million CUDOS (`2000000000000000000000000acudos`) from the wallet that you linked to your keyring (in this example we will use the keyring `validator1keyring`) on Full node with moniker `Validator1`.You will be prompted to enter the passphrase for keyring `validator1keyring`.
