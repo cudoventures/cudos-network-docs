@@ -17,9 +17,9 @@ cd /var/lib/cudos/CudosBuilders/docker/full-node
 ```
 #### 2. Create a copy of `full-node.env.example`, naming the copy `<tbc>.env`
 ```
-cp full-node.env.example full-node.client.testnet.public01.env
+cp full-node.env.example full-node.client.mainnet.env
 ```
-#### 3. Open the file `<tbc>.env`. 
+#### 3. Open the file `full-node.client.mainnet.env`. 
 
 - Set the `"MONIKER"` (your node’s name on the blockchain) attribute to your desired name:
 ```
@@ -33,17 +33,17 @@ Exit and Save the file
 
 #### 4. Make sure that you are still in the correct directory `/var/lib/cudos/CudosBuilders/docker/full-node`, and *Initialize* the node by running this command:
 ```
-docker-compose --env-file <tbc>.arg -f <tbc>.yml -p <tbc> up --build
+docker-compose --env-file full-node.client.mainnet.arg -f init-full-node.yml -p cudos-init-full-node-mainnet up --build
 ```
 
 #### 5. *Start* your node
 ```
-docker-compose --env-file <tbc>.arg -f <tbc>.yml -p <tbc> up --build --detach
+docker-compose --env-file full-node.client.mainnet.arg -f start-full-node.yml -p cudos-start-full-node-mainnet up --build --detach
 ```
 
 
 If all steps are completed successfully, you should see a newly generated file: 
-`/var/lib/cudos/CudosData/<tbc>/tendermint.nodeid`
+`/var/lib/cudos/CudosData/cudos-start-full-node-mainnet/tendermint.nodeid`
 that contains your node ID, consisting of a long string of random characters.
 
 ::: tip
