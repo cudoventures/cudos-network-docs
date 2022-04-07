@@ -15,7 +15,7 @@ This section explains how to initialize and start a standalone full node for tes
 sudo -i
 cd /var/lib/cudos/CudosBuilders/docker/full-node
 ```
-#### 2. Create a copy of `full-node.env.example`, naming the copy `<tbc>.env`
+#### 2. Create a copy of `full-node.env.example`, naming the copy `full-node.client.mainnet.env`
 ```
 cp full-node.env.example full-node.client.mainnet.env
 ```
