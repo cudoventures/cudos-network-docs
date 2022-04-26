@@ -48,9 +48,9 @@ cd /var/lib/cudos
 Clone the correct branches from the [CudosNode](https://github.com/CudoVentures/cudos-node) , [CudosBuilders](https://github.com/CudoVentures/cudos-builders), and [CudosGravityBridge](https://github.com/CudoVentures/cosmos-gravity-bridge) repositories, renaming the folders *CudosNode*, *CudosBuilders*, and *CudosGravityBridge*:
 
 ```
-git clone --depth 1 --branch 1.0 https://github.com/CudoVentures/cudos-node.git CudosNode
-git clone --depth 1 --branch 1.0 https://github.com/CudoVentures/cudos-builders.git CudosBuilders
-git clone --depth 1 --branch 1.0 https://github.com/CudoVentures/cosmos-gravity-bridge.git CudosGravityBridge
+git clone --branch 1.0.0 https://github.com/CudoVentures/cudos-node.git CudosNode
+git clone --branch 1.0.0 https://github.com/CudoVentures/cudos-builders.git CudosBuilders
+git clone --branch 1.0.0 https://github.com/CudoVentures/cosmos-gravity-bridge.git CudosGravityBridge
 ```
 
 Navigate to the `CudosBuilders/docker/binary-builder` directory
