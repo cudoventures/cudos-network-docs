@@ -7,20 +7,20 @@ footer: Copyright © 2020-present Cudo Ventures
 
 The Cudos Network is a special-purpose blockchain designed to provide high-performance, trustless, and permissionless cloud computing for all.
 
-This site contains technical resources and user guides for the Cudos Network and associated tools. Please follow the sidebar links to explore the documentation.
+This site contains technical resources and user guides for the Cudos Network and associated developer tools. Please follow the sidebar links to explore the documentation.
 
-The site mostly focuses on Cudos **Mainnet**. If you wish to use our **Testnet** for experimentation and testing purposes, please refer to the [Testnet](/testnet/testnetoverview.html) section.
+The site mostly focuses on Cudos **Testnet** for now as we prepare the mainnet release. If you wish to use our **Testnet** for experimentation and testing purposes before launch, please refer to the [Testnet](/testnet/testnetoverview.html) section.
 
 <div class="home-grid-container">
   <div class="home-grid-item">
-    <a href="/mainnet/build/mainnet-overview.html">
+    <a href="/testnet/testnetoverview.html">
       <img src="/Build.svg" width="100%" />
       <h2>Build <span class="arrow right"></span></h2>
     </a>
     <p>Build nodes and validators on the Cudos network.</p>
   </div>
   <div class="home-grid-item">
-    <a href="/mainnet/main-smart-contracts.html">
+    <a href="/build/smart-contracts.html">
       <img src="/Develop.svg" width="100%" />
       <h2>Develop <span class="arrow right"></span></h2>
     </a>
