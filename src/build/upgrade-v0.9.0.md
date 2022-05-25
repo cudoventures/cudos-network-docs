@@ -146,3 +146,4 @@ sudo ./src/backup.sh clean
 3. Run through the process according to the previous docs!
 
 Please be aware that a necessary part of this upgrade is a change to the Chain ID from `cudos-testnet-public-2` to `cudos-testnet-public-3`, this is common practice for Cosmos-based chains. Note that some old docs may refer to the old Chain ID.
+    
