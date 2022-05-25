@@ -129,21 +129,5 @@ sudo ./src/backup.sh clean
 ```
 
 
-## If the Upgrade Fails
-**If you already started the upgrade process and the upgrade.sh phase has failed:**
-1. Delete the `cudos-network-upgrade` directory
-2. Reclone the repo
-3. The `validate.sh` script is not required at this point.
-4. You should already have a clean backup, please keep this.
-- <em>  **Do not rerun the backup!** </em>
-5. Instead of running `./upgrade.sh`, run `./fix.sh` with the same parameters.
-(The changes to the script include changes to the directory names and a change to the `validate.sh` script to handle a partial upgrade)
-6. You should now see validator activity in the log
-
-**If you haven’t started the upgrade process yet:**
-1. Delete the `cudos-network-upgrade` directory
-2. Reclone the upgrade repo
-3. Run through the process according to the previous docs!
 
 Please be aware that a necessary part of this upgrade is a change to the Chain ID from `cudos-testnet-public-2` to `cudos-testnet-public-3`, this is common practice for Cosmos-based chains. Note that some old docs may refer to the old Chain ID.
-    
