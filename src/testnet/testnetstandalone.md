@@ -7,27 +7,8 @@ title: Standalone Node Build
 ## Initialize and start the Node
 This section explains how to initialize and start a standalone full node for testing purposes. Note that running just a full node is enough to be able to send transactions, deploy and interact with smart contracts, mint NFTs, etc.
 
-**Please ensure you have completed everything in [Node Environment Preparation](/testnet/testnetenvprep.html) before you continue to create your node.**
+**Please ensure you have completed everything in [Node Environment Preparation](/testnet/testnetenvprep.html) and the [Binary Builder](/testnet/binary.md)before you continue to create your node.**
 
-# Build the binary
-
-Clone the correct branches from the [CudosNode](https://github.com/CudoVentures/cudos-node) , [CudosBuilders](https://github.com/CudoVentures/cudos-builders), and [CudosGravityBridge](https://github.com/CudoVentures/cosmos-gravity-bridge) repositories, renaming the folders *CudosNode*, *CudosBuilders*, and *CudosGravityBridge*:
-
-```
-git clone --branch v0.9.0 https://github.com/CudoVentures/cudos-node.git CudosNode
-git clone --branch v0.9.0  https://github.com/CudoVentures/cudos-builders.git CudosBuilders
-git clone --branch v0.9.0 https://github.com/CudoVentures/cosmos-gravity-bridge.git CudosGravityBridge
-```
-
-Navigate to the `CudosBuilders/docker/binary-builder` directory
-```
-cd CudosBuilders/docker/binary-builder 
-```
-
-Build the docker image of the binary by running the command:
-```
-docker-compose --env-file binary-builder.arg -f binary-builder.yml -p cudos-binary-builder up --build --detach
-```
 
 #### 1. As root, navigate to the directory `/var/lib/cudos/CudosBuilders/docker/full-node`
 ```
