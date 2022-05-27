@@ -8,10 +8,13 @@ The following instructions guide a Validator through the process of upgrade to v
 ```bash
 git clone --branch v0.9.0 https://github.com/CudoVentures/cudos-builders.git CudosBuilders
 ```
-2. Navigate to ./CudosBuilders/tools-bash/upgrade/config
+2. Navigate to ./CudosBuilders/tools-bash/upgrade/config 
+```bash 
+cd CudosBuilders
+```
 3. Make a copy of .env.example and name it ".env"
 ```bash
-cp ./CudosBuilders/tools-bash/upgrade/config/node.env.example /CudosBuilders/tools-bash/upgrade/config/node.env
+cp node.env.example node.env
 ```
 4. Open the .env and define the 3 variables.  <p><em>**"PARAM_SOURCE_DIR"**</em> must point to the folder that contains <em>"CudosNode"</em>, <em>"CudosBuilders"</em>, <em>"CudosGravityBridge"</em> and <em>"CudosData"</em>. </p> <p>Set <em>**"PARAM_NODE_NAME"**</em> to the type of node you are updating. Possible values are: root-node, seed-node, sentry-node or full-node. Example: PARAM_NODE_NAME="sentry-node"</p> <p><em>**"PARAM_HAS_ORCHESTRATOR"**</em> should be set to true if you have an orchestrator. </p>
 
@@ -19,21 +22,21 @@ Example content of a configuration file by node:
 
 **For full-node:**
 ```bash
-PARAM_SOURCE_DIR="/usr/cudos"
+PARAM_SOURCE_DIR="/var/lib/cudos"
 PARAM_NODE_NAME="full-node"
 PARAM_HAS_ORCHESTRATOR=""
 ```
 
 **For seed-node:**
 ```bash
-PARAM_SOURCE_DIR="/usr/cudos"
+PARAM_SOURCE_DIR="/var/lib/cudos"
 PARAM_NODE_NAME="seed-node"
 PARAM_HAS_ORCHESTRATOR=""
 ```
 
 **For sentry-node:**
 ```bash
-PARAM_SOURCE_DIR="/usr/cudos"
+PARAM_SOURCE_DIR="/var/lib/cudos"
 PARAM_NODE_NAME="sentry-node"
 PARAM_HAS_ORCHESTRATOR=""
 ```
