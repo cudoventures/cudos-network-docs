@@ -23,7 +23,7 @@ cp node.env.example node.env
 5. Open the .env and define the 3 variables.  <p><em>**"PARAM_SOURCE_DIR"**</em> must point to the folder that contains <em>"CudosNode"</em>, <em>"CudosBuilders"</em>, <em>"CudosGravityBridge"</em> and <em>"CudosData"</em>. </p> <p>Set <em>**"PARAM_NODE_NAME"**</em> to the type of node you are updating. Possible values are: root-node, seed-node, sentry-node or full-node. Example: PARAM_NODE_NAME="sentry-node"</p> <p><em>**"PARAM_HAS_ORCHESTRATOR"**</em> should be set to true if you have an orchestrator. </p>
 
 **Example** content of a configuration file by node:
-<p>**PARAM_SOURCE_DIR** value is an example. Please verify you are setting the correct one.</p>
+<p>PARAM_SOURCE_DIR value is an example. Please verify you are setting the correct one.</p>
 
 **For full-node:**
 ```bash
