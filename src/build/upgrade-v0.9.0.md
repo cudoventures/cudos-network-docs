@@ -3,20 +3,24 @@
 The following instructions guide a Validator through the process of upgrade to v0.9.0 of the Cudos Network Public Testnet. The process is the same per node and should be executed as described for every node.
 
 ## Prepare The Environment
-
-1. Clone the repo: https://github.com/CudoVentures/cudos-network-upgrade
+1. Create a directory for your upgrade scripts
+``` bash
+mkdir ~/cudosfork090
+```
+2. Clone the repo: https://github.com/CudoVentures/cudos-network-upgrade
 ```bash
+cd ~/cudosfork090
 git clone --branch v0.9.0 https://github.com/CudoVentures/cudos-builders.git CudosBuilders
 ```
-2. Navigate to ./CudosBuilders/tools-bash/upgrade/config 
+3. Navigate to ~/cudosfork090/CudosBuilders/tools-bash/upgrade/config 
 ```bash 
-cd CudosBuilders
+cd ~/cudosfork090/CudosBuilders/tools-bash/upgrade/config 
 ```
-3. Make a copy of .env.example and name it ".env"
+4. Make a copy of .env.example and name it ".env"
 ```bash
 cp node.env.example node.env
 ```
-4. Open the .env and define the 3 variables.  <p><em>**"PARAM_SOURCE_DIR"**</em> must point to the folder that contains <em>"CudosNode"</em>, <em>"CudosBuilders"</em>, <em>"CudosGravityBridge"</em> and <em>"CudosData"</em>. </p> <p>Set <em>**"PARAM_NODE_NAME"**</em> to the type of node you are updating. Possible values are: root-node, seed-node, sentry-node or full-node. Example: PARAM_NODE_NAME="sentry-node"</p> <p><em>**"PARAM_HAS_ORCHESTRATOR"**</em> should be set to true if you have an orchestrator. </p>
+5. Open the .env and define the 3 variables.  <p><em>**"PARAM_SOURCE_DIR"**</em> must point to the folder that contains <em>"CudosNode"</em>, <em>"CudosBuilders"</em>, <em>"CudosGravityBridge"</em> and <em>"CudosData"</em>. </p> <p>Set <em>**"PARAM_NODE_NAME"**</em> to the type of node you are updating. Possible values are: root-node, seed-node, sentry-node or full-node. Example: PARAM_NODE_NAME="sentry-node"</p> <p><em>**"PARAM_HAS_ORCHESTRATOR"**</em> should be set to true if you have an orchestrator. </p>
 
 Example content of a configuration file by node:
 
@@ -54,6 +58,15 @@ PARAM_HAS_ORCHESTRATOR=""
 3. Upgrade
 
     <em>Note: </em> The upgrade could take up to 20min. If there is any error message during the upgrade you must restore a backup (using <em>Restore a backup</em>) and start over.
+    
+::: Important
+Execute the scripts only when all config files are ready.
+
+All of the scripts below must be executed from ./upgrade folder.
+
+Make sure that ./src/backup.sh, ./src/node.sh and ./src/gravity.sh have execute permission.
+    
+::: 
 
 ## Backup
 The backup script has four usages:
@@ -61,24 +74,28 @@ The backup script has four usages:
 ### Create a Backup
 The command below creates a backup of current source files and data files.
 ``` bash
+cd ~/cudosfork090/CudosBuilders/tools-bash/upgrade
 sudo ./src/backup.sh create
 ```
 
 ### Restore a Backup
 The command restores a backup that has been created using Create a backup
 ``` bash
+cd ~/cudosfork090/CudosBuilders/tools-bash/upgrade
 sudo ./src/backup.sh restore
 ```
 
 ### Validate a Backup
 The command validates whether a created backup using Create a backup is valid
 ``` bash
+cd ~/cudosfork090/CudosBuilders/tools-bash/upgrade
 sudo ./src/backup.sh validate
 ```
 
 ### Clean a Backup
-The command deletes previously created backup using [Create a backup](##Create-a-backup)
+The command deletes previously created backup using [Create a backup](##Create-a-backup)  **DO NOT** use before the node started signing blocks or in an event of emergency.
 ``` bash
+cd ~/cudosfork090/CudosBuilders/tools-bash/upgrade
 sudo ./src/backup.sh clean
 ```
 
@@ -117,6 +134,7 @@ sudo ./src/node.sh upgrade-with-predefined-genesis
 **EXAMPLE Command Sequence**
 
 ```
+cd  ~/cudosfork090/CudosBuilders/tools-bash/upgrade 
 sudo ./src/backup.sh create
 sudo ./src/backup.sh validate
 
