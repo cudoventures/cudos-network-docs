@@ -7,7 +7,7 @@ The following instructions guide a Validator through the process of upgrade to v
 ``` bash
 mkdir ~/cudosfork090
 ```
-2. Clone the repo: https://github.com/CudoVentures/cudos-network-upgrade
+2. Clone the repo:
 ```bash
 cd ~/cudosfork090
 git clone --branch v0.9.0 https://github.com/CudoVentures/cudos-builders.git CudosBuilders
@@ -16,11 +16,11 @@ git clone --branch v0.9.0 https://github.com/CudoVentures/cudos-builders.git Cud
 ```bash 
 cd ~/cudosfork090/CudosBuilders/tools-bash/upgrade/config 
 ```
-4. Make a copy of .env.example and name it ".env"
+4. Make a copy of `node.env.example` and name it `node.env`
 ```bash
 cp node.env.example node.env
 ```
-5. Open the .env and define the 3 variables.
+5. Open the `node.env` and define the 3 variables.
 
     <em>**"PARAM_SOURCE_DIR"**</em> must point to the folder that contains <em>"CudosNode"</em>, 
     <em>"CudosBuilders"</em>, <em>"CudosGravityBridge"</em> and <em>"CudosData"</em>. This could be in different places based on your previous setup, some possible examples include:
