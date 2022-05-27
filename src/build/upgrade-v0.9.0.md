@@ -114,7 +114,7 @@ sudo ./src/backup.sh validate
 ```
 
 ### Clean a Backup (optional)
-The command deletes previously created backup using [Create a backup](##Create-a-backup)  **DO NOT** use before the node started signing blocks or in an event of emergency.
+The command deletes previously created backup using [Create a backup](##Create-a-backup)  **DO NOT** use before the node started signing blocks or in an event of emergency. Ideally, leave the backup in place.
 ``` bash
 cd ~/cudosfork090/CudosBuilders/tools-bash/upgrade
 sudo ./src/backup.sh clean
@@ -142,27 +142,6 @@ sudo ./src/node.sh upgrade
 The command upgrades a node by using an external genesis. This option cannot be used unless the upgraded network has started producing blocks
 ```
 sudo ./src/node.sh upgrade-with-predefined-genesis
-```
-
-# Run The Upgrade
-
-**UPGRADE PROCEDURE**
-
-1. Create a backup
-2. Upgrade the network
-3. If everything runs successfully then clean the backups, otherwise get in touch with us.
-
-**EXAMPLE Command Sequence**
-
-```
-cd  ~/cudosfork090/CudosBuilders/tools-bash/upgrade 
-sudo ./src/backup.sh create
-sudo ./src/backup.sh validate
-
-sudo ./src/node.sh validate
-sudo ./src/node.sh upgrade
-
-sudo ./src/backup.sh clean
 ```
 
 For informational purposes: please be aware that a necessary part of this upgrade is a change to the Chain ID from `cudos-testnet-public-2` to `cudos-testnet-public-3`, this is common practice for Cosmos-based chains. Note that some old docs may refer to the old Chain ID.
