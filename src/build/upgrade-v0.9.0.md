@@ -58,7 +58,7 @@ PARAM_HAS_ORCHESTRATOR=""
 
 1. Create a backup
 
-    <em>Note:</em> Creating of a backup could take a lot of time. It is very important to do it ONCE upgrade hight has been reached NOT before that. Make sure there is no error messages in the console. If something went wrong you can always re-create the backup. Make sure that the backup is correct (You can check it using <em>Validate a backup</em>) before proceeding to the next step.
+    <em>Note:</em> Creating of a backup could take a lot of time. It is very important to do it ONCE upgrade height has been reached NOT before that. Make sure there is no error messages in the console. If something went wrong you can always re-create the backup. Make sure that the backup is correct (You can check it using <em>Validate a backup</em>) before proceeding to the next step. The backup can take around 10-20 minutes - it is a 91GiB transfer.
 
 2. Validate
 
@@ -68,13 +68,25 @@ PARAM_HAS_ORCHESTRATOR=""
 
     <em>Note: </em> The upgrade could take up to 20min. If there is any error message during the upgrade you must restore a backup (using <em>Restore a backup</em>) and start over.
     
+
 ::: tip
 Execute the scripts only when all config files are ready.
 
 All of the scripts below must be executed from ./upgrade folder.
 
 Make sure that ./src/backup.sh, ./src/node.sh and ./src/gravity.sh have execute permission.
-    
+
+You can do this with:
+
+```bash
+chmod 744 ./src/backup.sh
+```
+```bash
+chmod 744 ./src/node.sh
+```
+```bash
+chmod 744 ./src/gravity.sh
+```
 ::: 
 
 ## Backup
@@ -87,7 +99,7 @@ cd ~/cudosfork090/CudosBuilders/tools-bash/upgrade
 sudo ./src/backup.sh create
 ```
 
-### Restore a Backup
+### Restore a Backup (optional)
 The command restores a backup that has been created using Create a backup
 ``` bash
 cd ~/cudosfork090/CudosBuilders/tools-bash/upgrade
@@ -101,7 +113,7 @@ cd ~/cudosfork090/CudosBuilders/tools-bash/upgrade
 sudo ./src/backup.sh validate
 ```
 
-### Clean a Backup
+### Clean a Backup (optional)
 The command deletes previously created backup using [Create a backup](##Create-a-backup)  **DO NOT** use before the node started signing blocks or in an event of emergency.
 ``` bash
 cd ~/cudosfork090/CudosBuilders/tools-bash/upgrade
@@ -126,7 +138,7 @@ The command upgrades a node
 sudo ./src/node.sh upgrade
 ```
 
-### Perform an Upgrade Bypassing The Exporting and Migrating of the Genesis File
+### Perform an Upgrade Bypassing The Exporting and Migrating of the Genesis File (optional)
 The command upgrades a node by using an external genesis. This option cannot be used unless the upgraded network has started producing blocks
 ```
 sudo ./src/node.sh upgrade-with-predefined-genesis
@@ -153,4 +165,4 @@ sudo ./src/node.sh upgrade
 sudo ./src/backup.sh clean
 ```
 
-Please be aware that a necessary part of this upgrade is a change to the Chain ID from `cudos-testnet-public-2` to `cudos-testnet-public-3`, this is common practice for Cosmos-based chains. Note that some old docs may refer to the old Chain ID.
+For informational purposes: please be aware that a necessary part of this upgrade is a change to the Chain ID from `cudos-testnet-public-2` to `cudos-testnet-public-3`, this is common practice for Cosmos-based chains. Note that some old docs may refer to the old Chain ID.
