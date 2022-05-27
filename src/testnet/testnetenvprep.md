@@ -17,8 +17,8 @@ You must ensure that you have the following installed:
 **Docker 20.10.6 or above (latest version recommended)**
 Refer to the [Docker installation and upgrade guide](https://docs.docker.com/engine/install/) for your OS.
  
-**Docker Compose 1.29.1 or above (latest version recommended)**
-Refer to the [Docker Compose Installation and Upgrade guide](https://docs.docker.com/compose/install/) for your OS.
+**Docker Compose 1.29.x**
+Refer to steps 3 and 4 of the [Docker Compose Installation and Upgrade guide](https://www.devopsroles.com/how-to-install-docker-compose-on-ubuntu/) for your OS.
  
 **Git**
 Refer to the [Git installation guide](https://github.com/git-guides/install-git) for your OS.
@@ -45,23 +45,6 @@ mkdir /var/lib/cudos
 cd /var/lib/cudos
 ```
 
-Clone the correct branches from the [CudosNode](https://github.com/CudoVentures/cudos-node) , [CudosBuilders](https://github.com/CudoVentures/cudos-builders), and [CudosGravityBridge](https://github.com/CudoVentures/cosmos-gravity-bridge) repositories, renaming the folders *CudosNode*, *CudosBuilders*, and *CudosGravityBridge*:
-
-```
-git clone --depth 1 --branch v0.4.0 https://github.com/CudoVentures/cudos-node.git CudosNode
-git clone --depth 1 --branch v0.3.3  https://github.com/CudoVentures/cudos-builders.git CudosBuilders
-git clone --depth 1 --branch v0.4.0 https://github.com/CudoVentures/cosmos-gravity-bridge.git CudosGravityBridge
-```
-
-Navigate to the `CudosBuilders/docker/binary-builder` directory
-```
-cd CudosBuilders/docker/binary-builder 
-```
-
-Build the docker image of the binary by running the command:
-```
-docker-compose --env-file binary-builder.arg -f binary-builder.yml -p cudos-binary-builder up --build --detach
-```
 
 You have now prepared your node environment. If you are going to build a standalone Node, please continue to [Standalone Node Build](/testnet/testnetstandalone.md). If you are building a Validator Cluster, please repeat the above steps for every node that is going to be in your cluster, then continue to [Validator Cluster Build](/testnet/testnetcluster.md).
 

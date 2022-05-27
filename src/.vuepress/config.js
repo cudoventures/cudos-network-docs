@@ -101,7 +101,7 @@ module.exports = {
           {
             text: 'Testnet Upgrade',
             collapsible: true,
-            children: ['/build/upgrade-v0.4']
+            children: ['/build/upgrade-v0.9.0']
           },
         ],
       },
