@@ -59,7 +59,7 @@ PARAM_HAS_ORCHESTRATOR=""
 
     <em>Note: </em> The upgrade could take up to 20min. If there is any error message during the upgrade you must restore a backup (using <em>Restore a backup</em>) and start over.
     
-::: Important
+::: tip
 Execute the scripts only when all config files are ready.
 
 All of the scripts below must be executed from ./upgrade folder.
