@@ -26,7 +26,9 @@ cp node.env.example node.env
     <em>"CudosBuilders"</em>, <em>"CudosGravityBridge"</em> and <em>"CudosData"</em>. This could be in different places based on your previous setup, some possible examples include:
     `"/root/cudos"`, `"/var/lib/cudos"`, `"/usr/cudos"`
 
-    Set <em>**"PARAM_NODE_NAME"**</em> to the type of node you are updating. Possible values are: root-node, seed-node, sentry-node or full-node. Example: PARAM_NODE_NAME="sentry-node"
+    Set <em>**"PARAM_NODE_NAME"**</em> to the type of node you are updating. Possible values are: seed-node, sentry-node or full-node (for the validator). Example: PARAM_NODE_NAME="sentry-node"
+    
+    (root-node is also an option for Cudos internal use)
     
     <em>**"PARAM_HAS_ORCHESTRATOR"**</em> should be set to true if you have an orchestrator.
 
