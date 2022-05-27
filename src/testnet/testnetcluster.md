@@ -35,7 +35,7 @@ Enter the Seed’s ID as the SEEDS value, and the Sentry’s ID as the `PERSISTE
 
 ### 1. Initialize your Validator Node
 
-**Please ensure you have completed everything in [Node Environment Preparation](/testnet/testnetenvprep.html) before you continue to create your node.**
+**Please ensure you have completed everything in [Node Environment Preparation](/testnet/testnetenvprep.html) and  [Binary Builder](/testnet/binary.html) before you continue to create your node.**
 
 To create a validator node you will build a full node, then in a later step stake CUDOS on it, at which point the node will become a validator. 
 
