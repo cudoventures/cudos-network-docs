@@ -8,7 +8,7 @@ NFTs are compatible with Cudos Network natively.
 
 ## Module Overview
 
-A module for operating with Non-Fungible Tokens on the CUDOS network. The methods that are exposed by it are mainly based on the [ERC721 interface](https://ethereum.org/en/developers/docs/standards/tokens/erc-721/) from the Ethereum network and not so much on the [CW-721](https://github.com/CosmWasm/cw-nfts) from the Cosmos network. The reason for this is that the main idea of the module is to transfer tokens through the [bridge](https://github.com/CudoVentures/cosmos-gravity-bridge) between the Cudos Network and Ethereum, and thus it is better to follow the ERC721 standard.
+A module for operating with Non-Fungible Tokens on the CUDOS network. The methods that are exposed by it are mainly based on [ERC721 interface](https://ethereum.org/en/developers/docs/standards/tokens/erc-721/) from the Ethereum network and not so much on the [CW-721](https://github.com/CosmWasm/cw-nfts) from the Cosmos network. The reason for this is that the main idea of the module is to transfer tokens through a [bridge](https://github.com/CudoVentures/cosmos-gravity-bridge) between CUDOS network and Ethereum and thus it is better to follow the ERC721 standard. 
 
 ## Module Interface
 The module gives the user the ability to either write (via transaction) or read (via query) to/from the network.
@@ -33,6 +33,7 @@ The module gives the user the ability to either write (via transaction) or read 
 | ----------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
 | [`denom`](#denom)                           | Queries for a [`denomination`](#Denom) by denomination Id                                                  |
 | [`denom-by-name`](#denom-by-name)                             | Queries for a  [`denomination`](#Denom) by denomination name                                                                  |
+| [`denom-by-symbol`](#denom-by-symbol)                             | Queries for a  [`denomination`](#Denom) by denomination symbol   
 | [`denoms`](#denoms)             | Query for all denominations of all collections of NFTs  |
 | [`collection`](#collection)                        | Get all the NFTs from a given [`collection`](#Collections).                                                                                                 |
 | [`supply`](#supply)                  | Returns the total supply of a collection or owner of NFTs.                                                                                       |
@@ -41,152 +42,49 @@ The module gives the user the ability to either write (via transaction) or read 
 | [`approvals`](#approvals)                 | Get the approved addresses for the [`NFT`](#NFT)
 | [`isApprovedForAll`](#isapprovedforall)                 | Gets whether the address is approved for all
 
-## Quick start (public testnet)
+## Usage from inside a CosmWasm smart contract
+You can check how to use the module from a rust smart contract in the [`cudos-cosmwasm-bindings`](https://github.com/CudoVentures/cudos-cosmwasm-bindings)
 
-In this section we provide the basic commands that need to be executed in order to mint an NFT and send it to another wallet.
-For a full description of all the available functionality, please have a look at each [function's description](/build/nft.html#full-commands-info).
-In order to follow these instructions, a running node is needed (for example a [full node](/build/developers-setup.html#initialize-and-start-full-node)), as well as having added the keys of at least one wallet.
-You can find instructions on how to add an account into your keyring, or import a wallet you created in Keplr in the [developer setup page](/build/developers-setup.html#create-an-account).
-After doing so, keep your terminal inside the Docker container open to follow the next steps.
-
-### Minting a new NFT
-
-All NFTs need to belong to a parent group, called denomination, or `denom` for short.
-A denomination can have many NFTs minted within it, and is used to identify the creator of an NFT.
-Denominations can be thought of as groups of NFTs.
-Thus, in order to mint an NFT, the first step is to [issue a denomination](/build/nft.html#issue) for our account.
-
-Denominations need to have an ID, which needs to be an alphanumeric string in lowercase -- we use the placeholder `<testdenom>` in the examples below.
-We also need to specify in flags the network where we want to issue our denomination, the wallet that will issue it (which needs to be in the keyring -- we use the placeholder `<walletAddress>` in what follows) and a name for the denomination, which we can choose.
-We will be using the `test` backend for the keyring (the default one in public testnet) for these instructions.
-However, if you are running a Validator using the `os` backend, you can use your Validator wallet, as long as you specify the `--keyring-backend os` flag in the commands below.
-Also, we must specify the `node` flag, setting it to the IP address of the node that is running on the Cudos Network.
-
-Thus, in order to create a denomination in public testnet the command looks like
-
-```bash
-cudos-noded tx nft issue <testdenom> --from=<walletAddress> --name="My first denom" --chain-id=cudos-testnet-public-2 --node https://sentry1.gcp-uscentral1.cudos.org:26657
-```
-
-Please note that we will be prompted at all steps to confirm we want to broadcast the transaction.
-When asked for confirmation, just type `y` and press enter.
-
-Now that we have created a `denom` for our account, we can [mint](/build/nft.html#mint) an NFT.
-When minting one, we can choose who the owner of that NFT is going to be at the start.
-More precisely, when minting an NFT we need to include the `--recipient` flag and assign it the wallet address where we want that NFT to go to.
-The address that we choose will be the owner of that NFT.
-
-Let us start by minting and NFT and sending it to our own address.
-To do so, simply run the following command, using the denom name you just chose and your wallet address,
-
-```bash
-cudos-noded tx nft mint <testdenom> --from=<walletAddress> --recipient=<walletAddress> --chain-id=cudos-testnet-public-2 --node https://sentry1.gcp-uscentral1.cudos.org:26657
-```
-
-To see our freshly minted NFT, we can run the following command
-
-```bash
-cudos-noded query nft collection <testdenom>
-```
-The output should look like the following:
-
-```bash
-collection:
-  denom:
-    creator: <walletAddress>
-    id: <testdenom>
-    name: My first denom
-    schema: ""
-  nfts:
-  - approvedAddresses: {}
-    data: ""
-    id: "1"
-    name: ""
-    owner: <walletAddress>
-    uri: ""
-pagination:
-  next_key: null
-  total: "0"
-```
-
-This provides a list of all the NFTs for the specified denom.
-All NFTs belong to a [`collection`](/build/nft.html#collections), and are uniquely identified by its denom and its NFT ID.
-At the moment, we have only created one NFT, and thus its ID is 1.
-This ID is just a counter, so it will increase by one unit every time we mint a new NFT.
-
-#### Further options for NFT minting
-
-We can add extra flags when minting an NFT, in order to further customise it.
-For example, we can use the `--uri` to set some metadata to it (in JSON format), or we can set some fees that will need to be paid every time this NFT is transacted with, with the flag `--fees`.
-In order to add a fee, we also need to include its unit.
-For example, if we want to mint an NFT and set a 10acudos fee on it (acudos stands for attoCUDOS, the [SI prefix](https://en.wikipedia.org/wiki/Atto-)), we can execute the following
-
-```bash
-cudos-noded tx nft mint <testdenom> --from=<walletAddress> --recipient=<walletAddress> --chain-id=cudos-testnet-public-2 --fees=10acudos
-```
-
-### Sending an NFT to another wallet
-
-In order to send an NFT we use the [`transfer`](/build/nft.html#transfer) function.
-Please note that sending the NFT to someone else changes its owner, and owners are able to, amongst other things, change its metadata or approve addresses to move it.
-
-To test this, first we would recommend adding a second wallet to your keyring, so that you are still the owner after the NFT after moving it to a different account.
-As a reminder, you can create a new wallet and add it to your keyring by running the following command,
-
-```bash
-cudos-noded keys add <newAccount>
-```
-
-where `<newAccount>` is a placeholder to be changed to the name you want to give to this new account.
-After doing that, we can transfer the NFT by specifying the wallet where it comes from, the one we want to send it to, the denom ID, the NFT ID (the incremental ID we explained above, which was `1` for our first NFT) and the relevant flags:
-
-```bash
-cudos-noded tx nft transfer <walletAddress> <newAccount> <testdenom> 1 --from=<walletAddress> --chain-id=cudos-testnet-public-2
-```
-
-Note that we still need to specify the `--from` flag with the address that is requesting the transfer of the NFT.
-That is because, in addition to being the owner of the NFT, it can also be an address that is approved to move this token.
-
-## Full commands information
+## Full commands info:
 
 ### Transaction commands
 
 ### `issue`
 
-> Issues a new denom that will be used for minting new NFTs. Only the denom creator can issue new NFTs.
+> Issues a new denom that will be used for minting new NFTs. Only the denom creator can issue new NFTs
 
 - arguments:
   - `denom-id` `string` `Unique Id that identifies the denom. Must be all lowercase` `required: true`
-- flags:
+- flags: 
   - `--name` `string` `The unique name of the denom.` `required: true`
+  - `--symbol` `string` `The unique symbol of the denom.` `required: true`
   - `--from` `string` `The address that is issuing the denom. Will be set as denom creator. Can be either an address or alias to that address` `required: true`
   - `--schema` `string` `Metadata about the NFT. Schema-content or path to schema.json.` `required: false`
   - `--chain-id` `string` `The name of the network.` `required`
-  - `--fees` `string` `The specified fee for the operation` `required: false`
 
 **Example:**
 
 ``` bash
-$ cudos-noded tx nft issue <denom-id> --from=<key-name> --name=<denom-name> --schema=<schema-content or path to schema.json> --chain-id=<chain-id> --fees=<fee>
+$ cudos-noded tx nft issue <denom-id> --from=<key-name> --name=<denom-name> --symbol=<denom-symbol> --schema=<schema-content or path to schema.json> --chain-id=<chain-id>
 ```
 
 ### `mint`
 
-> Mint a NFT and set the owner to the recipient. Only the denom creator can mint a new NFT.
+> Mint a NFT and set the owner to the recipient. Only the denom creator can mint a new NFT
 
 - arguments:
     - `denom-id` `string` `The denomId that this NFT will be associated` `required: true`
+    - `token-id` `string` `Unique Id that identifies the token. Must be all lowercase` `required: true`
 - flags:
     - `--from` `string` `The address that is minting the NFT. Must be denom creator. Can be either an address or alias to that address` `required: true`
     - `--recipient` `string` `The user(owner) that will receive the NFT` `required: true`
     - `--uri` `string` `The URI of the NFT.` `required: false`
     - `--chain-id` `string` `The name of the network.` `required: true`
-    - `--fees` `string` ` The specified fee for the operation` `required: false`
 
 **Example:**
 
 ``` bash
-$ cudos-noded tx nft mint <denom-id> --recipient=<recipient> --from=<key-name> --uri=<uri> --chain-id=<chain-id> --fees=<fee>
+$ cudos-noded tx nft mint <denom-id> <token-id> --recipient=<recipient> --from=<key-name> --uri=<uri> --chain-id=<chain-id>
 
 ```
 
@@ -201,17 +99,16 @@ $ cudos-noded tx nft mint <denom-id> --recipient=<recipient> --from=<key-name> -
   - `--from` `string` `The address that is editing the NFT. Can be either an address or alias to that address` `required: true`
   - `--uri` `string` `The URI of the NFT.` `required: false`
   - `--chain-id` `string` `The name of the network.` `required: true`
-  - `--fees` `string` `The specified fee for the operation` `required: false`
 
 **Example:**
 
 ``` bash
-$ cudos-noded tx nft edit <denom-id> <token-id>  --from=<key-name> --uri=<uri> --chain-id=<chain-id> --fees=<fee>
+$ cudos-noded tx nft edit <denom-id> <token-id>  --from=<key-name> --uri=<uri> --chain-id=<chain-id>
 ```
 
 ### `burn`
 
-> Burns the NFT - deletes it permanently.
+> Burns the NFT - deletes it permanently
 
 - arguments:
   - `denom-id` `string` `The denomId of the edited NFT` `required: true`
@@ -219,17 +116,16 @@ $ cudos-noded tx nft edit <denom-id> <token-id>  --from=<key-name> --uri=<uri> -
 - flags:
   - `--from` `string` `The address that is editing the NFT. Can be either an address or alias to that address` `required: true`
   - `--chain-id` `string` `The name of the network.` `required: true`
-  - `--fees` `string` `The specified fee for the operation` `required: false`
 
 **Example:**
 
 ``` bash
-$ cudos-noded tx nft burn <denom-id> <token-id> --from=<key-name> --chain-id=<chain-id> --fees=<fee>
+$ cudos-noded tx nft burn <denom-id> <token-id> --from=<key-name> --chain-id=<chain-id>
 ```
 
 ### `transfer`
 
-> Transfer an NFT - from one owner to a new owner. The sender must be either the owner, an approved address for that NFT or a globally approved operator.
+> Transfer an NFT - from one owner to another The sender must be either the owner, approved address on NFT or globally approved operator.
 
 - arguments:
   - `from` `string` `The address of the NFT owner` `required: true`
@@ -240,17 +136,16 @@ $ cudos-noded tx nft burn <denom-id> <token-id> --from=<key-name> --chain-id=<ch
   - `--from` `string` `The address that is requesting the transfer of the NFT. Can be either an address or alias to that address. must be either the owner, approved address on NFT or globally approved operator.` `required: true`
   - `--uri` `string` `The URI of the NFT.` `required: false`
   - `--chain-id` `string` `The name of the network.` `required: true`
-  - `--fees` `string` `The specified fee for the operation` `required: false`
 
 **Example:**
 
 ``` bash
-$ cudos-noded tx nft transfer <from> <to> <denom-id> <token-id>  --from=<key-name> --uri=<uri> --chain-id=<chain-id> --fees=<fee>
+$ cudos-noded tx nft transfer <from> <to> <denom-id> <token-id>  --from=<key-name> --uri=<uri> --chain-id=<chain-id>
 ```
 
 ### `approve`
 
-> Adds an address to the approved list. Approved addresses on the NFT level can transfer the NFT from one owner to another. Approved addresses for the NFT are cleared upon transfer.
+> Adds an address to the approved list. Approved address on NFT level can transfer the NFT from one owner to another. Approved addresses for the NFT are cleared upon transfer.
 
 - arguments:
   - `approvedAddress` `string` `The address that will be approved` `required: true`
@@ -259,17 +154,16 @@ $ cudos-noded tx nft transfer <from> <to> <denom-id> <token-id>  --from=<key-nam
 - flags:
   - `--from` `string` `The address that is requesting the approval. Can be either an address or alias to that address. must be either the owner  or globally approved operator.` `required: true`
   - `--chain-id` `string` `The name of the network.` `required: true`
-  - `--fees` `string` `The specified fee for the operation` `required: false`
 
 **Example:**
 
 ``` bash
-$ cudos-noded tx nft approve <approvedAddress> <denom-id> <token-id> --from=<key-name> --chain-id=<chain-id> --fees=<fee>
+$ cudos-noded tx nft approve <approvedAddress> <denom-id> <token-id> --from=<key-name> --chain-id=<chain-id>
 ```
 
 ### `revoke`
 
-> Removes the address from the approved list. Approved addresses on the NFT level can transfer the NFT from one owner to another. Approved addresses for the NFT are cleared upon transfer.
+> Removes the address from the approved list. Approved address on NFT level can transfer the nft from one owner to another. Approved addresses for the NFT are cleared upon transfer.
 
 - arguments:
   - `addressToRevoke` `string` `The address that will be removed` `required: true`
@@ -278,17 +172,16 @@ $ cudos-noded tx nft approve <approvedAddress> <denom-id> <token-id> --from=<key
 - flags:
   - `--from` `string` `The address that is requesting the removal of approval. Can be either an address or alias to that address. Must be either the owner  or globally approved operator.` `required: true`
   - `--chain-id` `string` `The name of the network.` `required: true`
-  - `--fees` `string` `Тhe specified fee for the operation` `required: false`
 
 **Example:**
 
 ``` bash
-$ cudos-noded tx nft revoke <addressToRevoke> <denom-id> <token-id>--uri=<uri> --from=<key-name> --chain-id=<chain-id> --fees=<fee>
+$ cudos-noded tx nft revoke <addressToRevoke> <denom-id> <token-id>--uri=<uri> --from=<key-name> --chain-id=<chain-id>
 ```
 
 ### `approveAll`
 
-> Adds the address to the approved operator list for the user. Approved addresses on the user level can transfer the NFT from one owner to another. The address is automatically added to the msg.sender(--from) approved list.
+> Adds the address to the approved operator list for the user. Approved address on user level can transfer the nft from one owner to another. The address is automatically added to the msg.sender(--from) approved list
 
 - arguments:
   - `operator` `string` `The address that will be approved` `required: true`
@@ -296,12 +189,11 @@ $ cudos-noded tx nft revoke <addressToRevoke> <denom-id> <token-id>--uri=<uri> -
 - flags:
   - `--from` `string` `The address that is requesting the approval. The approved address will be able to handle the transfers of --from assets. Can be either an address or alias to that address. must be either the owner  or globally approved operator.` `required: true`
   - `--chain-id` `string` `The name of the network.` `required: true`
-  - `--fees` `string` `The specified fee for the operation` `required: false`
 
 **Example:**
 
 ``` bash
-$ cudos-noded tx nft approveAll <operator> <true/false> --from=<key-name> --chain-id=<chain-id> --fees=<fee>
+$ cudos-noded tx nft approveAll <operator> <true/false> --from=<key-name> --chain-id=<chain-id>
 ```
 
 ### Query commands
@@ -314,7 +206,7 @@ $ cudos-noded tx nft approveAll <operator> <true/false> --from=<key-name> --chai
   - `denom-id` `string` `The denomId to search for` `required: true`
 - flags:
   - none
-
+  
 **Example:**
 
 ``` bash
@@ -335,6 +227,22 @@ $ cudos-noded query nft denom <denomId>
 ``` bash
 $ cudos-noded query nft denom <denomName>
 ```
+
+### `denom-by-symbol`
+
+> Query the denom by the specified denom symbol.
+
+- arguments:
+  - `symbol` `string` `The denom symbol to search for` `required: true`
+- flags:
+  - none
+
+**Example:**
+
+``` bash
+$ cudos-noded query nft denom <symbol>
+```
+
 
 ### `denoms`
 
@@ -383,13 +291,13 @@ $ cudos-noded query nft supply <denom-id>
 
 ### `owner`
 
-> Get the NFTs owned by an account address.
+> Get the NFTs owned by an account address for a given denom.
 
 - arguments:
   - `address`: `The address of the owner.` `required:true`
 - flags:
-  - `--denom-id`: `The id of the denom` `required:true`
-
+  - `--denom-id`: `The id of the denom` `required:false`
+  
 **Example:**
 ``` bash
 $ cudos-noded query nft owner <address> --denom-id=<denom-id>
@@ -413,7 +321,7 @@ $ cudos-noded query nft token <denom-id> <token-id>
 
 ### `approvals`
 
-> Get the approved addresses for the NFT.
+> Get the approved addresses for the NFT
 
 - arguments:
   - `denom-id`: `The id of the denom collection` `required:true`
@@ -430,7 +338,7 @@ $ cudos-noded query nft approvals <denomId> <tokenId>
 
 ### `isApprovedForAll`
 
-> Query if an address is an authorised operator for another address.
+> Query if an address is an authorized operator for another address
 
 - arguments:
   - `owner`: `The owner addresses to search` `required:true`
@@ -444,7 +352,7 @@ $ cudos-noded query nft approvals <denomId> <tokenId>
 $ cudos-noded query nft approvals <owner> <operator>
 ```
 
-## Object types
+## Object types:
 
 ### NFT
 ```go
@@ -486,7 +394,7 @@ type Collection struct {
 
 ## Owners
 
->Owner holds the address of the user and their collection of NFTs.
+>Owner holds the address of the user and his collection of NFTs
 
 ```go
 // Owner of non fungible tokens
@@ -497,7 +405,7 @@ type Owner struct {
 ```
 
 ## IDCollection
->IDCollection holds the denomId and the Ids of the NFTs (instead of the full object).
+>IDCollection holds the denomId and the Ids of the NFTs(insted of the full object)
 
 ```go
 // IDCollection of non fungible tokens
@@ -509,19 +417,20 @@ type IDCollection struct {
 ```
 
 ## Denom
-> The denomination is used to group NFTs under it.
+> The denomination is used to group NFTs under it
 ```go
 // Denom defines a type of NFT
 type Denom struct {
 	Id      string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	Name    string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	Symbol    string `protobuf:"bytes,2,opt,name=name,proto3" json:"symbol,omitempty"`
 	Schema  string `protobuf:"bytes,3,opt,name=schema,proto3" json:"schema,omitempty"`
 	Creator string `protobuf:"bytes,4,opt,name=creator,proto3" json:"creator,omitempty"`
 }
 ```
 
 ## Events
-> The events that are emitted after certain operations.
+> The events that are emitted after certain operations
 ```go
 	EventTypeIssueDenom    = "issue_denom"
 	EventTypeTransferNft   = "transfer_nft"
@@ -531,4 +440,635 @@ type Denom struct {
 	EventTypeEditNFT       = "edit_nft"
 	EventTypeMintNFT       = "mint_nft"
 	EventTypeBurnNFT       = "burn_nft"
+```
+
+## API Endpoints
+> default API local url: localhost:1317
+
+All the requests/response below are used as an example, for the full capabilities and parameters, consult the full command specifications
+
+### Transactions:
+
+### Issue Denom : POST
+http://localhost:1317/nft/nfts/denoms/issue
+
+Request:
+```json
+{
+  "owner": "test",
+  "id": "testdenom",
+  "name": "testname",
+  "symbol": "testDenomSymbol",
+  "base_req": {
+    "from":"cudos1qy7a8qvmqtqrscz7rf9l3xlllm0l6x3xnmarze",
+    "chain_id":"cudos-network"
+  }
+}
+```
+
+Response: 
+```json
+{
+  "type": "cosmos-sdk/StdTx",
+  "value": {
+    "msg": [
+      {
+        "type": "github.com/CudoVentures/cudos-node/nft/MsgIssueDenom",
+        "value": {
+          "id": "testdenom",
+          "name": "testname",
+          "test_denom_symbol": "testDenomSymbol",
+          "sender": "cudos1qy7a8qvmqtqrscz7rf9l3xlllm0l6x3xnmarze"
+        }
+      }
+    ],
+    "fee": {
+      "gas": "200000"
+    },
+    "signatures": [],
+    "memo": "",
+    "timeout_height": "0"
+  }
+}
+```
+
+### Mint NFT : POST
+http://localhost:1317/nft/nfts/mint
+
+Request:
+```json
+{
+  "denom_id": "testdenom",
+  "name": "testTokenName",
+  "uri": "testuri",
+  "data": "testdata",
+  "recipient": "cudos1s609vqsnwxpm2t4scjq70770kph7uaz53lg89v",
+  "base_req": {
+    "from":"cudos1qy7a8qvmqtqrscz7rf9l3xlllm0l6x3xnmarze",
+    "chain_id":"cudos-network"
+  }
+}
+```
+
+Response:
+```json
+{
+  "type": "cosmos-sdk/StdTx",
+  "value": {
+    "msg": [
+      {
+        "type": "github.com/CudoVentures/cudos-node/nft/MsgMintNFT",
+        "value": {
+          "denom_id": "testdenom",
+          "name": "testTokenName",
+          "uri": "testuri",
+          "data": "testdata",
+          "sender": "cudos1qy7a8qvmqtqrscz7rf9l3xlllm0l6x3xnmarze",
+          "recipient": "cudos1s609vqsnwxpm2t4scjq70770kph7uaz53lg89v"
+        }
+      }
+    ],
+    "fee": {
+      "gas": "200000"
+    },
+    "signatures": [],
+    "memo": "",
+    "timeout_height": "0"
+  }
+}
+```
+
+### Edit NFT : PUT
+http://localhost:1317/nft/nfts/edit/{denomId}/{tokenId}
+
+Request:
+```json
+{
+  "uri": "testuri",
+  "data": "testdata",
+  "name": "testname",
+  "base_req": {
+    "from":"cudos1qy7a8qvmqtqrscz7rf9l3xlllm0l6x3xnmarze",
+    "chain_id":"cudos-network"
+  }
+}
+```
+
+Response:
+```json
+{
+  "type": "cosmos-sdk/StdTx",
+  "value": {
+    "msg": [
+      {
+        "type": "github.com/CudoVentures/cudos-node/nft/MsgEditNFT",
+        "value": {
+          "id": "1",
+          "denom_id": "testdenom",
+          "name": "testname",
+          "uri": "testuri",
+          "data": "testdata",
+          "sender": "cudos1qy7a8qvmqtqrscz7rf9l3xlllm0l6x3xnmarze"
+        }
+      }
+    ],
+    "fee": {
+      "gas": "200000"
+    },
+    "signatures": [],
+    "memo": "",
+    "timeout_height": "0"
+  }
+}
+```
+
+### Transfer NFT : POST
+http://localhost:1317/nft/nfts/transfer/{denomId}/{tokenId}
+
+Request:
+```json
+{
+  "from": "cudos1s609vqsnwxpm2t4scjq70770kph7uaz53lg89v",
+  "to": "cudos18vpe7dfn6038ceae0ndlxdyuvgafrk2y6klzkx",
+  "recipient": "cudos1s609vqsnwxpm2t4scjq70770kph7uaz53lg89v",
+  "base_req": {
+    "from":"cudos1qy7a8qvmqtqrscz7rf9l3xlllm0l6x3xnmarze",
+    "chain_id":"cudos-network"
+  }
+}
+```
+
+Response:
+```json
+{
+  "type": "cosmos-sdk/StdTx",
+  "value": {
+    "msg": [
+      {
+        "type": "github.com/CudoVentures/cudos-node/nft/MsgTransferNft",
+        "value": {
+          "denom_id": "testdenom",
+          "token_id": "1",
+          "from": "cudos1s609vqsnwxpm2t4scjq70770kph7uaz53lg89v",
+          "to": "cudos18vpe7dfn6038ceae0ndlxdyuvgafrk2y6klzkx",
+          "sender": "cudos1qy7a8qvmqtqrscz7rf9l3xlllm0l6x3xnmarze"
+        }
+      }
+    ],
+    "fee": {
+      "gas": "200000"
+    },
+    "signatures": [],
+    "memo": "",
+    "timeout_height": "0"
+  }
+}
+```
+
+### Approve NFT : POST
+http://localhost:1317/nft/nfts/approve/{denomId}/{tokenId}
+
+Request:
+```json
+{
+  "address_to_approve": "cudos1s609vqsnwxpm2t4scjq70770kph7uaz53lg89v",
+  "base_req": {
+    "from":"cudos1qy7a8qvmqtqrscz7rf9l3xlllm0l6x3xnmarze",
+    "chain_id":"cudos-network"
+  }
+}
+```
+
+Response:
+```json
+{
+  "type": "cosmos-sdk/StdTx",
+  "value": {
+    "msg": [
+      {
+        "type": "github.com/CudoVentures/cudos-node/nft/MsgApproveNft",
+        "value": {
+          "id": "1",
+          "denom_id": "testdenom",
+          "sender": "cudos1qy7a8qvmqtqrscz7rf9l3xlllm0l6x3xnmarze",
+          "approvedAddress": "cudos1s609vqsnwxpm2t4scjq70770kph7uaz53lg89v"
+        }
+      }
+    ],
+    "fee": {
+      "gas": "200000"
+    },
+    "signatures": [],
+    "memo": "",
+    "timeout_height": "0"
+  }
+}
+```
+
+### Revoke NFT : POST
+http://localhost:1317/nft/nfts/revoke/{denomId}/{tokenId}
+
+Request:
+```json
+{
+  "address_to_revoke": "cudos1s609vqsnwxpm2t4scjq70770kph7uaz53lg89v",
+  "base_req": {
+    "from":"cudos1qy7a8qvmqtqrscz7rf9l3xlllm0l6x3xnmarze",
+    "chain_id":"cudos-network"
+  }
+}
+```
+
+Response:
+```json
+{
+  "type": "cosmos-sdk/StdTx",
+  "value": {
+    "msg": [
+      {
+        "type": "github.com/CudoVentures/cudos-node/nft/MsgRevokeNft",
+        "value": {
+          "addressToRevoke": "cudos1s609vqsnwxpm2t4scjq70770kph7uaz53lg89v",
+          "denom_id": "testdenom",
+          "token_id": "1",
+          "sender": "cudos1qy7a8qvmqtqrscz7rf9l3xlllm0l6x3xnmarze"
+        }
+      }
+    ],
+    "fee": {
+      "gas": "200000"
+    },
+    "signatures": [],
+    "memo": "",
+    "timeout_height": "0"
+  }
+}
+```
+
+
+### Burn NFT : POST
+http://localhost:1317/nft/nfts/revoke/{denomId}/{tokenId}
+
+Request:
+```json
+{
+  "base_req": {
+    "from":"cudos1qy7a8qvmqtqrscz7rf9l3xlllm0l6x3xnmarze",
+    "chain_id":"cudos-network"
+  }
+}
+```
+
+Response:
+```json
+{
+  "type": "cosmos-sdk/StdTx",
+  "value": {
+    "msg": [
+      {
+        "type": "github.com/CudoVentures/cudos-node/nft/MsgBurnNFT",
+        "value": {
+          "id": "1",
+          "denom_id": "testdenom",
+          "sender": "cudos1qy7a8qvmqtqrscz7rf9l3xlllm0l6x3xnmarze"
+        }
+      }
+    ],
+    "fee": {
+      "gas": "200000"
+    },
+    "signatures": [],
+    "memo": "",
+    "timeout_height": "0"
+  }
+}
+```
+
+### Approve All : POST
+http://localhost:1317/nft/nfts/revoke/approveAll
+
+Request:
+```json
+{
+  "approved": true,
+  "approved_operator": "cudos1s609vqsnwxpm2t4scjq70770kph7uaz53lg89v",
+  "base_req": {
+    "from":"cudos1qy7a8qvmqtqrscz7rf9l3xlllm0l6x3xnmarze",
+    "chain_id":"cudos-network"
+  }
+}
+```
+
+Response:
+```json
+{
+  "type": "cosmos-sdk/StdTx",
+  "value": {
+    "msg": [
+      {
+        "type": "github.com/CudoVentures/cudos-node/nft/MsgApproveAllNft",
+        "value": {
+          "operator": "cudos1s609vqsnwxpm2t4scjq70770kph7uaz53lg89v",
+          "sender": "cudos1qy7a8qvmqtqrscz7rf9l3xlllm0l6x3xnmarze",
+          "approved": true
+        }
+      }
+    ],
+    "fee": {
+      "gas": "200000"
+    },
+    "signatures": [],
+    "memo": "",
+    "timeout_height": "0"
+  }
+}
+```
+
+### Queries:
+
+### Query Denom By Id : GET
+http://localhost:1317/nft/denoms/{{denomId}}
+
+Response:
+```json
+{
+  "height": "4774",
+  "result": {
+    "denom": {
+      "id": "testdenom",
+      "name": "TESTDENOM",
+      "schema": "testschema",
+      "creator": "cudos13kkzjnz9t30dtkcevcvk2n2xu2n8mnzxuwnuur"
+    }
+  }
+}
+```
+
+### Query Denom By Name: GET
+http://localhost:1317/nft/denoms/name/{{denomName}}
+
+Response:
+```json
+{
+  "height": "4994",
+  "result": {
+    "denom": {
+      "id": "testdenom1",
+      "name": "testDenomNewName",
+      "schema": "testschema",
+      "creator": "cudos13kkzjnz9t30dtkcevcvk2n2xu2n8mnzxuwnuur"
+    }
+  }
+}
+```
+### Query Denom By Symbol: GET
+http://localhost:1317/nft/denoms/symbol/{{symbol}}
+
+Response:
+```json
+{
+  "height": "23",
+  "result": {
+    "denom": {
+      "id": "testdenom",
+      "name": "testName",
+      "schema": "",
+      "creator": "cudos1wye475erldt37cgj3kf4j35w24emhh0cdddg7z",
+      "symbol": "testSymbol"
+    }
+  }
+}
+```
+
+### Query All Denoms: POST
+http://localhost:1317/nft/denoms/
+
+Request:
+```json
+{}
+```
+
+Optional pagination:
+```json
+{ 
+    "pagination": {
+        "offset": "0",
+        "limit":  "5",
+        "count_total": true
+    }
+}
+```
+
+Response:
+```json
+{
+  "height": "5061",
+  "result": {
+    "denoms": [
+      {
+        "id": "testdenom",
+        "name": "TESTDENOM",
+        "schema": "testschema",
+        "creator": "cudos13kkzjnz9t30dtkcevcvk2n2xu2n8mnzxuwnuur"
+      },
+      {
+        "id": "testdenom1",
+        "name": "testDenomNewName",
+        "schema": "testschema",
+        "creator": "cudos13kkzjnz9t30dtkcevcvk2n2xu2n8mnzxuwnuur"
+      }
+    ],
+    "pagination": {
+      "total": "2"
+    }
+  }
+}
+```
+
+
+
+### Query Collection for a Denom: POST
+http://localhost:1317/nft/collection/{{denomId}}
+
+Request: Pagination is optional
+```json
+  {
+  "denom_id": "testdenom",
+  "pagination": {
+    "offset": "0",
+    "limit":  "5",
+    "count_total": true
+  }
+}
+```
+
+
+Response:
+```json
+{
+  "height": "5189",
+  "result": {
+    "collection": {
+      "denom": {
+        "id": "testdenom",
+        "name": "TESTDENOM",
+        "schema": "testschema",
+        "creator": "cudos13kkzjnz9t30dtkcevcvk2n2xu2n8mnzxuwnuur"
+      },
+      "nfts": [
+        {
+          "id": "1",
+          "name": "testtoken",
+          "uri": "",
+          "data": "testData",
+          "owner": "cudos1ztwjs6cp8t369l6ckgv5fg8vzleqn3qdkycll4"
+        }
+      ]
+    },
+    "pagination": {
+      "total": "1"
+    }
+  }
+}
+```
+
+### Query Supply for a Denom : GET
+> Gets the total NFT count for a given denomId
+
+
+http://localhost:1317/nft/collections/supply/{{denomId}}
+ 
+> TODO: Must add pagination support to request and handle in the node
+
+Response:
+```json
+{
+  "height": "5221",
+  "result": {
+    "amount": "1"
+  }
+}
+```
+
+### Query Owner  GET
+> Gets the NFTs for a given Owner ( Optional denomId )
+
+
+http://localhost:1317/nft/owners/{{ownerAddress}}/{denomId}
+Request:
+
+```json
+{
+    "denom_id": "testdenom",
+    "owner_address": "cudos1s6ncz2gyy0cgzzk5yctjx7yx7tyjzxnmnx9xlj",
+    "pagination": {
+        "offset": "1",
+        "limit":  "5",
+        "count_total": true
+    }
+}
+```
+
+Response:
+```json
+{
+  "height": "10001",
+  "result": {
+    "owner": {
+      "address": "cudos1ztwjs6cp8t369l6ckgv5fg8vzleqn3qdkycll4",
+      "id_collections": [
+        {
+          "denom_id": "testdenom",
+          "token_ids": [
+            "1"
+          ]
+        }
+      ]
+    },
+    "pagination": {
+      "total": "1"
+    }
+  }
+}
+```
+
+### Query NFT : GET
+> Gets the NFT by a given denomId and tokenId
+
+http://localhost:1317/nft/nfts/{{denomId}}/{{tokenId}}
+
+Response:
+```json
+{
+  "height": "10001",
+  "result": {
+    "nft": {
+      "id": "1",
+      "name": "testtoken",
+      "uri": "",
+      "data": "testData",
+      "owner": "cudos1ztwjs6cp8t369l6ckgv5fg8vzleqn3qdkycll4"
+    }
+  }
+}
+```
+
+Response with approved addresses:
+```json
+{
+    "height": "161",
+    "result": {
+        "nft": {
+            "id": "1",
+            "name": "testtoken",
+            "uri": "",
+            "data": "testData",
+            "owner": "cudos17najx40kq4f6yrslw6ggr5qm4meqs8p72jhv2f",
+            "approved_addresses": {
+                "cudos1yg8et80vfyjetyafqcpr8geyp2ypmnd3rk54z2": true
+            }
+        }
+    }
+}
+```
+
+### Query Approvals NFT : GET
+> Gets the approvals for a NFT
+
+http://localhost:1317/nft/approvals/{{denomId}}/{{tokenId}}
+
+Response:
+```json
+{
+  "height": "238",
+  "result": {
+    "approved_addresses": {
+      "cudos1yg8et80vfyjetyafqcpr8geyp2ypmnd3rk54z2": true,
+      "cudos1y43rjgknmk2hv3cpcu007crucwsgrv4n4rhmcs": true
+    }
+  }
+}
+```
+
+### Query IsApprovedForAll : POST
+> Gets the approvals for a NFT
+
+http://localhost:1317/nft/isApprovedForAll
+
+Request:
+```json
+{
+        "owner": "cudos1y43rjgknmk2hv3cpcu007crucwsgrv4n4rhmcs",
+        "operator": "cudos17najx40kq4f6yrslw6ggr5qm4meqs8p72jhv2f"
+}
+```
+
+Response:
+```json
+{
+  "height": "409",
+  "result": {
+    "is_approved": true
+  }
+}
 ```
