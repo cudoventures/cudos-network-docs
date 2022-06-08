@@ -18,7 +18,7 @@ You must ensure that you have the following installed:
 Refer to the [Docker installation and upgrade guide](https://docs.docker.com/engine/install/) for your OS.
  
 **Docker Compose 1.29.1 or above (latest version recommended)**
-Refer to the [Docker Compose Installation and Upgrade guide](https://docs.docker.com/compose/install/) for your OS.
+Refer to steps 3 and 4 of the [Docker Compose Installation and Upgrade guide](https://www.devopsroles.com/how-to-install-docker-compose-on-ubuntu/) for your OS.
  
 **Git**
 Refer to the [Git installation guide](https://github.com/git-guides/install-git) for your OS.
