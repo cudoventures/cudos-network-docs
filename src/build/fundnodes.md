@@ -190,7 +190,7 @@ Although in this example we are staking and self delegating 2 million CUDOS, you
 
 ```
 export STAKE="2000000000000000000000000acudos"
-export CHAIN_ID="cudos-testnet-public-2"
+export CHAIN_ID="cudos-testnet-public-3"
 Export MONIKER="Validator1"
 
 cudos-noded tx staking create-validator --amount=$STAKE \

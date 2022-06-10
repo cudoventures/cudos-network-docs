@@ -302,7 +302,7 @@ It is then advised that the following be copy/pasted into the shell prompt creat
 
 ```
 export STAKE="1000000000000000000acudos"
-export CHAIN_ID="cudos-testnet-public-2"
+export CHAIN_ID="cudos-testnet-public-3"
 
 cudos-noded tx staking create-validator --amount=$STAKE \
     --from=validator \
