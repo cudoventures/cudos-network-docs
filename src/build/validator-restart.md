@@ -16,7 +16,7 @@ After a Validator gets jailed, the validator needs to submit an `unjail` transac
 To `unjail` a Validator, run the following command:
 
 ```bash
-cudos-noded tx slashing unjail --chain-id="$CHAIN_ID" --from="$VALIDATOR_ADDRESS" --keyring-backend "os"
+cudos-noded tx slashing unjail --chain-id="$CHAIN_ID" --from="$VALIDATOR_ADDRESS" --gas-prices="5000000000000acudos" --keyring-backend "os" 
 ```
 
 To check whether you Validator is running, you can either head to the [active validator list in the explorer](https://explorer.cudos.org/validators), or run the following command inside the Docker container,
@@ -82,10 +82,10 @@ docker exec -it cudos-start-full-node-client-testnet-public-01 bash
 Once inside the container, issue the `unjail` command as follows, replacing the `VALIDATOR_ADDRESS` with the one for your Validator (which can be found on the explorer page for the node),
 
 ```bash
-export CHAIN_ID="cudos-testnet-public-2"
+export CHAIN_ID="cudos-testnet-public-3"
 export VALIDATOR_ADDRESS="cudos1jxyabcdefrghhdksklashhrfirhysirl4a"
 
-cudos-noded tx slashing unjail --chain-id="$CHAIN_ID" --from="$VALIDATOR_ADDRESS" --keyring-backend "os"
+cudos-noded tx slashing unjail --chain-id="$CHAIN_ID" --from="$VALIDATOR_ADDRESS" --gas-prices="5000000000000acudos" --keyring-backend "os"
 ```
 
 Exit back to the host shell by typing `exit`.
@@ -124,10 +124,10 @@ docker exec -it cudos-start-full-node-client-testnet-public-01 bash
 Once inside the container, issue the unjail command as follows, setting `VALIDATOR_ADDRESS` with the address of your Validator,
 
 ```bash
-export CHAIN_ID="cudos-testnet-public-2"
+export CHAIN_ID="cudos-testnet-public-3"
 export VALIDATOR_ADDRESS="cudos1jxyabcdefrghhdksklashhrfirhysirl4a"
 
-cudos-noded tx slashing unjail --chain-id="$CHAIN_ID" --from="$VALIDATOR_ADDRESS" --keyring-backend "os"
+cudos-noded tx slashing unjail --chain-id="$CHAIN_ID" --from="$VALIDATOR_ADDRESS"  --gas-prices="5000000000000acudos" --keyring-backend "os"
 ```
 
 Now go to the [Cudos Explorer](https://explorer.cudos.org/validators) and confirm that the validator is still running and active.

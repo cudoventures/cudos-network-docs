@@ -61,6 +61,6 @@ The standalone Validator node consists of a single full node running as a valida
 
 A full node becomes a validator when it has successfully staked CUDOS.
 
-Before staking, you must create and fund your wallet, and stash it on your node by following the process described in [Setting up your nodes wallet](/build/fundnodes.html#setting-up-your-nodes-wallet), making sure to use the Testnet `cudos-testnet-public-2` instead of mainnet.
+Before staking, you must create and fund your wallet, and stash it on your node by following the process described in [Setting up your nodes wallet](/build/fundnodes.html#setting-up-your-nodes-wallet), making sure to use the Testnet `cudos-testnet-public-3` instead of mainnet.
 
-Once this is completed, you can go ahead and stake CUDOS, which will make your node a validator, as described in [Staking your Validator](/build/fundnodes.html#staking-your-validator), making sure to use the Testnet `cudos-testnet-public-2` instead of mainnet.
+Once this is completed, you can go ahead and stake CUDOS, which will make your node a validator, as described in [Staking your Validator](/build/fundnodes.html#staking-your-validator), making sure to use the Testnet `cudos-testnet-public-3` instead of mainnet.

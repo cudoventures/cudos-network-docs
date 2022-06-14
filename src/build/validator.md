@@ -288,7 +288,7 @@ This step, if successful, will put the node on the list of validators at:
 
 In this section of the process the validator node will need to be supplied with the staking request using a cudos-noded sub-command, done in this case using a number of environment variables on the command line:
 
-- **CHAIN_ID**, This is a fixed text naming the blockchain to be operated on. In the public testnet this name is "cudos-testnet-public-2"
+- **CHAIN_ID**, This is a fixed text naming the blockchain to be operated on. In the public testnet this name is "cudos-testnet-public-3"
 
 - **STAKE**, The actual amount in "acudos" that will be staked to the validator. Note that *acodos* is a very small denomination. Be very careful about the number of zeros in the amount. For example "1000000000000000000acudos" = 1 CUDOS.
 
@@ -314,7 +314,6 @@ cudos-noded tx staking create-validator --amount=$STAKE \
     --commission-max-change-rate="0.01" \
     --min-self-delegation="1" \
     --gas-prices="5000000000000acudos" \
-    --gas-adjustment="1.80" \
     --keyring-backend="os" \
     -y
 ```
@@ -354,7 +353,8 @@ cudos-noded tx staking edit-validator \
 --from=validator \
 --chain-id=$CHAIN_ID \
 --commission-rate="0.50" \
---keyring-backend="test" \
+--keyring-backend="os" \
+--gas-prices="5000000000000acudos" \
 -y
 ```
 where you can set `commission-rate` to the updated number that you want.
