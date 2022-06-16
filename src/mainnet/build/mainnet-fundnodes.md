@@ -27,7 +27,7 @@ Use Keplr extension to create a wallet:
 2. Click on the installed Keplr extension, and either select ‘Create a new account’ or ‘Import an already existing account’. Note that currently the wallet is not connected to the cudos-network, so it will not show the correct info for that account on the cudos-network.
 3. Take a note of your mnemonic and store it in a safe place.
 
-::: warning Note:
+::: danger
 The mnemonic of the keplr wallet is a human readable representation of the wallet’s address and key combined. **Anyone with your mnemonic can take your assets and any lost mnemonic can not be recovered.**
 :::
 
@@ -36,14 +36,14 @@ The mnemonic of the keplr wallet is a human readable representation of the walle
 #### Link Keplr to the Cudos network
 
 1. Go to the [Cudos Explorer](https://explorer.cudos.org) to link the Keplr extension to the Cudos network
-2. Click the "key icon” in the upper right corner:
-<img src="./keplr3.png" width="500">
-3. This will prompt a window asking you for permission to add a new network to Keplr and also give access to it:
+2. Click the "key icon” in the upper right corner
 
-<img src="./keplr2.png" width="200">
+3. This will prompt a window asking you for permission to add a new network to Keplr and also give access to it.
 
-4. After you Approve, open the Keplr extension and click on the network name on the upper side of it. From there a menu with all the networks will open, and you should select  **CudosTestnet-Public-v2**. 
-<img src="./keplr4.png" width="300">
+
+
+4. After you Approve, open the Keplr extension and click on the network name on the upper side of it. From there a menu with all the networks will open, and you should select  **cudos-1**. 
+
 
 You should now see your account details.
 
@@ -59,8 +59,6 @@ You should now see your account details.
 ### Funding your wallet
 
 A wallet allows you to store and retrieve CUDOS tokens. When you buy or receive CUDOS tokens, you can keep them in a wallet from where you can fund transactions, pay gas, or stake CUDOS as a validator or delegator.
-
-A wallet allows you to store and retrieve CUDOS tokens. When you buy or receive CUDOS tokens, you can keep them in a wallet and start different transactions. Owning CUDOS will provide you with more options, such as using your tokens to become a validator/delegator and participate in staking.
 
 This article explains where to buy/trade CUDOS and how to apply for grants.
 
@@ -84,13 +82,6 @@ For more information:
 - [How to Buy CUDOS On Poloniex — A Step by Step Guide](https://cryptobuyingtips.medium.com/60-92-growth-how-to-buy-cudos-cudos-a-step-by-step-guide-crypto-buying-tips-16e9a022bb6a)
 - [How To Buy CUDOS On Uniswap A Step-by-Step Guide](https://www.pickacrypto.com/how-to-buy-cudos-token/)
 
-#### Get funds via faucet (Testnet only)
-To fund the newly created account:
-1. Go to Cudos explorer
-2. Navigate to the Faucet page
-3. Go to your wallet and ensure you have CudosTestnet-Public-v2 selected at the top. Copy your account ID (the long string of characters beginning with `cudos`) and enter it in the Faucet page. 
-4. Enter the maximum amount of 10 CUDOS to be sent to your wallet.
-5. Click on the button “SEND ME CUDOS”
 
 #### Apply for grants
 
@@ -119,10 +110,10 @@ You will also be asked to enter a new **passphrase** for your keyring. From then
  
 In the following example, a wallet’s mnemonic is added to keyring `validator1keyring`.
  
-Enter the docker container `cudos-start-full-node-client-testnet-public-01`:
+Enter the docker container `cudos-start-full-node-mainnet`:
 
 ```
-sudo docker exec -it cudos-start-full-node-client-testnet-public-01 bash
+sudo docker exec -it cudos-start-full-node-mainnet bash
  ```
 
 To add your wallet’s mnemonic to the keyring `validator1keyring`, enter the following command:
@@ -167,30 +158,23 @@ This step, if successful, will put the node on the [list of validators](https://
 
 In this section of the process the validator node will need to be supplied with the staking request using a cudos-noded sub-command that will use the following environment variables:
 
-- CHAIN_ID, This is a fixed text naming the blockchain to be operated on. In the public testnet this name is "cudos-testnet-public-3"
+- CHAIN_ID, This is a fixed text naming the blockchain to be operated on. In the public mainnet this name is `cudos-1`
 - STAKE, The actual amount in "acudos" that will be staked to the validator. Note that acodos is a very small denomination. Be very careful about the number of zeros in the amount. For example "1000000000000000000acudos" = 1 CUDOS.
-- MONIKER, that you assigned in the validator node’s `/var/lib/cudos/CudosBuilders/docker/full-node/full-node.client.testnet.public01.env` file.
+- MONIKER, that you assigned in the validator node’s `/var/lib/cudos/CudosBuilders/docker/full-node/full-node.client.mainnet.env` file.
  
  
 Enter your docker container:
 
 ```
-sudo docker exec -it cudos-start-full-node-client-testnet-public-01 bash
+sudo docker exec -it cudos-start-full-node-mainnet bash
 ```
 
 This script will stake and self delegate 2 million CUDOS (`2000000000000000000000000acudos`) from the wallet that you linked to your keyring (in this example we will use the keyring `validator1keyring`) on Full node with moniker `Validator1`.You will be prompted to enter the passphrase for keyring `validator1keyring`.
 
-::: danger Release Note:
-The current version of Testnet requires **2 million CUDOS minimum stake**. Please contact support and ask for a grant. The minimum stake required for Testnet will be reduced to 1 CUDOS in a future release.
-:::
-
-::: tip
-Although in this example we are staking and self delegating 2 million CUDOS, you do not always need to self delegate the full amount you have staked on your validator. The amount you self delegate is set with `--min-self-delegation="x"` where x is your value.
-:::
 
 ```
 export STAKE="2000000000000000000000000acudos"
-export CHAIN_ID="cudos-testnet-public-3"
+export CHAIN_ID="cudos-1"
 Export MONIKER="Validator1"
 
 cudos-noded tx staking create-validator --amount=$STAKE \
@@ -202,7 +186,9 @@ cudos-noded tx staking create-validator --amount=$STAKE \
     --commission-max-rate="0.20" \
     --commission-max-change-rate="0.01" \
     --min-self-delegation="2000000000000000000000000" \
+    --gas="auto" \
     --gas-prices="5000000000000acudos" \
+    --gas-adjustment="1.80" \
     --keyring-backend="os" \
     -y
  ```
@@ -220,7 +206,7 @@ If you get a message similar to:
 ```
 Error: rpc error: code = NotFound desc = rpc error: code = NotFound desc = account cudos1mnc7gm9sazrmcfdkshhmx3f0s4n2wp944wzjj4 not found: key not found`
 ```
-Then it is likely that the validator is still syncing. Refer to [Checking sync status](/build/sync-troubleshooting.html#checking-sync-status) to verify your node’s sync status. 
+Then it is likely that the validator is still syncing. Refer to [Checking sync status](/mainnet/sync-troubleshooting.html) to verify your node’s sync status. 
 
 If you can’t see your node in the explorer's [Validators tab](https://explorer.cudos.org/validators), check the Inactive tab on the Cudos explorer.
  
@@ -239,7 +225,6 @@ The process to add or remove stake as a Validator is similar to Delegating CUDOS
 
 1. If you have not done so already, connect your Validator's wallet to the Explorer and navigate to your Validator's page in the explorer:
 
-<img src="./validator-staking.png">
 
 2. Click **DELEGATE** and introduce the amount you wish to stake in order to increase your Validator's share
 
@@ -255,7 +240,7 @@ Same process again, but clicking the **UNDELEGATE** button.
 
 Please keep in mind that:
 
-- A Validator needs a minimum amount staked (1 CUDOS for testnet, 2,000,000 CUDOS for mainnet).
+- A Validator needs a minimum amount staked (2,000,000 CUDOS for mainnet).
 - There is a 21-day unbonding period between token undelegation and the tokens being usable in your wallet, for security reasons.
 
 ## Claiming rewards
@@ -278,8 +263,7 @@ cudos-noded tx staking edit-validator \
 --from=validator \
 --chain-id=$CHAIN_ID \
 --commission-rate="0.50" \
---keyring-backend="os" \
---gas-prices="5000000000000acudos" \
+--keyring-backend="test" \
 -y
 ```
 where you can set `commission-rate` to the updated number that you want.
