@@ -357,9 +357,9 @@ Here are Cudos nodes you can use to connect to Cudos network:
 
 ### Mainnet
 
-| Chain ID | URL |
-| ---      | --- |
-|          |     |
+| Chain ID       | URL                   |
+| ---            | ---                   |
+|    cudos-1     | https://rpc.cudos.org |
 
 ---
 ## Managing accounts
