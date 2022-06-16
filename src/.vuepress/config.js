@@ -62,7 +62,7 @@ module.exports = {
       {
         text: 'Developer Guides',
         collapsible: true,
-        children: ['/mainnet/main-smart-contracts.md', '/mainnet/main-nft.md'],
+        children: ['/mainnet/main-smart-contracts.md', '/mainnet/main-nft.md', '/build/cudos-blast.md'],
       },
       {
         text: 'Operational Tasks & Troubleshooting',
