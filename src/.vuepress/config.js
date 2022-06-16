@@ -1,27 +1,6 @@
-const path = require('path')
+const { path } = require('@vuepress/utils')
 
 module.exports = {
-  title: 'CUDOS Docs',
-  configureWebpack: {
-    module: {
-      rules: [
-        {
-          test: /\.nomnoml$/,
-          use: [
-            {
-              loader: 'file-loader',
-              options: {
-                name: 'assets/img/[name].[hash:8].svg'
-              }
-            },
-            {
-              loader: path.resolve('src/.vuepress/loaders/nomnoml')
-            }
-          ]
-        }
-      ]
-    }
-  },
   head: [
     ['link', { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' }],
     ['link', { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png' }],
@@ -31,12 +10,25 @@ module.exports = {
     ['meta', { name: 'msapplication-TileColor', content: '#2d89ef' }],
     ['meta', { name: 'theme-color', content: '#00b0ff' }]
   ],
-  plugins: {
-    '@vuepress/pwa': {
-      serviceWorker: false,
-      updatePopup: false
-    }
-  },
+  plugins: [
+    // [
+    //   '@vuepress/pwa', {
+    //     serviceWorker: false,
+    //     updatePopup: false
+    //   }
+    // ],
+    [
+      '@vuepress/plugin-search',
+      {
+        locales: {
+          '/': {
+            placeholder: 'Search',
+          },
+        },
+      },
+    ],
+  ],
+  theme: path.resolve(__dirname, './theme'),
   themeConfig: {
     displayAllHeaders: true,
     docsRepo: 'CudoVentures/cudos-network-docs',
@@ -48,68 +40,69 @@ module.exports = {
     //      { text: 'Build', link: '/build/' },
     //      { text: 'Earn', link: '/earn/' }
     //    ],
-    logo: '/CudosIconTransparent.png',
+    logo: '/logo.svg',
+    logoDark: '/logo-dark.svg',
     repo: 'CudoVentures/',
     sidebar: [
       {
-        title: 'Learn',
+        text: 'Learn',
         collapsible: true,
         children: ['/learn/cudosnetwork.md', '/earn/staking.md', '/learn/validators.md', '/learn/roadmap.md'],
       },
-
       {
-        title: 'Build',
+        text: 'Build',
         collapsible: true,
-        children: ['/build/tbcplaceholder.md', '/build/hardware.md'],
+        children: ['/mainnet/build/mainnet-overview.md', '/mainnet/build/mainnet-envprep.md', '/mainnet/build/mainnet-cluster.md', '/mainnet/build/mainnet-standalone.md', '/mainnet/build/mainnet-fundnodes.md', '/mainnet/build/mainnet-securingnodes.md', '/build/hardware.md'],
       },
       {
-        title: 'Using CUDOS Tokens',
+        text: 'Using CUDOS Tokens',
         collapsible: true,
         children: ['/mainnet/keplr-explorer.md', '/mainnet/main-proposals.md'],
       },
       {
-        title: 'Developer Guides',
+        text: 'Developer Guides',
         collapsible: true,
-        children: ['/build/tbcplaceholder.md', '/build/cudos-blast.md'],
+        children: ['/mainnet/main-smart-contracts.md', '/mainnet/main-nft.md', '/build/cudos-blast.md'],
       },
       {
-        title: 'Operational Tasks & Troubleshooting',
+        text: 'Operational Tasks & Troubleshooting',
         collapsible: true,
-        children: ['/build/tbcplaceholder.md'],
+        children: ['/mainnet/sync-troubleshooting.md'],
       },
       {
-        title: 'Upgrade',
+        text: 'Upgrade',
         collapsible: true,
         children: ['/build/upgrade.md'],
+
       },
       {
-        title: 'Testnet',
+        text: 'Testnet',
         collapsible: true,
         children: ['/testnet/testnetoverview.md', '/testnet/testnetenvprep.md', '/testnet/testnetcluster.md', '/testnet/testnetstandalone.md', '/build/fundnodes.md', '/build/securingnodes.md',
           {
-            title: 'Testnet Hardware Requirements',
+            text: 'Testnet Hardware Requirements',
             collapsible: true,
             children: ['/testnet/testnet-hardware.md'],
           },
           {
-            title: 'Using CUDOS Tokens in Testnet',
+            text: 'Using CUDOS Tokens in Testnet',
             collapsible: true,
             children: ['/build/interact-keplr-explorer.md', '/build/proposals.md']
           },
           {
-            title: 'Testnet Operational Tasks and Troubleshooting',
+            text: 'Testnet Operational Tasks and Troubleshooting',
             collapsible: true,
             children: ['/build/validator-restart.md', '/build/sync-troubleshooting.md'],
           },
           {
-            title: 'Testnet Developer Guide',
+            text: 'Testnet Developer Guide',
             collapsible: true,
             children: ['/build/smart-contracts.md', '/build/nft.md'],
           },
           {
-            title: 'Testnet Upgrade',
+            text: 'Testnet Upgrade',
             collapsible: true,
-            children: ['/build/upgrade-v0.4']
+            children: ['/build/upgrade-v0.9.0']
           },
         ],
       },

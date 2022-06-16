@@ -17,7 +17,7 @@ You must ensure that you have the following installed:
 **Docker 20.10.6 or above (latest version recommended)**
 Refer to the [Docker installation and upgrade guide](https://docs.docker.com/engine/install/) for your OS.
  
-**Docker Compose 1.29.x**
+**Docker Compose 1.29.1 or above (latest version recommended)**
 Refer to steps 3 and 4 of the [Docker Compose Installation and Upgrade guide](https://www.devopsroles.com/how-to-install-docker-compose-on-ubuntu/) for your OS.
  
 **Git**
@@ -45,8 +45,25 @@ mkdir /var/lib/cudos
 cd /var/lib/cudos
 ```
 
+Clone the correct branches from the [CudosNode](https://github.com/CudoVentures/cudos-node) , [CudosBuilders](https://github.com/CudoVentures/cudos-builders), and [CudosGravityBridge](https://github.com/CudoVentures/cosmos-gravity-bridge) repositories, renaming the folders *CudosNode*, *CudosBuilders*, and *CudosGravityBridge*:
 
-You have now prepared your node environment. If you are going to build a standalone Node, please continue to [Standalone Node Build](/testnet/testnetstandalone.md). If you are building a Validator Cluster, please repeat the above steps for every node that is going to be in your cluster, then continue to [Validator Cluster Build](/testnet/testnetcluster.md).
+```
+git clone --branch v1.0.0 https://github.com/CudoVentures/cudos-node.git CudosNode
+git clone --branch v1.0.0 https://github.com/CudoVentures/cudos-builders.git CudosBuilders
+git clone --branch v1.0.0 https://github.com/CudoVentures/cosmos-gravity-bridge.git CudosGravityBridge
+```
+
+Navigate to the `CudosBuilders/docker/binary-builder` directory
+```
+cd CudosBuilders/docker/binary-builder 
+```
+
+Build the docker image of the binary by running the command:
+```
+docker-compose --env-file binary-builder.arg -f binary-builder.yml -p cudos-binary-builder up --build --detach
+```
+
+You have now prepared your node environment. If you are going to build a standalone Node, please continue to [Standalone Node Build](/mainnet/build/mainnet-standalone.html). If you are building a Validator Cluster, please repeat the above steps for every node that is going to be in your cluster, then continue to [Validator Cluster Build](/mainnet/build/mainnet-cluster.html).
 
 
 

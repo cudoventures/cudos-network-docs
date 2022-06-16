@@ -1,8 +1,8 @@
 ---
-title: Overview
+title: Testnet Build Overview
 ---
 
-# Overview
+# Testnet Build Overview
 
 This guide will take you through the process of building nodes that will participate in the Cudos testnet blockchain.
 

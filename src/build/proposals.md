@@ -47,10 +47,9 @@ In order to deposit CUDOS in an active proposal, the process starts in the same 
 
 6. Click **NEXT** and confirm the transaction in your Keplr wallet.
 
-## Voting in a proposal (Validators only)
+## Voting in a proposal 
 
-Only Validators are allowed to vote for proposals that have reached the voting period.
-In order to vote, similar to the above, Validators should
+In order to vote, similar to the above, validators or delegators should:
 
 1. Connect the Keplr wallet to the explorer
 
@@ -66,6 +65,6 @@ In order to vote, similar to the above, Validators should
 
 <img src="./vote-on-proposal.png" width="504" height="287">
 
-6. Once your vote has been casted, you will see your vote reflected on the proposal page.
+6. Once your vote has been cast, you will see your vote reflected on the proposal page.
 
 <img src="./voted-yes.png" width="500" height="209">

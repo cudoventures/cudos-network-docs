@@ -7,7 +7,7 @@ title: Standalone Node Build
 ## Initialize and start the Node
 This section explains how to initialize and start a standalone full node for testing purposes. Note that running just a full node is enough to be able to send transactions, deploy and interact with smart contracts, mint NFTs, etc.
 
-**Please ensure you have completed everything in [Node Environment Preparation](/testnet/testnetenvprep.html) before you continue to create your node.**
+**Please ensure you have completed everything in [Node Environment Preparation](/testnet/testnetenvprep.html) and the [Binary Builder](/testnet/binary.md)before you continue to create your node.**
 
 
 #### 1. As root, navigate to the directory `/var/lib/cudos/CudosBuilders/docker/full-node`
@@ -61,6 +61,6 @@ The standalone Validator node consists of a single full node running as a valida
 
 A full node becomes a validator when it has successfully staked CUDOS.
 
-Before staking, you must create and fund your wallet, and stash it on your node by following the process described in [Setting up your nodes wallet](/build/fundnodes.html#setting-up-your-nodes-wallet), making sure to use the Testnet `cudos-testnet-public-2` instead of mainnet.
+Before staking, you must create and fund your wallet, and stash it on your node by following the process described in [Setting up your nodes wallet](/build/fundnodes.html#setting-up-your-nodes-wallet), making sure to use the Testnet `cudos-testnet-public-3` instead of mainnet.
 
-Once this is completed, you can go ahead and stake CUDOS, which will make your node a validator, as described in [Staking your Validator](/build/fundnodes.html#staking-your-validator), making sure to use the Testnet `cudos-testnet-public-2` instead of mainnet.
+Once this is completed, you can go ahead and stake CUDOS, which will make your node a validator, as described in [Staking your Validator](/build/fundnodes.html#staking-your-validator), making sure to use the Testnet `cudos-testnet-public-3` instead of mainnet.
