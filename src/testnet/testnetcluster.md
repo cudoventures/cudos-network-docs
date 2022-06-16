@@ -35,7 +35,7 @@ Enter the Seed’s ID as the SEEDS value, and the Sentry’s ID as the `PERSISTE
 
 ### 1. Initialize your Validator Node
 
-**Please ensure you have completed everything in [Node Environment Preparation](/testnet/testnetenvprep.html) before you continue to create your node.**
+**Please ensure you have completed everything in [Node Environment Preparation](/testnet/testnetenvprep.html) and  [Binary Builder](/testnet/binary.html) before you continue to create your node.**
 
 To create a validator node you will build a full node, then in a later step stake CUDOS on it, at which point the node will become a validator. 
 
@@ -204,6 +204,6 @@ Syncing may take several hours. Refer to [Checking sync status](/build/sync-trou
 ### Staking
 A full node becomes a validator when it has successfully staked CUDOS.
 
-Before staking, you must create and fund your wallet, and stash it on your node by following the process described in [Setting up your nodes wallet](/build/fundnodes.html#setting-up-your-nodes-wallet), making sure to use the Testnet `cudos-testnet-public-2` instead of mainnet.
+Before staking, you must create and fund your wallet, and stash it on your node by following the process described in [Setting up your nodes wallet](/build/fundnodes.html#setting-up-your-nodes-wallet), making sure to use the Testnet `cudos-testnet-public-3` instead of mainnet.
 
-Once this is completed, you can go ahead and stake CUDOS, which will make your node a validator, as described in [Staking your Validator](/build/fundnodes.html#staking-your-validator), making sure to use the Testnet `cudos-testnet-public-2` instead of mainnet.
+Once this is completed, you can go ahead and stake CUDOS, which will make your node a validator, as described in [Staking your Validator](/build/fundnodes.html#staking-your-validator), making sure to use the Testnet `cudos-testnet-public-3` instead of mainnet.
