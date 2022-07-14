@@ -6,16 +6,13 @@ title: Smart Contracts
 
 This article explains the deployment and interaction of CosmWasm Plus CW20 contracts.
 
-::: warning Note 
-Non-bash shell (most macOS and some Linux) users, please be aware that for below commands to work correctly without making modification to the environment (eg, check [_here_](https://zsh.sourceforge.io/Doc/Release/Expansion.html#Parameter-Expansion) how zsh does parameter expansion differently for details), please use the bash shell:
+***Note*** for non-bash shell (eg, probably most macOS and some Linux) users: for below commands to work correctly without making modification to the environment (eg, check [_here_](https://zsh.sourceforge.io/Doc/Release/Expansion.html#Parameter-Expansion) how zsh does parameter expansion differently for details), please use the bash shell:
+
 ```
 % bash
 ```
-:::
 
-::: warning Note 
-outputs of some commands shown below are just for illustration purposes and the output you get might differ.
-:::
+***Note 2*** outputs of some commands shown below are just for illustration purposes and the output you get might differ.
 
 ### Install rustup
 
@@ -32,7 +29,7 @@ $ rustup target list --installed
 
 ## Deployment and interaction of CW20
 
-[CW20](https://github.com/CosmWasm/cw-plus/tree/v0.9.0/contracts/cw20-base) is equivalent to ERC20. CW-20 is similar, in some respects, to bitcoin, Litecoin, and any other cryptocurrency. CW-20 tokens are blockchain-based assets that have value and can be sent and received. The primary difference is that instead of running on their own blockchain, CW-20 tokens are issued on the CosmWasm network.
+[CW20](https://github.com/CosmWasm/cw-plus/tree/v0.13.4/contracts/cw20-base) is equivalent to ERC20. CW-20 is similar, in some respects, to bitcoin, Litecoin, and any other cryptocurrency. CW-20 tokens are blockchain-based assets that have value and can be sent and received. The primary difference is that instead of running on their own blockchain, CW-20 tokens are issued on the CosmWasm network.
 
 This section explains how to deploy and interact with CW20 using cudos-noded.
 
@@ -40,22 +37,22 @@ This section explains how to deploy and interact with CW20 using cudos-noded.
 
 The specification of CW20 are represented within the following:
 
-* [Base](https://github.com/CosmWasm/cw-plus/blob/v0.9.0/packages/cw20/README.md#base)
-* [Allowances](https://github.com/CosmWasm/cw-plus/blob/v0.9.0/packages/cw20/README.md#allowances)
-* [Mintable](https://github.com/CosmWasm/cw-plus/blob/v0.9.0/packages/cw20/README.md#mintable)
+* [Base](https://github.com/CosmWasm/cw-plus/blob/v0.13.4/packages/cw20/README.md#base)
+* [Allowances](https://github.com/CosmWasm/cw-plus/blob/v0.13.4/packages/cw20/README.md#allowances)
+* [Mintable](https://github.com/CosmWasm/cw-plus/blob/v0.13.4/packages/cw20/README.md#mintable)
 
 Note that you can find all messages, actions, and queries within the list above.
 
 ### Get the binaries and download the CosmWasm Plus contracts
 
-* Follow the instructions to [Start and build the binaries](/build/start-binaries.html)
-* Clone the [cw-plus](https://github.com/CosmWasm/cw-plus) repo with [release tag of v0.9.0](https://github.com/CosmWasm/cw-plus/tree/v0.9.0):
+1. Follow the instructions to [Start and build the binaries](/build/start-binaries.html)
+2. Clone the [cw-plus](https://github.com/CosmWasm/cw-plus) repo with [release tag of v0.13.4](https://github.com/CosmWasm/cw-plus/tree/v0.13.4):
 
 ```
 $ mkdir -p ~/cudos
 $ cd ~/cudos
 
-$ git clone --depth 1 --branch v0.9.0 https://github.com/CosmWasm/cw-plus.git
+$ git clone --depth 1 --branch v0.13.4 https://github.com/CosmWasm/cw-plus.git
 ```
 
 ### Compile the contracts
@@ -68,7 +65,7 @@ $ cd cw-plus
 $ docker run --rm -v "$(pwd)":/code \
   --mount type=volume,source="$(basename "$(pwd)")_cache",target=/code/target \
   --mount type=volume,source=registry_cache,target=/usr/local/cargo/registry \
-  cosmwasm/workspace-optimizer:0.12.3
+  cosmwasm/workspace-optimizer:0.12.6
 ```
 
 Make sure your **_binary-builder_** is on the list of running containers:
@@ -85,27 +82,27 @@ $ docker cp artifacts/cw20_base.wasm binary-builder:/usr/cudos
 
 ### Deployment and instantiation
 
-1. **Set up the environment**
+1. Set up the environment
 
 ```
-$ NODE=<tbc>
+$ NODE="<node_ip>"
 $ CHAIN_ID="cudos-1"
 $ KEYRING="os"
 
-$ TXFLAGS="--node $NODE --chain-id $CHAIN_ID --gas auto --gas-adjustment 1.3 --keyring-backend $KEYRING -y"
+$ TXFLAGS="--node $NODE --chain-id $CHAIN_ID --gas auto --gas-adjustment 1.3 --gas-prices 5000000000000acudos--keyring-backend $KEYRING -y"
 
 $ alias CUDOS_NODED='docker exec -it binary-builder cudos-noded'
 ```
 
 Where:
 
-* **NODE** should refer to the IP address of your sentry or full/validator node that is running on the Cudos public mainnet.
+* **NODE** should refer to the IP address of your sentry or full/validator node that is running on the Cudos public mainnet (see public node list [here](/mainnet/main-cudos-blast.html#network)).
 * **CHAIN_ID** is the blockchain network ID, here it is the public mainnet ID.
 * **KEYRING** uses the operating system's default credentials store (os) to handle keys storage operations securely. The keyring holds the private/public keypairs used to interact with a node and it will request a password each time it is accessed.
 * **TXFLAGS** is used as a shorthand for common transaction flags.
 * **CUDOS_NODED** is an alias for cudos-noded in binary-builder.
 
-2. **Manage accounts**
+2. Manage accounts
 
 Create accounts for the owner, Alice and Bob:
 
@@ -153,18 +150,18 @@ Enter keyring passphrase:
 cudos15yvgtr5ppu92hx0hu53ygdhnajrhgmjpfe8vdc
 ```
 
-3. **Get CUDOS tokens** <!-- from faucet -->
+3. Get CUDOS tokens <!-- from faucet -->
 <!-- step needs to be replaced for mainnet
 To cover transactions fees, add 0.1 or more CUDOS tokens to the owner and Alice accounts' addresses (as shown in the previous step) using the [faucet](https://explorer.cudos.org/faucet).
 -->
-4. **Deploy the contract**
+4. Deploy the contract
 
 ```
 $ RES=$( CUDOS_NODED tx wasm store /usr/cudos/cw20_base.wasm --from owner $TXFLAGS | tee /dev/tty | tail -1 | tr -d '\r' )
 $ CODE_ID=$( echo $RES | jq -r '.logs[0].events[-1].attributes[-1].value' | tee /dev/tty )
 ```
 
-5. **Instantiate and verify the contract**
+5. Instantiate and verify the contract
 
 Let's now instantiate a new CW20 contract, setting the initial balance of owner's address to 1M DIZZ tokens.
 
