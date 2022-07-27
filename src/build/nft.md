@@ -61,32 +61,62 @@ We also need to specify in flags the network where we want to issue our denomina
 We will be using the `test` backend for the keyring (the default one in public testnet) for these instructions.
 However, if you are running a Validator using the `os` backend, you can use your Validator wallet, as long as you specify the `--keyring-backend os` flag in the commands below.
 Also, we must specify the `node` flag, setting it to the IP address of the node that is running on the Cudos Network.
+A `--symbol` flag is also required for the symbol of the denomination.
 
-Thus, in order to create a denomination in public testnet the command looks like
+What can be helpful is to set variables for each of the flags first so that you can use them in later commands:
 
 ```bash
-cudos-noded tx nft issue <testdenom> --symbol=<symbolName> --from=<walletAddress> --name="My first denom" --gas-prices=5000000000000acudos --chain-id=cudos-testnet-public-3 --node=<nodeIp>
+
+DENOM_ID="testdenom"
+
+DENOM_NAME="My first denom"
+
+DENOM_SYMBOL="TestSymbol"
+
+ADDRESS="cudos1xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+
+CHAIN_ID="cudos-testnet-public-3"
+
+RPC_NODE="http://sentry1.gcp-uscentral1.cudos.org:26657"
 ```
 
-Please note that we will be prompted at all steps to confirm we want to broadcast the transaction.
-When asked for confirmation, just type `y` and press enter. You can find the public node list [here](/build/cudos-blast.html#network).
+Thus, to create a denomination on the public testnet the command will then be:
+
+```bash
+cudos-noded tx nft issue $DENOM_ID --from="$ADDRESS" --symbol="$DENOM_SYMBOL" --name="$DENOM_NAME" --chain-id="$CHAIN_ID" --node="$RPC_NODE"
+```
+
+Please note that you will be prompted at all steps to confirm we want to broadcast the transaction.
+When asked for confirmation, just type `y` and press enter.
+
+You can find the public node list [here](/build/cudos-blast.html#network).
 
 Now that we have created a `denom` for our account, we can [mint](/build/nft.html#mint) an NFT.
 When minting one, we can choose who the owner of that NFT is going to be at the start.
 More precisely, when minting an NFT we need to include the `--recipient` flag and assign it the wallet address where we want that NFT to go to.
 The address that we choose will be the owner of that NFT.
 
-Let us start by minting and NFT and sending it to our own address.
-To do so, simply run the following command, using the denom name you just chose and your wallet address,
+```bash
+RECIPIENT="cudos1xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+```
+
+We can also store data in the NFT's data field now should we choose, for example, we could store an IPFS link to an image if we are minting an image NFT:
 
 ```bash
-cudos-noded tx nft mint <testdenom> --name="My first denom" --from=<walletAddress> --gas-prices=5000000000000acudos --recipient=<walletAddress> --chain-id=cudos-testnet-public-3 --node=<nodeIp>
+IPFS_DATA="ipfs://QmPD2psAmSEkWr2UwU6c3ze3VNAQ4rG3TCnqnraS1qxUxh"
+```
+
+Let us start by minting an NFT and sending it to our own address.
+To do so, simply run the following command, using the denom name you just chose and the same wallet address for the `--from` and `--recipient` flags:
+
+```bash
+cudos-noded tx nft mint $DENOM_ID --from="$ADDRESS" --recipient="$RECIPIENT" --name="$DENOM_NAME" --chain-id="$CHAIN_ID" --node="$RPC_NODE" --data="$IPFS_DATA"
 ```
 
 To see our freshly minted NFT, we can run the following command
 
 ```bash
-cudos-noded query nft collection <testdenom> --chain-id=cudos-testnet-public-3 --node=<nodeIp>
+cudos-noded query nft collection $DENOM_ID --chain-id="$CHAIN_ID" --node="$RPC_NODE"
 ```
 The output should look like the following:
 
@@ -99,7 +129,7 @@ collection:
     schema: ""
   nfts:
   - approvedAddresses: {}
-    data: ""
+    data: "ipfs://QmPD2psAmSEkWr2UwU6c3ze3VNAQ4rG3TCnqnraS1qxUxh"
     id: "1"
     name: ""
     owner: <walletAddress>
